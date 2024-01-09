@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 11d85c4173aa7584e9a7159bf0b412e7
+guid: 631d69a36bfe85542896a6a699c38fde
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -33,7 +33,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Attack2
+      name: Melee360
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
@@ -48,7 +48,7 @@ ModelImporter:
       loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
-      loopBlendPositionXZ: 0
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
       keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
