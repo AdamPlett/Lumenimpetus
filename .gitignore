@@ -63,7 +63,6 @@ sysinfo.txt
 crashlytics-build.properties
 
 
-Assets/Art/POLYGON/PolygonSciFiSpace/URP_ExtractMe.unitypackage.meta
 
 UserSettings/EditorUserSettings.asset
 
@@ -71,8 +70,3 @@ UserSettings/
 
 ProjectSettings/Packages/com.unity.probuilder/Settings.json
 
-Assets/Art/Thirdparty.meta
-
-Assets/Art/Thirdparty/Ciathyza/Gridbox Prototype Materials/Demo/Prototype Materials Demo.unity.meta
-
-*.meta
