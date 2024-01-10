@@ -26,6 +26,8 @@ public class Boss1MoveState : Boss1BaseState
 
     public override void Tick()
     {
+        CheckForPlayer();
+
         if(stateMachine.health.GetCurrentPhase() == 1)
         {
             CirclePlayer();
@@ -82,6 +84,22 @@ public class Boss1MoveState : Boss1BaseState
         }
     }
 
+    private void CheckForPlayer()
+    {
+        Collider[] hitObjs = Physics.OverlapSphere(stateMachine.transform.position, stateMachine.meleeRadius);
+
+        if(hitObjs.Length > 0)
+        {
+            foreach (var obj in hitObjs)
+            {
+                if (obj.tag.Equals("Player"))
+                {
+                    Debug.Log("Player detected within melee range!");
+                    stateMachine.SwitchState(new Boss1MeleeState(stateMachine));
+                }
+            }
+        }
+    }
 
 
     /*

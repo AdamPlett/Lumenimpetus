@@ -1266,6 +1266,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 614293356465367267, guid: 0504b5d1ecf5c1740a229322edcea3ba,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 614293356503405129, guid: 0504b5d1ecf5c1740a229322edcea3ba,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 614293356691510104, guid: 0504b5d1ecf5c1740a229322edcea3ba,
         type: 3}
       propertyPath: maxSlopeAngle
@@ -1335,6 +1345,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 614293358260426948, guid: 0504b5d1ecf5c1740a229322edcea3ba,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0504b5d1ecf5c1740a229322edcea3ba, type: 3}
@@ -1546,10 +1561,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
+  timeBetweenShots: 15
+  meleeRadius: 5
   health: {fileID: 669979133}
   animator: {fileID: 669979135}
   bossModel: {fileID: 6243565705139304550}
   playerRef: {fileID: 363141691}
+  energySword: {fileID: 196746122405981075}
 --- !u!114 &669979135
 MonoBehaviour:
   m_ObjectHideFlags: 0
