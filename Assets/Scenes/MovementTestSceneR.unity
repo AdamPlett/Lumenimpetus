@@ -705,62 +705,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
-        type: 3}
-      propertyPath: airDrag
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
-        type: 3}
-      propertyPath: wallRunSpeed
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
-        type: 3}
-      propertyPath: ground.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
-        type: 3}
-      propertyPath: airMultiplayer
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
-        type: 3}
-      propertyPath: whatIsGround.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccf55b084927b344d92becd5edbd68ac, type: 3}
---- !u!1 &2557011061226588521 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2557011060370310433, guid: ccf55b084927b344d92becd5edbd68ac,
-    type: 3}
-  m_PrefabInstance: {fileID: 2557011061226588520}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2557011061226588522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2557011061226588521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29d2fd4173ef6ea4b929249fb1f3149b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wall:
-    serializedVersion: 2
-    m_Bits: 1024
-  ground:
-    serializedVersion: 2
-    m_Bits: 512
-  wallRunForce: 200
-  maxWallRunTime: 2
-  wallCheckDistance: 0.7
-  minJumpHeight: 1.7
-  orientation: {fileID: 105068536}
 --- !u!1001 &7571306190602096180
 PrefabInstance:
   m_ObjectHideFlags: 0

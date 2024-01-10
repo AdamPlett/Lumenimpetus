@@ -1247,7 +1247,7 @@ GameObject:
   - component: {fileID: 634442473}
   - component: {fileID: 634442472}
   - component: {fileID: 634442471}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: RoofPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1841,7 +1841,7 @@ GameObject:
   - component: {fileID: 1080857372}
   - component: {fileID: 1080857371}
   - component: {fileID: 1080857370}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: FloorPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2830,7 +2830,7 @@ GameObject:
   - component: {fileID: 1936507599}
   - component: {fileID: 1936507598}
   - component: {fileID: 1936507597}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Pipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
