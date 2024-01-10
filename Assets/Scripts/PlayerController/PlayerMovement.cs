@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private float moveSpeed;
     public float walkSpeed;
     public float sprintSpeed;
+    public float wallRunSpeed;
 
 
     public float groundDrag;
@@ -25,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Ground Check")]
     public float playerHeight;
-    public LayerMask whatIsGround;
+    public LayerMask ground;
     bool grounded;
 
     [Header("Slope Handling")]
@@ -48,8 +49,11 @@ public class PlayerMovement : MonoBehaviour
     {
         walking,
         sprinting,
-        air
+        air,
+        wallrunning
     }
+
+    public bool wallrunning;
 
     private void Start()
     {
@@ -59,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         // ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, ground);
 
         MyInput();
         SpeedControl();
@@ -97,6 +101,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void StateHandler()
     {
+        // Mode - Wallrunning
+        if (wallrunning)
+        {
+            state = MovementState.wallrunning;
+            moveSpeed = wallRunSpeed;
+        }
+        
         // Mode - Sprinting
         if(grounded && Input.GetKey(sprintKey))
         {
@@ -129,6 +140,9 @@ public class PlayerMovement : MonoBehaviour
 
             if (rb.velocity.y > 0)
                 rb.AddForce(Vector3.down * 80f, ForceMode.Force);
+
+            if (rb.velocity.y < 0)
+                rb.AddForce(Vector3.down * 20f, ForceMode.Force);
         }
         // on ground
         if (grounded)
