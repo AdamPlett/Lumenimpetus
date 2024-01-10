@@ -7,6 +7,7 @@ public class BreakObject : MonoBehaviour
    
     [SerializeField] private GameObject brokenObject;
     [SerializeField] private float breakForce;
+    [SerializeField] private string destructKey;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,8 @@ public class BreakObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("f"))
+        KeyCode thisKeyCode = (KeyCode)System.Enum.Parse(typeof(KeyCode), destructKey, true);
+        if (Input.GetKeyDown(thisKeyCode))
             breakObject();
     }
     //replaces game object with fractured or broken game object and applies force to break them up
