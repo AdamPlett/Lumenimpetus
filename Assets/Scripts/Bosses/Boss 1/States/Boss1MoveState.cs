@@ -3,34 +3,36 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public enum eCircleDir { none, left, right }
+public enum eDir { none, left, right }
 
 public class Boss1MoveState : Boss1BaseState
 {
     public Boss1MoveState(Boss1StateMachine stateMachine) : base(stateMachine) { }
 
     private Transform bossTransform, modelTransform;
-    private Vector3 playerPosRef;
 
-    private eCircleDir circleDir;
+    private eDir circleDir;
 
     public override void Enter()
     {
-        bossTransform = stateMachine.GetBossTransform();
+        bossTransform = stateMachine.transform;
         modelTransform = stateMachine.bossModel.transform;
-
-        playerPosRef = stateMachine.playerRef.transform.position;
 
         SetCircleDirection();
     }
 
     public override void Tick()
     {
-        CheckForPlayer();
+        stateMachine.CheckForPlayer();
 
         if(stateMachine.health.GetCurrentPhase() == 1)
         {
-            CirclePlayer();
+            stateMachine.LookAtPlayer();
+
+            if (stateMachine.CheckFacingPlayer())
+            {
+                CirclePlayer();
+            }
         }
         else if (stateMachine.health.GetCurrentPhase() == 2)
         {
@@ -53,54 +55,29 @@ public class Boss1MoveState : Boss1BaseState
 
         if(randomInt == 0)
         {
-            circleDir = eCircleDir.left;
-            stateMachine.animator.SwitchAnimation(stateMachine.animator.WalkHashL);
+            circleDir = eDir.left;
+            stateMachine.anim.SwitchAnimation(stateMachine.anim.WalkHashL);
+            Debug.Log("Walking left");
         }
         else if(randomInt == 1)
         {
-            circleDir = eCircleDir.right;
-            stateMachine.animator.SwitchAnimation(stateMachine.animator.WalkHashR);
+            circleDir = eDir.right;
+            stateMachine.anim.SwitchAnimation(stateMachine.anim.WalkHashR);
+            Debug.Log("Walking right");
         }
     }
 
     private void CirclePlayer()
     {
-        // Have boss face player position
-        bossTransform.LookAt(stateMachine.playerRef.transform);
-
-        // Adjust rotation to ensure only y is affected (keeping boss level with ground)
-        Quaternion rotation = bossTransform.rotation;
-        rotation.x = 0;
-        rotation.z = 0;
-        bossTransform.rotation = rotation;
-
-        if(circleDir == eCircleDir.left)
+        if (circleDir == eDir.left)
         {
-            bossTransform.position = bossTransform.position - bossTransform.right * stateMachine.moveSpeed * Time.deltaTime;
+            bossTransform.position = bossTransform.position - bossTransform.right.normalized * stateMachine.moveSpeed * Time.deltaTime;
         }
-        else
+        else if (circleDir == eDir.right)
         {
-            bossTransform.position = bossTransform.position + bossTransform.right * stateMachine.moveSpeed * Time.deltaTime;
+            bossTransform.position = bossTransform.position + bossTransform.right.normalized * stateMachine.moveSpeed * Time.deltaTime;
         }
     }
-
-    private void CheckForPlayer()
-    {
-        Collider[] hitObjs = Physics.OverlapSphere(stateMachine.transform.position, stateMachine.meleeRadius);
-
-        if(hitObjs.Length > 0)
-        {
-            foreach (var obj in hitObjs)
-            {
-                if (obj.tag.Equals("Player"))
-                {
-                    Debug.Log("Player detected within melee range!");
-                    stateMachine.SwitchState(new Boss1MeleeState(stateMachine));
-                }
-            }
-        }
-    }
-
 
     /*
     private void CirclePoint(Vector3 centerPoint, float circleRadius)

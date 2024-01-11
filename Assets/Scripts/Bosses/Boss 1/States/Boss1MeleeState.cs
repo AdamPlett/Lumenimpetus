@@ -6,43 +6,55 @@ public class Boss1MeleeState : Boss1BaseState
 {
     public Boss1MeleeState(Boss1StateMachine stateMachine) : base(stateMachine) { }
 
-    float attackTimer = 0f;
-
     public override void Enter()
     {
         SelectMeleeAttack();
+
+        stateMachine.isAttacking = true;
     }
 
     public override void Tick()
     {
-        Invoke("RevertToMoveState", 1f);
+
     }
 
     public override void Exit()
     {
-
-    }
-
-    private void RevertToMoveState()
-    {
-        stateMachine.SwitchState(new Boss1MoveState(stateMachine));
+        stateMachine.isAttacking = false;
+        stateMachine.weapons.meleeTimer = 0f;
     }
 
     private void SelectMeleeAttack()
     {
-        int randomInt = Random.Range(0, 3);
+        stateMachine.weapons.comboCounter++;
 
-        if(randomInt == 0)
+        if(stateMachine.weapons.comboCounter > 3)
         {
-            stateMachine.animator.SwitchAnimation(stateMachine.animator.MeleeHash1);
+            stateMachine.anim.SwitchAnimation(stateMachine.anim.MeleeHash360);
+            stateMachine.weapons.comboCounter = 0;
         }
-        else if (randomInt == 1)
+        else
         {
-            stateMachine.animator.SwitchAnimation(stateMachine.animator.MeleeHash2);
-        }
-        else if (randomInt == 2)
-        {
-            stateMachine.animator.SwitchAnimation(stateMachine.animator.MeleeHash3);
+            int randomInt = Random.Range(0, 3);
+
+            if (randomInt == 0)
+            {
+                stateMachine.anim.SwitchAnimation(stateMachine.anim.MeleeHash1);
+
+                Debug.Log("Melee attack #1 selected");
+            }
+            else if (randomInt == 1)
+            {
+                stateMachine.anim.SwitchAnimation(stateMachine.anim.MeleeHash2);
+
+                Debug.Log("Melee attack #2 selected");
+            }
+            else if (randomInt == 2)
+            {
+                stateMachine.anim.SwitchAnimation(stateMachine.anim.MeleeHash3);
+
+                Debug.Log("Melee attack #3 selected");
+            }
         }
     }
 }

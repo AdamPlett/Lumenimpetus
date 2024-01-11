@@ -1,37 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &674785246375681654
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 674785246375681653}
-  m_Layer: 0
-  m_Name: Model
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &674785246375681653
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 674785246375681654}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6913661088394384265}
-  m_Father: {fileID: 674785246382871900}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &674785246382871901
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +11,9 @@ GameObject:
   - component: {fileID: 674785246382871900}
   - component: {fileID: 674785246382871897}
   - component: {fileID: 674785246382871898}
+  - component: {fileID: 4992467401588963373}
   - component: {fileID: 674785246382871896}
+  - component: {fileID: 4672989135068834004}
   - component: {fileID: 674785246382872231}
   - component: {fileID: 674785246382872230}
   m_Layer: 0
@@ -65,7 +35,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 674785246375681653}
+  - {fileID: 6913661088394384265}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -81,14 +51,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdf1cfa6af5dab4cb7e6a408396b5b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  timeBetweenShots: 15
-  meleeRadius: 5
+  moveSpeed: 2.5
+  rotationSpeed: 75
   health: {fileID: 674785246382871898}
-  animator: {fileID: 674785246382871896}
+  weapons: {fileID: 4992467401588963373}
+  anim: {fileID: 674785246382871896}
   bossModel: {fileID: 6915497640366963905}
   playerRef: {fileID: 0}
-  energySword: {fileID: 857841262438248244}
+  isAttacking: 0
+  isShooting: 0
 --- !u!114 &674785246382871898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,6 +76,39 @@ MonoBehaviour:
   maxHealth: 200
   currentPhase: 1
   phaseIncrements: 320000007d000000
+--- !u!114 &4992467401588963373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674785246382871901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 495168454996f2d4298637fcb777cfd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blade: {fileID: 857841262438248244}
+  meleeRange: 5
+  meleeDamage: 10
+  meleeCooldown: 3
+  meleeTimer: 0
+  canMelee: 0
+  comboCounter: 0
+  cannonRange: 25
+  cannonCooldown: 20
+  cannonTimer: 0
+  canShoot: 0
+  currentAmmo: 0
+  energyMine: {fileID: 0}
+  explosiveMine: {fileID: 0}
+  grappleRange: 20
+  grappleCooldown: 10
+  grappleTimer: 0
+  canGrapple: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &674785246382871896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,7 +121,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71ce6eb13ab3bdd43be69476829558b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossAnimator: {fileID: 6822733666139159687}
+  bossAnimator: {fileID: 4672989135068834004}
+--- !u!95 &4672989135068834004
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674785246382871901}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 44202c79934aa8c45b2495a49b6e99b1, type: 3}
+  m_Controller: {fileID: 9100000, guid: 3f11d71af53d1fe4ba6bb79219fd89a5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!136 &674785246382872231
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -574,7 +599,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6913661088394384265}
-  - component: {fileID: 6822733666139159687}
   m_Layer: 0
   m_Name: SM_Chr_BR_War_Robot_01
   m_TagString: Untagged
@@ -589,46 +613,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6915497640366963905}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.6, y: 1.6, z: 1.6}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6912078682317888647}
   - {fileID: 6913829375994642377}
-  m_Father: {fileID: 674785246375681653}
+  m_Father: {fileID: 674785246382871900}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &6822733666139159687
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6915497640366963905}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 44202c79934aa8c45b2495a49b6e99b1, type: 3}
-  m_Controller: {fileID: 9100000, guid: 3f11d71af53d1fe4ba6bb79219fd89a5, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'Root'\n\tTransform 'IndexFinger_02'\n\tTransform
-    'Elbow_R'\n\tTransform 'Finger_02'\n\tTransform 'Finger_03'\n\tTransform 'Ball_L'\n\tTransform
-    'Thumb_02'\n\tTransform 'Ball_R'\n\tTransform 'Clavicle_L'\n\tTransform 'Finger_01'\n\tand
-    more ...\n\tFrom animation clip 'Idle'\n\tFrom animation clip 'Walk'\n\tFrom
-    animation clip 'Shoot'\n\tFrom animation clip 'Swing'\n\tFrom animation clip
-    'Melee1'\n\tFrom animation clip 'Melee2'\n\tFrom animation clip 'Melee3'\n\tFrom
-    animation clip 'Melee360'\n\tFrom animation clip 'MeleeCombo'\n\tFrom animation
-    clip 'MeleeCharge'\n\tand more ..."
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6915503304447774311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1981,6 +1975,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Energy_Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 3737537870634431062, guid: 7a9c9839767a5924dac32b52a9f4f6e6,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a9c9839767a5924dac32b52a9f4f6e6, type: 3}

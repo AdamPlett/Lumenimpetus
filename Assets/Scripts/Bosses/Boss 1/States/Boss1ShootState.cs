@@ -9,7 +9,9 @@ public class Boss1ShootState : Boss1BaseState
 
     public override void Enter()
     {
+        stateMachine.anim.SwitchAnimation(stateMachine.anim.ShootHash);
 
+        stateMachine.isShooting = true;
     }
 
     public override void Tick()
@@ -19,6 +21,7 @@ public class Boss1ShootState : Boss1BaseState
 
     public override void Exit()
     {
-
+        stateMachine.isShooting = false;
+        stateMachine.weapons.cannonTimer = 0f;
     }
 }
