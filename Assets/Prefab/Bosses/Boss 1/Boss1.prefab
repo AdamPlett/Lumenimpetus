@@ -96,12 +96,15 @@ MonoBehaviour:
   canMelee: 0
   comboCounter: 0
   cannonRange: 25
-  cannonCooldown: 20
+  cannonCooldown: 5
   cannonTimer: 0
   canShoot: 0
   currentAmmo: 0
-  energyMine: {fileID: 0}
-  explosiveMine: {fileID: 0}
+  energyMine: {fileID: 1098746000854939400, guid: 92b385d81bd06274487da7776ca77756,
+    type: 3}
+  explosiveMine: {fileID: 6890236874029863260, guid: 51291b8c2b372cb4cacc6c4969108bd1,
+    type: 3}
+  bulletSpawnPoint: {fileID: 8482877145211860561}
   grappleRange: 20
   grappleCooldown: 10
   grappleTimer: 0
@@ -2067,6 +2070,12 @@ PrefabInstance:
 --- !u!4 &670234348293149782 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7928366803248575891, guid: 04797e9b404b3e048a19a4d6aed56c59,
+    type: 3}
+  m_PrefabInstance: {fileID: 7442780091830378949}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8482877145211860561 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1365482247599675284, guid: 04797e9b404b3e048a19a4d6aed56c59,
     type: 3}
   m_PrefabInstance: {fileID: 7442780091830378949}
   m_PrefabAsset: {fileID: 0}

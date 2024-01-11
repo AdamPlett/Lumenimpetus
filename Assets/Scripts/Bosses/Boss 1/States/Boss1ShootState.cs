@@ -6,6 +6,7 @@ public class Boss1ShootState : Boss1BaseState
 {
     public Boss1ShootState(Boss1StateMachine stateMachine) : base(stateMachine) { }
 
+    private GameObject bulletRef;
 
     public override void Enter()
     {

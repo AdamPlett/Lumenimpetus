@@ -25,8 +25,9 @@ public class Boss1AttackManager : MonoBehaviour
     public bool canShoot;
     [Space(8)]
     public eMine currentAmmo;
-    [SerializeField] private GameObject energyMine;
-    [SerializeField] private GameObject explosiveMine;
+    public GameObject energyMine;
+    public GameObject explosiveMine;
+    public Transform bulletSpawnPoint;
 
     [Header("Grapple Hook")]
     public float grappleRange;
@@ -36,6 +37,7 @@ public class Boss1AttackManager : MonoBehaviour
 
     [Header("Misc")]
     public LayerMask playerLayer;
+    public GameObject playerRef;
 
     public void Update()
     {
@@ -66,13 +68,7 @@ public class Boss1AttackManager : MonoBehaviour
 
         if (targets.Length > 0)
         {
-            foreach (var obj in targets)
-            {
-                if (obj.tag.Equals("Player"))
-                {
-                    return true;
-                }
-            }
+            return true;
         }
 
         return false;
@@ -112,16 +108,26 @@ public class Boss1AttackManager : MonoBehaviour
 
         if (targets.Length > 0)
         {
-            foreach (var obj in targets)
-            {
-                if (obj.tag.Equals("Player"))
-                {
-                    return true;
-                }
-            }
+            return true;
         }
 
         return false;
+    }
+
+    public void Shoot()
+    {
+        Vector3 directionToPlayer = (playerRef.transform.position - transform.position).normalized;
+        
+        if(currentAmmo == eMine.energy)
+        {
+            GameObject mine = Instantiate(energyMine, bulletSpawnPoint);
+            mine.GetComponent<Mine>().InitBullet(directionToPlayer);
+        }
+        else if (currentAmmo == eMine.energy)
+        {
+            GameObject mine = Instantiate(explosiveMine, bulletSpawnPoint);
+            mine.GetComponent<Mine>().InitBullet(directionToPlayer);
+        }
     }
 
     #endregion

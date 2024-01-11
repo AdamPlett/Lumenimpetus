@@ -1411,6 +1411,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
+      propertyPath: playerRef
+      value: 
+      objectReference: {fileID: 1291051473}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: cannonRange
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: grappleRange
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
       propertyPath: meleeCooldown
       value: 1
       objectReference: {fileID: 0}
