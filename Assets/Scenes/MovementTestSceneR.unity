@@ -710,36 +710,6 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 7571306190602096181}
-    - target: {fileID: 2557011061226588522, guid: ccf55b084927b344d92becd5edbd68ac,
-        type: 3}
-      propertyPath: useGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2557011061226588522, guid: ccf55b084927b344d92becd5edbd68ac,
-        type: 3}
-      propertyPath: exitWallTime
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2557011061226588522, guid: ccf55b084927b344d92becd5edbd68ac,
-        type: 3}
-      propertyPath: maxWallRunTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2557011061226588522, guid: ccf55b084927b344d92becd5edbd68ac,
-        type: 3}
-      propertyPath: wallJumpForceUp
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2557011061226588522, guid: ccf55b084927b344d92becd5edbd68ac,
-        type: 3}
-      propertyPath: wallJumpSideForce
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 2557011061226588522, guid: ccf55b084927b344d92becd5edbd68ac,
-        type: 3}
-      propertyPath: gravityCounterForce
-      value: 0.85
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccf55b084927b344d92becd5edbd68ac, type: 3}
 --- !u!1001 &7571306190602096180
