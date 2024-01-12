@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2.5
-  rotationSpeed: 75
+  rotationSpeed: 100
   health: {fileID: 674785246382871898}
   weapons: {fileID: 4992467401588963373}
   anim: {fileID: 674785246382871896}
@@ -89,13 +89,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blade: {fileID: 857841262438248244}
-  meleeRange: 5
+  meleeRange: 6
   meleeDamage: 10
   meleeCooldown: 3
   meleeTimer: 0
   canMelee: 0
   comboCounter: 0
-  cannonRange: 25
+  cannonRange: 40
   cannonCooldown: 5
   cannonTimer: 0
   canShoot: 0
@@ -112,6 +112,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  playerRef: {fileID: 0}
 --- !u!114 &674785246382871896
 MonoBehaviour:
   m_ObjectHideFlags: 0
