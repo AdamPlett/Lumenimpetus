@@ -13523,14 +13523,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1758104164}
-  m_LocalRotation: {x: -0.35856435, y: -0.35856435, z: 0.6094519, w: 0.6094519}
-  m_LocalPosition: {x: -4.6370897, y: 24.4, z: -24.93759}
-  m_LocalScale: {x: 0.57916003, y: 1, z: 0.70659727}
+  m_LocalRotation: {x: -0.36399007, y: -0.36399007, z: 0.60622704, w: 0.60622704}
+  m_LocalPosition: {x: 6.02, y: 24.4, z: -23.75}
+  m_LocalScale: {x: 0.57916003, y: 1, z: 1.2861105}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: -60.94, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: -61.963, z: 90}
 --- !u!1001 &1778932382
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13551,17 +13551,17 @@ PrefabInstance:
     - target: {fileID: 2557011060370310435, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -38.45
+      value: -34.22
       objectReference: {fileID: 0}
     - target: {fileID: 2557011060370310435, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.44
+      value: 27.48
       objectReference: {fileID: 0}
     - target: {fileID: 2557011060370310435, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.19
+      value: 2.33
       objectReference: {fileID: 0}
     - target: {fileID: 2557011060370310435, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
@@ -13598,6 +13598,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 232588429}
+    - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
+        type: 3}
+      propertyPath: walkSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
+        type: 3}
+      propertyPath: wallRunSpeed
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 2557011061226588522, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
       propertyPath: cam
@@ -13605,8 +13620,8 @@ PrefabInstance:
       objectReference: {fileID: 232588429}
     - target: {fileID: 2557011061226588522, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
-      propertyPath: maxWallRunTime
-      value: 20
+      propertyPath: gravityCounterForce
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccf55b084927b344d92becd5edbd68ac, type: 3}

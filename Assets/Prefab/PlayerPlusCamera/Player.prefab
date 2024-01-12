@@ -69,6 +69,8 @@ MonoBehaviour:
   walkSpeed: 7
   sprintSpeed: 10
   wallRunSpeed: 8
+  DashSpeed: 0
+  dashSpeedChangeFactor: 0
   groundDrag: 5
   jumpForce: 12
   jumpCooldown: 0.25
@@ -80,9 +82,11 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 512
+  grounded: 0
   maxSlopeAngle: 40
   orientation: {fileID: 2557011061129936528}
   state: 0
+  dashing: 0
   wallrunning: 0
 --- !u!114 &2557011061226588522
 MonoBehaviour:
@@ -103,9 +107,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   wallRunForce: 200
-  wallJumpForceUp: 7
-  wallJumpSideForce: 12
-  maxWallRunTime: 2
+  wallJumpForceUp: 9
+  wallJumpSideForce: 15
+  maxWallRunTime: 20
+  wallRef: {fileID: 0}
+  lastWall: {fileID: 0}
   jumpKey: 32
   wallCheckDistance: 0.7
   minJumpHeight: 1.7
@@ -131,6 +137,10 @@ MonoBehaviour:
   dashForce: 20
   dashUpwardForce: 0
   dashDuration: 0.25
+  useCameraForward: 1
+  allowAllDirections: 1
+  disableGravity: 0
+  resetVel: 1
   dashCd: 1.25
   dashKey: 306
 --- !u!1 &2557011061129936543

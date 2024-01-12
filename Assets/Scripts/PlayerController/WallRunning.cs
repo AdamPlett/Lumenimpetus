@@ -36,6 +36,7 @@ public class WallRunning : MonoBehaviour
 
     [Header("Gravity")]
     public bool useGravity;
+    //High counter means lower gravity
     public float gravityCounterForce;
 
 
@@ -151,9 +152,12 @@ public class WallRunning : MonoBehaviour
 
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        cam.DoFov(90f);
-        if (wallLeft) cam.DoTilt(-5f);
-        if (wallRight) cam.DoTilt(5f);
+        //changes fov of cam
+        cam.DoFov(95f, .25f);
+        //rotates the camera to tilt away from wall
+        if (wallLeft) cam.DoTilt(-5f, .25f);
+        if (wallRight) cam.DoTilt(5f, .25f);
+
         lastWall = wallRef;
 
     }
@@ -187,8 +191,8 @@ public class WallRunning : MonoBehaviour
         pm.wallrunning = false;
 
         // reset cam fx
-        cam.DoFov(80f);
-        cam.DoTilt(0f);
+        cam.DoFov(80f, .25f);
+        cam.DoTilt(0f, .25f);
 
     }
 
@@ -206,12 +210,4 @@ public class WallRunning : MonoBehaviour
         rb.AddForce(forceToApply, ForceMode.Impulse);
 
     }
-
-    private void WallUsedBefore()
-    {
-
-    }
-
-
-
 }

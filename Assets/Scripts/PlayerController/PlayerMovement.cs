@@ -43,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
     private bool exitingSlope;
 
     public Transform orientation;
+    public PlayerCam cam;
 
     float horizontalInput;
     float verticalInput;
@@ -132,12 +133,14 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.sprinting;
             desiredMoveSpeed = sprintSpeed;
+            cam.DoFov(85f, .25f);
         }
 
         // Mode - Walking
         else if (grounded){
             state = MovementState.walking;
             desiredMoveSpeed = walkSpeed;
+            cam.DoFov(80f, .25f);
         }
 
         // Mode - Air
