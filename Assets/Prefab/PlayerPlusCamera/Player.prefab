@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2557011060370310436}
   - component: {fileID: 2557011061226588522}
   - component: {fileID: 1382716919106767537}
+  - component: {fileID: 463300963}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -66,9 +67,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52a9f451c7a80e64a9e92c6c7d30bc1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 7
+  walkSpeed: 6
   sprintSpeed: 10
-  wallRunSpeed: 8
+  wallRunSpeed: 12
   dashSpeed: 20
   dashSpeedChangeFactor: 50
   maxYSpeed: 15
@@ -86,9 +87,11 @@ MonoBehaviour:
   grounded: 0
   maxSlopeAngle: 40
   orientation: {fileID: 2557011061129936528}
+  cam: {fileID: 0}
   state: 0
   dashing: 0
   wallrunning: 0
+  freeze: 0
 --- !u!114 &2557011061226588522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,7 +121,7 @@ MonoBehaviour:
   minJumpHeight: 1.7
   exitWallTime: 0.3
   useGravity: 1
-  gravityCounterForce: 0.85
+  gravityCounterForce: 4
   orientation: {fileID: 2557011061129936528}
   cam: {fileID: 0}
 --- !u!114 &1382716919106767537
@@ -136,17 +139,40 @@ MonoBehaviour:
   orientation: {fileID: 2557011061129936528}
   playerCam: {fileID: 0}
   dashForce: 20
-  dashUpwardForce: 0
-  maxDashYSpeed: 0
+  dashUpwardForce: 0.15
+  maxDashYSpeed: 15
   dashDuration: 0.25
   cam: {fileID: 0}
-  dashFov: 0
+  dashFov: 100
   useCameraForward: 0
   allowAllDirections: 1
   disableGravity: 1
   resetVel: 1
-  dashCd: 1.25
+  dashCd: 1
+  canDash: 0
   dashKey: 306
+--- !u!114 &463300963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2557011060370310433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05532e09c50edf3428eb1b18add455f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  gunTip: {fileID: 0}
+  grappleable:
+    serializedVersion: 2
+    m_Bits: 1536
+  lr: {fileID: 0}
+  maxGrappleDistance: 40
+  grappleDelayTime: 0.25
+  grapplingCd: 1
+  grappleKey: 324
 --- !u!1 &2557011061129936543
 GameObject:
   m_ObjectHideFlags: 0

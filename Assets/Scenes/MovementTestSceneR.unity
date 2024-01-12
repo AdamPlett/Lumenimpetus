@@ -338,34 +338,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!1 &463300957 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2557011060370310433, guid: ccf55b084927b344d92becd5edbd68ac,
-    type: 3}
-  m_PrefabInstance: {fileID: 2557011061226588520}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &463300963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 463300957}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05532e09c50edf3428eb1b18add455f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 7571306190602096182}
-  gunTip: {fileID: 1469126437}
-  grappleable:
-    serializedVersion: 2
-    m_Bits: 1536
-  lr: {fileID: 391109237}
-  maxGrappleDistance: 40
-  grappleDelayTime: 0.25
-  grapplingCd: 1
-  grappleKey: 324
 --- !u!1 &531300253
 GameObject:
   m_ObjectHideFlags: 0
@@ -1084,6 +1056,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 463300963, guid: ccf55b084927b344d92becd5edbd68ac, type: 3}
+      propertyPath: lr
+      value: 
+      objectReference: {fileID: 391109237}
+    - target: {fileID: 463300963, guid: ccf55b084927b344d92becd5edbd68ac, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 7571306190602096182}
+    - target: {fileID: 463300963, guid: ccf55b084927b344d92becd5edbd68ac, type: 3}
+      propertyPath: gunTip
+      value: 
+      objectReference: {fileID: 1469126437}
     - target: {fileID: 1382716919106767537, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
       propertyPath: cam
@@ -1091,24 +1075,9 @@ PrefabInstance:
       objectReference: {fileID: 7571306190602096181}
     - target: {fileID: 1382716919106767537, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
-      propertyPath: dashFov
-      value: 95
-      objectReference: {fileID: 0}
-    - target: {fileID: 1382716919106767537, guid: ccf55b084927b344d92becd5edbd68ac,
-        type: 3}
       propertyPath: playerCam
       value: 
       objectReference: {fileID: 7571306190602096182}
-    - target: {fileID: 1382716919106767537, guid: ccf55b084927b344d92becd5edbd68ac,
-        type: 3}
-      propertyPath: maxDashYSpeed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1382716919106767537, guid: ccf55b084927b344d92becd5edbd68ac,
-        type: 3}
-      propertyPath: dashUpwardForce
-      value: 0.15
-      objectReference: {fileID: 0}
     - target: {fileID: 2557011060370310433, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
       propertyPath: m_Name
