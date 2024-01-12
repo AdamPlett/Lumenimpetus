@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b5ea60a31ca9b39469555e9f4058353c, type: 2}
+  - {fileID: 2100000, guid: ffb6cf0824bd75e4181dbe5e56a919fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -114,8 +114,11 @@ MonoBehaviour:
   damage: 10
   bulletSpeed: 15
   detonationBuffer: 10
-  explosionFX: {fileID: 0}
+  explosionFX: {fileID: 5383748219298451515, guid: 52151b45646623d4da2a19b30d250ada,
+    type: 3}
+  mineLanded: 0
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
-  playerDetectionRange: 10
+  playerDetectionMin: 5
+  playerDetectionMax: 15

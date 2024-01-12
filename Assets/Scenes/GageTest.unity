@@ -1412,7 +1412,12 @@ PrefabInstance:
     - target: {fileID: 674785246382871901, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 674785246382871901, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
@@ -1426,6 +1431,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
+      propertyPath: currentAmmo
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
       propertyPath: grappleRange
       value: 30
       objectReference: {fileID: 0}
@@ -1433,6 +1443,21 @@ PrefabInstance:
         type: 3}
       propertyPath: meleeCooldown
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6915497640366963905, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6915894552409923653, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917440254345775693, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b16ba11d8d0a48749819b0f9899b118e, type: 3}

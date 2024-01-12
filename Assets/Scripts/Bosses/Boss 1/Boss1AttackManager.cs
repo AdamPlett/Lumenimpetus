@@ -123,7 +123,7 @@ public class Boss1AttackManager : MonoBehaviour
             GameObject mine = Instantiate(energyMine, bulletSpawnPoint);
             mine.GetComponent<Mine>().InitBullet(directionToPlayer);
         }
-        else if (currentAmmo == eMine.energy)
+        else if (currentAmmo == eMine.explosive)
         {
             GameObject mine = Instantiate(explosiveMine, bulletSpawnPoint);
             mine.GetComponent<Mine>().InitBullet(directionToPlayer);
