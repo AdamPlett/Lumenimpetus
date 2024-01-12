@@ -95,7 +95,7 @@ MonoBehaviour:
   meleeTimer: 0
   canMelee: 0
   comboCounter: 0
-  cannonRange: 25
+  cannonRange: 40
   cannonCooldown: 5
   cannonTimer: 0
   canShoot: 0
