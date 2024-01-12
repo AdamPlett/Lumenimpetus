@@ -10,9 +10,10 @@ public class PlayerMovement : MonoBehaviour
     public float sprintSpeed;
     public float wallRunSpeed;
 
-    public float DashSpeed;
+    public float dashSpeed;
     public float dashSpeedChangeFactor;
 
+    public float maxYSpeed;
 
     public float groundDrag;
 
@@ -56,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
 
     public enum MovementState
     {
+        freeze,
         walking,
         sprinting,
         air,
@@ -66,6 +68,8 @@ public class PlayerMovement : MonoBehaviour
     public bool dashing;
 
     public bool wallrunning;
+
+    public bool freeze;
 
     private void Start()
     {
@@ -113,6 +117,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void StateHandler()
     {
+        // Mode - Freeze
+        if (freeze)
+        {
+            state = MovementState.freeze;
+            moveSpeed = 0;
+            rb.velocity = Vector3.zero;
+        }
         // Mode - Wallrunning
         if (wallrunning)
         {
@@ -124,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
         else if (dashing)
         {
             state = MovementState.dashing;
-            desiredMoveSpeed = DashSpeed;
+            desiredMoveSpeed = dashSpeed;
             speedChangeFactor = dashSpeedChangeFactor;
         }
         
@@ -262,6 +273,9 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity = rawSpd - horiDrag;
             }
            
+            // limit y vel
+            if (maxYSpeed != 0 && rb.velocity.y > maxYSpeed)
+                rb.velocity = new Vector3(rb.velocity.x, maxYSpeed, rb.velocity.z);
         }
     }
 
