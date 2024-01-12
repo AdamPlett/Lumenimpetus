@@ -56,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
 
     public enum MovementState
     {
+        freeze,
         walking,
         sprinting,
         air,
@@ -66,6 +67,8 @@ public class PlayerMovement : MonoBehaviour
     public bool dashing;
 
     public bool wallrunning;
+
+    public bool freeze;
 
     private void Start()
     {
@@ -113,6 +116,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void StateHandler()
     {
+        // Mode - Freeze
+        if (freeze)
+        {
+            state = MovementState.freeze;
+            moveSpeed = 0;
+            rb.velocity = Vector3.zero;
+        }
         // Mode - Wallrunning
         if (wallrunning)
         {
