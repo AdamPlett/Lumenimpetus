@@ -13,6 +13,8 @@ public class WallRunning : MonoBehaviour
     public float wallJumpSideForce;
     public float maxWallRunTime;
     private float wallRunTimer;
+    public GameObject wallRef;
+    public GameObject lastWall;
 
     [Header("Input")]
     public KeyCode jumpKey = KeyCode.Space;
@@ -65,6 +67,15 @@ public class WallRunning : MonoBehaviour
     {
         wallRight = Physics.Raycast(transform.position, orientation.right, out rightWallhit, wallCheckDistance, wall);
         wallLeft = Physics.Raycast(transform.position, -orientation.right, out leftWallhit, wallCheckDistance, wall);
+
+        if (wallLeft && wallRef != leftWallhit.transform.gameObject)
+        {
+            wallRef = leftWallhit.transform.gameObject;
+        }
+        if (wallRight && wallRef != rightWallhit.transform.gameObject)
+        {
+            wallRef = rightWallhit.transform.gameObject;
+        }
     }
 
     private bool AboveGround()
@@ -82,12 +93,18 @@ public class WallRunning : MonoBehaviour
         if ((wallLeft || wallRight) && verticalInput > 0 && AboveGround() && !exitingWall)
         {
             if (!pm.wallrunning)
-                StartWallRun();
+            {
+                if (wallRef != lastWall)
+                {
+                    StartWallRun();
+                }
+            }
 
             // wallrun timer
             if (wallRunTimer > 0)
+            {
                 wallRunTimer -= Time.deltaTime;
-
+            }
             if (wallRunTimer <= 0 && pm.wallrunning)
             {
                 exitingWall = true;
@@ -111,10 +128,18 @@ public class WallRunning : MonoBehaviour
         // State 3 - None
         else
         {
-            if(pm.wallrunning)
+            if (pm.wallrunning)
+            {
                 StopWallRun();
-
+            }
+            if (pm.grounded)
+            {
+                lastWall = null;
+                wallRef = null;
+            }
         }
+
+
     
     }
 
@@ -129,6 +154,8 @@ public class WallRunning : MonoBehaviour
         cam.DoFov(90f);
         if (wallLeft) cam.DoTilt(-5f);
         if (wallRight) cam.DoTilt(5f);
+        lastWall = wallRef;
+
     }
 
     private void WallRunningMovement()
@@ -162,6 +189,7 @@ public class WallRunning : MonoBehaviour
         // reset cam fx
         cam.DoFov(80f);
         cam.DoTilt(0f);
+
     }
 
     private void WallJump()
@@ -179,8 +207,11 @@ public class WallRunning : MonoBehaviour
 
     }
 
-    private void StoreLastWall()
+    private void WallUsedBefore()
     {
-        
+
     }
+
+
+
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2557011060370310434}
   - component: {fileID: 2557011060370310436}
   - component: {fileID: 2557011061226588522}
+  - component: {fileID: 1382716919106767537}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -104,15 +105,34 @@ MonoBehaviour:
   wallRunForce: 200
   wallJumpForceUp: 7
   wallJumpSideForce: 12
-  maxWallRunTime: 1
+  maxWallRunTime: 2
   jumpKey: 32
   wallCheckDistance: 0.7
   minJumpHeight: 1.7
-  exitWallTime: 0.2
+  exitWallTime: 0.3
   useGravity: 1
   gravityCounterForce: 0.85
   orientation: {fileID: 2557011061129936528}
   cam: {fileID: 0}
+--- !u!114 &1382716919106767537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2557011060370310433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820d84e488f6cc748a9784a0babd1c9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orientation: {fileID: 2557011061129936528}
+  playerCam: {fileID: 0}
+  dashForce: 20
+  dashUpwardForce: 0
+  dashDuration: 0.25
+  dashCd: 1.25
+  dashKey: 306
 --- !u!1 &2557011061129936543
 GameObject:
   m_ObjectHideFlags: 0

@@ -182,7 +182,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 74117f645ca87544896e430b75e9a316, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -394,7 +394,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: f5ffb23c71776424f8f776c97d3fd190, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -491,7 +491,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: aca78a8a4e222824f8895a0a26df63e8, type: 2}
+  - {fileID: 2100000, guid: 9fe0a856a63e8634ebc7077bc570ea68, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -588,7 +588,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: aca78a8a4e222824f8895a0a26df63e8, type: 2}
+  - {fileID: 2100000, guid: dfc08c90188302847afb04f628582097, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -685,7 +685,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 06cace6112bf0ff47a325c45d8cfc448, type: 2}
+  - {fileID: 2100000, guid: 68d9464d0cd4fbf48a81abf378167c7f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -788,7 +788,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: aca78a8a4e222824f8895a0a26df63e8, type: 2}
+  - {fileID: 2100000, guid: 4084a843b9ef6af45a63b7163f9fbefb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -840,10 +840,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1382716919106767537, guid: ccf55b084927b344d92becd5edbd68ac,
+        type: 3}
+      propertyPath: playerCam
+      value: 
+      objectReference: {fileID: 7571306190602096182}
+    - target: {fileID: 1382716919106767537, guid: ccf55b084927b344d92becd5edbd68ac,
+        type: 3}
+      propertyPath: disableGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1382716919106767537, guid: ccf55b084927b344d92becd5edbd68ac,
+        type: 3}
+      propertyPath: useCameraForward
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2557011060370310433, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2557011060370310434, guid: ccf55b084927b344d92becd5edbd68ac,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 2557011060370310435, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
@@ -900,6 +920,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
+        type: 3}
+      propertyPath: airDrag
+      value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
+        type: 3}
+      propertyPath: DashSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
+        type: 3}
+      propertyPath: jumpForce
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
+        type: 3}
+      propertyPath: dashSpeedChangeFactor
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2557011061158986807, guid: ccf55b084927b344d92becd5edbd68ac,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2557011061226588522, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
       propertyPath: cam
@@ -907,13 +952,13 @@ PrefabInstance:
       objectReference: {fileID: 7571306190602096181}
     - target: {fileID: 2557011061226588522, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
-      propertyPath: exitWallTime
-      value: 0.3
+      propertyPath: wallJumpForceUp
+      value: 8.5
       objectReference: {fileID: 0}
     - target: {fileID: 2557011061226588522, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
-      propertyPath: maxWallRunTime
-      value: 2
+      propertyPath: wallJumpSideForce
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccf55b084927b344d92becd5edbd68ac, type: 3}
@@ -1008,3 +1053,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a187e15f4cce1b49b5dab9250f3a39f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &7571306190602096182 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7571306190406188690, guid: d1d42a8b631297145a28cbb1ad60faf7,
+    type: 3}
+  m_PrefabInstance: {fileID: 7571306190602096180}
+  m_PrefabAsset: {fileID: 0}
