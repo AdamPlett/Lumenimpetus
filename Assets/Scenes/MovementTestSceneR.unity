@@ -842,28 +842,33 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1382716919106767537, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 7571306190602096181}
+    - target: {fileID: 1382716919106767537, guid: ccf55b084927b344d92becd5edbd68ac,
+        type: 3}
+      propertyPath: dashFov
+      value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: 1382716919106767537, guid: ccf55b084927b344d92becd5edbd68ac,
+        type: 3}
       propertyPath: playerCam
       value: 
       objectReference: {fileID: 7571306190602096182}
     - target: {fileID: 1382716919106767537, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
-      propertyPath: disableGravity
-      value: 1
+      propertyPath: maxDashYSpeed
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1382716919106767537, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
-      propertyPath: useCameraForward
-      value: 0
+      propertyPath: dashUpwardForce
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 2557011060370310433, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2557011060370310434, guid: ccf55b084927b344d92becd5edbd68ac,
-        type: 3}
-      propertyPath: m_Mass
-      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 2557011060370310435, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
@@ -920,46 +925,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
-        type: 3}
-      propertyPath: airDrag
-      value: 0.005
-      objectReference: {fileID: 0}
-    - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
-        type: 3}
-      propertyPath: DashSpeed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
-        type: 3}
-      propertyPath: jumpForce
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
-        type: 3}
-      propertyPath: dashSpeedChangeFactor
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 2557011061158986807, guid: ccf55b084927b344d92becd5edbd68ac,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2557011061226588522, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
       propertyPath: cam
       value: 
       objectReference: {fileID: 7571306190602096181}
-    - target: {fileID: 2557011061226588522, guid: ccf55b084927b344d92becd5edbd68ac,
-        type: 3}
-      propertyPath: wallJumpForceUp
-      value: 8.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2557011061226588522, guid: ccf55b084927b344d92becd5edbd68ac,
-        type: 3}
-      propertyPath: wallJumpSideForce
-      value: 14
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccf55b084927b344d92becd5edbd68ac, type: 3}
 --- !u!1001 &7571306190602096180
