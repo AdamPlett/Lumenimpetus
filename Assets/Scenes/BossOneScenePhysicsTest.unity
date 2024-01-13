@@ -47985,6 +47985,11 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 232588429}
+    - target: {fileID: 2557011061226588522, guid: ccf55b084927b344d92becd5edbd68ac,
+        type: 3}
+      propertyPath: coyoteTime
+      value: 0.15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccf55b084927b344d92becd5edbd68ac, type: 3}
 --- !u!43 &1784125289
