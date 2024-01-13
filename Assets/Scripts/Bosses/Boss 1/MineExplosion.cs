@@ -17,7 +17,5 @@ public class MineExplosion : MonoBehaviour
     public void ActivateCollider()
     {
         collision.gameObject.SetActive(true);
-
-        Destroy(this, 0.5f);
     }
 }

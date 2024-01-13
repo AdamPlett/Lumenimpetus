@@ -19,7 +19,8 @@ public class Boss1AttackManager : MonoBehaviour
     public int comboCounter;
 
     [Header("Cannon")]
-    public float cannonRange;
+    public float cannonRangeMin;
+    public float cannonRangeMax;
     public float cannonCooldown;
     public float cannonTimer;
     public bool canShoot;
@@ -64,14 +65,16 @@ public class Boss1AttackManager : MonoBehaviour
 
     public bool CheckMeleeRange()
     {
-        Collider[] targets = Physics.OverlapSphere(transform.position, meleeRange, playerLayer);
+        float distanceToPlayer = Vector3.Distance(transform.position, playerRef.transform.position);
 
-        if (targets.Length > 0)
+        if(distanceToPlayer < meleeRange)
         {
             return true;
         }
-
-        return false;
+        else
+        {
+            return false;
+        }
     }
 
     public void ActivateBlade()
@@ -97,36 +100,36 @@ public class Boss1AttackManager : MonoBehaviour
         }
         else
         {
-            cannonTimer = meleeCooldown;
+            cannonTimer = cannonCooldown;
             canShoot = true;
         }
     }
 
     public bool CheckCannonRange()
     {
-        Collider[] targets = Physics.OverlapSphere(transform.position, cannonRange, playerLayer);
+        float distanceToPlayer = Vector3.Distance(transform.position, playerRef.transform.position);
 
-        if (targets.Length > 0)
+        if(distanceToPlayer < cannonRangeMax && distanceToPlayer > cannonRangeMin)
         {
             return true;
         }
-
-        return false;
+        else
+        {
+            return false;
+        }
     }
 
     public void Shoot()
-    {
-        Vector3 directionToPlayer = (playerRef.transform.position - transform.position).normalized;
-        
+    {        
         if(currentAmmo == eMine.energy)
         {
             GameObject mine = Instantiate(energyMine, bulletSpawnPoint);
-            mine.GetComponent<Mine>().InitBullet(directionToPlayer);
+            mine.GetComponent<Mine>().InitBullet(playerRef);
         }
         else if (currentAmmo == eMine.explosive)
         {
             GameObject mine = Instantiate(explosiveMine, bulletSpawnPoint);
-            mine.GetComponent<Mine>().InitBullet(directionToPlayer);
+            mine.GetComponent<Mine>().InitBullet(playerRef);
         }
     }
 

@@ -10,11 +10,17 @@ public class Mine : MonoBehaviour
     [Header("Bullet Variables")]
     public float damage;
     public float bulletSpeed;
+    public float rotationSpeed;
+    public Rigidbody bulletRB;
 
     [Header("Explosion Variables")]
     public float detonationBuffer;
-    public GameObject explosionFX;
-    public bool mineLanded = false;
+    public ParticleSystem explosionFX;
+
+    [Header("Booleans")]
+    public bool landed = false;
+    public bool exploded = false;
+    public bool canTrack = true;
 
     [Header("Player Detection")]
     public LayerMask playerLayer;
@@ -22,39 +28,66 @@ public class Mine : MonoBehaviour
     public float playerDetectionMax;
 
     private Vector3 bulletDirection;
+    private GameObject player;
 
-    public void InitBullet(Vector3 direction)
+    public void InitBullet(GameObject playerRef)
     {
-        bulletDirection = direction;
-
         transform.parent = null;
+        player = playerRef;
+
+        transform.forward += GetDirectionToPlayer();
     }
 
     private void Update()
     {
-        if (bulletDirection != null && !mineLanded)
+        if (!landed)
         {
-            Collider[] nearbyTargets = Physics.OverlapSphere(transform.position, playerDetectionMin, playerLayer);
-
-            if (nearbyTargets.Length == 0)
+            if(SearchForPlayer() && canTrack)
             {
-                Collider[] fartherTargets = Physics.OverlapSphere(transform.position, playerDetectionMax, playerLayer);
+                Quaternion lookTarget = Quaternion.LookRotation(GetDirectionToPlayer());
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookTarget, rotationSpeed * Time.deltaTime);
 
-                if (fartherTargets.Length > 0)
-                {
-                    bulletDirection = (fartherTargets[0].transform.position - transform.position).normalized;
-                    transform.position += bulletDirection * bulletSpeed * Time.deltaTime * 0.75f;
-                }
-                else
-                {
-                    transform.position += bulletDirection * bulletSpeed * Time.deltaTime;
-                }
+                MoveMine(bulletSpeed);
             }
             else
             {
-                Invoke("Detonate", 0.5f);
+                MoveMine(bulletSpeed);
             }
         }
+    }
+
+    private bool SearchForPlayer()
+    {
+        float distance = GetDistanceToPlayer();
+
+        if(distance < playerDetectionMax && distance > playerDetectionMin)
+        {
+            return true;
+        }
+        else
+        {
+            if(distance < playerDetectionMin)
+            {
+                canTrack = false;
+            }
+            
+            return false;
+        }
+    }
+
+    private void MoveMine(float speed)
+    {
+        bulletRB.velocity = transform.forward * speed;
+    }
+
+    public Vector3 GetDirectionToPlayer()
+    {
+        return (player.transform.position - transform.position).normalized;
+    }
+
+    public float GetDistanceToPlayer()
+    {
+        return Vector3.Distance(transform.position, player.transform.position);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -64,22 +97,22 @@ public class Mine : MonoBehaviour
             if (!collision.gameObject.tag.Equals("Enemy"))
             {
                 Detonate();
-                mineLanded = true;
+                landed = true;
             }
         }
         else if(mineType == eMine.explosive)
         {
             if (!collision.gameObject.tag.Equals("Enemy"))
             {
+                landed = true;
+
                 if (collision.gameObject.tag.Equals("Player"))
                 {
                     Detonate();
-                    mineLanded = true;
                 }
                 else
                 {
                     Detonate();
-                    mineLanded = true;
                 }
             }
         }
@@ -88,11 +121,21 @@ public class Mine : MonoBehaviour
     public void Detonate()
     {
         SpawnExplosion();
+        exploded = true;
     }
 
     public void SpawnExplosion()
     {
-        Instantiate(explosionFX, transform);
-        Destroy(this.gameObject, 0.1f);
+        transform.rotation = Quaternion.identity;
+        
+        if(explosionFX)
+        {
+            explosionFX.Play();
+            Destroy(gameObject, 2f);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -13,34 +13,41 @@ public class Boss1MoveState : Boss1BaseState
 
     private eDir circleDir;
 
+    private bool animationSet = false;
+
     public override void Enter()
     {
         bossTransform = stateMachine.transform;
         modelTransform = stateMachine.bossModel.transform;
-
-        SetCircleDirection();
     }
 
     public override void Tick()
     {
-        stateMachine.CheckForPlayer();
-
-        if(stateMachine.health.GetCurrentPhase() == 1)
+        if(animationSet)
         {
-            stateMachine.LookAtPlayer();
+            stateMachine.CheckForPlayer();
 
-            if (stateMachine.CheckFacingPlayer())
+            if (stateMachine.health.GetCurrentPhase() == 1)
             {
-                CirclePlayer();
+                stateMachine.LookAtPlayer();
+
+                if (stateMachine.CheckFacingPlayer())
+                {
+                    CirclePlayer();
+                }
+            }
+            else if (stateMachine.health.GetCurrentPhase() == 2)
+            {
+
+            }
+            else if (stateMachine.health.GetCurrentPhase() == 3)
+            {
+
             }
         }
-        else if (stateMachine.health.GetCurrentPhase() == 2)
+        else
         {
-
-        }
-        else if (stateMachine.health.GetCurrentPhase() == 3)
-        {
-
+            SetAnimation();
         }
     }
 
@@ -49,21 +56,24 @@ public class Boss1MoveState : Boss1BaseState
 
     }
 
-    private void SetCircleDirection()
+    private void SetAnimation()
     {
-        int randomInt = Random.Range(0, 2);
+        if (stateMachine.weapons.canMelee)
+        {
+            int randomInt = Random.Range(0, 2);
 
-        if(randomInt == 0)
-        {
-            circleDir = eDir.left;
-            stateMachine.anim.SwitchAnimation(stateMachine.anim.WalkHashL);
-            Debug.Log("Walking left");
-        }
-        else if(randomInt == 1)
-        {
-            circleDir = eDir.right;
-            stateMachine.anim.SwitchAnimation(stateMachine.anim.WalkHashR);
-            Debug.Log("Walking right");
+            if (randomInt == 0)
+            {
+                circleDir = eDir.left;
+                stateMachine.anim.SwitchAnimation(stateMachine.anim.WalkHashL);
+                animationSet = true;
+            }
+            else if (randomInt == 1)
+            {
+                circleDir = eDir.right;
+                stateMachine.anim.SwitchAnimation(stateMachine.anim.WalkHashR);
+                animationSet = true;
+            }
         }
     }
 

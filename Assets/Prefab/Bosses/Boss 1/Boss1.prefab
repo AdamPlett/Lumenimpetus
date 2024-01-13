@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 674785246382872230}
   m_Layer: 0
   m_Name: Boss1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,11 +91,12 @@ MonoBehaviour:
   blade: {fileID: 857841262438248244}
   meleeRange: 6
   meleeDamage: 10
-  meleeCooldown: 3
+  meleeCooldown: 0.25
   meleeTimer: 0
   canMelee: 0
   comboCounter: 0
-  cannonRange: 40
+  cannonRangeMin: 0
+  cannonRangeMax: 0
   cannonCooldown: 5
   cannonTimer: 0
   canShoot: 0
@@ -702,7 +703,7 @@ GameObject:
   - component: {fileID: 6913661088394384265}
   m_Layer: 0
   m_Name: SM_Chr_BR_War_Robot_01
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1280,7 +1281,7 @@ GameObject:
   - component: {fileID: 6912078682317888647}
   m_Layer: 0
   m_Name: Root
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1667,7 +1668,7 @@ GameObject:
   - component: {fileID: 6779179072331783787}
   m_Layer: 0
   m_Name: SM_Chr_BR_War_Robot_01
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

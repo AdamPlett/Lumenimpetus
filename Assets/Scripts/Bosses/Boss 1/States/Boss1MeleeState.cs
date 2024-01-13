@@ -11,6 +11,7 @@ public class Boss1MeleeState : Boss1BaseState
         SelectMeleeAttack();
 
         stateMachine.isAttacking = true;
+        stateMachine.weapons.canMelee = false;
     }
 
     public override void Tick()
@@ -28,7 +29,7 @@ public class Boss1MeleeState : Boss1BaseState
     {
         stateMachine.weapons.comboCounter++;
 
-        if(stateMachine.weapons.comboCounter > 3)
+        if(stateMachine.weapons.comboCounter > 2)
         {
             stateMachine.anim.SwitchAnimation(stateMachine.anim.MeleeHash360);
             stateMachine.weapons.comboCounter = 0;
