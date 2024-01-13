@@ -13,7 +13,12 @@ public class Dashing : MonoBehaviour
     [Header("Dashing")]
     public float dashForce;
     public float dashUpwardForce;
+    public float maxDashYSpeed;
     public float dashDuration;
+
+    [Header("CameraFX")]
+    public PlayerCam cam;
+    public float dashFov;
 
     [Header("Settings")]
     public bool useCameraForward = true;
@@ -24,6 +29,8 @@ public class Dashing : MonoBehaviour
     [Header("Cooldown")]
     public float dashCd;
     private float dashCdTimer;
+    //makes sure the dash doesn't refresh mid air
+    public bool canDash;
 
     [Header("Input")]
     public KeyCode dashKey = KeyCode.E;
@@ -39,18 +46,29 @@ public class Dashing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(dashKey))
-            Dash();
-
-        if(dashCdTimer > 0)
+        if (dashCdTimer > 0)
+        {
             dashCdTimer -= Time.deltaTime;
+        }
+        if (!pm.dashing && pm.grounded || pm.wallrunning)
+        {
+            canDash = true;
+        }
+        if (Input.GetKeyDown(dashKey))
+        {
+            Dash();
+        }
     }
 
     private void Dash()
     {
-        if (dashCdTimer > 0) return;
-        else dashCdTimer = dashCd;
+        if (dashCdTimer > 0 || !canDash) return;
+        dashCdTimer = dashCd;
+        canDash = false;
         pm.dashing = true;
+        pm.maxYSpeed = maxDashYSpeed;
+
+        cam.DoFov(dashFov, .25f);
 
         Transform forwardT;
 
@@ -69,7 +87,7 @@ public class Dashing : MonoBehaviour
         delayedForceToApply = forceToApply;
         Invoke(nameof(DelayedDashForce), 0.025f);
 
-        Invoke(nameof(ResetDash), dashDuration);
+        Invoke(nameof(EndDash), dashDuration);
     }
 
     private Vector3 delayedForceToApply;
@@ -82,10 +100,14 @@ public class Dashing : MonoBehaviour
         rb.AddForce(delayedForceToApply, ForceMode.Impulse);
     }
 
-    private void ResetDash()
+    //stops the dash
+    private void EndDash()
     {
         pm.dashing = false;
-
+        maxDashYSpeed = 0;
+        //FOV
+        cam.DoFov(80f, .25f);
+        //enable gravity
         if (disableGravity)
             rb.useGravity = true;
 
