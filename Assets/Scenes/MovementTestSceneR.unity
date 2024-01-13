@@ -1068,6 +1068,10 @@ PrefabInstance:
       propertyPath: gunTip
       value: 
       objectReference: {fileID: 1469126437}
+    - target: {fileID: 463300963, guid: ccf55b084927b344d92becd5edbd68ac, type: 3}
+      propertyPath: overshootYAxis
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1382716919106767537, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
       propertyPath: cam
@@ -1138,6 +1142,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 7571306190602096181}
     - target: {fileID: 2557011061226588522, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
       propertyPath: cam
