@@ -2355,6 +2355,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss1
       objectReference: {fileID: 0}
+    - target: {fileID: 674785246382872230, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4672989135068834004, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
       propertyPath: m_ApplyRootMotion
