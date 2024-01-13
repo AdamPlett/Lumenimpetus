@@ -172,8 +172,8 @@ MonoBehaviour:
     m_Bits: 1536
   lr: {fileID: 0}
   maxGrappleDistance: 40
-  grappleDelayTime: 0.25
-  overshootYAxis: 2
+  grappleDelayTime: 0.0001
+  overshootYAxis: 0.5
   grapplingCd: 1
   grappleKey: 324
 --- !u!1 &2557011061129936543

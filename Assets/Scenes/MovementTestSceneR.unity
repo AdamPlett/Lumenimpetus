@@ -864,14 +864,6 @@ PrefabInstance:
       propertyPath: gunTip
       value: 
       objectReference: {fileID: 1469126437}
-    - target: {fileID: 463300963, guid: ccf55b084927b344d92becd5edbd68ac, type: 3}
-      propertyPath: overshootYAxis
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 463300963, guid: ccf55b084927b344d92becd5edbd68ac, type: 3}
-      propertyPath: grappleDelayTime
-      value: 0.0001
-      objectReference: {fileID: 0}
     - target: {fileID: 1382716919106767537, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
       propertyPath: cam
