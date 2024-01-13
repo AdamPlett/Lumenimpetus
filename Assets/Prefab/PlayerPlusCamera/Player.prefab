@@ -88,10 +88,12 @@ MonoBehaviour:
   maxSlopeAngle: 40
   orientation: {fileID: 2557011061129936528}
   cam: {fileID: 0}
+  grappleFov: 95
   state: 0
   dashing: 0
   wallrunning: 0
   freeze: 0
+  activeGrapple: 0
 --- !u!114 &2557011061226588522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +173,7 @@ MonoBehaviour:
   lr: {fileID: 0}
   maxGrappleDistance: 40
   grappleDelayTime: 0.25
+  overshootYAxis: 2
   grapplingCd: 1
   grappleKey: 324
 --- !u!1 &2557011061129936543

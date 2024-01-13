@@ -96,7 +96,8 @@ public class Grappling : MonoBehaviour
     public void StopGrapple()
     {
         grappling = false;
-        
+        pm.freeze = false;
+
         grapplingCdTimer = grapplingCd;
         lr.enabled = false;
     }
