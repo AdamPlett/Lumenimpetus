@@ -78,6 +78,7 @@ MonoBehaviour:
   jumpCooldown: 0.25
   airMultiplayer: 0.4
   airDrag: 0.005
+  coyoteTime: 0.15
   jumpKey: 32
   sprintKey: 304
   playerHeight: 2

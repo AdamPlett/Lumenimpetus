@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     public float jumpCooldown;
     public float airMultiplayer;
     public float airDrag;
+    public float coyoteTime;
+    private float coyoteTimer;
     bool readyToJump = true;
 
 
@@ -88,6 +90,9 @@ public class PlayerMovement : MonoBehaviour
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, ground);
 
+        coyoteTimer -= Time.deltaTime;
+        if (grounded || wallrunning) coyoteTimer = coyoteTime;
+
         MyInput();
         SpeedControl();
         StateHandler();
@@ -112,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         // when to jump
-        if(Input.GetKey(jumpKey) && readyToJump && grounded)
+        if(Input.GetKey(jumpKey) && readyToJump && (coyoteTimer > 0))
         {
             readyToJump = false;
 

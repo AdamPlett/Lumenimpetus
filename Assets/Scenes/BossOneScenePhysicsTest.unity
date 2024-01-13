@@ -17671,6 +17671,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 147.024, z: 0}
+--- !u!120 &558410331 stripped
+LineRenderer:
+  m_CorrespondingSourceObject: {fileID: 391109237, guid: d1d42a8b631297145a28cbb1ad60faf7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1563087493}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &628245163
 Mesh:
   m_ObjectHideFlags: 0
@@ -47891,6 +47897,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 463300963, guid: ccf55b084927b344d92becd5edbd68ac, type: 3}
+      propertyPath: lr
+      value: 
+      objectReference: {fileID: 558410331}
+    - target: {fileID: 463300963, guid: ccf55b084927b344d92becd5edbd68ac, type: 3}
+      propertyPath: gunTip
+      value: 
+      objectReference: {fileID: 2000741521}
     - target: {fileID: 1382716919106767537, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
       propertyPath: cam
@@ -60400,6 +60414,12 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!4 &2000741521 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1469126437, guid: d1d42a8b631297145a28cbb1ad60faf7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1563087493}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2010420143
 GameObject:
   m_ObjectHideFlags: 0
