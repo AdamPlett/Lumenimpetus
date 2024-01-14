@@ -20,6 +20,7 @@ public class Boss1StateMachine : StateMachine
     [Header("Booleans")]
     public bool isAttacking;
     public bool isShooting;
+    public bool isGrappling;
 
     void Start()
     {
@@ -44,9 +45,6 @@ public class Boss1StateMachine : StateMachine
 
     public void CheckForPlayer()
     {
-        // Check if boss is facing player
-        // If yes, attempt an attack
-        // If no, then rotate to find player
         if(CheckFacingPlayer())
         {
             if(weapons.CheckMeleeRange() && weapons.canMelee)
@@ -56,6 +54,21 @@ public class Boss1StateMachine : StateMachine
             else if (weapons.CheckCannonRange() && weapons.canShoot)
             {
                 SwitchToShootState();
+            }
+            else if (weapons.CheckPullRange() && weapons.canGrapple)
+            {
+                if(weapons.grappleTarget.position.y > transform.position.y + 2f)
+                {
+                    SwitchToSlamState();
+                }
+                else
+                {
+                    SwitchToPullState();
+                }
+            }
+            else if (weapons.CheckGrappleRange() && weapons.canGrapple)
+            {
+                SwitchToGrappleState();
             }
         }
         else
@@ -92,6 +105,21 @@ public class Boss1StateMachine : StateMachine
     public void SwitchToShootState()
     {
         SwitchState(new Boss1ShootState(this));
+    }
+
+    public void SwitchToGrappleState()
+    {
+        SwitchState(new Boss1GrappleState(this));
+    }
+
+    public void SwitchToPullState()
+    {
+        SwitchState(new Boss1PullState(this));
+    }
+
+    public void SwitchToSlamState()
+    {
+        SwitchState(new Boss1SlamState(this));
     }
 
     public void SwitchToStunnedState()

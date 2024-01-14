@@ -60,6 +60,7 @@ MonoBehaviour:
   playerRef: {fileID: 0}
   isAttacking: 0
   isShooting: 0
+  isGrappling: 0
 --- !u!114 &674785246382871898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,15 +90,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blade: {fileID: 857841262438248244}
-  meleeRange: 6
+  meleeRange: 5
   meleeDamage: 10
   meleeCooldown: 0.25
   meleeTimer: 0
   canMelee: 0
   comboCounter: 0
-  cannonRangeMin: 0
-  cannonRangeMax: 0
-  cannonCooldown: 5
+  cannonRangeMin: 10
+  cannonRangeMax: 50
+  cannonCooldown: 20
   cannonTimer: 0
   canShoot: 0
   currentAmmo: 0
@@ -106,10 +107,18 @@ MonoBehaviour:
   explosiveMine: {fileID: 6890236874029863260, guid: 51291b8c2b372cb4cacc6c4969108bd1,
     type: 3}
   bulletSpawnPoint: {fileID: 8482877145211860561}
-  grappleRange: 20
-  grappleCooldown: 10
+  grappleLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  grappleTarget: {fileID: 0}
+  lineRender: {fileID: 1540199774515248053}
+  grappleCooldown: 5
   grappleTimer: 0
   canGrapple: 0
+  grappleRangeMin: 50
+  grappleRangeMax: 100
+  pullRangeMin: 5
+  pullRangeMax: 20
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -140,7 +149,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 3f11d71af53d1fe4ba6bb79219fd89a5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -170,7 +179,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674785246382871901}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -2215,6 +2224,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6913594358973142487}
     m_Modifications:
+    - target: {fileID: 3257343527561512542, guid: 7a9c9839767a5924dac32b52a9f4f6e6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 3257343527561512542, guid: 7a9c9839767a5924dac32b52a9f4f6e6,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.039996505
+      objectReference: {fileID: 0}
     - target: {fileID: 3541680018018143020, guid: 7a9c9839767a5924dac32b52a9f4f6e6,
         type: 3}
       propertyPath: m_RootOrder
@@ -2291,6 +2310,12 @@ Transform:
 --- !u!1 &857841262438248244 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3714380297981858527, guid: 7a9c9839767a5924dac32b52a9f4f6e6,
+    type: 3}
+  m_PrefabInstance: {fileID: 4065496087256301035}
+  m_PrefabAsset: {fileID: 0}
+--- !u!120 &1540199774515248053 stripped
+LineRenderer:
+  m_CorrespondingSourceObject: {fileID: 3257343527561512542, guid: 7a9c9839767a5924dac32b52a9f4f6e6,
     type: 3}
   m_PrefabInstance: {fileID: 4065496087256301035}
   m_PrefabAsset: {fileID: 0}

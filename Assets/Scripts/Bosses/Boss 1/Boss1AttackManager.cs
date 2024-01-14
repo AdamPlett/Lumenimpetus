@@ -30,11 +30,21 @@ public class Boss1AttackManager : MonoBehaviour
     public GameObject explosiveMine;
     public Transform bulletSpawnPoint;
 
-    [Header("Grapple Hook")]
-    public float grappleRange;
+    [Header("Grapple Hook - Grapple")]
+    public LayerMask grappleLayer;
+    public Transform grappleTarget;
+    public LineRenderer lineRender;
+    [Space(8)]
     public float grappleCooldown;
     public float grappleTimer;
     public bool canGrapple;
+    [Space(8)]
+    public float grappleRangeMin;
+    public float grappleRangeMax;
+    [Space(8)]
+    public float pullRangeMin;
+    public float pullRangeMax;
+
 
     [Header("Misc")]
     public LayerMask playerLayer;
@@ -151,6 +161,35 @@ public class Boss1AttackManager : MonoBehaviour
         }
     }
 
+    public bool CheckGrappleRange()
+    {
+        Collider[] grapplePoints = Physics.OverlapSphere(transform.position, grappleRangeMax, grappleLayer);
+
+        if(grapplePoints.Length > 0 )
+        {
+            grappleTarget = grapplePoints[0].transform;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public bool CheckPullRange()
+    {
+        Collider[] grapplePoints = Physics.OverlapSphere(transform.position, pullRangeMax, playerLayer);
+
+        if (grapplePoints.Length > 0)
+        {
+            grappleTarget = grapplePoints[0].transform;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
     #endregion
 }
