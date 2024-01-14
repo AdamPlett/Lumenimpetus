@@ -104,7 +104,7 @@ public class Dashing : MonoBehaviour
     private void EndDash()
     {
         pm.dashing = false;
-        maxDashYSpeed = 0;
+        pm.maxYSpeed = 0;
         //FOV
         cam.DoFov(80f, .25f);
         //enable gravity
