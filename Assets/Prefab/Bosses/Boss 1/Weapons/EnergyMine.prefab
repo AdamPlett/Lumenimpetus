@@ -115,7 +115,7 @@ MonoBehaviour:
   mineType: 0
   damage: 10
   bulletSpeed: 12.5
-  rotationSpeed: 5
+  rotationSpeed: 2.5
   bulletRB: {fileID: 8123264333021992184}
   detonationBuffer: 0
   explosionFX: {fileID: 6445086125432764081}
@@ -125,7 +125,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
-  playerDetectionMin: 2.5
+  playerDetectionMin: 3.5
   playerDetectionMax: 20
 --- !u!54 &8123264333021992184
 Rigidbody:

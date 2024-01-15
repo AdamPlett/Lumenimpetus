@@ -114,8 +114,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mineType: 1
   damage: 10
-  bulletSpeed: 12.5
-  rotationSpeed: 5
+  bulletSpeed: 15
+  rotationSpeed: 2.5
   bulletRB: {fileID: -7703571228119528225}
   detonationBuffer: 10
   explosionFX: {fileID: 5383748218997749070}
