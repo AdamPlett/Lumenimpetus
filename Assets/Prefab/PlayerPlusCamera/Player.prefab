@@ -119,6 +119,7 @@ MonoBehaviour:
   maxWallRunTime: 20
   wallRef: {fileID: 0}
   lastWall: {fileID: 0}
+  coyoteTime: 0.15
   jumpKey: 32
   wallCheckDistance: 0.7
   minJumpHeight: 1.7
@@ -141,13 +142,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orientation: {fileID: 2557011061129936528}
   playerCam: {fileID: 0}
-  dashForce: 20
-  dashUpwardForce: 0.15
-  maxDashYSpeed: 15
+  dashForce: 30
+  dashUpwardForce: 0
+  maxDashYSpeed: 4.87
   dashDuration: 0.25
   cam: {fileID: 0}
   dashFov: 100
-  useCameraForward: 0
+  useCameraForward: 1
   allowAllDirections: 1
   disableGravity: 1
   resetVel: 1
