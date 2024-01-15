@@ -8,7 +8,7 @@ public class HealthBar : MonoBehaviour
     [Header("Stats")]
     public float maxHealth = 100f;
     public float health = 100f;
-    public float lerpSpeed = .5f;
+    [SerializeField] private float lerpSpeed;
 
     [Header("References")]
     public Slider healthSlider;
