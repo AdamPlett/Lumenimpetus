@@ -7,6 +7,7 @@ public class Dashing : MonoBehaviour
     [Header("References")]
     public Transform orientation;
     public Transform playerCam;
+    public ImageAnimation canDashAnim;
     private Rigidbody rb;
     private PlayerMovement pm;
 
@@ -57,6 +58,16 @@ public class Dashing : MonoBehaviour
         if (Input.GetKeyDown(dashKey))
         {
             Dash();
+        }
+        //turns on can dash animation
+        if (canDash && dashCdTimer<=0)
+        {
+            canDashAnim.setActiveTrue();
+        }
+        //turns off can dash animation
+        if (!canDash && dashCdTimer > 0)
+        {
+            canDashAnim.setActiveFalse();
         }
     }
 
