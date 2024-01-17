@@ -11,20 +11,23 @@ public class PlayerMovement : MonoBehaviour
     public float sprintSpeed;
     public float wallRunSpeed;
 
+    public Vector3 playerVelocity;
+
     public float dashSpeed;
     public float dashSpeedChangeFactor;
 
-    public float maxYSpeed;
+    public float maxYSpeed; //max vertical velocity
 
-    public float groundDrag;
+    public float groundDrag;//used in speed control
 
-    public float jumpForce;
-    public float jumpCooldown;
-    public float airMultiplayer;
-    public float airDrag;
+    public float jumpForce; //used in jump
+    public float jumpCooldown;//used in jump
+    public float airMultiplayer; //higher number means more air control
+    public float airDrag; //used in speed control
     public float coyoteTime;
     private float coyoteTimer;
-    bool readyToJump = true;
+    private bool readyToJump = true;
+
 
 
     private float desiredMoveSpeed;
@@ -32,9 +35,13 @@ public class PlayerMovement : MonoBehaviour
     private MovementState lastState;
     private bool keepMomentum;
 
+    public AudioSource audioSource;
+    
+
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode sprintKey = KeyCode.LeftShift;
+    public KeyCode attackKey = KeyCode.Mouse0;
 
     [Header("Ground Check")]
     public float playerHeight;
@@ -50,7 +57,21 @@ public class PlayerMovement : MonoBehaviour
     public Transform orientation;
     public PlayerCam cam;
     public float grappleFov = 95f;
-    
+
+    [Header("Attacking")]
+    public float attackDistance = 3f;
+    public float attackDelay = 0.4f;
+    public float attackSpeed = 1f;
+    public int attackDamage = 1;
+    public LayerMask attackLayer;
+
+    public GameObject hitEffect;
+    public AudioClip swordSwing;
+    public AudioClip hitSound;
+
+    public bool attacking = false;
+    public bool readyToAttack = true;
+    public int attackCount;
 
     float horizontalInput;
     float verticalInput;
@@ -60,6 +81,16 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb;
 
     public MovementState state;
+
+    [Header("Animations")]
+    public Animator animator;
+    public const string IDLE = "Idle";
+    public const string WALK = "Walk";
+    public const string ATTACK1 = "Attack 1";
+    public const string ATTACK2 = "Attack 2";
+
+    private string currentAnimationState;
+
 
     public enum MovementState
     {
@@ -92,10 +123,12 @@ public class PlayerMovement : MonoBehaviour
 
         coyoteTimer -= Time.deltaTime;
         if (grounded) coyoteTimer = coyoteTime;
+        playerVelocity = rb.velocity;
 
         MyInput();
         SpeedControl();
         StateHandler();
+        SetAnimations();
 
         // handle drag
         if (state == MovementState.walking || state == MovementState.sprinting)
@@ -124,6 +157,10 @@ public class PlayerMovement : MonoBehaviour
             Jump();
 
             Invoke(nameof(ResetJump), jumpCooldown);
+        }
+        if (Input.GetKey(attackKey))
+        {
+            Attack();
         }
     }
 
@@ -265,11 +302,7 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    public void ResetRestrictions()
-    {
-        activeGrapple = false;
-        cam.DoFov(80f, 0.25f);
-    }
+
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -322,6 +355,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+
+    //jump
     private void Jump()
     {
         exitingSlope = true;
@@ -340,18 +375,7 @@ public class PlayerMovement : MonoBehaviour
         exitingSlope = false;
     }
 
-    private bool enableMovementOnNextTouch;
-
-    public void JumpToPosition(Vector3 targetPosition, float trajectoryHeight)
-    {
-        activeGrapple = true;
-
-        velocityToSet = CalculateJumpVelocity(transform.position, targetPosition, trajectoryHeight);
-        Invoke(nameof(SetVelocity), 0.1f);
-
-        Invoke(nameof(ResetRestrictions), 3f);
-    }
-
+    //speed control/lerping
     private Vector3 velocityToSet;
     private void SetVelocity()
     {
@@ -361,7 +385,8 @@ public class PlayerMovement : MonoBehaviour
         cam.DoFov(grappleFov, 0.25f);
     }
 
-private bool OnSlope()
+    //slope movement
+    private bool OnSlope()
     {
         if(Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight *0.5f + 0.3f)) 
         {
@@ -370,6 +395,26 @@ private bool OnSlope()
         }
 
         return false;
+    }
+
+    private Vector3 GetSlopeMoveDirection()
+    {
+        return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
+    }
+
+
+    //Used in Grapple for pull velocity.
+    private bool enableMovementOnNextTouch;
+
+
+    public void JumpToPosition(Vector3 targetPosition, float trajectoryHeight)
+    {
+        activeGrapple = true;
+
+        velocityToSet = CalculateJumpVelocity(transform.position, targetPosition, trajectoryHeight);
+        Invoke(nameof(SetVelocity), 0.1f);
+
+        Invoke(nameof(ResetRestrictions), 3f);
     }
 
     public Vector3 CalculateJumpVelocity(Vector3 startPoint, Vector3 endPoint, float trajectoryHeight)
@@ -384,10 +429,80 @@ private bool OnSlope()
 
         return velocityXZ + velocityY;
     }
-
-
-    private Vector3 GetSlopeMoveDirection()
+    public void ResetRestrictions()
     {
-        return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
+        activeGrapple = false;
+        cam.DoFov(80f, 0.25f);
+    }
+
+
+
+
+    //Attacks
+    public void Attack()
+    {
+        if (!readyToAttack || attacking) return;
+
+        readyToAttack = false;
+        attacking = true;
+
+        Invoke(nameof(ResetAttack), attackSpeed);
+        Invoke(nameof(AttackRaycast), attackDelay);
+
+        audioSource.pitch = Random.Range(0.9f, 1.1f);
+        audioSource.PlayOneShot(swordSwing);
+
+    }
+
+    private void ResetAttack()
+    {
+        attacking = false;
+        readyToAttack = true;
+    }
+
+    private void AttackRaycast()
+    {
+        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance, attackLayer))
+        {
+            HitTarget(hit.point);
+        }
+    }
+
+    private void HitTarget(Vector3 pos)
+    {
+        audioSource.pitch = 1;
+        audioSource.PlayOneShot(hitSound);
+
+        GameObject GO = Instantiate(hitEffect, pos, Quaternion.identity);
+        Destroy(GO, 20);
+    }
+
+
+    //animation
+    public void SetAnimations()
+    {
+        // if player is not attacking;
+        if (!attacking)
+        {
+            if (playerVelocity.x == 0 && playerVelocity.z == 0)
+            {
+                ChangeAnimationState(IDLE);
+            }
+            else
+            {
+                ChangeAnimationState(WALK);
+            }
+        }
+    }
+
+    public void ChangeAnimationState(string newState)
+    {
+        // Stop the same animation from interrupting itself
+
+        if (currentAnimationState == newState) return;
+
+        // Play the animation
+        currentAnimationState = newState;
+        animator.CrossFadeInFixedTime(currentAnimationState, 0.2f);
     }
 }

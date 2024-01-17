@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/RBoss1.unity
+    path: Assets/Scenes/RBoss1Tester.unity
     guid: 1623fc1db7e2b61488d113cab51c6f63
   m_configObjects: {}
