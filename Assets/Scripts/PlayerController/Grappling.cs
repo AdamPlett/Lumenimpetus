@@ -76,7 +76,10 @@ public class Grappling : MonoBehaviour
         }
         else
         {
+            //shake crosshair and change color to red (unsuccessful grapple)
             cm.changeGrappleColor(new Color(255, 0, 0));
+            cm.shakeGrappleCrosshair();
+
             grapplePoint = cam.position + cam.forward * maxGrappleDistance;
 
             Invoke(nameof(StopGrapple), grappleDelayTime);
