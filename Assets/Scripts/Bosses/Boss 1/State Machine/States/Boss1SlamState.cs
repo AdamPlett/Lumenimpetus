@@ -12,8 +12,6 @@ public class Boss1SlamState : Boss1BaseState
         stateMachine.weapons.canGrapple = false;
 
         Debug.Log("Entering Slam State");
-
-        stateMachine.weapons.lineRender.enabled = true;
     }
 
     public override void Tick()
@@ -26,7 +24,7 @@ public class Boss1SlamState : Boss1BaseState
         }
         else
         {
-            playerPos.y -= Time.deltaTime * 5f;
+            playerPos.y -= Time.deltaTime * stateMachine.weapons.slamSpeed;
 
             stateMachine.weapons.lineRender.SetPosition(0, stateMachine.weapons.lineRender.transform.position);
             stateMachine.weapons.lineRender.SetPosition(1, stateMachine.playerRef.transform.position);
@@ -42,7 +40,5 @@ public class Boss1SlamState : Boss1BaseState
         stateMachine.weapons.grappleTimer = 0f;
 
         Debug.Log("Exiting Slam State");
-
-        stateMachine.weapons.lineRender.enabled = false;
     }
 }

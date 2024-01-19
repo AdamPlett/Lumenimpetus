@@ -12,6 +12,7 @@ public class Boss1AnimationManager : MonoBehaviour
     public readonly int WalkHash = Animator.StringToHash("Walk");
     public readonly int WalkHashL = Animator.StringToHash("WalkLeft");
     public readonly int WalkHashR = Animator.StringToHash("WalkRight");
+    public readonly int WalkHashB = Animator.StringToHash("WalkBack");
     public readonly int TurnHashL = Animator.StringToHash("TurnLeft");
     public readonly int TurnHashR = Animator.StringToHash("TurnRight");
 
