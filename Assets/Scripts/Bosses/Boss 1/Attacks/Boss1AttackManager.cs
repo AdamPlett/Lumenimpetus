@@ -33,7 +33,9 @@ public class Boss1AttackManager : MonoBehaviour
     [Header("Grapple Hook - Grapple")]
     public LayerMask grappleLayer;
     public Transform grappleTarget;
+    public Transform prevTarget;
     public LineRenderer lineRender;
+    public bool swinging;
     [Space(8)]
     public float grappleCooldown;
     public float grappleTimer;
@@ -41,10 +43,12 @@ public class Boss1AttackManager : MonoBehaviour
     [Space(8)]
     public float grappleRangeMin;
     public float grappleRangeMax;
+    public float grappleSpeed;
     [Space(8)]
     public float pullRangeMin;
     public float pullRangeMax;
-
+    public float pullSpeed;
+    public float slamSpeed;
 
     [Header("Misc")]
     public LayerMask playerLayer;
@@ -167,13 +171,18 @@ public class Boss1AttackManager : MonoBehaviour
 
         if(grapplePoints.Length > 0 )
         {
-            grappleTarget = grapplePoints[0].transform;
-            return true;
+            foreach(var point in grapplePoints)
+            {
+                if(point.gameObject.transform != grappleTarget)
+                {
+                    prevTarget = grappleTarget;
+                    grappleTarget = point.transform;
+                    return true;
+                }
+            }
         }
-        else
-        {
-            return false;
-        }
+
+        return false;
     }
 
     public bool CheckPullRange()
@@ -189,6 +198,26 @@ public class Boss1AttackManager : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public void ActivateGrapple()
+    {
+        lineRender.enabled = true;
+    }
+
+    public void DeactivateGrapple()
+    {
+        lineRender.enabled = false;
+    }
+
+    public void StartSwing()
+    {
+        swinging = true;
+    }
+
+    public void EndSwing()
+    {
+        swinging = false;
     }
 
     #endregion

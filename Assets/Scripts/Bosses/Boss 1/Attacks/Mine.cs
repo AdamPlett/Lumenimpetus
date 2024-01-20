@@ -35,7 +35,7 @@ public class Mine : MonoBehaviour
         transform.parent = null;
         player = playerRef;
 
-        transform.forward += GetDirectionToPlayer();
+        transform.forward = GetDirectionToPlayer();
     }
 
     private void Update()
@@ -131,7 +131,7 @@ public class Mine : MonoBehaviour
         if(explosionFX)
         {
             explosionFX.Play();
-            Destroy(gameObject, 2f);
+            Destroy(gameObject, 1f);
         }
         else
         {

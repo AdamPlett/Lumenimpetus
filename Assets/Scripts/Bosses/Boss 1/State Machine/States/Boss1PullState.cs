@@ -12,13 +12,11 @@ public class Boss1PullState : Boss1BaseState
         stateMachine.weapons.canGrapple = false;
 
         Debug.Log("Entering Pull State");
-
-        stateMachine.weapons.lineRender.enabled = true;
     }
 
     public override void Tick()
     {
-        stateMachine.playerRef.transform.position = Vector3.Lerp(stateMachine.playerRef.transform.position, stateMachine.transform.position, Time.deltaTime);
+        stateMachine.playerRef.transform.position = Vector3.Lerp(stateMachine.playerRef.transform.position, stateMachine.transform.position, Time.deltaTime * stateMachine.weapons.pullSpeed);
 
         stateMachine.weapons.lineRender.SetPosition(0, stateMachine.weapons.lineRender.transform.position);
         stateMachine.weapons.lineRender.SetPosition(1, stateMachine.playerRef.transform.position);
@@ -35,7 +33,5 @@ public class Boss1PullState : Boss1BaseState
         stateMachine.weapons.grappleTimer = 0f;
 
         Debug.Log("Exiting Pull State");
-
-        stateMachine.weapons.lineRender.enabled = false;
     }
 }
