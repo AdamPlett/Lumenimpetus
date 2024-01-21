@@ -63,12 +63,15 @@ public class PlayerMovement : MonoBehaviour
     public float attackDelay = 0.4f;
     public float attackSpeed = 1f;
     public int attackDamage = 1;
+    public float comboTime = 0.5f;
+    private float comboTimer = 0;
     public LayerMask attackLayer;
 
     public GameObject hitEffect;
     public AudioClip swordSwing;
     public AudioClip hitSound;
 
+    public bool combo = false;
     public bool attacking = false;
     public bool readyToAttack = true;
     public int attackCount;
@@ -136,6 +139,10 @@ public class PlayerMovement : MonoBehaviour
         else
             rb.drag = 0;
 
+        if (combo)
+        {
+            comboTimer += Time.deltaTime;
+        }
 
     }
 
@@ -443,14 +450,34 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!readyToAttack || attacking) return;
 
+        if (comboTimer > comboTime)
+        {
+            attackCount = 0;
+            comboTimer = 0;
+            combo = false;
+        }
         readyToAttack = false;
         attacking = true;
 
         Invoke(nameof(ResetAttack), attackSpeed);
         Invoke(nameof(AttackRaycast), attackDelay);
-        /* plays attack SFX
-        audioSource.pitch = Random.Range(0.9f, 1.1f);
-        audioSource.PlayOneShot(swordSwing); */
+        // plays attack SFX
+     //   audioSource.pitch = Random.Range(0.9f, 1.1f);
+     //   audioSource.PlayOneShot(swordSwing); 
+        
+        if(attackCount == 0)
+        {
+            ChangeAnimationState(ATTACK1);
+            combo = true;
+            attackCount++;
+        }
+        else
+        {
+            ChangeAnimationState(ATTACK2);
+            attackCount = 0;
+            combo = false;
+            comboTimer = 0;
+        }
 
     }
 
@@ -504,6 +531,13 @@ public class PlayerMovement : MonoBehaviour
 
         // Play the animation
         currentAnimationState = newState;
-        animator.CrossFadeInFixedTime(currentAnimationState, 0.2f);
+        if (currentAnimationState == IDLE)
+        {
+            animator.CrossFadeInFixedTime(currentAnimationState, 0.4f);
+        }
+        else
+        {
+            animator.CrossFadeInFixedTime(currentAnimationState, 0.2f);
+        }
     }
 }
