@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public float currentHealth;
-    public float maxHealth;
+    public float maxHealth = 100f;
     
     private bool dead = false;
 
@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentHealth = maxHealth;
     }
 
 
@@ -30,6 +30,12 @@ public class PlayerHealth : MonoBehaviour
         else
         {
             dead = false;
+        }
+
+        //test key
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            DamagePlayer(10);
         }
     }
 
