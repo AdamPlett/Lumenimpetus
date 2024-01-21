@@ -470,6 +470,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void HitTarget(Vector3 pos)
     {
+        Debug.Log("HIT");
         audioSource.pitch = 1;
         audioSource.PlayOneShot(hitSound);
 
