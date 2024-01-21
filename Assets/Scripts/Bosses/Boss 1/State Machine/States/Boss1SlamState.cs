@@ -74,6 +74,10 @@ public class Boss1SlamState : Boss1BaseState
         stateMachine.isGrappling = false;
         stateMachine.weapons.grappleTimer = 0f;
 
+        stateMachine.weapons.DeactivateGrapple();
+
+        stateMachine.weapons.noHit = false;
+
         Debug.Log("Exiting Slam State");
     }
 
