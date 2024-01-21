@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static GameManager;
 
-public class HealthBar : MonoBehaviour
+public class BossHealthBar : MonoBehaviour
 {
     [Header("Stats")]
-    public float maxHealth = 100f;
-    public float health = 100f;
-    public float lerpSpeed;
+    public float maxHealth = 200f;
+    public float health = 200f;
+    public float lerpSpeed = 0.005f;
 
     [Header("References")]
     public Slider healthSlider;
@@ -17,12 +18,14 @@ public class HealthBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = maxHealth;
+        maxHealth = gm.bh.maxHealth;
+        health = gm.bh.currentHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
+        health = gm.bh.currentHealth;
         //if health of entity differs from the slider than change the slider value to current health
         if (healthSlider.value != health)
         {
@@ -34,13 +37,13 @@ public class HealthBar : MonoBehaviour
             DmgOverTimeSlider.value = Mathf.Lerp(DmgOverTimeSlider.value, healthSlider.value, lerpSpeed);
         }
         //Test damage for health bar
-        if (Input.GetKeyDown(KeyCode.T))
+        /*if (Input.GetKeyDown(KeyCode.V))
         {
-            takeDamage(10);
-        }
+            TakeDamage(10);
+        }*/
     }
     //Code to test damage on health bars
-    void takeDamage(float dmg)
+    public void TakeDamage(float dmg)
     {
         health -= dmg;
     }

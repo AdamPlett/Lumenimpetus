@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Unity.VisualScripting;
+using static GameManager;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -491,7 +493,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if(Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance, attackLayer))
         {
-            HitTarget(hit.point);
+            
+            //HitTarget(hit.point);
+
+            if (hit.transform.gameObject.Equals(gm.bossRef))
+            {
+                Debug.Log("HIT BOSS");
+                gm.bh.DamageBoss(attackDamage);
+                
+            }
         }
     }
 
@@ -500,6 +510,8 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("HIT");
         audioSource.pitch = 1;
         audioSource.PlayOneShot(hitSound);
+
+        
 
         GameObject GO = Instantiate(hitEffect, pos, Quaternion.identity);
         Destroy(GO, 20);
