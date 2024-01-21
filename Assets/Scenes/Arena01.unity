@@ -7963,6 +7963,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7566798216797491211, guid: d1d42a8b631297145a28cbb1ad60faf7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566798216797491211, guid: d1d42a8b631297145a28cbb1ad60faf7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.081
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566798216797491211, guid: d1d42a8b631297145a28cbb1ad60faf7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.41
+      objectReference: {fileID: 0}
     - target: {fileID: 7571306190406188691, guid: d1d42a8b631297145a28cbb1ad60faf7,
         type: 3}
       propertyPath: orientation
@@ -8358,6 +8373,16 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 1008732358}
+    - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
+        type: 3}
+      propertyPath: comboTime
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
+        type: 3}
+      propertyPath: attackSpeed
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 2557011061226588522, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
       propertyPath: cam
