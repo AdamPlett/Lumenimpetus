@@ -35,7 +35,12 @@ public class Boss1AttackManager : MonoBehaviour
     public Transform grappleTarget;
     public Transform prevTarget;
     public LineRenderer lineRender;
+    [Space(10)]
+    public GameObject grappleBullet;
+    public GrappleBullet bulletScript;
     public bool swinging;
+    public bool pulling;
+    public bool noHit;
     [Space(8)]
     public float grappleCooldown;
     public float grappleTimer;
@@ -160,7 +165,7 @@ public class Boss1AttackManager : MonoBehaviour
         }
         else
         {
-            grappleTimer = meleeCooldown;
+            grappleTimer = grappleCooldown;
             canGrapple = true;
         }
     }
@@ -198,6 +203,17 @@ public class Boss1AttackManager : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public void ShootGrapple()
+    {
+        ActivateGrapple();
+        
+        grappleBullet.SetActive(true);
+
+        grappleBullet.transform.parent = lineRender.transform;
+        grappleBullet.transform.position = lineRender.transform.position;
+        bulletScript.InitBullet(playerRef.transform);
     }
 
     public void ActivateGrapple()

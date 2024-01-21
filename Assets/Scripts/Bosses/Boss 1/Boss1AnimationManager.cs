@@ -17,6 +17,10 @@ public class Boss1AnimationManager : MonoBehaviour
     public readonly int TurnHashR = Animator.StringToHash("TurnRight");
 
     public readonly int SwingHash = Animator.StringToHash("Swing");
+    public readonly int GrappleHash = Animator.StringToHash("ShootGrapple");
+    public readonly int PullHash = Animator.StringToHash("Pull");
+    public readonly int Slam1Hash = Animator.StringToHash("Slam_1");
+    public readonly int Slam2Hash = Animator.StringToHash("Slam_2");
 
     public readonly int ShootHash = Animator.StringToHash("Shoot");
 

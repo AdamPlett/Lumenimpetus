@@ -2780,12 +2780,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1488734419}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1536505338 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8870109448367443546, guid: b16ba11d8d0a48749819b0f9899b118e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1879910160}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1879910160
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2795,34 +2789,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 674785246382871897, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
-      propertyPath: moveSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 674785246382871897, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
       propertyPath: playerRef
       value: 
       objectReference: {fileID: 1083432019}
-    - target: {fileID: 674785246382871897, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: viewPoint
-      value: 
-      objectReference: {fileID: 1536505338}
-    - target: {fileID: 674785246382871897, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: environment.m_Bits
-      value: 3584
-      objectReference: {fileID: 0}
-    - target: {fileID: 674785246382871897, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: playerLayer.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 674785246382871898, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: currentPhase
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 674785246382871900, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
       propertyPath: m_RootOrder
@@ -2883,56 +2852,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss1
       objectReference: {fileID: 0}
-    - target: {fileID: 4672989135068834004, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
       propertyPath: playerRef
       value: 
       objectReference: {fileID: 1083432019}
-    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: pullSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: slamSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: grappleSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: cannonCooldown
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: cannonRangeMax
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: grappleCooldown
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: grappleRangeMax
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: grappleRangeMin
-      value: 100
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b16ba11d8d0a48749819b0f9899b118e, type: 3}
 --- !u!1 &1936507596
