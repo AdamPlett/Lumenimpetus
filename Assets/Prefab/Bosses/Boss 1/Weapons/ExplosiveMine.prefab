@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -7703571228119528225}
   m_Layer: 0
   m_Name: ExplosiveMine
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,6 +120,7 @@ MonoBehaviour:
   bulletRB: {fileID: -7703571228119528225}
   detonationBuffer: 10
   explosionFX: {fileID: 5383748218997749070}
+  explosionCollider: {fileID: 0}
   landed: 0
   exploded: 0
   canTrack: 1
@@ -151,10 +152,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6890236874029863248}
     m_Modifications:
+    - target: {fileID: 5383748218902815405, guid: 52151b45646623d4da2a19b30d250ada,
+        type: 3}
+      propertyPath: m_TagString
+      value: Projectile
+      objectReference: {fileID: 0}
     - target: {fileID: 5383748219298451515, guid: 52151b45646623d4da2a19b30d250ada,
         type: 3}
       propertyPath: m_Name
       value: Explosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 5383748219298451515, guid: 52151b45646623d4da2a19b30d250ada,
+        type: 3}
+      propertyPath: m_TagString
+      value: Projectile
       objectReference: {fileID: 0}
     - target: {fileID: 5383748219298451516, guid: 52151b45646623d4da2a19b30d250ada,
         type: 3}
@@ -179,12 +190,12 @@ PrefabInstance:
     - target: {fileID: 5383748219298451516, guid: 52151b45646623d4da2a19b30d250ada,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.09
       objectReference: {fileID: 0}
     - target: {fileID: 5383748219298451516, guid: 52151b45646623d4da2a19b30d250ada,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -0.026
       objectReference: {fileID: 0}
     - target: {fileID: 5383748219298451516, guid: 52151b45646623d4da2a19b30d250ada,
         type: 3}
@@ -228,6 +239,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52151b45646623d4da2a19b30d250ada, type: 3}
+--- !u!1 &5383748218997749064 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5383748219298451515, guid: 52151b45646623d4da2a19b30d250ada,
+    type: 3}
+  m_PrefabInstance: {fileID: 854435187}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &5193175073561707744
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5383748218997749064}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 5
+  m_Center: {x: -0.000000007450581, y: 0.0000000018626451, z: 0}
+--- !u!114 &322454193612368755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5383748218997749064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea7c0547fde0d245802ed2a603d4124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
 --- !u!198 &5383748218997749070 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 5383748219298451517, guid: 52151b45646623d4da2a19b30d250ada,
@@ -306,6 +349,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trail
+      objectReference: {fileID: 0}
+    - target: {fileID: 2788546925055296887, guid: 5b3a6aa245b9fbd4588a42143cf738e1,
+        type: 3}
+      propertyPath: m_TagString
+      value: Projectile
       objectReference: {fileID: 0}
     - target: {fileID: 8884130885998866843, guid: 5b3a6aa245b9fbd4588a42143cf738e1,
         type: 3}

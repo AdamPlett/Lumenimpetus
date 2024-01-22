@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameManager;
 
 public class GrappleBullet : MonoBehaviour
 {
@@ -11,22 +12,27 @@ public class GrappleBullet : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
+        //Debug.Log(collision.gameObject.name);
         if(gameObject.activeSelf)
         {
             if (collision.gameObject.tag.Equals("Player"))
             {
                 grapple.pulling = true;
-                Debug.Log("Player has been hit by grapple!");
+                //Debug.Log("Player has been hit by grapple!");
+                Debug.Log(collision.gameObject.name);
+                gm.pm.freeze = true;
+                ResetBullet();
             }
-            else if (!collision.gameObject.tag.Equals("Enemy"))
+            else if (!collision.gameObject.tag.Equals("Enemy") && !collision.gameObject.tag.Equals("Projectile"))
             {
-                Debug.Log("Grapple missed player and hit a wall!");
+                Debug.Log(collision.gameObject.name);
 
                 grapple.noHit = true;
                 grapple.DeactivateGrapple();
                 ResetBullet();
             }
         }
+
     }
 
     public void InitBullet(Transform target)
@@ -41,7 +47,6 @@ public class GrappleBullet : MonoBehaviour
 
     public void ResetBullet()
     {
-        grapple.pulling = false;
         transform.position = Vector3.zero;
         gameObject.SetActive(false);
     }

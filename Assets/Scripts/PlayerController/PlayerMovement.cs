@@ -179,7 +179,7 @@ public class PlayerMovement : MonoBehaviour
         if (freeze)
         {
             state = MovementState.freeze;
-            moveSpeed = 0;
+            desiredMoveSpeed = 0;
             rb.velocity = Vector3.zero;
         }
         // Mode - Grappling

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
+using static GameManager;
 
 public class Mine : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class Mine : MonoBehaviour
     [Header("Explosion Variables")]
     public float detonationBuffer;
     public ParticleSystem explosionFX;
+    public Collider explosionCollider;
 
     [Header("Booleans")]
     public bool landed = false;
@@ -98,7 +100,12 @@ public class Mine : MonoBehaviour
             {
                 Detonate();
                 landed = true;
+                if (collision.gameObject.tag.Equals("Player"))
+                {
+                    gm.ph.DamagePlayer(damage);
+                }
             }
+
         }
         else if(mineType == eMine.explosive)
         {
@@ -109,6 +116,7 @@ public class Mine : MonoBehaviour
                 if (collision.gameObject.tag.Equals("Player"))
                 {
                     Detonate();
+                    gm.ph.DamagePlayer(damage);
                 }
                 else
                 {
@@ -126,12 +134,13 @@ public class Mine : MonoBehaviour
 
     public void SpawnExplosion()
     {
+        explosionCollider.enabled = true;
         transform.rotation = Quaternion.identity;
         
         if(explosionFX)
         {
             explosionFX.Play();
-            Destroy(gameObject, 1f);
+            Destroy(gameObject, 0.5f);
         }
         else
         {

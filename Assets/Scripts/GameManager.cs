@@ -10,12 +10,14 @@ public class GameManager : MonoBehaviour
     public GameObject playerRef;
     public PlayerMovement pm;
     public PlayerHealth ph;
+    public Collider playerCollider;
+    public GameObject playerObject;
 
     [Header("Boss Variables")]
     public GameObject bossRef;
     public Boss1StateMachine boss1;
     public BossHealth bh;
-
+    
 
 
     [Header("Camera Variables")]

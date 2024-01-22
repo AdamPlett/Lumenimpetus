@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameManager;
 
 public class Boss1SlamState : Boss1BaseState
 {
@@ -77,7 +78,9 @@ public class Boss1SlamState : Boss1BaseState
         stateMachine.weapons.DeactivateGrapple();
 
         stateMachine.weapons.noHit = false;
-
+        
+        gm.pm.freeze = false;
+        gm.boss1.weapons.pulling = false;
         Debug.Log("Exiting Slam State");
     }
 

@@ -78,7 +78,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 2.5
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -243,6 +243,7 @@ GameObject:
   - component: {fileID: 3746426730402042925}
   - component: {fileID: 3737537870634431061}
   - component: {fileID: 3737537870634431062}
+  - component: {fileID: 2916183220956137761}
   m_Layer: 0
   m_Name: Blade
   m_TagString: Untagged
@@ -328,3 +329,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.9, z: 0.1}
   m_Center: {x: 0.0000006925399, y: 0.6031492, z: -0.00000053328796}
+--- !u!114 &2916183220956137761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3714380297981858527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db18ec0cfdfb8ba4aa992d7cba81bb9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bam: {fileID: 0}
