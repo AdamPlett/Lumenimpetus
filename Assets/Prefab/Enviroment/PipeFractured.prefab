@@ -1045,7 +1045,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7418482112119459554}
   m_Layer: 0
-  m_Name: PipeFractured 1
+  m_Name: PipeFractured
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
