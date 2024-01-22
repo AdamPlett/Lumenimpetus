@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4672989135068834004}
   - component: {fileID: 674785246382872231}
   - component: {fileID: 674785246382872230}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Boss1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ MonoBehaviour:
   comboCounter: 0
   cannonRangeMin: 10
   cannonRangeMax: 100
-  cannonCooldown: 30
+  cannonCooldown: 20
   cannonTimer: 0
   canShoot: 0
   currentAmmo: 0
@@ -134,7 +134,7 @@ MonoBehaviour:
   grappleRangeMax: 500
   grappleSpeed: 1
   pullRangeMin: 5
-  pullRangeMax: 20
+  pullRangeMax: 50
   pullSpeed: 1
   slamSpeed: 1
   playerLayer:
@@ -2371,6 +2371,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8167162177364096362, guid: 34ee0106cf6be5240948191b060bbf9d,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8167162177364096362, guid: 34ee0106cf6be5240948191b060bbf9d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8167162177364096362, guid: 34ee0106cf6be5240948191b060bbf9d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8167162177364096362, guid: 34ee0106cf6be5240948191b060bbf9d,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -2417,6 +2432,11 @@ PrefabInstance:
     - target: {fileID: 8167162177364096362, guid: 34ee0106cf6be5240948191b060bbf9d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8167162177364096362, guid: 34ee0106cf6be5240948191b060bbf9d,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

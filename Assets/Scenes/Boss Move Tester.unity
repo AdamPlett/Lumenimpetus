@@ -516,61 +516,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss1
       objectReference: {fileID: 0}
-    - target: {fileID: 674785246382871901, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 674785246382871901, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2838119773358822285, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2838119773358822285, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2838119773358822285, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2838119773358822285, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
       propertyPath: playerRef
       value: 
       objectReference: {fileID: 377434100}
-    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: pullSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: slamSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: pullRangeMax
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: cannonCooldown
-      value: 20
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b16ba11d8d0a48749819b0f9899b118e, type: 3}
 --- !u!1 &98678580
@@ -1807,11 +1757,11 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1778932382}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &377434107
+--- !u!114 &377434107 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 377434107, guid: ccf55b084927b344d92becd5edbd68ac,
+    type: 3}
+  m_PrefabInstance: {fileID: 1778932382}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 377434100}
   m_Enabled: 1
@@ -1819,8 +1769,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d55bfb2a0d6fbfd41b6b5c137047c244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
-  maxHealth: 100
 --- !u!1001 &461559338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8117,10 +8065,6 @@ PrefabInstance:
       propertyPath: gunTip
       value: 
       objectReference: {fileID: 2000741521}
-    - target: {fileID: 463300963, guid: ccf55b084927b344d92becd5edbd68ac, type: 3}
-      propertyPath: grappleDelayTime
-      value: 0.25
-      objectReference: {fileID: 0}
     - target: {fileID: 1382716919106767537, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
       propertyPath: cam
@@ -8206,36 +8150,6 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 1008732358}
-    - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
-        type: 3}
-      propertyPath: comboTime
-      value: 0.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
-        type: 3}
-      propertyPath: attackDelay
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
-        type: 3}
-      propertyPath: attackSpeed
-      value: 0.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
-        type: 3}
-      propertyPath: attackDamage
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
-        type: 3}
-      propertyPath: attackDistance
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
-        type: 3}
-      propertyPath: attackLayer.m_Bits
-      value: 1664
-      objectReference: {fileID: 0}
     - target: {fileID: 2557011061226588522, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
       propertyPath: cam
