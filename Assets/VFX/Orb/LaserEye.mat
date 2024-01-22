@@ -130,7 +130,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DarkColor: {r: 1, g: 0.051886797, b: 0.051886797, a: 0}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 0.6603774, g: 0.034264866, b: 0.06521593, a: 1}
     - _FireColor: {r: 1, g: 0.0990566, b: 0.108061515, a: 0}
     - _InnerColor: {r: 0.2509804, g: 0, b: 0, a: 0}
     - _OuterColor: {r: 0.6226415, g: 0.032306872, b: 0.032306872, a: 0}
