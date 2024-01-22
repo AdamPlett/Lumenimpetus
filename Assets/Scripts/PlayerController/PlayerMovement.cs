@@ -93,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
     public const string WALK = "Walk";
     public const string ATTACK1 = "Attack 1";
     public const string ATTACK2 = "Attack 2";
+    public const string ATTACK3 = "Attack 3";
 
     private string currentAnimationState;
 
@@ -473,9 +474,15 @@ public class PlayerMovement : MonoBehaviour
             combo = true;
             attackCount++;
         }
-        else
+        else if(attackCount == 1)
         {
             ChangeAnimationState(ATTACK2);
+            comboTimer = 0;
+            attackCount++;
+        }
+        else
+        {
+            ChangeAnimationState(ATTACK3);
             attackCount = 0;
             combo = false;
             comboTimer = 0;
