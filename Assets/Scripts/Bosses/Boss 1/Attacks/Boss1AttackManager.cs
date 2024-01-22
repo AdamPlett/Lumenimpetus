@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameManager;
 
 public enum eMine { energy, explosive }
 
@@ -213,7 +214,7 @@ public class Boss1AttackManager : MonoBehaviour
 
         grappleBullet.transform.parent = lineRender.transform;
         grappleBullet.transform.position = lineRender.transform.position;
-        bulletScript.InitBullet(playerRef.transform);
+        bulletScript.InitBullet(gm.playerRef.transform);
     }
 
     public void ActivateGrapple()

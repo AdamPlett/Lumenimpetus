@@ -131,18 +131,18 @@ public class Boss1StateMachine : StateMachine
         {
             if(hitInfo.transform.gameObject == playerRef)
             {
-                Debug.Log("Can See Player");
+                //Debug.Log("Can See Player");
                 return true;
             }
             else
             {
-                Debug.Log("Can NOT See Player");
+               // Debug.Log("Can NOT See Player");
                 return false;
             }
         }
         else
         {
-            Debug.Log("Can NOT See Player");
+            //Debug.Log("Can NOT See Player");
             return false;
         }
     }
@@ -181,12 +181,12 @@ public class Boss1StateMachine : StateMachine
 
         if (Physics.Raycast(viewPoint.position, viewDirection, rayDistance, environment))
         {
-            Debug.Log("Can See Floor");
+            //Debug.Log("Can See Floor");
             return true;
         }
         else
         {
-            Debug.Log("Can NOT See Floor");
+           // Debug.Log("Can NOT See Floor");
             return false;
         }
     }

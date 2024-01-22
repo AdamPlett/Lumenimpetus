@@ -53,7 +53,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    private void DamagePlayer(float damage)
+    public void DamagePlayer(float damage)
     {
         currentHealth -= damage;
         if (currentHealth < 0)

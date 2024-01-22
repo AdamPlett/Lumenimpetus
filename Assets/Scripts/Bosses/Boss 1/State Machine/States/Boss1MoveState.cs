@@ -66,7 +66,7 @@ public class Boss1MoveState : Boss1BaseState
 
         int randomInt;
 
-        if(distance < 5f || distance > 25f)
+        if(distance < 10f || distance > 40f)
         {
             randomInt = Random.Range(0, 3);
         }
@@ -142,11 +142,13 @@ public class Boss1MoveState : Boss1BaseState
                 break;
 
             case eDir.right:
-                moveIncrement = stateMachine.transform.right * stateMachine.moveSpeed * Time.deltaTime;
+                //moveIncrement = stateMachine.transform.right * stateMachine.moveSpeed * Time.deltaTime;
+                moveIncrement = (stateMachine.transform.right * stateMachine.moveSpeed * Time.deltaTime) + (stateMachine.transform.forward * stateMachine.moveSpeed * Time.deltaTime);
                 break;
 
             case eDir.left:
-                moveIncrement = stateMachine.transform.right * stateMachine.moveSpeed * Time.deltaTime * -1f;
+                //moveIncrement = stateMachine.transform.right * stateMachine.moveSpeed * Time.deltaTime * -1f;
+                moveIncrement = (stateMachine.transform.right * stateMachine.moveSpeed * Time.deltaTime * -1f) + (stateMachine.transform.forward * stateMachine.moveSpeed * Time.deltaTime);
                 break;
         }
 

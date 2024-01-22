@@ -84,6 +84,7 @@ MonoBehaviour:
   currentHealth: 200
   maxHealth: 200
   currentPhase: 1
+  currentPhaseIncrement: 0
   phaseIncrements: 320000007d000000
 --- !u!114 &4992467401588963373
 MonoBehaviour:
@@ -1706,8 +1707,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6917440254345775693}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2241,6 +2242,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6913594358973142487}
     m_Modifications:
+    - target: {fileID: 2916183220956137761, guid: 7a9c9839767a5924dac32b52a9f4f6e6,
+        type: 3}
+      propertyPath: bam
+      value: 
+      objectReference: {fileID: 4992467401588963373}
     - target: {fileID: 3257343527561512542, guid: 7a9c9839767a5924dac32b52a9f4f6e6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
