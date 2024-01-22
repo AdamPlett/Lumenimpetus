@@ -30,6 +30,7 @@ public class Boss1AttackManager : MonoBehaviour
     public GameObject energyMine;
     public GameObject explosiveMine;
     public Transform bulletSpawnPoint;
+    public AudioSource cannonShotSFX;
 
     [Header("Grapple Hook - Grapple")]
     public LayerMask grappleLayer;
@@ -140,7 +141,8 @@ public class Boss1AttackManager : MonoBehaviour
     }
 
     public void Shoot()
-    {        
+    {
+        cannonShotSFX?.Play();
         if(currentAmmo == eMine.energy)
         {
             GameObject mine = Instantiate(energyMine, bulletSpawnPoint);

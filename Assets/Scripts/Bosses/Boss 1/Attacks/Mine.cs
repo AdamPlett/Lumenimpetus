@@ -18,6 +18,7 @@ public class Mine : MonoBehaviour
     public float detonationBuffer;
     public ParticleSystem explosionFX;
     public Collider explosionCollider;
+    public AudioSource explosionSFX;
 
     [Header("Booleans")]
     public bool landed = false;
@@ -136,7 +137,8 @@ public class Mine : MonoBehaviour
     {
         explosionCollider.enabled = true;
         transform.rotation = Quaternion.identity;
-        
+
+        explosionSFX?.Play();
         if(explosionFX)
         {
             explosionFX.Play();
