@@ -8,12 +8,13 @@ public class Explosion : MonoBehaviour
     public float damage;
     public void OnTriggerEnter(Collider other)
     {
-
         Debug.Log("Collider Hit");
-        if (other.gameObject.tag.Equals("destructible"))
+
+        if (other.gameObject.tag.Equals("Destructible"))
         {
             Debug.Log("destructible object hit" );
             BreakObject destroy = other.gameObject.GetComponent<BreakObject>();
+
             if (other.gameObject.GetComponent<BreakObject>()!=null)
             {
                 destroy.breakObject();
