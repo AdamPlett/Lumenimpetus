@@ -99,6 +99,15 @@ public class Mine : MonoBehaviour
         {
             if (!collision.gameObject.tag.Equals("Enemy"))
             {
+                if (collision.gameObject.tag.Equals("destructible"))
+                {
+                    Debug.Log("destructible object hit");
+                    BreakObject destroy = collision.gameObject.GetComponent<BreakObject>();
+                    if (destroy != null)
+                    {
+                        destroy.breakObject();
+                    }
+                }
                 Detonate();
                 landed = true;
                 if (collision.gameObject.tag.Equals("Player"))
@@ -112,6 +121,17 @@ public class Mine : MonoBehaviour
         {
             if (!collision.gameObject.tag.Equals("Enemy"))
             {
+
+                if (collision.gameObject.tag.Equals("destructible"))
+                {
+                    Debug.Log("destructible object hit");
+                    BreakObject destroy = collision.gameObject.GetComponent<BreakObject>();
+                    if (destroy != null)
+                    {
+                        destroy.breakObject();
+                    }
+                }
+
                 landed = true;
 
                 if (collision.gameObject.tag.Equals("Player"))
