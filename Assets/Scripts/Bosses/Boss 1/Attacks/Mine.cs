@@ -99,10 +99,11 @@ public class Mine : MonoBehaviour
         {
             if (!collision.gameObject.tag.Equals("Enemy"))
             {
-                if (collision.gameObject.tag.Equals("destructible"))
+                if (collision.gameObject.tag.Equals("Destructible"))
                 {
                     Debug.Log("destructible object hit");
                     BreakObject destroy = collision.gameObject.GetComponent<BreakObject>();
+
                     if (destroy != null)
                     {
                         destroy.breakObject();
@@ -122,7 +123,7 @@ public class Mine : MonoBehaviour
             if (!collision.gameObject.tag.Equals("Enemy"))
             {
 
-                if (collision.gameObject.tag.Equals("destructible"))
+                if (collision.gameObject.tag.Equals("Destructible"))
                 {
                     Debug.Log("destructible object hit");
                     BreakObject destroy = collision.gameObject.GetComponent<BreakObject>();
