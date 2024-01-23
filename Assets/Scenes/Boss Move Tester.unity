@@ -1781,6 +1781,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slash FX
       objectReference: {fileID: 0}
+    - target: {fileID: 60843501871004309, guid: f28e6c0d90a873c4caf9f14244ebb0d8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2258209225638563061, guid: f28e6c0d90a873c4caf9f14244ebb0d8,
         type: 3}
       propertyPath: m_RootOrder
@@ -8150,6 +8155,16 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 1008732358}
+    - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
+        type: 3}
+      propertyPath: attackDelay
+      value: 0.311
+      objectReference: {fileID: 0}
+    - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
+        type: 3}
+      propertyPath: hitstopTime
+      value: 0.06
+      objectReference: {fileID: 0}
     - target: {fileID: 2557011061226588522, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
       propertyPath: cam

@@ -67,12 +67,14 @@ public class PlayerMovement : MonoBehaviour
     public int attackDamage = 1;
     public float comboTime = 0.5f;
     private float comboTimer = 0;
+    public float hitstopTime = 0.1f;
     public LayerMask attackLayer;
 
     public GameObject hitEffect;
     public AudioClip swordSwing;
     public AudioClip hitSound;
 
+    public bool hitStop = false;
     public bool combo = false;
     public bool attacking = false;
     public bool readyToAttack = true;
@@ -142,7 +144,7 @@ public class PlayerMovement : MonoBehaviour
         else
             rb.drag = 0;
 
-        if (combo)
+        if (combo && !hitStop)
         {
             comboTimer += Time.deltaTime;
         }
@@ -500,30 +502,64 @@ public class PlayerMovement : MonoBehaviour
     {
         if(Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance, attackLayer))
         {
-            
+
             //HitTarget(hit.point);
 
             if (hit.transform.gameObject.Equals(gm.bossRef))
             {
                 Debug.Log("HIT BOSS");
                 gm.bh.DamageBoss(attackDamage);
+                StartCoroutine(BossHitstop());
                 
             }
+            StartCoroutine(SwordHitstop());
         }
     }
 
     private void HitTarget(Vector3 pos)
     {
-        Debug.Log("HIT");
-        audioSource.pitch = 1;
-        audioSource.PlayOneShot(hitSound);
+        //Debug.Log("HIT");
+     //   audioSource.pitch = 1;
+      //  audioSource.PlayOneShot(hitSound);
 
         
 
-        GameObject GO = Instantiate(hitEffect, pos, Quaternion.identity);
-        Destroy(GO, 20);
+     //   GameObject GO = Instantiate(hitEffect, pos, Quaternion.identity);
+     //   Destroy(GO, 20);
     }
 
+    public IEnumerator SwordHitstop()
+    {
+        float prevSpeed;
+        
+        hitStop = true;
+
+        // Pause
+        prevSpeed = animator.speed;
+        animator.speed = 0;
+
+        
+        yield return new WaitForSeconds(hitstopTime);
+
+        // Continue
+        animator.speed = prevSpeed;
+        hitStop = false;
+        
+    }
+    
+    public IEnumerator BossHitstop() 
+    { 
+        float prevSpeed;
+        Animator anim = gm.boss1.GetComponent<Animator>();
+        prevSpeed = anim.speed;
+        anim.speed = 0;
+
+        yield return new WaitForSeconds(hitstopTime);
+
+        anim.speed = prevSpeed;
+    }
+
+ 
 
     //animation
     public void SetAnimations()
