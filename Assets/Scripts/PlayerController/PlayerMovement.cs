@@ -36,8 +36,6 @@ public class PlayerMovement : MonoBehaviour
     private float lastDesiredMoveSpeed;
     private MovementState lastState;
     private bool keepMomentum;
-
-    public AudioSource audioSource;
     
 
     [Header("Keybinds")]
@@ -70,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
     public float hitstopTime = 0.1f;
     public LayerMask attackLayer;
 
+    public AudioSource swordSFX;
     public GameObject hitEffect;
     public AudioClip swordSwing;
     public AudioClip hitSound;
@@ -467,8 +466,8 @@ public class PlayerMovement : MonoBehaviour
         Invoke(nameof(ResetAttack), attackSpeed);
         Invoke(nameof(AttackRaycast), attackDelay);
         // plays attack SFX
-     //   audioSource.pitch = Random.Range(0.9f, 1.1f);
-     //   audioSource.PlayOneShot(swordSwing); 
+        swordSFX.pitch = Random.Range(0.9f, 1.1f);
+        swordSFX.PlayOneShot(swordSwing); 
         
         if(attackCount == 0)
         {
@@ -503,7 +502,7 @@ public class PlayerMovement : MonoBehaviour
         if(Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance, attackLayer))
         {
 
-            //HitTarget(hit.point);
+            HitTarget(hit.point);
 
             if (hit.transform.gameObject.Equals(gm.bossRef))
             {
@@ -518,14 +517,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void HitTarget(Vector3 pos)
     {
-        //Debug.Log("HIT");
-     //   audioSource.pitch = 1;
-      //  audioSource.PlayOneShot(hitSound);
+        Debug.Log("HIT");
+        swordSFX.pitch = 1;
+        swordSFX.PlayOneShot(hitSound);
 
         
 
-     //   GameObject GO = Instantiate(hitEffect, pos, Quaternion.identity);
-     //   Destroy(GO, 20);
+        GameObject GO = Instantiate(hitEffect, pos, Quaternion.identity);
+        Destroy(GO, 20);
     }
 
     public IEnumerator SwordHitstop()
