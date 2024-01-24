@@ -14,14 +14,13 @@ public class PlayerMovement : MonoBehaviour
     public float wallRunSpeed;
 
     public Vector3 playerVelocity;
-
-    public float dashSpeed;
-    public float dashSpeedChangeFactor;
-
-    public float maxYSpeed; //max vertical velocity
-
     public float groundDrag;//used in speed control
+    private bool keepMomentum;
+    private float desiredMoveSpeed;
+    private float lastDesiredMoveSpeed;
 
+
+    [Header("Jump")]
     public float jumpForce; //used in jump
     public float jumpCooldown;//used in jump
     public float airMultiplayer; //higher number means more air control
@@ -31,32 +30,35 @@ public class PlayerMovement : MonoBehaviour
     private bool readyToJump = true;
 
 
+    [Header("Dash")]
+    public float dashSpeed;
+    public float dashSpeedChangeFactor;
+    public float maxYSpeed; //max vertical velocity
 
-    private float desiredMoveSpeed;
-    private float lastDesiredMoveSpeed;
-    private MovementState lastState;
-    private bool keepMomentum;
-    
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode sprintKey = KeyCode.LeftShift;
     public KeyCode attackKey = KeyCode.Mouse0;
 
+
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask ground;
     public bool grounded;
+
 
     [Header("Slope Handling")]
     public float maxSlopeAngle;
     private RaycastHit slopeHit;
     private bool exitingSlope;
 
+
     [Header("Camera Effects")]
     public Transform orientation;
     public PlayerCam cam;
     public float grappleFov = 95f;
+
 
     [Header("Attacking")]
     public float attackDistance = 3f;
@@ -68,6 +70,8 @@ public class PlayerMovement : MonoBehaviour
     public float hitstopTime = 0.1f;
     public LayerMask attackLayer;
 
+
+    [Header("Effects")]
     public AudioSource swordSFX;
     public GameObject hitEffect;
     public AudioClip swordSwing;
@@ -86,7 +90,6 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody rb;
 
-    public MovementState state;
 
     [Header("Animations")]
     public Animator animator;
@@ -99,23 +102,12 @@ public class PlayerMovement : MonoBehaviour
     private string currentAnimationState;
 
 
-    public enum MovementState
-    {
-        freeze,
-        walking,
-        sprinting,
-        air,
-        dashing,
-        wallrunning,
-        grappling,
-    }
-
+    [Header("States")]
+    public MovementState state;
+    private MovementState lastState;
     public bool dashing;
-
     public bool wallrunning;
-
     public bool freeze;
-
     public bool activeGrapple;
 
     private void Start()
@@ -176,6 +168,17 @@ public class PlayerMovement : MonoBehaviour
     }
 
     #region Basic Movement & State Handling
+    public enum MovementState
+    {
+        freeze,
+        walking,
+        sprinting,
+        air,
+        dashing,
+        wallrunning,
+        grappling,
+    }
+
     private void StateHandler()
     {
         // Mode - Freeze
