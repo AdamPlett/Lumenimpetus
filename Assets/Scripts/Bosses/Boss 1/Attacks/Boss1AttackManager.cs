@@ -18,6 +18,10 @@ public class Boss1AttackManager : MonoBehaviour
     public bool canMelee;
     [Space(8)]
     public int comboCounter;
+    [Space(8)]
+    public bool enraged;
+    public Transform slashPoint;
+    public GameObject[] slashPrefabs;
 
     [Header("Cannon")]
     public float cannonRangeMin;
@@ -96,6 +100,21 @@ public class Boss1AttackManager : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public void SpawnEnergyWave(int attackNum)
+    {
+        if(enraged)
+        {
+            StartCoroutine(SpawnWave(slashPrefabs[attackNum]));
+        }
+    }
+
+    private IEnumerator SpawnWave(GameObject slash)
+    {
+        yield return new WaitForSeconds(0.75f);
+
+        Instantiate(slash, slashPoint);
     }
 
     public void ActivateBlade()

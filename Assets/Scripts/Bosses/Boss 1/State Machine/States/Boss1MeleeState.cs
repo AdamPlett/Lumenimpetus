@@ -33,6 +33,11 @@ public class Boss1MeleeState : Boss1BaseState
         {
             stateMachine.anim.SwitchAnimation(stateMachine.anim.MeleeHash360);
             stateMachine.weapons.comboCounter = 0;
+
+            if (stateMachine.weapons.enraged)
+            {
+                stateMachine.weapons.SpawnEnergyWave(3);
+            }
         }
         else
         {
@@ -42,17 +47,32 @@ public class Boss1MeleeState : Boss1BaseState
             {
                 stateMachine.anim.SwitchAnimation(stateMachine.anim.MeleeHash1);
 
+                if(stateMachine.weapons.enraged)
+                {
+                    stateMachine.weapons.SpawnEnergyWave(0);
+                }
+
                 Debug.Log("Melee attack #1 selected");
             }
             else if (randomInt == 1)
             {
                 stateMachine.anim.SwitchAnimation(stateMachine.anim.MeleeHash2);
 
+                if (stateMachine.weapons.enraged)
+                {
+                    stateMachine.weapons.SpawnEnergyWave(1);
+                }
+
                 Debug.Log("Melee attack #2 selected");
             }
             else if (randomInt == 2)
             {
                 stateMachine.anim.SwitchAnimation(stateMachine.anim.MeleeHash3);
+
+                if (stateMachine.weapons.enraged)
+                {
+                    stateMachine.weapons.SpawnEnergyWave(2);
+                }
 
                 Debug.Log("Melee attack #3 selected");
             }

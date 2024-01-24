@@ -9,7 +9,7 @@ public class Boss1StateMachine : StateMachine
     public float rotationSpeed;
 
     [Header("Boss Components")]
-    public BossHealth health;
+    public Boss1Health health;
     public Boss1AttackManager weapons;
     public Boss1AnimationManager anim;
     public GameObject bossModel;
