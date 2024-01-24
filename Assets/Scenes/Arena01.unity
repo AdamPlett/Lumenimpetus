@@ -134,7 +134,7 @@ PrefabInstance:
     - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
       propertyPath: destructKey
-      value: u
+      value: p
       objectReference: {fileID: 0}
     - target: {fileID: 7398886664229560914, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
@@ -1411,7 +1411,9 @@ MonoBehaviour:
   brokenObject: {fileID: 2521837280149828250, guid: 0d5587aabbca69449ac12b4078aeb358,
     type: 3}
   breakForce: 100
-  destructKey: b
+  destructKey: p
+  objToDestroy: []
+  supportObjects: []
 --- !u!1 &111679540
 GameObject:
   m_ObjectHideFlags: 0
@@ -2247,7 +2249,9 @@ MonoBehaviour:
   brokenObject: {fileID: 7906190648389669976, guid: 9c8f77512e4b0dd428bbb912af980b08,
     type: 3}
   breakForce: 100
-  destructKey: m
+  destructKey: p
+  objToDestroy: []
+  supportObjects: []
 --- !u!1 &165483261 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7669429959384819945, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
@@ -2863,7 +2867,9 @@ MonoBehaviour:
   brokenObject: {fileID: 6263224760387569716, guid: 208af2e31296c3b4bb883c7de78244a2,
     type: 3}
   breakForce: 100
-  destructKey: n
+  destructKey: p
+  objToDestroy: []
+  supportObjects: []
 --- !u!43 &214697997
 Mesh:
   m_ObjectHideFlags: 0
@@ -7328,8 +7334,23 @@ PrefabInstance:
     - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
       propertyPath: destructKey
-      value: i
+      value: p
       objectReference: {fileID: 0}
+    - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
+        type: 3}
+      propertyPath: objToDestroy.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
+        type: 3}
+      propertyPath: objToDestroy.Array.data[0]
+      value: 
+      objectReference: {fileID: 893056493}
+    - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
+        type: 3}
+      propertyPath: objToDestroy.Array.data[1]
+      value: 
+      objectReference: {fileID: 178705527}
     - target: {fileID: 7398886664229560914, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
       propertyPath: m_Name
@@ -7353,7 +7374,7 @@ PrefabInstance:
     - target: {fileID: 7398886664229560915, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7398886664229560915, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
@@ -7606,8 +7627,23 @@ PrefabInstance:
     - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
       propertyPath: destructKey
-      value: o
+      value: p
       objectReference: {fileID: 0}
+    - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
+        type: 3}
+      propertyPath: objToDestroy.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
+        type: 3}
+      propertyPath: objToDestroy.Array.data[0]
+      value: 
+      objectReference: {fileID: 995379307}
+    - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
+        type: 3}
+      propertyPath: objToDestroy.Array.data[1]
+      value: 
+      objectReference: {fileID: 1082614250}
     - target: {fileID: 7398886664229560914, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
       propertyPath: m_Name
@@ -9771,7 +9807,7 @@ PrefabInstance:
     - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
       propertyPath: destructKey
-      value: o
+      value: p
       objectReference: {fileID: 0}
     - target: {fileID: 7398886664229560914, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
@@ -11883,7 +11919,9 @@ MonoBehaviour:
   brokenObject: {fileID: 7478683977105328304, guid: cf4c1736da0227849aa52aca584f92be,
     type: 3}
   breakForce: 100
-  destructKey: x
+  destructKey: p
+  objToDestroy: []
+  supportObjects: []
 --- !u!1 &1027203693
 GameObject:
   m_ObjectHideFlags: 0
@@ -13326,7 +13364,9 @@ MonoBehaviour:
   brokenObject: {fileID: 6610573096690833190, guid: 571b351141333354a89bc1ce47620938,
     type: 3}
   breakForce: 100
-  destructKey: c
+  destructKey: p
+  objToDestroy: []
+  supportObjects: []
 --- !u!1 &1090725498
 GameObject:
   m_ObjectHideFlags: 0
@@ -16352,8 +16392,23 @@ PrefabInstance:
     - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
       propertyPath: destructKey
-      value: u
+      value: p
       objectReference: {fileID: 0}
+    - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
+        type: 3}
+      propertyPath: objToDestroy.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
+        type: 3}
+      propertyPath: objToDestroy.Array.data[0]
+      value: 
+      objectReference: {fileID: 1226908139}
+    - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
+        type: 3}
+      propertyPath: objToDestroy.Array.data[1]
+      value: 
+      objectReference: {fileID: 1018475679}
     - target: {fileID: 7398886664229560914, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
       propertyPath: m_Name
@@ -16630,7 +16685,7 @@ PrefabInstance:
     - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
       propertyPath: destructKey
-      value: i
+      value: p
       objectReference: {fileID: 0}
     - target: {fileID: 7398886664229560914, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
@@ -16650,7 +16705,7 @@ PrefabInstance:
     - target: {fileID: 7398886664229560915, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7398886664229560915, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
@@ -19994,8 +20049,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 674206109}
   - {fileID: 511436497}
+  - {fileID: 674206109}
   m_Father: {fileID: 486278717}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -22817,6 +22872,21 @@ PrefabInstance:
       propertyPath: destructKey
       value: p
       objectReference: {fileID: 0}
+    - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
+        type: 3}
+      propertyPath: objToDestroy.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
+        type: 3}
+      propertyPath: objToDestroy.Array.data[0]
+      value: 
+      objectReference: {fileID: 462323942}
+    - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
+        type: 3}
+      propertyPath: objToDestroy.Array.data[1]
+      value: 
+      objectReference: {fileID: 106034341}
     - target: {fileID: 7398886664229560914, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
       propertyPath: m_Name
@@ -24278,7 +24348,9 @@ MonoBehaviour:
   brokenObject: {fileID: 8172692867918448681, guid: 221770178a3347248bef4af0bbddb385,
     type: 3}
   breakForce: 100
-  destructKey: v
+  destructKey: p
+  objToDestroy: []
+  supportObjects: []
 --- !u!43 &1971938415
 Mesh:
   m_ObjectHideFlags: 0
@@ -24826,7 +24898,7 @@ PrefabInstance:
     - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
       propertyPath: destructKey
-      value: u
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7398886664229560914, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
