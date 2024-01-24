@@ -32,7 +32,6 @@ public class GrappleBullet : MonoBehaviour
                 ResetBullet();
             }
         }
-
     }
 
     public void InitBullet(Transform target)
@@ -51,7 +50,7 @@ public class GrappleBullet : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void MoveBullet(float speed)
+    public void MoveBullet(float speedFactor)
     {
         float distance = Vector3.Distance(transform.position, startPos);
 
@@ -59,7 +58,7 @@ public class GrappleBullet : MonoBehaviour
         {
             if (!grapple.pulling)
             {
-                transform.position += transform.forward * Time.deltaTime * grapple.pullSpeed * speed;
+                transform.position += transform.forward * Time.deltaTime * grapple.pullSpeed * speedFactor;
             }
         }
         else

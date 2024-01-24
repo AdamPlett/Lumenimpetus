@@ -39,6 +39,8 @@ public class Boss1SlamState : Boss1BaseState
 
                     if (stateMachine.playerRef.GetComponent<PlayerMovement>().grounded)
                     {
+                        gm.ph.DamagePlayer(10f);
+                        
                         stateMachine.SwitchToMoveState();
                     }
                     else
@@ -60,7 +62,7 @@ public class Boss1SlamState : Boss1BaseState
             {
                 if (stateMachine.weapons.grappleBullet.activeSelf)
                 {
-                    stateMachine.weapons.bulletScript.MoveBullet(150f);
+                    stateMachine.weapons.bulletScript.MoveBullet(3f);
 
                     stateMachine.weapons.lineRender.SetPosition(0, stateMachine.weapons.lineRender.transform.position);
                     stateMachine.weapons.lineRender.SetPosition(1, stateMachine.weapons.grappleBullet.transform.position);

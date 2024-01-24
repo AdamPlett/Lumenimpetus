@@ -879,6 +879,16 @@ PrefabInstance:
       objectReference: {fileID: 377434100}
     - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
+      propertyPath: pullSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: slamSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
       propertyPath: meleeRange
       value: 5
       objectReference: {fileID: 0}
