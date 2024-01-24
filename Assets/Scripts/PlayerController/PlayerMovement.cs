@@ -175,6 +175,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    #region Basic Movement & State Handling
     private void StateHandler()
     {
         // Mode - Freeze
@@ -255,31 +256,6 @@ public class PlayerMovement : MonoBehaviour
         lastState = state;
     }
 
-    private float speedChangeFactor;
-
-    private IEnumerator SmoothlyLerpMoveSpeed()
-    {
-        // smoothly lerp movementSpeed to desire value
-        float time = 0;
-        float difference = Mathf.Abs(desiredMoveSpeed - moveSpeed);
-        float startValue = moveSpeed;
-
-        float boostFactor = speedChangeFactor;
-
-        while (time < difference)
-        {
-            moveSpeed = Mathf.Lerp(startValue, desiredMoveSpeed, time / difference);
-
-            time += Time.deltaTime * boostFactor;
-
-            yield return null;
-        }
-
-        moveSpeed = desiredMoveSpeed;
-        speedChangeFactor = 1f;
-        keepMomentum = false;
-    }
-
     private void MovePlayer()
     {
         // escape if grappling
@@ -313,58 +289,11 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
+    #endregion
 
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (enableMovementOnNextTouch)
-        {
-            enableMovementOnNextTouch = false;
-            ResetRestrictions();
 
-            GetComponent<Grappling>().StopGrapple();
-        }
-    }
-
-
-    private void SpeedControl()
-    {
-        // escape if grapple active
-        if (activeGrapple) return;
-        
-        // limiting velocity on slope
-        if (OnSlope() && !exitingSlope)
-        {
-            if (rb.velocity.magnitude > moveSpeed)
-                rb.velocity = rb.velocity.normalized * moveSpeed;
-        }
-
-        // limiting ground and air velocity
-        else
-        {
-            Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-
-            if (flatVel.magnitude > moveSpeed)
-            {
-                Vector3 limitedVel = flatVel.normalized * moveSpeed;
-                rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
-            }
-            if (!grounded)
-            {
-                
-                
-                Vector3 rawSpd = rb.velocity;
-                Vector3 horiSpd = rawSpd;
-                horiSpd.y = 0;
-                Vector3 horiDrag = horiSpd * airDrag;//increase the percentage amount for more drag, and vice versa.
-                rb.velocity = rawSpd - horiDrag;
-            }
-           
-            // limit y vel
-            if (maxYSpeed != 0 && rb.velocity.y > maxYSpeed)
-                rb.velocity = new Vector3(rb.velocity.x, maxYSpeed, rb.velocity.z);
-        }
-    }
+    #region Jump & Slope Movememnt
 
 
     //jump
@@ -386,15 +315,6 @@ public class PlayerMovement : MonoBehaviour
         exitingSlope = false;
     }
 
-    //speed control/lerping
-    private Vector3 velocityToSet;
-    private void SetVelocity()
-    {
-        enableMovementOnNextTouch = true;
-        rb.velocity = velocityToSet;
-
-        cam.DoFov(grappleFov, 0.25f);
-    }
 
     //slope movement
     private bool OnSlope()
@@ -412,7 +332,86 @@ public class PlayerMovement : MonoBehaviour
     {
         return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
     }
+    #endregion
 
+
+    
+    #region Speed Control
+    //speed control/lerping
+    public float speedChangeFactor;
+    private Vector3 velocityToSet;
+    private void SetVelocity()
+    {
+        enableMovementOnNextTouch = true;
+        rb.velocity = velocityToSet;
+
+        cam.DoFov(grappleFov, 0.25f);
+    }
+    private IEnumerator SmoothlyLerpMoveSpeed()
+    {
+        // smoothly lerp movementSpeed to desire value
+        float time = 0;
+        float difference = Mathf.Abs(desiredMoveSpeed - moveSpeed);
+        float startValue = moveSpeed;
+
+        float boostFactor = speedChangeFactor;
+
+        while (time < difference)
+        {
+            moveSpeed = Mathf.Lerp(startValue, desiredMoveSpeed, time / difference);
+
+            time += Time.deltaTime * boostFactor;
+
+            yield return null;
+        }
+
+        moveSpeed = desiredMoveSpeed;
+        speedChangeFactor = 1f;
+        keepMomentum = false;
+    }
+    private void SpeedControl()
+    {
+        // escape if grapple active
+        if (activeGrapple) return;
+
+        // limiting velocity on slope
+        if (OnSlope() && !exitingSlope)
+        {
+            if (rb.velocity.magnitude > moveSpeed)
+                rb.velocity = rb.velocity.normalized * moveSpeed;
+        }
+
+        // limiting ground and air velocity
+        else
+        {
+            Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+            if (flatVel.magnitude > moveSpeed)
+            {
+                Vector3 limitedVel = flatVel.normalized * moveSpeed;
+                rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+            }
+            if (!grounded)
+            {
+
+
+                Vector3 rawSpd = rb.velocity;
+                Vector3 horiSpd = rawSpd;
+                horiSpd.y = 0;
+                Vector3 horiDrag = horiSpd * airDrag;//increase the percentage amount for more drag, and vice versa.
+                rb.velocity = rawSpd - horiDrag;
+            }
+
+            // limit y vel
+            if (maxYSpeed != 0 && rb.velocity.y > maxYSpeed)
+                rb.velocity = new Vector3(rb.velocity.x, maxYSpeed, rb.velocity.z);
+        }
+    }
+#endregion
+
+
+
+    #region Grapple
 
     //Used in Grapple for pull velocity.
     private bool enableMovementOnNextTouch;
@@ -440,15 +439,28 @@ public class PlayerMovement : MonoBehaviour
 
         return velocityXZ + velocityY;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (enableMovementOnNextTouch)
+        {
+            enableMovementOnNextTouch = false;
+            ResetRestrictions();
+
+            GetComponent<Grappling>().StopGrapple();
+        }
+    }
+
     public void ResetRestrictions()
     {
         activeGrapple = false;
         cam.DoFov(80f, 0.25f);
     }
+    #endregion
 
 
 
-
+    #region Attack
     //Attacks
     public void Attack()
     {
@@ -557,9 +569,11 @@ public class PlayerMovement : MonoBehaviour
 
         anim.speed = prevSpeed;
     }
+    #endregion
 
- 
 
+
+    #region Animation
     //animation
     public void SetAnimations()
     {
@@ -594,4 +608,5 @@ public class PlayerMovement : MonoBehaviour
             animator.CrossFadeInFixedTime(currentAnimationState, 0.2f);
         }
     }
+    #endregion
 }
