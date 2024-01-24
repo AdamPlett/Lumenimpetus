@@ -121,7 +121,7 @@ MonoBehaviour:
   bulletRB: {fileID: -7703571228119528225}
   detonationBuffer: 10
   explosionFX: {fileID: 5383748218997749070}
-  explosionCollider: {fileID: 0}
+  explosionCollider: {fileID: 5193175073561707744}
   explosionSFX: {fileID: -210002289639498907}
   landed: 0
   exploded: 0
