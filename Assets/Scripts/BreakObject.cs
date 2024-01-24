@@ -13,22 +13,25 @@ public class BreakObject : MonoBehaviour
     public GameObject[] objToDestroy;
     [Header("Support")]
     public GameObject[] supportObjects;
-
+    private bool hasSupports = true;
     // Start is called before the first frame update
     void Start()
     {
         thisKeyCode = (KeyCode)System.Enum.Parse(typeof(KeyCode), destructKey, true);
+        if (supportObjects.Length==0) hasSupports = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(thisKeyCode))
-            breakObject();
+        if (Input.GetKeyDown(thisKeyCode)) breakObject();
+
+        if (hasSupports) checkSupportingPlatforms();
     }
     //replaces game object with fractured or broken game object and applies force to break them up
     public void breakObject()
     {
+        //destory all attached objects that need to be destroyed
         for(int i=0; i<objToDestroy.Length; i++)
         {
             BreakObject destroy = objToDestroy[i].gameObject.GetComponent<BreakObject>();
@@ -38,8 +41,10 @@ public class BreakObject : MonoBehaviour
                 destroy.breakObject();
             }
         }
+        //creates object broken into pieces
         GameObject broken = Instantiate(brokenObject, transform.position, transform.rotation);
 
+        //adds destruction force to objects
         foreach(Rigidbody rb in broken.GetComponentsInChildren<Rigidbody>())
         {
             Vector3 force = (rb.transform.position - transform.position).normalized*breakForce;
@@ -47,5 +52,14 @@ public class BreakObject : MonoBehaviour
             rb.AddForce(force);
         }
         Destroy(gameObject);
+    }
+    //checks support object array to see if its supports still exist, if not break the object
+    public void checkSupportingPlatforms()
+    {
+        for (int i = 0; i < supportObjects.Length; i++)
+        {
+            if (supportObjects[i] != null) return;
+        }
+        breakObject();
     }
 }

@@ -56,55 +56,48 @@ public class Boss1StateMachine : StateMachine
 
     public void CheckForPlayer()
     {
-        if (CheckFacingPlayer())
+        if (CheckSeePlayer())
         {
-            if(CheckSeePlayer())
+            if (weapons.CheckMeleeRange() && weapons.canMelee)
             {
-                if (weapons.CheckMeleeRange() && weapons.canMelee)
+                SwitchToMeleeState();
+            }
+            else if (weapons.CheckCannonRange() && weapons.canShoot)
+            {
+                SwitchToShootState();
+            }
+            else if (weapons.CheckPullRange() && weapons.canGrapple)
+            {
+                if (weapons.grappleTarget.position.y > transform.position.y + 2f)
                 {
-                    SwitchToMeleeState();
+                    SwitchToSlamState();
                 }
-                else if (weapons.CheckCannonRange() && weapons.canShoot)
+                else
                 {
-                    SwitchToShootState();
-                }
-                else if (weapons.CheckPullRange() && weapons.canGrapple)
-                {
-                    if (weapons.grappleTarget.position.y > transform.position.y + 2f)
-                    {
-                        SwitchToSlamState();
-                    }
-                    else
-                    {
-                        SwitchToPullState();
-                    }
-                }
-                else if (weapons.canGrapple && health.GetCurrentPhase() > 1)
-                {
-                    if (weapons.CheckGrappleRange())
-                    {
-                        SwitchToGrappleState();
-                    }
+                    SwitchToPullState();
                 }
             }
-            else
+            else if (weapons.canGrapple && health.GetCurrentPhase() > 1)
             {
-                if (weapons.CheckCannonRange() && weapons.canShoot)
+                if (weapons.CheckGrappleRange())
                 {
-                    SwitchToShootState();
-                }
-                else if (weapons.canGrapple && health.GetCurrentPhase() > 1)
-                {
-                    if (weapons.CheckGrappleRange())
-                    {
-                        SwitchToGrappleState();
-                    }
+                    SwitchToGrappleState();
                 }
             }
         }
         else
         {
-            LookAtPlayer();
+            if (weapons.CheckCannonRange() && weapons.canShoot)
+            {
+                SwitchToShootState();
+            }
+            else if (weapons.canGrapple && health.GetCurrentPhase() > 1)
+            {
+                if (weapons.CheckGrappleRange())
+                {
+                    SwitchToGrappleState();
+                }
+            }
         }
     }
 

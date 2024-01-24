@@ -33,7 +33,7 @@ public class Boss1PullState : Boss1BaseState
             {
                 if (animationSet)
                 {
-                    stateMachine.playerRef.transform.position = Vector3.Lerp(stateMachine.playerRef.transform.position, stateMachine.transform.position, Time.deltaTime * stateMachine.weapons.pullSpeed);
+                    stateMachine.playerRef.transform.position -= stateMachine.GetDirectionToPlayer() * Time.deltaTime * stateMachine.weapons.pullSpeed;
 
                     stateMachine.weapons.lineRender.SetPosition(0, stateMachine.weapons.lineRender.transform.position);
                     stateMachine.weapons.lineRender.SetPosition(1, stateMachine.playerRef.transform.position);
@@ -53,7 +53,7 @@ public class Boss1PullState : Boss1BaseState
             {
                 if (stateMachine.weapons.grappleBullet.activeSelf)
                 {
-                    stateMachine.weapons.bulletScript.MoveBullet(100f);
+                    stateMachine.weapons.bulletScript.MoveBullet(2f);
 
                     stateMachine.weapons.lineRender.SetPosition(0, stateMachine.weapons.lineRender.transform.position);
                     stateMachine.weapons.lineRender.SetPosition(1, stateMachine.weapons.grappleBullet.transform.position);
