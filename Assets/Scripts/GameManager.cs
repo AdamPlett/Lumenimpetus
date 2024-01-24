@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     [Header("Boss Variables")]
     public GameObject bossRef;
     public Boss1StateMachine boss1;
-    public BossHealth bh;
+    public Boss1Health bh;
     
 
 
