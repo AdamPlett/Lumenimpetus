@@ -8162,6 +8162,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
+      propertyPath: hitStunTime
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
+        type: 3}
       propertyPath: hitstopTime
       value: 0.06
       objectReference: {fileID: 0}

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &490908799
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 490908800}
+  m_Layer: 0
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &490908800
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490908799}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -2, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 674785246382871900}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &674785246382871901
 GameObject:
   m_ObjectHideFlags: 0
@@ -38,6 +69,7 @@ Transform:
   m_Children:
   - {fileID: 6913661088394384265}
   - {fileID: 2838119773358822285}
+  - {fileID: 490908800}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -106,9 +138,16 @@ MonoBehaviour:
   meleeTimer: 0
   canMelee: 0
   comboCounter: 0
+  enraged: 0
+  slashPoint: {fileID: 490908800}
+  slashPrefabs:
+  - {fileID: 5240286931813610378, guid: d655f13633b901e48bf6b02c01ad96c7, type: 3}
+  - {fileID: 8141355553609566123, guid: 549ce07241ec08e44b08fd1dfacb2b4c, type: 3}
+  - {fileID: 7005413972704926280, guid: 8d39d8128b54c8b4c837c4097343c6ee, type: 3}
+  - {fileID: 8060194353568834492, guid: 8f9f669117d96b54692db4b052247c0f, type: 3}
   cannonRangeMin: 10
   cannonRangeMax: 100
-  cannonCooldown: 20
+  cannonCooldown: 3
   cannonTimer: 0
   canShoot: 0
   currentAmmo: 0
@@ -137,8 +176,8 @@ MonoBehaviour:
   grappleSpeed: 1
   pullRangeMin: 5
   pullRangeMax: 50
-  pullSpeed: 1
-  slamSpeed: 1
+  pullSpeed: 50
+  slamSpeed: 5
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -2415,10 +2454,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Energy_Sword
       objectReference: {fileID: 0}
+    - target: {fileID: 3714380297981858527, guid: 7a9c9839767a5924dac32b52a9f4f6e6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3737537870634431062, guid: 7a9c9839767a5924dac32b52a9f4f6e6,
         type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5941472719940667613, guid: 7a9c9839767a5924dac32b52a9f4f6e6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a9c9839767a5924dac32b52a9f4f6e6, type: 3}

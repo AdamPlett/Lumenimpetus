@@ -68,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
     public float comboTime = 0.5f;
     private float comboTimer = 0;
     public float hitstopTime = 0.1f;
+    public float hitStunTime = 0.15f;
     public LayerMask attackLayer;
 
 
@@ -81,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
     public bool combo = false;
     public bool attacking = false;
     public bool readyToAttack = true;
+    public bool playerStunned = false;
     public int attackCount;
 
     float horizontalInput;
@@ -95,9 +97,11 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     public const string IDLE = "Idle";
     public const string WALK = "Walk";
+    public const string SPRINT = "Sprint";
     public const string ATTACK1 = "Attack 1";
     public const string ATTACK2 = "Attack 2";
     public const string ATTACK3 = "Attack 3";
+    public const string STUNNED = "Stunned";
 
     private string currentAnimationState;
 
@@ -151,9 +155,10 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
+        
 
-        // when to jump
-        if(Input.GetKey(jumpKey) && readyToJump && (coyoteTimer > 0))
+            // when to jump
+        if (Input.GetKey(jumpKey) && readyToJump && (coyoteTimer > 0))
         {
             readyToJump = false;
 
@@ -245,12 +250,12 @@ public class PlayerMovement : MonoBehaviour
         {
             if(keepMomentum)
             {
-                StopAllCoroutines();
+                StopCoroutine(SmoothlyLerpMoveSpeed());
                 StartCoroutine(SmoothlyLerpMoveSpeed());
             }
             else
             {
-                StopAllCoroutines();
+                StopCoroutine(SmoothlyLerpMoveSpeed());
                 moveSpeed = desiredMoveSpeed;
             }
         }
@@ -262,7 +267,7 @@ public class PlayerMovement : MonoBehaviour
     private void MovePlayer()
     {
         // escape if grappling
-        if (activeGrapple) return;
+        if (activeGrapple || playerStunned) return;
 
         //calculate movement direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
@@ -465,9 +470,10 @@ public class PlayerMovement : MonoBehaviour
 
     #region Attack
     //Attacks
+
     public void Attack()
     {
-        if (!readyToAttack || attacking) return;
+        if (!readyToAttack || attacking || playerStunned) return;
 
         if (comboTimer > comboTime)
         {
@@ -481,9 +487,13 @@ public class PlayerMovement : MonoBehaviour
         Invoke(nameof(ResetAttack), attackSpeed);
         Invoke(nameof(AttackRaycast), attackDelay);
         // plays attack SFX
-        swordSFX.pitch = Random.Range(0.9f, 1.1f);
-        swordSFX.PlayOneShot(swordSwing); 
-        
+
+        if (!playerStunned)
+        {
+            swordSFX.pitch = Random.Range(0.9f, 1.1f);
+            swordSFX.PlayOneShot(swordSwing);
+        }
+
         if(attackCount == 0)
         {
             ChangeAnimationState(ATTACK1);
@@ -514,7 +524,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void AttackRaycast()
     {
-        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance, attackLayer))
+        if(!playerStunned && Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance, attackLayer))
         {
 
             HitTarget(hit.point);
@@ -572,6 +582,26 @@ public class PlayerMovement : MonoBehaviour
 
         anim.speed = prevSpeed;
     }
+    
+
+    public void BossHitsPlayerStun()
+    {
+        playerStunned = true;
+        freeze = true;
+        StartCoroutine(PlayerStun());
+
+    }
+    
+    public IEnumerator PlayerStun()
+    {
+        attackCount = 0;
+        combo = false;
+        ChangeAnimationState(STUNNED);
+        yield return new WaitForSeconds(hitStunTime);
+        playerStunned = false;
+        freeze = false;
+    }
+
     #endregion
 
 
@@ -581,11 +611,15 @@ public class PlayerMovement : MonoBehaviour
     public void SetAnimations()
     {
         // if player is not attacking;
-        if (!attacking)
+        if (!attacking && !playerStunned)
         {
-            if (playerVelocity.x == 0 && playerVelocity.z == 0)
+            if (horizontalInput == 0 && verticalInput == 0)
             {
                 ChangeAnimationState(IDLE);
+            }
+            else if(state == MovementState.sprinting)
+            {
+                ChangeAnimationState(SPRINT);
             }
             else
             {
@@ -605,6 +639,10 @@ public class PlayerMovement : MonoBehaviour
         if (currentAnimationState == IDLE)
         {
             animator.CrossFadeInFixedTime(currentAnimationState, 0.4f);
+        }
+        else if (playerStunned)
+        {
+            animator.CrossFadeInFixedTime(currentAnimationState, hitStunTime);
         }
         else
         {

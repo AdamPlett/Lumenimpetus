@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameManager;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -56,6 +57,7 @@ public class PlayerHealth : MonoBehaviour
     public void DamagePlayer(float damage)
     {
         currentHealth -= damage;
+        gm.pm.BossHitsPlayerStun();
         if (currentHealth < 0)
         {
             currentHealth = 0;
