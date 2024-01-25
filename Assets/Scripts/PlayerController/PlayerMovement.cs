@@ -543,7 +543,7 @@ public class PlayerMovement : MonoBehaviour
     private void HitTarget(Vector3 pos)
     {
         Debug.Log("HIT");
-        swordSFX.pitch = 1;
+        swordSFX.pitch = Random.Range(0.9f, 1.1f);
         swordSFX.PlayOneShot(hitSound);
 
         

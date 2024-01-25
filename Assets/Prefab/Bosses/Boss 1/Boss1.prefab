@@ -156,7 +156,8 @@ MonoBehaviour:
   explosiveMine: {fileID: 6890236874029863260, guid: 51291b8c2b372cb4cacc6c4969108bd1,
     type: 3}
   bulletSpawnPoint: {fileID: 8482877145211860561}
-  cannonShotSFX: {fileID: 1124356849025017776}
+  BossAudioSource: {fileID: 1124356849025017776}
+  cannonSFX: {fileID: 8300000, guid: 28140d3846869b1458af66b518a7e20d, type: 3}
   grappleLayer:
     serializedVersion: 2
     m_Bits: 2048
@@ -165,6 +166,7 @@ MonoBehaviour:
   lineRender: {fileID: 1540199774515248053}
   grappleBullet: {fileID: 2838119773358822321}
   bulletScript: {fileID: 2838119773358822287}
+  grappleSFX: {fileID: 8300000, guid: 40b57f0bce1370b418b0429d157446b9, type: 3}
   swinging: 0
   pulling: 0
   noHit: 0
@@ -256,7 +258,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b4b1945840cbe5648a66635bc00357c8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 28140d3846869b1458af66b518a7e20d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2457,7 +2459,7 @@ PrefabInstance:
     - target: {fileID: 3714380297981858527, guid: 7a9c9839767a5924dac32b52a9f4f6e6,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3737537870634431062, guid: 7a9c9839767a5924dac32b52a9f4f6e6,
         type: 3}

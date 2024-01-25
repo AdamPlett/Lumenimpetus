@@ -867,11 +867,6 @@ PrefabInstance:
       propertyPath: playerRef
       value: 
       objectReference: {fileID: 377434100}
-    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: cannonCooldown
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b16ba11d8d0a48749819b0f9899b118e, type: 3}
 --- !u!1 &93588690 stripped
@@ -21079,7 +21074,7 @@ PrefabInstance:
         type: 3}
       propertyPath: hitSound
       value: 
-      objectReference: {fileID: 8300000, guid: afe6f03675518434185edc7c7be99401, type: 3}
+      objectReference: {fileID: 8300000, guid: d2ed78911dbda8742b969c81ae7dde8d, type: 3}
     - target: {fileID: 2557011060370310436, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
       propertyPath: swordSFX
