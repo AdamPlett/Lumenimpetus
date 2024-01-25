@@ -4,22 +4,31 @@ using UnityEngine;
 
 public class BreakObject : MonoBehaviour
 {
-
+    [Header("Fractured Object")]
     [SerializeField] private GameObject brokenObject;
     [SerializeField] private float breakForce;
     [SerializeField] private string destructKey;
     [SerializeField] private float destoryBrokenObjectTime=1.5f;
+
     KeyCode thisKeyCode;
+    
     [Header("Objects to Destory Simultaneously")]
     public GameObject[] objToDestroy;
+    
     [Header("Support")]
     public GameObject[] supportObjects;
     private bool hasSupports = true;
+
+    [Header("Objects to spawn")]
+    public GameObject[] spawnObjects;
+    private bool hasSpawns = true;
     // Start is called before the first frame update
     void Start()
     {
         thisKeyCode = (KeyCode)System.Enum.Parse(typeof(KeyCode), destructKey, true);
+        
         if (supportObjects.Length==0) hasSupports = false;
+        if (spawnObjects.Length == 0) hasSpawns = false;
     }
 
     // Update is called once per frame
@@ -53,7 +62,8 @@ public class BreakObject : MonoBehaviour
             rb.AddForce(force);
             Destroy(rb.gameObject, destoryBrokenObjectTime);
         }
-        Destroy(gameObject);
+        Invoke("objectSpawner", destoryBrokenObjectTime);
+        destroySequence();
     }
     //checks support object array to see if its supports still exist, if not break the object
     public void checkSupportingPlatforms()
@@ -63,5 +73,17 @@ public class BreakObject : MonoBehaviour
             if (supportObjects[i] != null) return;
         }
         breakObject();
+    }
+    public void objectSpawner()
+    {
+        for (int i = 0; i < spawnObjects.Length; i++)
+        {
+            Instantiate(spawnObjects[i]);
+        }
+    }
+    public void destroySequence()
+    {
+        gameObject.SetActive(false);
+        Destroy(gameObject, destoryBrokenObjectTime + 2.05f);
     }
 }
