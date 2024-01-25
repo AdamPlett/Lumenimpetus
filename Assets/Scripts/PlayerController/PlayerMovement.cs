@@ -69,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
     private float comboTimer = 0;
     public float hitstopTime = 0.1f;
     public float hitStunTime = 0.15f;
+    public float currentDamage = 10f;
     public LayerMask attackLayer;
 
 
@@ -166,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
 
             Invoke(nameof(ResetJump), jumpCooldown);
         }
-        if (Input.GetKey(attackKey))
+        if (Input.GetKeyDown(attackKey))
         {
             Attack();
         }
@@ -483,6 +484,8 @@ public class PlayerMovement : MonoBehaviour
         }
         readyToAttack = false;
         attacking = true;
+        
+
 
         Invoke(nameof(ResetAttack), attackSpeed);
         Invoke(nameof(AttackRaycast), attackDelay);
