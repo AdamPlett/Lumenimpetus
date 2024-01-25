@@ -38,6 +38,9 @@ public class Boss1MeleeState : Boss1BaseState
             {
                 stateMachine.weapons.SpawnEnergyWave(3);
             }
+            //SFX
+            stateMachine.bossAudio.pitch = Random.Range(.9f, 1.0f);
+            stateMachine.bossAudio.PlayOneShot(stateMachine.attack2SFX);
         }
         else
         {
@@ -51,6 +54,9 @@ public class Boss1MeleeState : Boss1BaseState
                 {
                     stateMachine.weapons.SpawnEnergyWave(0);
                 }
+                //SFX
+                stateMachine.bossAudio.pitch = Random.Range(.9f, 1.0f);
+                stateMachine.bossAudio.PlayOneShot(stateMachine.attack1SFX);
 
                 Debug.Log("Melee attack #1 selected");
             }
@@ -62,6 +68,9 @@ public class Boss1MeleeState : Boss1BaseState
                 {
                     stateMachine.weapons.SpawnEnergyWave(1);
                 }
+                //SFX
+                stateMachine.bossAudio.pitch = Random.Range(1.0f, 1.1f);
+                stateMachine.bossAudio.PlayOneShot(stateMachine.attack2SFX);
 
                 Debug.Log("Melee attack #2 selected");
             }
@@ -73,6 +82,9 @@ public class Boss1MeleeState : Boss1BaseState
                 {
                     stateMachine.weapons.SpawnEnergyWave(2);
                 }
+                //SFX
+                stateMachine.bossAudio.pitch = Random.Range(1.0f, 1.1f); 
+                stateMachine.bossAudio.PlayOneShot(stateMachine.attack1SFX);
 
                 Debug.Log("Melee attack #3 selected");
             }

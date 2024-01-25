@@ -27,6 +27,11 @@ public class Boss1StateMachine : StateMachine
     public bool isShooting;
     public bool isGrappling;
 
+    [Header("Audio")]
+    public AudioSource bossAudio;
+    public AudioClip attack1SFX;
+    public AudioClip attack2SFX;
+
     void Start()
     {
         SwitchState(new Boss1MoveState(this));
