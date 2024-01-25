@@ -7,7 +7,7 @@ public enum eMine { energy, explosive }
 
 public class Boss1AttackManager : MonoBehaviour
 {
-    [Header("Energy Sword")]
+    [Header("Melee")]
     [SerializeField] private GameObject blade;
 
     [Space(8)]
@@ -16,10 +16,14 @@ public class Boss1AttackManager : MonoBehaviour
     public float meleeCooldown;
     public float meleeTimer;
     public bool canMelee;
-    [Space(8)]
+    [Space(5)]
     public int comboCounter;
-    [Space(8)]
+
+    [Header("Enraged Melee")]
     public bool enraged;
+    public float slashSpeed;
+    public float slashTime;
+    public float slashDamage;
     public Transform slashPoint;
     public GameObject[] slashPrefabs;
 
@@ -50,20 +54,30 @@ public class Boss1AttackManager : MonoBehaviour
     public bool pulling;
     public bool noHit;
     [Space(8)]
-    public float grappleCooldown;
-    public float grappleTimer;
-    public bool canGrapple;
-    [Space(8)]
     public float grappleRangeMin;
     public float grappleRangeMax;
     public float grappleSpeed;
-    [Space(8)]
+    public float grappleCooldown;
+    public float grappleTimer;
+    public bool canGrapple;
+
+    [Header("Grapple Hook - Pull")]
     public float pullRangeMin;
     public float pullRangeMax;
     public float pullSpeed;
-    public float slamSpeed;
+    public float pullDamage;
+    public float pullCooldown;
+    public float pullTimer;
 
-    [Header("Misc")]
+    [Header("Grapple Hook - Slam")]
+    public float slamRangeMin;
+    public float slamRangeMax;
+    public float slamSpeed;
+    public float slamDamage;
+    public float slamCooldown;
+    public float slamTimer;
+
+    [Header("Player Detection")]
     public LayerMask playerLayer;
     public GameObject playerRef;
 
