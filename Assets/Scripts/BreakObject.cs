@@ -8,6 +8,7 @@ public class BreakObject : MonoBehaviour
     [SerializeField] private GameObject brokenObject;
     [SerializeField] private float breakForce;
     [SerializeField] private string destructKey;
+    [SerializeField] private float destoryBrokenObjectTime=1.5f;
     KeyCode thisKeyCode;
     [Header("Objects to Destory Simultaneously")]
     public GameObject[] objToDestroy;
@@ -50,6 +51,7 @@ public class BreakObject : MonoBehaviour
             Vector3 force = (rb.transform.position - transform.position).normalized*breakForce;
             Debug.Log(force);
             rb.AddForce(force);
+            Destroy(rb.gameObject, destoryBrokenObjectTime);
         }
         Destroy(gameObject);
     }
