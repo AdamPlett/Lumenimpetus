@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using static GameManager;
 
+
 public class PlayerHealth : MonoBehaviour
 {
     public float currentHealth;
     public float maxHealth = 100f;
-    
     private bool dead = false;
+    public float damageSSDuration = 0.4f;
+    public float damageSSStrength = 0.6f;
     
     // Start is called before the first frame update
     void Start()
@@ -55,6 +57,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= damage;
 
+        ScreenShake.Shake(damageSSDuration, damageSSStrength);
         gm.pm.BossHitsPlayerStun();
         gm.pm.ResetCombo();
         gm.pm.attackCount = 0;
