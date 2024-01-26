@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using static GameManager;
 
 public enum eDir { forward, backward, left, right }
 
@@ -21,35 +22,48 @@ public class Boss1MoveState : Boss1BaseState
         modelTransform = stateMachine.bossModel.transform;
 
         SetDirection();
+
+        gm.boss1.activeState = eB1.moving;
+        stateMachine.freeze = false;
     }
 
     public override void Tick()
     {
-        if(animationSet)
+        if(!stateMachine.freeze)
         {
-            stateMachine.LookAtPlayer();
-            stateMachine.CheckForPlayer();
-
-            if (stateMachine.CheckFacingPlayer())
+            if (animationSet)
             {
+                stateMachine.LookAtPlayer();
+                stateMachine.CheckForPlayer();
+
                 MoveBoss();
-            }
 
-            if (!stateMachine.CheckSeePlayer() && stateMachine.CheckAbovePlayer() && moveDir != eDir.backward)
-            {
-                if (stateMachine.CheckSeeFloor(eDir.forward))
+                if (!stateMachine.CheckSeePlayer() && stateMachine.CheckAbovePlayer() && moveDir != eDir.backward)
                 {
-                    stateMachine.transform.position += stateMachine.transform.forward * Time.deltaTime * stateMachine.moveSpeed;
-                }
-                else
-                {
-                    stateMachine.transform.position -= stateMachine.transform.forward * Time.deltaTime * stateMachine.moveSpeed;
+                    if (Physics.Raycast(stateMachine.transform.position, stateMachine.transform.up * -1f, out RaycastHit hitInfo))
+                    {
+                        if (hitInfo.transform.gameObject.tag.Equals("StandStill"))
+                        {
+                            stateMachine.freeze = true;
+                        }
+                        else
+                        {
+                            if (stateMachine.CheckSeeFloor(eDir.forward))
+                            {
+                                stateMachine.transform.position += stateMachine.transform.forward * Time.deltaTime * stateMachine.moveSpeed;
+                            }
+                            else
+                            {
+                                stateMachine.transform.position -= stateMachine.transform.forward * Time.deltaTime * stateMachine.moveSpeed;
+                            }
+                        }
+                    }
                 }
             }
-        }
-        else
-        {
-            SetDirection();
+            else
+            {
+                SetDirection();
+            }
         }
     }
 

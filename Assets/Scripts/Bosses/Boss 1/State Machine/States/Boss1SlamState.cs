@@ -19,6 +19,8 @@ public class Boss1SlamState : Boss1BaseState
         Debug.Log("Entering Slam State");
 
         stateMachine.anim.SwitchAnimation(stateMachine.anim.Slam1Hash);
+
+        gm.boss1.activeState = eB1.slamming;
     }
 
     public override void Tick()
@@ -39,13 +41,15 @@ public class Boss1SlamState : Boss1BaseState
 
                     if (stateMachine.playerRef.GetComponent<PlayerMovement>().grounded)
                     {
-                        gm.ph.DamagePlayer(10f);
+                        gm.ph.DamagePlayer(stateMachine.weapons.slamDamage);
+
+                        Instantiate(stateMachine.weapons.slamFX, gm.playerRef.transform.position, Quaternion.identity);
                         
                         stateMachine.SwitchToMoveState();
                     }
                     else
                     {
-                        playerPos.y -= Time.deltaTime * stateMachine.weapons.slamSpeed * 10f;
+                        playerPos.y -= Time.deltaTime * stateMachine.weapons.slamSpeed;
 
                         stateMachine.weapons.lineRender.SetPosition(0, stateMachine.weapons.lineRender.transform.position);
                         stateMachine.weapons.lineRender.SetPosition(1, stateMachine.playerRef.transform.position);

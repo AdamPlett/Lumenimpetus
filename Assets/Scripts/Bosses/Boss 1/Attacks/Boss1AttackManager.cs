@@ -7,7 +7,7 @@ public enum eMine { energy, explosive }
 
 public class Boss1AttackManager : MonoBehaviour
 {
-    [Header("Energy Sword")]
+    [Header("Melee")]
     [SerializeField] private GameObject blade;
 
     [Space(8)]
@@ -16,10 +16,14 @@ public class Boss1AttackManager : MonoBehaviour
     public float meleeCooldown;
     public float meleeTimer;
     public bool canMelee;
-    [Space(8)]
+    [Space(5)]
     public int comboCounter;
-    [Space(8)]
+
+    [Header("Enraged Melee")]
     public bool enraged;
+    public float slashSpeed;
+    public float slashTime;
+    public float slashDamage;
     public Transform slashPoint;
     public GameObject[] slashPrefabs;
 
@@ -50,20 +54,36 @@ public class Boss1AttackManager : MonoBehaviour
     public bool pulling;
     public bool noHit;
     [Space(8)]
+    public float grappleRangeMin;
+    public float grappleRangeMax;
+    public float grappleSpeed;
     public float grappleCooldown;
     public float grappleTimer;
     public bool canGrapple;
     [Space(8)]
-    public float grappleRangeMin;
-    public float grappleRangeMax;
-    public float grappleSpeed;
-    [Space(8)]
+    public List<Transform> topFloorPoints;
+    public List<Transform> bottomFloorPoints;
+    public List<Transform> allGrapplePoints;
+
+    [Header("Grapple Hook - Pull")]
     public float pullRangeMin;
     public float pullRangeMax;
     public float pullSpeed;
-    public float slamSpeed;
+    public float pullCooldown;
+    public float pullTimer;
+    public bool canPull;
 
-    [Header("Misc")]
+    [Header("Grapple Hook - Slam")]
+    public float slamRangeMin;
+    public float slamRangeMax;
+    public float slamSpeed;
+    public float slamDamage;
+    public float slamCooldown;
+    public float slamTimer;
+    public bool canSlam;
+    public GameObject slamFX;
+
+    [Header("Player Detection")]
     public LayerMask playerLayer;
     public GameObject playerRef;
 
@@ -194,24 +214,162 @@ public class Boss1AttackManager : MonoBehaviour
         }
     }
 
+    public void SetCanPull()
+    {
+        if (grappleTimer < grappleCooldown)
+        {
+            pullTimer += Time.deltaTime;
+            canPull = false;
+        }
+        else
+        {
+            pullTimer = pullCooldown;
+            canPull = true;
+        }
+    }
+
+    public void setCanSlam()
+    {
+        if (grappleTimer < grappleCooldown)
+        {
+            slamTimer += Time.deltaTime;
+            canSlam = false;
+        }
+        else
+        {
+            slamTimer = slamCooldown;
+            canSlam = true;
+        }
+    }
+
+    public bool CheckSeePoint(Transform point)
+    {
+        Vector3 viewDirection = (point.position - gm.boss1.viewPoint.position);
+
+        Debug.DrawRay(gm.boss1.viewPoint.position, viewDirection, Color.yellow, 1f);
+
+        int layerMask = 1 << 7;
+        layerMask = ~layerMask;
+
+        if (Physics.Raycast(gm.boss1.viewPoint.position, viewDirection, out RaycastHit hitInfo, Mathf.Infinity, layerMask))
+        {
+            Debug.Log("Hit something!");
+
+            if (hitInfo.transform.gameObject.layer.Equals(LayerMask.NameToLayer("grapple")))
+            {
+                Debug.Log("Can see grapple point!");
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public bool CheckGrappleRange()
     {
-        Collider[] grapplePoints = Physics.OverlapSphere(transform.position, grappleRangeMax, grappleLayer);
+        List<Transform> possiblePoints = new List<Transform>();
 
-        if(grapplePoints.Length > 0 )
+        if(gm.bh.GetCurrentPhase() == 1)
         {
-            foreach(var point in grapplePoints)
+            if (bottomFloorPoints.Count > 0)
             {
-                if(point.gameObject.transform != grappleTarget)
+                foreach (var point in bottomFloorPoints)
                 {
-                    prevTarget = grappleTarget;
-                    grappleTarget = point.transform;
-                    return true;
+                    if (CheckSeePoint(point.transform))
+                    {
+                        float distance = Vector3.Distance(point.transform.position, transform.position);
+
+                        if (distance < grappleRangeMax && distance > grappleRangeMin)
+                        {
+                            possiblePoints.Add(point.transform);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else if (gm.bh.GetCurrentPhase() == 2)
+        {
+            if(gm.boss1.CheckAbovePlayer() || gm.boss1.transform.position.y < 10f)
+            {
+                if (topFloorPoints.Count > 0)
+                {
+                    foreach (var point in topFloorPoints)
+                    {
+                        if (CheckSeePoint(point.transform))
+                        {
+                            float distance = Vector3.Distance(point.transform.position, transform.position);
+
+                            if (distance > grappleRangeMin)
+                            {
+                                possiblePoints.Add(point.transform);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if (allGrapplePoints.Count > 0)
+                {
+                    foreach (var point in allGrapplePoints)
+                    {
+                        if (point != null)
+                        {
+                            if (CheckSeePoint(point.transform))
+                            {
+                                float distance = Vector3.Distance(point.transform.position, transform.position);
+
+                                if (distance > grappleRangeMin)
+                                {
+                                    possiblePoints.Add(point.transform);
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    return false;
                 }
             }
         }
 
-        return false;
+        if(possiblePoints.Count > 0)
+        {
+            int randomInt = Random.Range(0, possiblePoints.Count);
+
+            Transform target = possiblePoints[randomInt];
+
+            if (target != grappleTarget)
+            {
+                prevTarget = grappleTarget;
+                grappleTarget = target;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public bool CheckPullRange()

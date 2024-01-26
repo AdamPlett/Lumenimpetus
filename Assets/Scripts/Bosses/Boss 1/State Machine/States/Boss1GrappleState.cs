@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameManager;
 
 public class Boss1GrappleState : Boss1BaseState
 {
@@ -18,6 +19,9 @@ public class Boss1GrappleState : Boss1BaseState
         Debug.Log("Entering Grapple State");
 
         stateMachine.anim.SwitchAnimation(stateMachine.anim.SwingHash);
+
+        gm.boss1.activeState = eB1.grappling;
+        stateMachine.freeze = false;
     }
 
     public override void Tick()
@@ -26,12 +30,16 @@ public class Boss1GrappleState : Boss1BaseState
 
         if (stateMachine.weapons.swinging)
         {
-            stateMachine.transform.position = Vector3.Lerp(stateMachine.transform.position, targetPos, Time.deltaTime * stateMachine.weapons.grappleSpeed);
+            Vector3 direction = targetPos - stateMachine.transform.position;
+            
+            stateMachine.transform.position += direction * Time.deltaTime * stateMachine.weapons.grappleSpeed;
 
             stateMachine.weapons.lineRender.SetPosition(0, stateMachine.weapons.lineRender.transform.position);
             stateMachine.weapons.lineRender.SetPosition(1, targetPos);
 
-            if (Vector3.Distance(stateMachine.transform.position, targetPos) <= 15)
+            Debug.DrawRay(stateMachine.transform.position, stateMachine.transform.up * -1f, Color.white);
+
+            if (Vector3.Distance(stateMachine.transform.position, targetPos) <= 10f)
             {
                 stateMachine.SwitchToMoveState();
             }
@@ -55,6 +63,6 @@ public class Boss1GrappleState : Boss1BaseState
 
         Quaternion targetRotation = Quaternion.LookRotation(direction);
 
-        stateMachine.RotatePlayer(targetRotation);
+        stateMachine.RotateBoss(targetRotation);
     }
 }

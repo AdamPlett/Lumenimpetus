@@ -9,9 +9,6 @@ public class PlayerHealth : MonoBehaviour
     public float maxHealth = 100f;
     
     private bool dead = false;
-
-    
-    
     
     // Start is called before the first frame update
     void Start()
@@ -57,6 +54,7 @@ public class PlayerHealth : MonoBehaviour
     public void DamagePlayer(float damage)
     {
         currentHealth -= damage;
+
         gm.pm.BossHitsPlayerStun();
         gm.pm.ResetCombo();
         gm.pm.attackCount = 0;

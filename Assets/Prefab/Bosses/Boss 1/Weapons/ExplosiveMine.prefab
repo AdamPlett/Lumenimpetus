@@ -369,6 +369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  mineType: 1
 --- !u!198 &5383748218997749070 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 5383748219298451517, guid: 52151b45646623d4da2a19b30d250ada,
