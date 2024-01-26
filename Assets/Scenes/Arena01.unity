@@ -879,6 +879,21 @@ PrefabInstance:
       objectReference: {fileID: 377434100}
     - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
+      propertyPath: slashTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: slashSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: slashDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
       propertyPath: topFloorPoints.Array.data[0]
       value: 
       objectReference: {fileID: 1211413968}
