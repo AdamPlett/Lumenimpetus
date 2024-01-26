@@ -58,11 +58,14 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= damage;
         gm.pm.BossHitsPlayerStun();
+        gm.pm.ResetCombo();
+        gm.pm.attackCount = 0;
         if (currentHealth < 0)
         {
             currentHealth = 0;
             dead = true;
         }
+        
         
     }
 
