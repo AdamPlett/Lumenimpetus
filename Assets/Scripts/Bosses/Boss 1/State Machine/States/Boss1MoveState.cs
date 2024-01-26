@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using static GameManager;
 
 public enum eDir { forward, backward, left, right }
 
@@ -21,6 +22,8 @@ public class Boss1MoveState : Boss1BaseState
         modelTransform = stateMachine.bossModel.transform;
 
         SetDirection();
+
+        gm.boss1.activeState = eB1.moving;
     }
 
     public override void Tick()

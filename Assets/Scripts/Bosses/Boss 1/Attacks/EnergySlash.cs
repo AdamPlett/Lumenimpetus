@@ -14,20 +14,20 @@ public class EnergySlash : MonoBehaviour
 
         direction = (gm.playerRef.transform.position - transform.position).normalized;
 
-        Destroy(gameObject, 0.5f);
+        Destroy(gameObject, gm.boss1.weapons.slashTime);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.up * Time.deltaTime * 25f;
+        transform.position += transform.up * Time.deltaTime * gm.boss1.weapons.slashSpeed;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject == gm.playerRef)
         {
-            gm.ph.DamagePlayer(10f);
+            gm.ph.DamagePlayer(gm.boss1.weapons.slashDamage);
         }
     }
 }
