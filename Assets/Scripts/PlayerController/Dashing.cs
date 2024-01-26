@@ -10,6 +10,8 @@ public class Dashing : MonoBehaviour
     public ImageAnimation canDashAnim;
     private Rigidbody rb;
     private PlayerMovement pm;
+    public AudioSource dashPlayer;
+    public AudioClip dashSFX;
 
     [Header("Dashing")]
     public float dashForce;
@@ -74,6 +76,9 @@ public class Dashing : MonoBehaviour
     private void Dash()
     {
         if (dashCdTimer > 0 || !canDash) return;
+
+        dashPlayer.PlayOneShot(dashSFX);
+
         dashCdTimer = dashCd;
         canDash = false;
         pm.dashing = true;
