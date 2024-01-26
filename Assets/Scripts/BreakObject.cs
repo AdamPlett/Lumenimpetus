@@ -47,11 +47,14 @@ public class BreakObject : MonoBehaviour
         //destory all attached objects that need to be destroyed
         for(int i=0; i<objToDestroy.Length; i++)
         {
-            BreakObject destroy = objToDestroy[i].gameObject.GetComponent<BreakObject>();
-
-            if (destroy != null)
+            if (objToDestroy[i] != null)
             {
-                destroy.breakObject();
+                BreakObject destroy = objToDestroy[i].gameObject.GetComponent<BreakObject>();
+                
+                if (destroy != null)
+                {
+                    destroy.breakObject();
+                }
             }
         }
         //creates object broken into pieces
