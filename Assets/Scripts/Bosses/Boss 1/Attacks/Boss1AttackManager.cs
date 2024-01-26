@@ -18,6 +18,9 @@ public class Boss1AttackManager : MonoBehaviour
     public bool canMelee;
     [Space(5)]
     public int comboCounter;
+    [Space(5)]
+    public float pauseSpeed;
+    public float pauseTime;
 
     [Header("Enraged Melee")]
     public bool enraged;
@@ -148,9 +151,9 @@ public class Boss1AttackManager : MonoBehaviour
 
     private IEnumerator Activate()
     {
-        gm.boss1.anim.bossAnimator.speed = 0f;
+        gm.boss1.anim.bossAnimator.speed = pauseSpeed;
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(pauseTime);
 
         blade.SetActive(true);
         gm.boss1.anim.bossAnimator.speed = 1f;
