@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Camera Variables")]
     public GameObject cameraRef;
-
+    public int targetFPS=60;
     void Awake()
     {
         if(gm == null)
@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this);
         }
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = targetFPS;
     }
 
 }
