@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameManager;
 
 public class Dashing : MonoBehaviour
 {
@@ -101,8 +102,6 @@ public class Dashing : MonoBehaviour
 
         Vector3 direction = GetDirection(forwardT);
 
-        //playDashFX(direction);
-
         Vector3 forceToApply = direction * dashForce + orientation.up * dashUpwardForce;
 
         if (disableGravity)
@@ -118,9 +117,9 @@ public class Dashing : MonoBehaviour
 
     private void DelayedDashForce()
     {
-        if(resetVel) rb.velocity = Vector3.zero;
+        playDashFX();
+        if (resetVel) rb.velocity = Vector3.zero;
 
-        playDashFX(delayedForceToApply);
         rb.AddForce(delayedForceToApply, ForceMode.Impulse);
     }
 
@@ -154,24 +153,26 @@ public class Dashing : MonoBehaviour
         return direction.normalized;
     }
 
-    void playDashFX(Vector3 dir)
+    void playDashFX()
     {
         //forward dash particles
-        if (dir.z > 0 && Mathf.Abs(dir.x) <= dir.z)
+        if (gm.pm.verticalInput > 0 && Mathf.Abs(gm.pm.horizontalInput) <= gm.pm.verticalInput)
         {
             dashForwardFX.Play();
         }
 
         //backwards dash particles
-        else if (dir.z < 0 && Mathf.Abs(dir.x) <= Mathf.Abs(dir.z))
+        else if (gm.pm.verticalInput < 0 && Mathf.Abs(gm.pm.horizontalInput) <= Mathf.Abs(gm.pm.verticalInput))
         {
             dashBackwardFX.Play();
         }
-        else if (dir.x > 0)
+        //Right dash particles
+        else if (gm.pm.horizontalInput > 0)
         {
             dashRightFX.Play();
         }
-        else if (dir.x < 0 )
+        //Left dash particles
+        else if (gm.pm.horizontalInput < 0 )
         {
             dashLeftFX.Play();
         }
