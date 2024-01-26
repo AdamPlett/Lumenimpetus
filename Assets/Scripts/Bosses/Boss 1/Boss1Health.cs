@@ -26,7 +26,11 @@ public class Boss1Health : MonoBehaviour
         return currentPhase;
     }
     public void DamageBoss(float damage) {
+        
         currentHealth -= damage;
+
+        gm.boss1.CheckDead();
+
         if (currentHealth <= maxHealth - currentPhaseIncrement)
         {
             ChangePhase();

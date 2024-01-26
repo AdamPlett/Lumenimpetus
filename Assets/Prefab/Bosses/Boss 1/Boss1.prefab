@@ -146,9 +146,9 @@ MonoBehaviour:
   canMelee: 0
   comboCounter: 0
   enraged: 0
-  slashSpeed: 0
-  slashTime: 0
-  slashDamage: 0
+  slashSpeed: 12.5
+  slashTime: 2
+  slashDamage: 5
   slashPoint: {fileID: 490908800}
   slashPrefabs:
   - {fileID: 5240286931813610378, guid: d655f13633b901e48bf6b02c01ad96c7, type: 3}
@@ -183,7 +183,7 @@ MonoBehaviour:
   grappleRangeMin: 20
   grappleRangeMax: 500
   grappleSpeed: 1
-  grappleCooldown: 5
+  grappleCooldown: 10
   grappleTimer: 0
   canGrapple: 0
   topFloorPoints:
@@ -210,14 +210,14 @@ MonoBehaviour:
   pullRangeMin: 5
   pullRangeMax: 50
   pullSpeed: 50
-  pullCooldown: 0
+  pullCooldown: 5
   pullTimer: 0
   canPull: 0
-  slamRangeMin: 0
-  slamRangeMax: 0
+  slamRangeMin: 5
+  slamRangeMax: 50
   slamSpeed: 5
-  slamDamage: 0
-  slamCooldown: 0
+  slamDamage: 10
+  slamCooldown: 5
   slamTimer: 0
   canSlam: 0
   slamFX: {fileID: 9113273109420314756, guid: ed539d40f4ad5a44f8b3df5078dd3d2d, type: 3}

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static GameManager;
 
-public enum eB1 { none, moving, attacking, shooting, grappling, pulling, slamming }
+public enum eB1 { none, moving, attacking, shooting, grappling, pulling, slamming, dead }
 
 public class Boss1StateMachine : StateMachine
 {
@@ -70,7 +70,7 @@ public class Boss1StateMachine : StateMachine
 
     public void CheckForPlayer()
     {
-        if (CheckSeePlayer())
+        if (CheckSeePlayer() && CheckFacingPlayer())
         {
             if (weapons.CheckMeleeRange() && weapons.canMelee)
             {
@@ -107,10 +107,6 @@ public class Boss1StateMachine : StateMachine
                 {
                     SwitchToGrappleState();
                 }
-            }
-            else if (weapons.CheckCannonRange() && weapons.canShoot)
-            {
-                SwitchToShootState();
             }
         }
     }
@@ -220,7 +216,27 @@ public class Boss1StateMachine : StateMachine
         return (playerRef.transform.position - transform.position).normalized;
     }
 
+    public void CheckDead()
+    {
+        if(gm.bh.currentHealth <= 0)
+        {
+            SwitchToDeadState();
+        }
+    }
 
+    public void TriggerDeathSequence()
+    {
+        StartCoroutine(DeathSequence());
+    }
+
+    private IEnumerator DeathSequence()
+    {
+        anim.SwitchAnimation(anim.PhaseTransition);
+        
+        yield return new WaitForSeconds(1f);
+
+        anim.SwitchAnimation(anim.DeathHash);
+    }
 
     #region State-Switchers
 
@@ -266,7 +282,7 @@ public class Boss1StateMachine : StateMachine
 
     public void SwitchToDeadState()
     {
-        //SwitchState(new Boss1DeathState(this));
+        SwitchState(new Boss1DeathState(this));
     }
 
     #endregion
