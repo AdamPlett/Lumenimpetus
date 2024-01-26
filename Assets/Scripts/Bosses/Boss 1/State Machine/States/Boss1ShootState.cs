@@ -9,6 +9,8 @@ public class Boss1ShootState : Boss1BaseState
 
     private GameObject bulletRef;
 
+    private float stateTimer = 0f;
+
     public override void Enter()
     {
         stateMachine.anim.SwitchAnimation(stateMachine.anim.ShootHash);
@@ -20,7 +22,12 @@ public class Boss1ShootState : Boss1BaseState
 
     public override void Tick()
     {
+        stateTimer += Time.deltaTime;
 
+        if(stateTimer > 3f)
+        {
+            stateMachine.SwitchToMoveState();
+        }
     }
 
     public override void Exit()

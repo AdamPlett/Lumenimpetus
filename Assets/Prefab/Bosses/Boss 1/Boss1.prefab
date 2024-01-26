@@ -85,8 +85,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdf1cfa6af5dab4cb7e6a408396b5b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeState: 0
+  stateTimer: 0
+  maxStateTime: 5
   moveSpeed: 3
   rotationSpeed: 100
+  freeze: 0
   health: {fileID: 674785246382871898}
   weapons: {fileID: 4992467401588963373}
   anim: {fileID: 674785246382871896}
@@ -102,6 +106,9 @@ MonoBehaviour:
   isAttacking: 0
   isShooting: 0
   isGrappling: 0
+  bossAudio: {fileID: 1124356849025017776}
+  attack1SFX: {fileID: 8300000, guid: b2e90e22d5465b84da55a531a74df2fb, type: 3}
+  attack2SFX: {fileID: 8300000, guid: 3cc437bdd1ddc2d4fa8a3c584a475c16, type: 3}
 --- !u!114 &674785246382871898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +146,9 @@ MonoBehaviour:
   canMelee: 0
   comboCounter: 0
   enraged: 0
+  slashSpeed: 0
+  slashTime: 0
+  slashDamage: 0
   slashPoint: {fileID: 490908800}
   slashPrefabs:
   - {fileID: 5240286931813610378, guid: d655f13633b901e48bf6b02c01ad96c7, type: 3}
@@ -146,7 +156,7 @@ MonoBehaviour:
   - {fileID: 7005413972704926280, guid: 8d39d8128b54c8b4c837c4097343c6ee, type: 3}
   - {fileID: 8060194353568834492, guid: 8f9f669117d96b54692db4b052247c0f, type: 3}
   cannonRangeMin: 10
-  cannonRangeMax: 100
+  cannonRangeMax: 200
   cannonCooldown: 3
   cannonTimer: 0
   canShoot: 0
@@ -170,16 +180,47 @@ MonoBehaviour:
   swinging: 0
   pulling: 0
   noHit: 0
+  grappleRangeMin: 20
+  grappleRangeMax: 500
+  grappleSpeed: 1
   grappleCooldown: 5
   grappleTimer: 0
   canGrapple: 0
-  grappleRangeMin: 100
-  grappleRangeMax: 500
-  grappleSpeed: 1
+  topFloorPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  bottomFloorPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  allGrapplePoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   pullRangeMin: 5
   pullRangeMax: 50
   pullSpeed: 50
+  pullCooldown: 0
+  pullTimer: 0
+  canPull: 0
+  slamRangeMin: 0
+  slamRangeMax: 0
   slamSpeed: 5
+  slamDamage: 0
+  slamCooldown: 0
+  slamTimer: 0
+  canSlam: 0
+  slamFX: {fileID: 9113273109420314756, guid: ed539d40f4ad5a44f8b3df5078dd3d2d, type: 3}
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -259,7 +300,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 28140d3846869b1458af66b518a7e20d, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

@@ -37,13 +37,11 @@ public class Boss1GrappleState : Boss1BaseState
             stateMachine.weapons.lineRender.SetPosition(0, stateMachine.weapons.lineRender.transform.position);
             stateMachine.weapons.lineRender.SetPosition(1, targetPos);
 
-            if (Vector3.Distance(stateMachine.transform.position, targetPos) <= 10)
+            Debug.DrawRay(stateMachine.transform.position, stateMachine.transform.up * -1f, Color.white);
+
+            if (Vector3.Distance(stateMachine.transform.position, targetPos) <= 10f)
             {
                 stateMachine.SwitchToMoveState();
-            }
-            else if(Physics.Raycast(stateMachine.transform.position, stateMachine.transform.up * -1f, 1f))
-            {
-
             }
         }
     }

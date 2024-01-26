@@ -60,6 +60,10 @@ public class Boss1AttackManager : MonoBehaviour
     public float grappleCooldown;
     public float grappleTimer;
     public bool canGrapple;
+    [Space(8)]
+    public List<Transform> topFloorPoints;
+    public List<Transform> bottomFloorPoints;
+    public List<Transform> allGrapplePoints;
 
     [Header("Grapple Hook - Pull")]
     public float pullRangeMin;
@@ -270,23 +274,79 @@ public class Boss1AttackManager : MonoBehaviour
 
     public bool CheckGrappleRange()
     {
-        Collider[] grapplePoints = Physics.OverlapSphere(transform.position, grappleRangeMax, grappleLayer);
-
         List<Transform> possiblePoints = new List<Transform>();
 
-        if(grapplePoints.Length > 0 )
+        if(gm.bh.GetCurrentPhase() == 1)
         {
-            foreach(var point in grapplePoints)
+            if (bottomFloorPoints.Count > 0)
             {
-                if (CheckSeePoint(point.transform))
+                foreach (var point in bottomFloorPoints)
                 {
-                    possiblePoints.Add(point.transform);
+                    if (CheckSeePoint(point.transform))
+                    {
+                        float distance = Vector3.Distance(point.transform.position, transform.position);
+
+                        if (distance < grappleRangeMax && distance > grappleRangeMin)
+                        {
+                            possiblePoints.Add(point.transform);
+                        }
+                    }
                 }
             }
+            else
+            {
+                return false;
+            }
         }
-        else
+        else if (gm.bh.GetCurrentPhase() == 2)
         {
-            return false;
+            if(gm.boss1.CheckAbovePlayer() || gm.boss1.transform.position.y < 10f)
+            {
+                if (topFloorPoints.Count > 0)
+                {
+                    foreach (var point in topFloorPoints)
+                    {
+                        if (CheckSeePoint(point.transform))
+                        {
+                            float distance = Vector3.Distance(point.transform.position, transform.position);
+
+                            if (distance > grappleRangeMin)
+                            {
+                                possiblePoints.Add(point.transform);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if (allGrapplePoints.Count > 0)
+                {
+                    foreach (var point in allGrapplePoints)
+                    {
+                        if (point != null)
+                        {
+                            if (CheckSeePoint(point.transform))
+                            {
+                                float distance = Vector3.Distance(point.transform.position, transform.position);
+
+                                if (distance > grappleRangeMin)
+                                {
+                                    possiblePoints.Add(point.transform);
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
 
         if(possiblePoints.Count > 0)
