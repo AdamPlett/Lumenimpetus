@@ -92,6 +92,8 @@ public class Boss1AttackManager : MonoBehaviour
         SetCanMelee();
         SetCanShoot();
         SetCanGrapple();
+        SetCanPull();
+        SetCanSlam();
     }
 
     #region Melee
@@ -228,7 +230,7 @@ public class Boss1AttackManager : MonoBehaviour
         }
     }
 
-    public void setCanSlam()
+    public void SetCanSlam()
     {
         if (grappleTimer < grappleCooldown)
         {
@@ -298,7 +300,7 @@ public class Boss1AttackManager : MonoBehaviour
                 return false;
             }
         }
-        else if (gm.bh.GetCurrentPhase() == 2)
+        else if (gm.bh.GetCurrentPhase() > 1)
         {
             if(gm.boss1.CheckAbovePlayer() || gm.boss1.transform.position.y < 10f)
             {
