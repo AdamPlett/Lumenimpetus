@@ -43,7 +43,7 @@ public class Boss1SlamState : Boss1BaseState
                     {
                         gm.ph.DamagePlayer(stateMachine.weapons.slamDamage);
 
-
+                        Instantiate(stateMachine.weapons.slamFX, gm.playerRef.transform.position, Quaternion.identity);
                         
                         stateMachine.SwitchToMoveState();
                     }

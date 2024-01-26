@@ -61,16 +61,25 @@ public class PlayerMovement : MonoBehaviour
 
 
     [Header("Attacking")]
-    public float attackDistance = 3f;
-    public float attackDelay = 0.4f;
-    public float attackSpeed = 1f;
-    public int attackDamage = 1;
-    public float comboTime = 0.5f;
-    private float comboTimer = 0;
+    public float attackDistance = 3f; //how far attack raycast goes
+    public float attackDelay = 0.4f; //how long before attack raycast is sent
+    public float attackSpeed = 1f; //how long before attack resets
+    public float attackTime = 0.5f; //how long you have to attack after reset to get 2nd and 3rd attack
+    public float attackTimer = 0f; //timer to count
+    public float comboTime = 5f; //how long you have to continue combo
+    private float comboTimer = 0f;
     public float hitstopTime = 0.1f;
     public float hitStunTime = 0.15f;
-    public float currentDamage = 10f;
+    public float attackDamage = 5f;
+    public float comboMultiplier = 0.05f;
+    public float comboCount = 0;
     public LayerMask attackLayer;
+    public bool multiAttack = false;
+    public bool combo = false;
+    public bool attacking = false;
+    public bool readyToAttack = true;
+    public bool playerStunned = false;
+    public int attackCount;
 
 
     [Header("Effects")]
@@ -78,13 +87,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject hitEffect;
     public AudioClip swordSwing;
     public AudioClip hitSound;
-
     public bool hitStop = false;
-    public bool combo = false;
-    public bool attacking = false;
-    public bool readyToAttack = true;
-    public bool playerStunned = false;
-    public int attackCount;
+
 
     float horizontalInput;
     float verticalInput;
@@ -143,6 +147,10 @@ public class PlayerMovement : MonoBehaviour
         if (combo && !hitStop)
         {
             comboTimer += Time.deltaTime;
+        }
+        if (multiAttack && !hitStop && attackTimer < 10)
+        {
+            attackTimer += Time.deltaTime;
         }
 
     }
@@ -478,17 +486,22 @@ public class PlayerMovement : MonoBehaviour
 
         if (comboTimer > comboTime)
         {
-            attackCount = 0;
-            comboTimer = 0;
-            combo = false;
+            ResetCombo();
+ 
         }
         readyToAttack = false;
         attacking = true;
+
         
+        if (attackTimer - attackSpeed > attackTime)
+        {
+            attackCount = 0;
+            attackTimer = 0;
+            multiAttack = false;
+        }
 
 
-        Invoke(nameof(ResetAttack), attackSpeed);
-        Invoke(nameof(AttackRaycast), attackDelay);
+
         // plays attack SFX
 
         if (!playerStunned)
@@ -500,23 +513,27 @@ public class PlayerMovement : MonoBehaviour
         if(attackCount == 0)
         {
             ChangeAnimationState(ATTACK1);
-            combo = true;
+            multiAttack = true;
+            attackDamage = 5;
             attackCount++;
+            attackTimer = 0;
         }
         else if(attackCount == 1)
         {
             ChangeAnimationState(ATTACK2);
-            comboTimer = 0;
+            attackDamage = 6;
             attackCount++;
+            attackTimer = 0;
         }
         else
         {
             ChangeAnimationState(ATTACK3);
+            attackDamage = 8;
             attackCount = 0;
-            combo = false;
-            comboTimer = 0;
+            attackTimer = 0;
         }
-
+        Invoke(nameof(ResetAttack), attackSpeed);
+        Invoke(nameof(AttackRaycast), attackDelay);
     }
 
     private void ResetAttack()
@@ -535,7 +552,8 @@ public class PlayerMovement : MonoBehaviour
             if (hit.transform.gameObject.Equals(gm.bossRef))
             {
                 Debug.Log("HIT BOSS");
-                gm.bh.DamageBoss(attackDamage);
+                gm.bh.DamageBoss(attackDamage + attackDamage * comboMultiplier);
+                Combo();
                 StartCoroutine(BossHitstop());
                 
             }
@@ -603,6 +621,24 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(hitStunTime);
         playerStunned = false;
         freeze = false;
+    }
+    public void Combo()
+    {
+        combo = true;
+        comboCount++;
+        comboTimer = 0;
+        if (comboMultiplier < 0.5f && (comboCount % 3 == 0))
+        {
+            comboMultiplier += 0.05f;
+        }
+    }
+    public void ResetCombo()
+    {
+        comboCount = 0;
+        combo = false;
+        comboMultiplier = 0;
+        comboTimer = 0;
+        
     }
 
     #endregion

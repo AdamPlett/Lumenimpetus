@@ -7,6 +7,8 @@ public class Boss1MeleeState : Boss1BaseState
 {
     public Boss1MeleeState(Boss1StateMachine stateMachine) : base(stateMachine) { }
 
+    private float stateTimer = 0f;
+
     public override void Enter()
     {
         SelectMeleeAttack();
@@ -19,7 +21,12 @@ public class Boss1MeleeState : Boss1BaseState
 
     public override void Tick()
     {
+        stateTimer += Time.deltaTime;
 
+        if (stateTimer > 3f)
+        {
+            stateMachine.SwitchToMoveState();
+        }
     }
 
     public override void Exit()

@@ -80,7 +80,7 @@ public class Boss1StateMachine : StateMachine
             {
                 SwitchToShootState();
             }
-            else if (weapons.canGrapple && health.GetCurrentPhase() > 1)
+            else if (weapons.canGrapple)
             {
                 if (weapons.CheckGrappleRange())
                 {
@@ -101,7 +101,7 @@ public class Boss1StateMachine : StateMachine
         }
         else
         {
-            if (weapons.canGrapple && health.GetCurrentPhase() > 1)
+            if (weapons.canGrapple)
             {
                 if (weapons.CheckGrappleRange())
                 {

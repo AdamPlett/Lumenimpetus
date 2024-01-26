@@ -809,34 +809,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 674785246382871897, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
-      propertyPath: bossAudio
-      value: 
-      objectReference: {fileID: 93588697}
-    - target: {fileID: 674785246382871897, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
       propertyPath: playerRef
       value: 
       objectReference: {fileID: 377434100}
-    - target: {fileID: 674785246382871897, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: attack1SFX
-      value: 
-      objectReference: {fileID: 8300000, guid: b2e90e22d5465b84da55a531a74df2fb, type: 3}
-    - target: {fileID: 674785246382871897, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: attack2SFX
-      value: 
-      objectReference: {fileID: 8300000, guid: 3cc437bdd1ddc2d4fa8a3c584a475c16, type: 3}
-    - target: {fileID: 674785246382871897, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: attack3SFX
-      value: 
-      objectReference: {fileID: 8300000, guid: 3cc437bdd1ddc2d4fa8a3c584a475c16, type: 3}
-    - target: {fileID: 674785246382871898, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: currentPhase
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 674785246382871900, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
       propertyPath: m_RootOrder
@@ -897,22 +872,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss1
       objectReference: {fileID: 0}
-    - target: {fileID: 674785246382871901, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1124356849025017776, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: slamFX
-      value: 
-      objectReference: {fileID: 9113273109420314756, guid: ed539d40f4ad5a44f8b3df5078dd3d2d,
-        type: 3}
     - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
       propertyPath: playerRef
@@ -920,14 +879,94 @@ PrefabInstance:
       objectReference: {fileID: 377434100}
     - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
-      propertyPath: cannonRangeMax
-      value: 200
-      objectReference: {fileID: 0}
+      propertyPath: topFloorPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 1211413968}
     - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
-      propertyPath: grappleRangeMin
-      value: 100
-      objectReference: {fileID: 0}
+      propertyPath: topFloorPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1281561337}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: topFloorPoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 1465655223}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: topFloorPoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 1105102984}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: topFloorPoints.Array.data[4]
+      value: 
+      objectReference: {fileID: 1190028304}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: allGrapplePoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 1211413968}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: allGrapplePoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1281561337}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: allGrapplePoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 878237343}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: allGrapplePoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 1465655223}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: allGrapplePoints.Array.data[4]
+      value: 
+      objectReference: {fileID: 2033561951}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: allGrapplePoints.Array.data[5]
+      value: 
+      objectReference: {fileID: 1105102984}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: allGrapplePoints.Array.data[6]
+      value: 
+      objectReference: {fileID: 1190028304}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: allGrapplePoints.Array.data[7]
+      value: 
+      objectReference: {fileID: 574969040}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: allGrapplePoints.Array.data[8]
+      value: 
+      objectReference: {fileID: 792237610}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: bottomFloorPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 878237343}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: bottomFloorPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 2033561951}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: bottomFloorPoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 574969040}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: bottomFloorPoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 792237610}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b16ba11d8d0a48749819b0f9899b118e, type: 3}
 --- !u!1 &93588690 stripped
@@ -960,12 +999,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdf1cfa6af5dab4cb7e6a408396b5b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!82 &93588697 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 1124356849025017776, guid: b16ba11d8d0a48749819b0f9899b118e,
-    type: 3}
-  m_PrefabInstance: {fileID: 93588689}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &98678580
 GameObject:
   m_ObjectHideFlags: 0
