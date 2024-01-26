@@ -23,6 +23,12 @@ public class Dashing : MonoBehaviour
     public PlayerCam cam;
     public float dashFov;
 
+    [Header("Dash Particles")]
+    [SerializeField] private ParticleSystem dashForwardFX;
+    [SerializeField] private ParticleSystem dashBackwardFX;
+    [SerializeField] private ParticleSystem dashRightFX;
+    [SerializeField] private ParticleSystem dashLeftFX;
+
     [Header("Settings")]
     public bool useCameraForward = true;
     public bool allowAllDirections = true;
@@ -93,7 +99,9 @@ public class Dashing : MonoBehaviour
         else
             forwardT = orientation;
 
-        Vector3 direction = GetDirection(forwardT); 
+        Vector3 direction = GetDirection(forwardT);
+
+        //playDashFX(direction);
 
         Vector3 forceToApply = direction * dashForce + orientation.up * dashUpwardForce;
 
@@ -110,9 +118,9 @@ public class Dashing : MonoBehaviour
 
     private void DelayedDashForce()
     {
-        if(resetVel)
-            rb.velocity = Vector3.zero;
-        
+        if(resetVel) rb.velocity = Vector3.zero;
+
+        playDashFX(delayedForceToApply);
         rb.AddForce(delayedForceToApply, ForceMode.Impulse);
     }
 
@@ -144,5 +152,33 @@ public class Dashing : MonoBehaviour
             direction = forwardT.forward;
         
         return direction.normalized;
+    }
+
+    void playDashFX(Vector3 dir)
+    {
+        //forward dash particles
+        if (dir.z > 0 && Mathf.Abs(dir.x) <= dir.z)
+        {
+            dashForwardFX.Play();
+        }
+
+        //backwards dash particles
+        else if (dir.z < 0 && Mathf.Abs(dir.x) <= Mathf.Abs(dir.z))
+        {
+            dashBackwardFX.Play();
+        }
+        else if (dir.x > 0)
+        {
+            dashRightFX.Play();
+        }
+        else if (dir.x < 0 )
+        {
+            dashLeftFX.Play();
+        }
+        else
+        {
+            dashForwardFX.Play();
+        }
+
     }
 }
