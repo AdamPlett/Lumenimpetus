@@ -11,6 +11,8 @@ public class Boss1SlamState : Boss1BaseState
 
     private Vector3 playerPos;
 
+    private float stateTimer = 0f;
+
     public override void Enter()
     {
         stateMachine.isGrappling = true;
@@ -25,6 +27,13 @@ public class Boss1SlamState : Boss1BaseState
 
     public override void Tick()
     {
+        stateTimer += Time.deltaTime;
+
+        if (stateTimer > 5f)
+        {
+            stateMachine.SwitchToMoveState();
+        }
+
         stateMachine.LookAtPlayer();
 
         if (stateMachine.weapons.noHit)
