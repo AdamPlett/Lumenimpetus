@@ -293,7 +293,7 @@ public class PlayerMovement : MonoBehaviour
                 rb.AddForce(Vector3.down * 20f, ForceMode.Force);
             else
             {
-                rb.AddForce(Vector3.down * 50f, ForceMode.Force);
+                rb.AddForce(slopeHit.normal.normalized * 50f, ForceMode.Force);
             }
         }
         // on ground
