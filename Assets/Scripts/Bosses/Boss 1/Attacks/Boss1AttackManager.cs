@@ -294,13 +294,16 @@ public class Boss1AttackManager : MonoBehaviour
             {
                 foreach (var point in bottomFloorPoints)
                 {
-                    if (CheckSeePoint(point.transform))
+                    if (point)
                     {
-                        float distance = Vector3.Distance(point.transform.position, transform.position);
-
-                        if (distance < grappleRangeMax && distance > grappleRangeMin)
+                        if (CheckSeePoint(point.transform))
                         {
-                            possiblePoints.Add(point.transform);
+                            float distance = Vector3.Distance(point.transform.position, transform.position);
+
+                            if (distance < grappleRangeMax && distance > grappleRangeMin)
+                            {
+                                possiblePoints.Add(point.transform);
+                            }
                         }
                     }
                 }
@@ -318,13 +321,16 @@ public class Boss1AttackManager : MonoBehaviour
                 {
                     foreach (var point in topFloorPoints)
                     {
-                        if (CheckSeePoint(point.transform))
+                        if (point)
                         {
-                            float distance = Vector3.Distance(point.transform.position, transform.position);
-
-                            if (distance > grappleRangeMin)
+                            if (CheckSeePoint(point.transform))
                             {
-                                possiblePoints.Add(point.transform);
+                                float distance = Vector3.Distance(point.transform.position, transform.position);
+
+                                if (distance < grappleRangeMax && distance > grappleRangeMin)
+                                {
+                                    possiblePoints.Add(point.transform);
+                                }
                             }
                         }
                     }

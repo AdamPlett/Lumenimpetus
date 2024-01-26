@@ -117,7 +117,7 @@ public class WallRunning : MonoBehaviour
                 exitWallTimer = exitWallTime;
             }
 
-            if (Input.GetKeyDown(jumpKey)) WallJump();
+            if (Input.GetKeyDown(jumpKey) && coyoteTimer > 0) WallJump();
         }
         // State 2 - Exiting Wall
         else if (exitingWall)
@@ -131,7 +131,7 @@ public class WallRunning : MonoBehaviour
             if (exitWallTimer <= 0)
                 exitingWall = false;
 
-            if(Input.GetKeyDown(jumpKey) && coyoteTimer > 0) WallJump();
+            //if(Input.GetKeyDown(jumpKey) && coyoteTimer > 0) WallJump();
         }
         // State 3 - None
         else
