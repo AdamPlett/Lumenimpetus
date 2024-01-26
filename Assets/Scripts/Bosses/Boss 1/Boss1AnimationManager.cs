@@ -16,6 +16,11 @@ public class Boss1AnimationManager : MonoBehaviour
     public readonly int TurnHashL = Animator.StringToHash("TurnLeft");
     public readonly int TurnHashR = Animator.StringToHash("TurnRight");
 
+    public readonly int MeleeHash1 = Animator.StringToHash("Melee1");
+    public readonly int MeleeHash2 = Animator.StringToHash("Melee2");
+    public readonly int MeleeHash3 = Animator.StringToHash("Melee3");
+    public readonly int MeleeHash360 = Animator.StringToHash("Melee360");
+
     public readonly int SwingHash = Animator.StringToHash("Swing");
     public readonly int GrappleHash = Animator.StringToHash("ShootGrapple");
     public readonly int PullHash = Animator.StringToHash("Pull");
@@ -24,12 +29,10 @@ public class Boss1AnimationManager : MonoBehaviour
 
     public readonly int ShootHash = Animator.StringToHash("Shoot");
 
-    public readonly int MeleeHash1 = Animator.StringToHash("Melee1");
-    public readonly int MeleeHash2 = Animator.StringToHash("Melee2");
-    public readonly int MeleeHash3 = Animator.StringToHash("Melee3");
-    public readonly int MeleeHash360 = Animator.StringToHash("Melee360");
-    public readonly int ComboHash = Animator.StringToHash("MeleeCombo");
-    public readonly int ChargeHash = Animator.StringToHash("MeleeCharge");
+    public readonly int DeathHash = Animator.StringToHash("Death");
+    public readonly int DanceHash = Animator.StringToHash("Dance");
+
+    public readonly int PhaseTransition = Animator.StringToHash("PhaseTransition");
 
     public void PlayAnimation(int animHash)
     {
