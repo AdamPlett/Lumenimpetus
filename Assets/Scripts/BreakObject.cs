@@ -10,6 +10,9 @@ public class BreakObject : MonoBehaviour
     [SerializeField] private string destructKey;
     [SerializeField] private float destoryBrokenObjectTime=1.5f;
 
+    [Header("Destruction SFX object")]
+    public GameObject destructionSFXPlayer;
+
     KeyCode thisKeyCode;
     
     [Header("Objects to Destory Simultaneously")]
