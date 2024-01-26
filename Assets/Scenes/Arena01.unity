@@ -880,7 +880,7 @@ PrefabInstance:
     - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
       propertyPath: slashTime
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
@@ -890,7 +890,7 @@ PrefabInstance:
     - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
       propertyPath: slashSpeed
-      value: 20
+      value: 12.5
       objectReference: {fileID: 0}
     - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
