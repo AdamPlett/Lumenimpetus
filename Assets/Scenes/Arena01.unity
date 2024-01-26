@@ -822,6 +822,11 @@ PrefabInstance:
       propertyPath: attack3SFX
       value: 
       objectReference: {fileID: 8300000, guid: 3cc437bdd1ddc2d4fa8a3c584a475c16, type: 3}
+    - target: {fileID: 674785246382871898, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: currentPhase
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 674785246382871900, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
       propertyPath: m_RootOrder
@@ -894,9 +899,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
+      propertyPath: slamFX
+      value: 
+      objectReference: {fileID: 9113273109420314756, guid: ed539d40f4ad5a44f8b3df5078dd3d2d,
+        type: 3}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
       propertyPath: playerRef
       value: 
       objectReference: {fileID: 377434100}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: cannonRangeMax
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: grappleRangeMin
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b16ba11d8d0a48749819b0f9899b118e, type: 3}
 --- !u!1 &93588690 stripped
@@ -5109,7 +5130,7 @@ GameObject:
   - component: {fileID: 574969043}
   - component: {fileID: 574969042}
   - component: {fileID: 574969041}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Grapplepoint (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7326,7 +7347,7 @@ GameObject:
   - component: {fileID: 792237613}
   - component: {fileID: 792237612}
   - component: {fileID: 792237611}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Grapplepoint (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8494,7 +8515,7 @@ GameObject:
   - component: {fileID: 878237346}
   - component: {fileID: 878237345}
   - component: {fileID: 878237344}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Grapplepoint (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12275,7 +12296,7 @@ GameObject:
   - component: {fileID: 1105102987}
   - component: {fileID: 1105102986}
   - component: {fileID: 1105102985}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Grapplepoint (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12290,7 +12311,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1105102983}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 2.25, y: 1, z: 0.55}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12669,7 +12690,7 @@ GameObject:
   - component: {fileID: 1190028307}
   - component: {fileID: 1190028306}
   - component: {fileID: 1190028305}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Grapplepoint (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12684,7 +12705,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1190028303}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 2.25, y: 1, z: 0.55}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12767,7 +12788,7 @@ GameObject:
   - component: {fileID: 1211413971}
   - component: {fileID: 1211413970}
   - component: {fileID: 1211413969}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Grapplepoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13595,7 +13616,7 @@ GameObject:
   - component: {fileID: 1281561340}
   - component: {fileID: 1281561339}
   - component: {fileID: 1281561338}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Grapplepoint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13610,7 +13631,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1281561336}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 2.25, y: 1, z: 0.55}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15045,7 +15066,7 @@ GameObject:
   - component: {fileID: 1465655226}
   - component: {fileID: 1465655225}
   - component: {fileID: 1465655224}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Grapplepoint (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15060,7 +15081,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1465655222}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 2.25, y: 1, z: 0.55}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21550,7 +21571,7 @@ GameObject:
   - component: {fileID: 2033561954}
   - component: {fileID: 2033561953}
   - component: {fileID: 2033561952}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Grapplepoint (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

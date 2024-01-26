@@ -21,6 +21,7 @@ public class Boss1GrappleState : Boss1BaseState
         stateMachine.anim.SwitchAnimation(stateMachine.anim.SwingHash);
 
         gm.boss1.activeState = eB1.grappling;
+        stateMachine.freeze = false;
     }
 
     public override void Tick()
@@ -29,14 +30,20 @@ public class Boss1GrappleState : Boss1BaseState
 
         if (stateMachine.weapons.swinging)
         {
-            stateMachine.transform.position = Vector3.Lerp(stateMachine.transform.position, targetPos, Time.deltaTime * stateMachine.weapons.grappleSpeed);
+            Vector3 direction = targetPos - stateMachine.transform.position;
+            
+            stateMachine.transform.position += direction * Time.deltaTime * stateMachine.weapons.grappleSpeed;
 
             stateMachine.weapons.lineRender.SetPosition(0, stateMachine.weapons.lineRender.transform.position);
             stateMachine.weapons.lineRender.SetPosition(1, targetPos);
 
-            if (Vector3.Distance(stateMachine.transform.position, targetPos) <= 15)
+            if (Vector3.Distance(stateMachine.transform.position, targetPos) <= 10)
             {
                 stateMachine.SwitchToMoveState();
+            }
+            else if(Physics.Raycast(stateMachine.transform.position, stateMachine.transform.up * -1f, 1f))
+            {
+
             }
         }
     }

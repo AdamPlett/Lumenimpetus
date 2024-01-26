@@ -242,7 +242,7 @@ public class Boss1AttackManager : MonoBehaviour
     {
         Vector3 viewDirection = (point.position - gm.boss1.viewPoint.position);
 
-        Debug.DrawRay(gm.boss1.viewPoint.position, viewDirection, Color.yellow);
+        Debug.DrawRay(gm.boss1.viewPoint.position, viewDirection, Color.yellow, 1f);
 
         int layerMask = 1 << 7;
         layerMask = ~layerMask;

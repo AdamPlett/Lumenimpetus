@@ -15,6 +15,7 @@ public class Boss1StateMachine : StateMachine
     [Header("Movement Variables")]
     public float moveSpeed;
     public float rotationSpeed;
+    public bool freeze;
 
     [Header("Boss Components")]
     public Boss1Health health;
