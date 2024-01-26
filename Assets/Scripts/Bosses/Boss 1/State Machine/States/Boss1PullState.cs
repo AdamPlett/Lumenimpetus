@@ -9,6 +9,8 @@ public class Boss1PullState : Boss1BaseState
 
     private bool animationSet = false;
 
+    private float stateTimer = 0f;
+
     public override void Enter()
     {
         stateMachine.isGrappling = true;
@@ -23,6 +25,13 @@ public class Boss1PullState : Boss1BaseState
 
     public override void Tick()
     {
+        stateTimer += Time.deltaTime;
+
+        if (stateTimer > 5f)
+        {
+            stateMachine.SwitchToMoveState();
+        }
+
         stateMachine.LookAtPlayer();
 
         if (stateMachine.weapons.noHit)

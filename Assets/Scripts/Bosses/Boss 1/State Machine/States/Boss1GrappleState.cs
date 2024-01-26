@@ -9,6 +9,8 @@ public class Boss1GrappleState : Boss1BaseState
 
     private Vector3 startPos, targetPos;
 
+    private float stateTimer = 0f;
+
     public override void Enter()
     {
         stateMachine.isGrappling = true;
@@ -26,6 +28,14 @@ public class Boss1GrappleState : Boss1BaseState
 
     public override void Tick()
     {
+        stateTimer += Time.deltaTime;
+
+        if(stateTimer > 10f)
+        {
+            stateMachine.SwitchToMoveState();
+        }
+
+
         PivotToPoint();
 
         if (stateMachine.weapons.swinging)

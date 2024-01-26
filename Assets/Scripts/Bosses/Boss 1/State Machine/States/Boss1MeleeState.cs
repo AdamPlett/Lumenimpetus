@@ -23,7 +23,7 @@ public class Boss1MeleeState : Boss1BaseState
     {
         stateTimer += Time.deltaTime;
 
-        if (stateTimer > 3f)
+        if (stateTimer > 2.5f)
         {
             stateMachine.SwitchToMoveState();
         }

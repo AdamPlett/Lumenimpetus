@@ -143,7 +143,17 @@ public class Boss1AttackManager : MonoBehaviour
 
     public void ActivateBlade()
     {
+        StartCoroutine(Activate());
+    }
+
+    private IEnumerator Activate()
+    {
+        gm.boss1.anim.bossAnimator.speed = 0f;
+
+        yield return new WaitForSeconds(0.1f);
+
         blade.SetActive(true);
+        gm.boss1.anim.bossAnimator.speed = 1f;
     }
 
     public void DeactivateBlade()
