@@ -10115,6 +10115,7 @@ MonoBehaviour:
   boss1: {fileID: 93588692}
   bh: {fileID: 93588691}
   cameraRef: {fileID: 1563087494}
+  targetFPS: 60
 --- !u!4 &950040662
 Transform:
   m_ObjectHideFlags: 0

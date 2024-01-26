@@ -19356,7 +19356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52a9f451c7a80e64a9e92c6c7d30bc1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 6
+  walkSpeed: 7
   sprintSpeed: 10
   wallRunSpeed: 12
   playerVelocity: {x: 0, y: 0, z: 0}
@@ -19386,7 +19386,7 @@ MonoBehaviour:
   attackSpeed: 0.6
   attackTime: 0.5
   attackTimer: 0
-  comboTime: 0.75
+  comboTime: 5
   hitstopTime: 0.1
   hitStunTime: 0.15
   attackDamage: 5
@@ -19521,6 +19521,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 100
+  damageSSDuration: 0.4
+  damageSSStrength: 0.6
 --- !u!82 &1778932395
 AudioSource:
   m_ObjectHideFlags: 0
@@ -19661,6 +19663,7 @@ GameObject:
   - component: {fileID: 2557011061158986761}
   - component: {fileID: 2557011061158986760}
   - component: {fileID: 2557011061158986807}
+  - component: {fileID: 1778932391}
   m_Layer: 6
   m_Name: PlayerObj
   m_TagString: Player
@@ -19740,13 +19743,26 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2557011061158986805}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: bb9273c0fda96914bafaa1eeab1f5e07, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1778932391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2557011061158986805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dee4d6eec755a74191bf7aa35649816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mat: {fileID: 13400000, guid: bb9273c0fda96914bafaa1eeab1f5e07, type: 2}
 --- !u!1 &2557011061838073528
 GameObject:
   m_ObjectHideFlags: 0

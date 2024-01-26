@@ -289,8 +289,12 @@ public class PlayerMovement : MonoBehaviour
             if (rb.velocity.y > 0)
                 rb.AddForce(Vector3.down * 80f, ForceMode.Force);
 
-            if (rb.velocity.y < 0)
+            else if (rb.velocity.y < 0)
                 rb.AddForce(Vector3.down * 20f, ForceMode.Force);
+            else
+            {
+                rb.AddForce(Vector3.down * 50f, ForceMode.Force);
+            }
         }
         // on ground
         if (grounded)
