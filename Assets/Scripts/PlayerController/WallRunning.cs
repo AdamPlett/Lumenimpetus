@@ -71,8 +71,8 @@ public class WallRunning : MonoBehaviour
 
     private void CheckForWall()
     {
-        wallRight = Physics.Raycast(transform.position, orientation.right, out rightWallhit, wallCheckDistance, wall);
-        wallLeft = Physics.Raycast(transform.position, -orientation.right, out leftWallhit, wallCheckDistance, wall);
+        wallRight = Physics.Raycast(transform.position, orientation.right, out rightWallhit, wallCheckDistance, ground);
+        wallLeft = Physics.Raycast(transform.position, -orientation.right, out leftWallhit, wallCheckDistance, ground);
 
         if (wallLeft && wallRef != leftWallhit.transform.gameObject)
         {

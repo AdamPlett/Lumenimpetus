@@ -84,6 +84,6 @@ public class BreakObject : MonoBehaviour
     public void destroySequence()
     {
         gameObject.SetActive(false);
-        Destroy(gameObject, destoryBrokenObjectTime + 2.05f);
+        Destroy(gameObject, destoryBrokenObjectTime + .05f);
     }
 }
