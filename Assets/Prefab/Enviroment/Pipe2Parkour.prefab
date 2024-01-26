@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 7948532371558406920}
   - component: {fileID: 4534955726787277607}
   - component: {fileID: 6337049180487274378}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PolyShape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7094407345070264363}
   m_LocalRotation: {x: -0.1601439, y: 0.014412096, z: 0.25522825, w: 0.9534174}
-  m_LocalPosition: {x: 42.25, y: 0.76, z: -2.61}
+  m_LocalPosition: {x: 40.736, y: 2.869, z: -0.189}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
