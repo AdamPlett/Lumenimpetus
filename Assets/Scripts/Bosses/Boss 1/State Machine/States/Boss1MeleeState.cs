@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameManager;
 
 public class Boss1MeleeState : Boss1BaseState
 {
@@ -12,6 +13,8 @@ public class Boss1MeleeState : Boss1BaseState
 
         stateMachine.isAttacking = true;
         stateMachine.weapons.canMelee = false;
+
+        gm.boss1.activeState = eB1.attacking;
     }
 
     public override void Tick()

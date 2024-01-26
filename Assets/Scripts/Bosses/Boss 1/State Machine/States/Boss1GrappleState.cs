@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameManager;
 
 public class Boss1GrappleState : Boss1BaseState
 {
@@ -18,6 +19,8 @@ public class Boss1GrappleState : Boss1BaseState
         Debug.Log("Entering Grapple State");
 
         stateMachine.anim.SwitchAnimation(stateMachine.anim.SwingHash);
+
+        gm.boss1.activeState = eB1.grappling;
     }
 
     public override void Tick()
@@ -55,6 +58,6 @@ public class Boss1GrappleState : Boss1BaseState
 
         Quaternion targetRotation = Quaternion.LookRotation(direction);
 
-        stateMachine.RotatePlayer(targetRotation);
+        stateMachine.RotateBoss(targetRotation);
     }
 }

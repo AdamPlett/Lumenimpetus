@@ -17,6 +17,8 @@ public class Boss1PullState : Boss1BaseState
         Debug.Log("Entering Pull State");
 
         stateMachine.anim.SwitchAnimation(stateMachine.anim.GrappleHash);
+
+        gm.boss1.activeState = eB1.pulling;
     }
 
     public override void Tick()

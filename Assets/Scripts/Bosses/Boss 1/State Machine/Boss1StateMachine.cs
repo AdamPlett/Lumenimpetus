@@ -1,9 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameManager;
+
+public enum eB1 { none, moving, attacking, shooting, grappling, pulling, slamming }
 
 public class Boss1StateMachine : StateMachine
 {
+    public eB1 activeState;
+    [Space(6)]
+    public float stateTimer;
+    public float maxStateTime;
+    
     [Header("Movement Variables")]
     public float moveSpeed;
     public float rotationSpeed;
@@ -34,7 +42,7 @@ public class Boss1StateMachine : StateMachine
 
     void Start()
     {
-        SwitchState(new Boss1MoveState(this));
+        SwitchToMoveState();
     }
 
     public void LookAtPlayer()
@@ -43,10 +51,10 @@ public class Boss1StateMachine : StateMachine
 
         Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
 
-        RotatePlayer(targetRotation);
+        RotateBoss(targetRotation);
     }
 
-    public void RotatePlayer(Quaternion targetRotation)
+    public void RotateBoss(Quaternion targetRotation)
     {
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
@@ -71,9 +79,16 @@ public class Boss1StateMachine : StateMachine
             {
                 SwitchToShootState();
             }
-            else if (weapons.CheckPullRange() && weapons.canGrapple)
+            else if (weapons.canGrapple && health.GetCurrentPhase() > 1)
             {
-                if (weapons.grappleTarget.position.y > transform.position.y + 2f)
+                if (weapons.CheckGrappleRange())
+                {
+                    SwitchToGrappleState();
+                }
+            }
+            else if (weapons.CheckPullRange() && weapons.canPull)
+            {
+                if (weapons.grappleTarget.position.y > transform.position.y + 4f && !gm.pm.grounded)
                 {
                     SwitchToSlamState();
                 }
@@ -82,26 +97,19 @@ public class Boss1StateMachine : StateMachine
                     SwitchToPullState();
                 }
             }
-            else if (weapons.canGrapple && health.GetCurrentPhase() > 1)
-            {
-                if (weapons.CheckGrappleRange())
-                {
-                    SwitchToGrappleState();
-                }
-            }
         }
         else
         {
-            if (weapons.CheckCannonRange() && weapons.canShoot)
-            {
-                SwitchToShootState();
-            }
-            else if (weapons.canGrapple && health.GetCurrentPhase() > 1)
+            if (weapons.canGrapple && health.GetCurrentPhase() > 1)
             {
                 if (weapons.CheckGrappleRange())
                 {
                     SwitchToGrappleState();
                 }
+            }
+            else if (weapons.CheckCannonRange() && weapons.canShoot)
+            {
+                SwitchToShootState();
             }
         }
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameManager;
 
 public class Boss1ShootState : Boss1BaseState
 {
@@ -13,6 +14,8 @@ public class Boss1ShootState : Boss1BaseState
         stateMachine.anim.SwitchAnimation(stateMachine.anim.ShootHash);
 
         stateMachine.isShooting = true;
+
+        gm.boss1.activeState = eB1.shooting;
     }
 
     public override void Tick()
