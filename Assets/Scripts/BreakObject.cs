@@ -55,6 +55,10 @@ public class BreakObject : MonoBehaviour
             }
         }
         //creates object broken into pieces
+        if (destructionSFXPlayer != null)
+        {
+            Instantiate(destructionSFXPlayer);
+        }
         GameObject broken = Instantiate(brokenObject, transform.position, transform.rotation);
 
         //adds destruction force to objects

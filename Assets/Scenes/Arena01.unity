@@ -1443,6 +1443,7 @@ MonoBehaviour:
   breakForce: 100
   destructKey: u
   destoryBrokenObjectTime: 1.5
+  destructionSFXPlayer: {fileID: 0}
   objToDestroy: []
   supportObjects: []
   spawnObjects: []
@@ -2118,6 +2119,7 @@ MonoBehaviour:
   breakForce: 100
   destructKey: p
   destoryBrokenObjectTime: 1.5
+  destructionSFXPlayer: {fileID: 0}
   objToDestroy: []
   supportObjects: []
   spawnObjects: []
@@ -2743,6 +2745,7 @@ MonoBehaviour:
   breakForce: 100
   destructKey: o
   destoryBrokenObjectTime: 1.5
+  destructionSFXPlayer: {fileID: 0}
   objToDestroy: []
   supportObjects: []
   spawnObjects: []
@@ -5593,6 +5596,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
+      propertyPath: destructionSFXPlayer
+      value: 
+      objectReference: {fileID: 8357171975869288582, guid: 1810d30d82d0ce641a3ecbb8372ba75c,
+        type: 3}
+    - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
+        type: 3}
       propertyPath: objToDestroy.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -5905,6 +5914,12 @@ PrefabInstance:
       propertyPath: destructionSFX
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
+        type: 3}
+      propertyPath: destructionSFXPlayer
+      value: 
+      objectReference: {fileID: 8357171975869288582, guid: 1810d30d82d0ce641a3ecbb8372ba75c,
+        type: 3}
     - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
       propertyPath: destoryBrokenObjectTime
@@ -10583,6 +10598,7 @@ MonoBehaviour:
   breakForce: 100
   destructKey: i
   destoryBrokenObjectTime: 1.5
+  destructionSFXPlayer: {fileID: 0}
   objToDestroy: []
   supportObjects: []
   spawnObjects: []
@@ -11865,6 +11881,7 @@ MonoBehaviour:
   breakForce: 100
   destructKey: y
   destoryBrokenObjectTime: 1.5
+  destructionSFXPlayer: {fileID: 0}
   objToDestroy: []
   supportObjects: []
   spawnObjects: []
@@ -13936,6 +13953,12 @@ PrefabInstance:
       propertyPath: destructKey
       value: p
       objectReference: {fileID: 0}
+    - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
+        type: 3}
+      propertyPath: destructionSFXPlayer
+      value: 
+      objectReference: {fileID: 8357171975869288582, guid: 1810d30d82d0ce641a3ecbb8372ba75c,
+        type: 3}
     - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
       propertyPath: objToDestroy.Array.size
@@ -19558,6 +19581,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
+      propertyPath: destructionSFXPlayer
+      value: 
+      objectReference: {fileID: 8357171975869288582, guid: 1810d30d82d0ce641a3ecbb8372ba75c,
+        type: 3}
+    - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
+        type: 3}
       propertyPath: objToDestroy.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -21044,6 +21073,7 @@ MonoBehaviour:
   breakForce: 100
   destructKey: p
   destoryBrokenObjectTime: 1.5
+  destructionSFXPlayer: {fileID: 0}
   objToDestroy: []
   supportObjects: []
   spawnObjects: []
@@ -22885,72 +22915,3 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!1001 &3237353408463338726
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5800256031651586537, guid: 1810d30d82d0ce641a3ecbb8372ba75c,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5800256031651586537, guid: 1810d30d82d0ce641a3ecbb8372ba75c,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 94.92507
-      objectReference: {fileID: 0}
-    - target: {fileID: 5800256031651586537, guid: 1810d30d82d0ce641a3ecbb8372ba75c,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -157.02443
-      objectReference: {fileID: 0}
-    - target: {fileID: 5800256031651586537, guid: 1810d30d82d0ce641a3ecbb8372ba75c,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -107.927864
-      objectReference: {fileID: 0}
-    - target: {fileID: 5800256031651586537, guid: 1810d30d82d0ce641a3ecbb8372ba75c,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5800256031651586537, guid: 1810d30d82d0ce641a3ecbb8372ba75c,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5800256031651586537, guid: 1810d30d82d0ce641a3ecbb8372ba75c,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5800256031651586537, guid: 1810d30d82d0ce641a3ecbb8372ba75c,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5800256031651586537, guid: 1810d30d82d0ce641a3ecbb8372ba75c,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5800256031651586537, guid: 1810d30d82d0ce641a3ecbb8372ba75c,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5800256031651586537, guid: 1810d30d82d0ce641a3ecbb8372ba75c,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8357171975869288582, guid: 1810d30d82d0ce641a3ecbb8372ba75c,
-        type: 3}
-      propertyPath: m_Name
-      value: rockSmashPlayer
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1810d30d82d0ce641a3ecbb8372ba75c, type: 3}
