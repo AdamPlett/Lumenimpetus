@@ -90,8 +90,8 @@ public class PlayerMovement : MonoBehaviour
     public bool hitStop = false;
 
 
-    float horizontalInput;
-    float verticalInput;
+    public float horizontalInput;
+    public float verticalInput;
 
     Vector3 moveDirection;
 

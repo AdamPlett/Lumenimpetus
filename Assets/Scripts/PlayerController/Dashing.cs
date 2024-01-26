@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameManager;
 
 public class Dashing : MonoBehaviour
 {
@@ -22,6 +23,12 @@ public class Dashing : MonoBehaviour
     [Header("CameraFX")]
     public PlayerCam cam;
     public float dashFov;
+
+    [Header("Dash Particles")]
+    [SerializeField] private ParticleSystem dashForwardFX;
+    [SerializeField] private ParticleSystem dashBackwardFX;
+    [SerializeField] private ParticleSystem dashRightFX;
+    [SerializeField] private ParticleSystem dashLeftFX;
 
     [Header("Settings")]
     public bool useCameraForward = true;
@@ -93,7 +100,7 @@ public class Dashing : MonoBehaviour
         else
             forwardT = orientation;
 
-        Vector3 direction = GetDirection(forwardT); 
+        Vector3 direction = GetDirection(forwardT);
 
         Vector3 forceToApply = direction * dashForce + orientation.up * dashUpwardForce;
 
@@ -110,9 +117,9 @@ public class Dashing : MonoBehaviour
 
     private void DelayedDashForce()
     {
-        if(resetVel)
-            rb.velocity = Vector3.zero;
-        
+        playDashFX();
+        if (resetVel) rb.velocity = Vector3.zero;
+
         rb.AddForce(delayedForceToApply, ForceMode.Impulse);
     }
 
@@ -144,5 +151,35 @@ public class Dashing : MonoBehaviour
             direction = forwardT.forward;
         
         return direction.normalized;
+    }
+
+    void playDashFX()
+    {
+        //forward dash particles
+        if (gm.pm.verticalInput > 0 && Mathf.Abs(gm.pm.horizontalInput) <= gm.pm.verticalInput)
+        {
+            dashForwardFX.Play();
+        }
+
+        //backwards dash particles
+        else if (gm.pm.verticalInput < 0 && Mathf.Abs(gm.pm.horizontalInput) <= Mathf.Abs(gm.pm.verticalInput))
+        {
+            dashBackwardFX.Play();
+        }
+        //Right dash particles
+        else if (gm.pm.horizontalInput > 0)
+        {
+            dashRightFX.Play();
+        }
+        //Left dash particles
+        else if (gm.pm.horizontalInput < 0 )
+        {
+            dashLeftFX.Play();
+        }
+        else
+        {
+            dashForwardFX.Play();
+        }
+
     }
 }
