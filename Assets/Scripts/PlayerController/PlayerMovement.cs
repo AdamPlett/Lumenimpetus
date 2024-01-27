@@ -486,7 +486,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Attack()
     {
-        if (!readyToAttack || attacking || playerStunned) return;
+        if (!readyToAttack || attacking || playerStunned || gm.ph.dead) return;
 
         if (comboTimer > comboTime)
         {
