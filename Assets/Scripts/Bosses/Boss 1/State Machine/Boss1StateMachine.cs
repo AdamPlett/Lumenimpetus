@@ -256,6 +256,11 @@ public class Boss1StateMachine : StateMachine
         yield return new WaitForSeconds(1f);
 
         anim.SwitchAnimation(anim.DeathHash);
+
+        yield return new WaitForSeconds(0.5f);
+
+        weapons.DeactivateBlade();
+        GetComponent<Collider>().enabled = false;
     }
 
     #region State-Switchers

@@ -820,17 +820,17 @@ PrefabInstance:
     - target: {fileID: 674785246382871900, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.021333635
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 674785246382871900, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.06
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 674785246382871900, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20.92
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 674785246382871900, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
@@ -872,96 +872,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss1
       objectReference: {fileID: 0}
-    - target: {fileID: 1540199774515248053, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 086beab9a5626e648b872aad72f2a82c, type: 2}
-    - target: {fileID: 1540199774515248053, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: m_Parameters.colorGradient.key0.b
-      value: 0.057849795
-      objectReference: {fileID: 0}
-    - target: {fileID: 1540199774515248053, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: m_Parameters.colorGradient.key0.g
-      value: 0.057849795
-      objectReference: {fileID: 0}
-    - target: {fileID: 1540199774515248053, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: m_Parameters.colorGradient.key0.r
-      value: 0.9433962
-      objectReference: {fileID: 0}
-    - target: {fileID: 1540199774515248053, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: m_Parameters.colorGradient.key1.b
-      value: 0.058823533
-      objectReference: {fileID: 0}
-    - target: {fileID: 1540199774515248053, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: m_Parameters.colorGradient.key1.g
-      value: 0.058823533
-      objectReference: {fileID: 0}
-    - target: {fileID: 1540199774515248053, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: m_Parameters.colorGradient.key1.r
-      value: 0.9450981
-      objectReference: {fileID: 0}
-    - target: {fileID: 1540199774515248053, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: m_Parameters.colorGradient.m_Mode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
       propertyPath: playerRef
       value: 
       objectReference: {fileID: 377434100}
-    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: slashTime
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: slamDamage
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: slashSpeed
-      value: 12.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: slashDamage
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: pullCooldown
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: slamCooldown
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: slamRangeMax
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: slamRangeMin
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
-        type: 3}
-      propertyPath: grappleCooldown
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
       propertyPath: topFloorPoints.Array.data[0]

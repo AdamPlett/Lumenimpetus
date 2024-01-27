@@ -9,7 +9,7 @@ public class Boss1DeathState : Boss1BaseState
     public override void Enter()
     {
         stateMachine.activeState = eB1.dead;
-        
+
         stateMachine.TriggerDeathSequence();
     }
 
