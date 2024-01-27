@@ -9,7 +9,7 @@ public class BossHealthBar : MonoBehaviour
     [Header("Stats")]
     public float maxHealth = 200f;
     public float health = 200f;
-    public float lerpSpeed = 0.005f;
+    public float lerpSpeed = 0.0005f;
 
     [Header("References")]
     public Slider healthSlider;

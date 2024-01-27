@@ -518,21 +518,21 @@ public class PlayerMovement : MonoBehaviour
         {
             ChangeAnimationState(ATTACK1);
             multiAttack = true;
-            attackDamage = 5;
+            attackDamage = 4;
             attackCount++;
             attackTimer = 0;
         }
         else if(attackCount == 1)
         {
             ChangeAnimationState(ATTACK2);
-            attackDamage = 6;
+            attackDamage = 5;
             attackCount++;
             attackTimer = 0;
         }
         else
         {
             ChangeAnimationState(ATTACK3);
-            attackDamage = 8;
+            attackDamage = 7;
             attackCount = 0;
             attackTimer = 0;
         }

@@ -9,7 +9,7 @@ public class PlayerHealthBar : MonoBehaviour
     [Header("Stats")]
     public float maxHealth = 100f;
     public float health = 100f;
-    public float lerpSpeed = 0.005f;
+    public float lerpSpeed = 0.0005f;
 
     [Header("References")]
     public Slider healthSlider;
