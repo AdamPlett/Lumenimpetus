@@ -2,11 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.Audio;
+using TMPro;
 
 public class PauseMenuController : MonoBehaviour
 {
     [SerializeField] GameObject _MenuPanel;
     [SerializeField] GameObject _Crosshair;
+    [SerializeField] Slider soundSlider;
+    [SerializeField] AudioMixer masterMixer;
+    public TMP_Text audioValueText;
+    private void Start()
+    {
+        SetVolume(PlayerPrefs.GetFloat("SavedMasterVolume"));
+    }
     void Update()
     {
         //brings up pop up menu
@@ -23,6 +33,11 @@ public class PauseMenuController : MonoBehaviour
     {
         //load main menu scene
         //SceneManager.LoadScene("MainMenu");
+    }
+    public void RestartLevel()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
     }
     public void PopUpMenu()
     {
@@ -46,5 +61,27 @@ public class PauseMenuController : MonoBehaviour
         _Crosshair.SetActive(true);
         //unfreezes time
         Time.timeScale = 1;
+    }
+
+    public void SetVolume(float vol)
+    {
+        if (vol <1 )
+        {
+            vol = .001f;
+        }
+        RefreshSlider(vol);
+        PlayerPrefs.SetFloat("SavedMasterVolume", vol);
+        masterMixer.SetFloat("MasterVolume", Mathf.Log10(vol/100)*20f);
+        audioValueText.text = vol.ToString();
+    }
+
+    public void SetVolumeFromSlider()
+    {
+        SetVolume(soundSlider.value);
+    }
+
+    public void RefreshSlider(float vol)
+    {
+        soundSlider.value = vol;
     }
 }
