@@ -8,7 +8,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public float currentHealth;
     public float maxHealth = 100f;
-    private bool dead = false;
+    public bool dead = false;
     public float damageSSDuration = 0.4f;
     public float damageSSStrength = 0.6f;
     
@@ -26,6 +26,7 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             dead = true;
+            KillPlayer();
         }
         else
         {
@@ -37,6 +38,13 @@ public class PlayerHealth : MonoBehaviour
         {
             DamagePlayer(10);
         }
+    }
+
+    private void KillPlayer()
+    {
+        gm.pm.freeze = true;
+
+        // Activate Death UI
     }
 
     private void HealPlayer(float healAmt)

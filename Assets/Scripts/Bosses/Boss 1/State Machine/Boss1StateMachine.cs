@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static GameManager;
 
-public enum eB1 { none, moving, attacking, shooting, grappling, pulling, slamming, dead }
+public enum eB1 { none, moving, attacking, shooting, grappling, pulling, slamming, dead, dancing }
 
 public class Boss1StateMachine : StateMachine
 {
@@ -70,42 +70,49 @@ public class Boss1StateMachine : StateMachine
 
     public void CheckForPlayer()
     {
-        if (CheckSeePlayer() && CheckFacingPlayer())
+        if(gm.ph.dead)
         {
-            if (weapons.CheckMeleeRange() && weapons.canMelee)
-            {
-                SwitchToMeleeState();
-            }
-            else if (weapons.CheckCannonRange() && weapons.canShoot)
-            {
-                SwitchToShootState();
-            }
-            else if (weapons.canGrapple)
-            {
-                if (weapons.CheckGrappleRange())
-                {
-                    SwitchToGrappleState();
-                }
-            }
-            else if (weapons.CheckPullRange() && weapons.canPull)
-            {
-                if (weapons.grappleTarget.position.y > transform.position.y + 4f && !gm.pm.grounded)
-                {
-                    SwitchToSlamState();
-                }
-                else
-                {
-                    SwitchToPullState();
-                }
-            }
+            SwitchToDanceState();
         }
         else
         {
-            if (weapons.canGrapple)
+            if (CheckSeePlayer() && CheckFacingPlayer())
             {
-                if (weapons.CheckGrappleRange())
+                if (weapons.CheckMeleeRange() && weapons.canMelee)
                 {
-                    SwitchToGrappleState();
+                    SwitchToMeleeState();
+                }
+                else if (weapons.CheckCannonRange() && weapons.canShoot)
+                {
+                    SwitchToShootState();
+                }
+                else if (weapons.canGrapple)
+                {
+                    if (weapons.CheckGrappleRange())
+                    {
+                        SwitchToGrappleState();
+                    }
+                }
+                else if (weapons.CheckPullRange() && weapons.canPull)
+                {
+                    if (weapons.grappleTarget.position.y > transform.position.y + 4f && !gm.pm.grounded)
+                    {
+                        SwitchToSlamState();
+                    }
+                    else
+                    {
+                        SwitchToPullState();
+                    }
+                }
+            }
+            else
+            {
+                if (weapons.canGrapple)
+                {
+                    if (weapons.CheckGrappleRange())
+                    {
+                        SwitchToGrappleState();
+                    }
                 }
             }
         }
@@ -308,6 +315,11 @@ public class Boss1StateMachine : StateMachine
     public void SwitchToDeadState()
     {
         SwitchState(new Boss1DeathState(this));
+    }
+
+    public void SwitchToDanceState()
+    {
+        SwitchState(new Boss1DanceState(this));
     }
 
     #endregion

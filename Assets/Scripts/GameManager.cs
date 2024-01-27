@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public Collider playerCollider;
     public GameObject playerObject;
 
+
     [Header("Boss Variables")]
     public GameObject bossRef;
     public Boss1StateMachine boss1;
@@ -23,6 +24,12 @@ public class GameManager : MonoBehaviour
     [Header("Camera Variables")]
     public GameObject cameraRef;
     public int targetFPS=60;
+
+
+    [Header("UI")]
+    public UIManager ui;
+    public Canvas playerCanvas;
+
     void Awake()
     {
         if(gm == null)

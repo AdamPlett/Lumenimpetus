@@ -39,7 +39,7 @@ public class Boss1Health : MonoBehaviour
 
     public void ChangePhase()
     {
-        if(gm.boss1.activeState != eB1.dead)
+        if (gm.boss1.activeState != eB1.dead && currentPhase < phaseIncrements.Count)
         {
             currentPhaseIncrement = phaseIncrements[currentPhase];
             currentPhase++;
