@@ -18280,10 +18280,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 950040662}
     m_Modifications:
-    - target: {fileID: 377434107, guid: ccf55b084927b344d92becd5edbd68ac, type: 3}
-      propertyPath: maxHealth
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 463300963, guid: ccf55b084927b344d92becd5edbd68ac, type: 3}
       propertyPath: cm
       value: 
@@ -18385,11 +18381,6 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 1008732358}
-    - target: {fileID: 2557011061158986760, guid: ccf55b084927b344d92becd5edbd68ac,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2557011061226588522, guid: ccf55b084927b344d92becd5edbd68ac,
         type: 3}
       propertyPath: cam
