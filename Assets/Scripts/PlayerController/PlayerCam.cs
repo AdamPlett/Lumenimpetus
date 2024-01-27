@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
+using UnityEngine.UI;
 
 public class PlayerCam : MonoBehaviour
 {
@@ -14,12 +16,15 @@ public class PlayerCam : MonoBehaviour
     float xRotation;
     float yRotation;
 
-    public bool locked;
-
+    public TMP_Text sensText;
+    public Slider sensSlider;
+    string savedSens = "savedSens";
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        adjustSliderValue(PlayerPrefs.GetFloat(savedSens));
 
     }
 
@@ -53,4 +58,17 @@ public class PlayerCam : MonoBehaviour
         transform.DOLocalRotate(new Vector3(0, 0, zTilt), transitionTime);
     }
 
+
+    public void adjustSens(float newSens)
+    {
+        sensX = newSens * 100;
+        sensY = newSens * 100;
+        sensText.text = newSens.ToString();
+        PlayerPrefs.SetFloat(savedSens, newSens);
+    }
+
+    public void adjustSliderValue(float value)
+    {
+        sensSlider.value = value;
+    }
 }
