@@ -76,7 +76,7 @@ public class Boss1PullState : Boss1BaseState
     public override void Exit()
     {
         stateMachine.isGrappling = false;
-        stateMachine.weapons.grappleTimer = 0f;
+        stateMachine.weapons.pullTimer = 0f;
 
         stateMachine.weapons.DeactivateGrapple();
 

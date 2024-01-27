@@ -88,7 +88,7 @@ public class Boss1SlamState : Boss1BaseState
     public override void Exit()
     {
         stateMachine.isGrappling = false;
-        stateMachine.weapons.grappleTimer = 0f;
+        stateMachine.weapons.slamTimer = 0f;
 
         stateMachine.weapons.DeactivateGrapple();
 

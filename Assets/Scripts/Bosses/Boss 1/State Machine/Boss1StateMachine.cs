@@ -224,6 +224,26 @@ public class Boss1StateMachine : StateMachine
         }
     }
 
+    public void TriggerPhaseChange()
+    {
+        StartCoroutine(PhaseChange());
+    }
+
+    private IEnumerator PhaseChange()
+    {
+        freeze = true;
+        anim.SwitchAnimation(anim.PhaseTransition);
+
+        yield return new WaitForSeconds(1f);
+
+        if (weapons.CheckGrappleRange())
+        {
+            SwitchToGrappleState();
+        }
+
+        freeze = false;
+    }
+
     public void TriggerDeathSequence()
     {
         StartCoroutine(DeathSequence());

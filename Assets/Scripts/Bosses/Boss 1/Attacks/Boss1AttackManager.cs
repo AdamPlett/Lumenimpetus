@@ -231,7 +231,7 @@ public class Boss1AttackManager : MonoBehaviour
 
     public void SetCanPull()
     {
-        if (grappleTimer < grappleCooldown)
+        if (pullTimer < pullCooldown)
         {
             pullTimer += Time.deltaTime;
             canPull = false;
@@ -245,7 +245,7 @@ public class Boss1AttackManager : MonoBehaviour
 
     public void SetCanSlam()
     {
-        if (grappleTimer < grappleCooldown)
+        if (slamTimer < slamCooldown)
         {
             slamTimer += Time.deltaTime;
             canSlam = false;
