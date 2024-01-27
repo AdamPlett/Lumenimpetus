@@ -39,18 +39,21 @@ public class Boss1Health : MonoBehaviour
 
     public void ChangePhase()
     {
-        currentPhaseIncrement = phaseIncrements[currentPhase];
-        currentPhase++;
-
-        if(currentPhase > 1)
+        if(gm.boss1.activeState != eB1.dead)
         {
-            gm.boss1.TriggerPhaseChange();
-            
-            gm.boss1.weapons.enraged = true;
-            gm.boss1.weapons.meleeRange = 20f;
-            gm.boss1.weapons.meleeCooldown = 1f;
+            currentPhaseIncrement = phaseIncrements[currentPhase];
+            currentPhase++;
 
-            gm.boss1.weapons.currentAmmo = eMine.explosive;
+            if (currentPhase > 1)
+            {
+                gm.boss1.TriggerPhaseChange();
+
+                gm.boss1.weapons.enraged = true;
+                gm.boss1.weapons.meleeRange = 20f;
+                gm.boss1.weapons.meleeCooldown = 1f;
+
+                gm.boss1.weapons.currentAmmo = eMine.explosive;
+            }
         }
     }
 }

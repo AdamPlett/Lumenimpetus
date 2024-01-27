@@ -812,6 +812,11 @@ PrefabInstance:
       propertyPath: playerRef
       value: 
       objectReference: {fileID: 377434100}
+    - target: {fileID: 674785246382871897, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 674785246382871900, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
       propertyPath: m_RootOrder
@@ -879,6 +884,11 @@ PrefabInstance:
       objectReference: {fileID: 377434100}
     - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
+      propertyPath: slamSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
       propertyPath: slashTime
       value: 2
       objectReference: {fileID: 0}
@@ -891,6 +901,11 @@ PrefabInstance:
         type: 3}
       propertyPath: slashDamage
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
+      propertyPath: slamRangeMax
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
@@ -5506,7 +5521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 200
   health: 200
-  lerpSpeed: 0.004
+  lerpSpeed: 0.015
   healthSlider: {fileID: 882998802}
   DmgOverTimeSlider: {fileID: 840443481}
 --- !u!1 &627164512
@@ -12685,7 +12700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   health: 100
-  lerpSpeed: 0.004
+  lerpSpeed: 0.01
   healthSlider: {fileID: 627164514}
   DmgOverTimeSlider: {fileID: 1756552370}
 --- !u!4 &1163629593 stripped
