@@ -125,7 +125,7 @@ MonoBehaviour:
   maxHealth: 200
   currentPhase: 1
   currentPhaseIncrement: 0
-  phaseIncrements: 320000007d000000
+  phaseIncrements: 32000000
 --- !u!114 &4992467401588963373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,11 +140,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blade: {fileID: 857841262438248244}
   meleeRange: 5
-  meleeDamage: 10
+  meleeDamage: 5
   meleeCooldown: 0.25
   meleeTimer: 0
   canMelee: 0
   comboCounter: 0
+  pauseSpeed: 0.1
+  pauseTime: 0.1
   enraged: 0
   slashSpeed: 12.5
   slashTime: 2
@@ -155,7 +157,7 @@ MonoBehaviour:
   - {fileID: 8141355553609566123, guid: 549ce07241ec08e44b08fd1dfacb2b4c, type: 3}
   - {fileID: 7005413972704926280, guid: 8d39d8128b54c8b4c837c4097343c6ee, type: 3}
   - {fileID: 8060194353568834492, guid: 8f9f669117d96b54692db4b052247c0f, type: 3}
-  cannonRangeMin: 10
+  cannonRangeMin: 7.5
   cannonRangeMax: 200
   cannonCooldown: 3
   cannonTimer: 0
@@ -183,7 +185,7 @@ MonoBehaviour:
   grappleRangeMin: 20
   grappleRangeMax: 500
   grappleSpeed: 1
-  grappleCooldown: 10
+  grappleCooldown: 20
   grappleTimer: 0
   canGrapple: 0
   topFloorPoints:
@@ -214,9 +216,9 @@ MonoBehaviour:
   pullTimer: 0
   canPull: 0
   slamRangeMin: 5
-  slamRangeMax: 50
-  slamSpeed: 5
-  slamDamage: 10
+  slamRangeMax: 100
+  slamSpeed: 50
+  slamDamage: 7.5
   slamCooldown: 5
   slamTimer: 0
   canSlam: 0
@@ -2431,7 +2433,42 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 2100000, guid: 086beab9a5626e648b872aad72f2a82c, type: 2}
+    - target: {fileID: 3257343527561512542, guid: 7a9c9839767a5924dac32b52a9f4f6e6,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0.057849795
+      objectReference: {fileID: 0}
+    - target: {fileID: 3257343527561512542, guid: 7a9c9839767a5924dac32b52a9f4f6e6,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.057849795
+      objectReference: {fileID: 0}
+    - target: {fileID: 3257343527561512542, guid: 7a9c9839767a5924dac32b52a9f4f6e6,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 0.9433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 3257343527561512542, guid: 7a9c9839767a5924dac32b52a9f4f6e6,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 0.058823533
+      objectReference: {fileID: 0}
+    - target: {fileID: 3257343527561512542, guid: 7a9c9839767a5924dac32b52a9f4f6e6,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 0.058823533
+      objectReference: {fileID: 0}
+    - target: {fileID: 3257343527561512542, guid: 7a9c9839767a5924dac32b52a9f4f6e6,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.r
+      value: 0.9450981
+      objectReference: {fileID: 0}
+    - target: {fileID: 3257343527561512542, guid: 7a9c9839767a5924dac32b52a9f4f6e6,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3257343527561512542, guid: 7a9c9839767a5924dac32b52a9f4f6e6,
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
