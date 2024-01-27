@@ -152,6 +152,10 @@ public class PlayerMovement : MonoBehaviour
         {
             attackTimer += Time.deltaTime;
         }
+        if (comboTimer > comboTime)
+        {
+            ResetCombo();
+        }
 
     }
 
@@ -488,11 +492,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!readyToAttack || attacking || playerStunned || gm.ph.dead) return;
 
-        if (comboTimer > comboTime)
-        {
-            ResetCombo();
- 
-        }
         readyToAttack = false;
         attacking = true;
 
@@ -558,6 +557,7 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("HIT BOSS");
                 gm.bh.DamageBoss(attackDamage + attackDamage * comboMultiplier);
                 Combo();
+                if(comboCount > 2) gm.ui.cc.UpdateText(comboCount);
                 StartCoroutine(BossHitstop());
                 
             }
@@ -620,7 +620,7 @@ public class PlayerMovement : MonoBehaviour
     public IEnumerator PlayerStun()
     {
         attackCount = 0;
-        combo = false;
+        ResetCombo();
         ChangeAnimationState(STUNNED);
         yield return new WaitForSeconds(hitStunTime);
         playerStunned = false;
@@ -635,6 +635,7 @@ public class PlayerMovement : MonoBehaviour
         {
             comboMultiplier += 0.05f;
         }
+        Debug.Log(comboCount);
     }
     public void ResetCombo()
     {
