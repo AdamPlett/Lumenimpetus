@@ -19,6 +19,8 @@ public class PlayerCam : MonoBehaviour
     public TMP_Text sensText;
     public Slider sensSlider;
     string savedSens = "savedSens";
+
+    public bool locked;
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
