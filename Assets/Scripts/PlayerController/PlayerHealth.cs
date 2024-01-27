@@ -46,8 +46,8 @@ public class PlayerHealth : MonoBehaviour
         gm.pm.cam.locked = true;
         gm.boss1.LookAtPlayer();
         gm.cameraRef.transform.LookAt(gm.boss1.viewPoint);
-        gm.playerCanvas.enabled = false;
         gm.ui.sword.SetActive(false);
+        gm.ui.pmc.GameOverScreen();
         // Activate Death UI
     }
 

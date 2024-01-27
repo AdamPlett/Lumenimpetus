@@ -8,23 +8,32 @@ using TMPro;
 
 public class PauseMenuController : MonoBehaviour
 {
-    [SerializeField] GameObject _MenuPanel;
-    [SerializeField] GameObject _Crosshair;
-    [SerializeField] Slider soundSlider;
+    [SerializeField] GameObject MenuPanel;
+    [SerializeField] GameObject gameOverPanel;
+    [SerializeField] GameObject hud;
+    [SerializeField] GameObject Crosshair;
+    [SerializeField] Slider SFXSlider;
     [SerializeField] AudioMixer masterMixer;
-    public TMP_Text audioValueText;
+    public TMP_Text SFXValueText;
+    [SerializeField] Slider musicSlider;
+    public TMP_Text musicValueText;
+
+    private bool dead = false;
     private void Start()
     {
-        SetVolume(PlayerPrefs.GetFloat("SavedMasterVolume"));
+        SetSFXVolume(PlayerPrefs.GetFloat("SavedSFXVolume"));
+        SetMusicVolume(PlayerPrefs.GetFloat("SavedMusicVolume"));
+        Time.timeScale = 1;
+        dead = false;
     }
     void Update()
     {
         //brings up pop up menu
-        if ((Input.GetKeyDown(KeyCode.Escape)) && (_MenuPanel.activeSelf == false))
+        if ((Input.GetKeyDown(KeyCode.Escape)) && (MenuPanel.activeSelf == false) && (dead==false))
         {
             PopUpMenu();
         }
-        else if ((Input.GetKeyDown(KeyCode.Escape)) && (_MenuPanel.activeSelf == true))
+        else if ((Input.GetKeyDown(KeyCode.Escape)) && (MenuPanel.activeSelf == true))
         {
             Resume();
         }
@@ -42,46 +51,82 @@ public class PauseMenuController : MonoBehaviour
     public void PopUpMenu()
     {
         //makes pop up menu visible
-        _MenuPanel.SetActive(true);
+        MenuPanel.SetActive(true);
         //unlock and unhide cursor
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        _Crosshair.SetActive(false);
+        Crosshair.SetActive(false);
         //freezes time
         Time.timeScale = 0;
     }
     public void Resume()
     {
         //makes pop up menu disappear
-        _MenuPanel.SetActive(false);
+        MenuPanel.SetActive(false);
         //lock and hide cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Debug.Log("cursor should be locked");
-        _Crosshair.SetActive(true);
+        Crosshair.SetActive(true);
         //unfreezes time
         Time.timeScale = 1;
     }
 
-    public void SetVolume(float vol)
+    //on player death show gameover screen
+    public void GameOverScreen()
+    {
+        gameOverPanel.SetActive(true);
+        hud.SetActive(false);
+        dead = true;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    //sets the current volume
+    public void SetSFXVolume(float vol)
     {
         if (vol <1 )
         {
             vol = .001f;
         }
-        RefreshSlider(vol);
-        PlayerPrefs.SetFloat("SavedMasterVolume", vol);
-        masterMixer.SetFloat("MasterVolume", Mathf.Log10(vol/100)*20f);
-        audioValueText.text = vol.ToString();
+        RefreshSFXSlider(vol);
+        PlayerPrefs.SetFloat("SavedSFXVolume", vol);
+        masterMixer.SetFloat("SFXVolume", Mathf.Log10(vol/100)*20f);
+        SFXValueText.text = vol.ToString();
+    }
+    //takes the value from the slider and set volume corresepondingly
+    public void SetSFXVolumeFromSlider()
+    {
+        SetSFXVolume(SFXSlider.value);
+    }
+    //assign slider value 
+    public void RefreshSFXSlider(float vol)
+    {
+        SFXSlider.value = vol;
     }
 
-    public void SetVolumeFromSlider()
+    //sets the current volume
+    public void SetMusicVolume(float vol)
     {
-        SetVolume(soundSlider.value);
+        if (vol < 1)
+        {
+            vol = .001f;
+        }
+        RefreshMusicSlider(vol);
+        PlayerPrefs.SetFloat("SavedMusicVolume", vol);
+        masterMixer.SetFloat("MusicVolume", Mathf.Log10(vol / 100) * 20f);
+        musicValueText.text = vol.ToString();
     }
 
-    public void RefreshSlider(float vol)
+    //takes the value from the slider and set volume corresepondingly
+    public void SetMusicVolumeFromSlider()
     {
-        soundSlider.value = vol;
+        SetMusicVolume(musicSlider.value);
+    }
+
+    //assign slider value 
+    public void RefreshMusicSlider(float vol)
+    {
+        musicSlider.value = vol;
     }
 }

@@ -9,6 +9,7 @@ using static GameManager;
 public class UIManager : MonoBehaviour
 {
 
+    public PauseMenuController pmc;
     public BossHealthBar bhb;
     public PlayerHealthBar phb;
     public GameObject crosshair;
