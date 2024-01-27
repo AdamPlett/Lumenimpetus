@@ -553,7 +553,7 @@ public class PlayerMovement : MonoBehaviour
 
             HitTarget(hit.point);
 
-            if (hit.transform.gameObject.Equals(gm.bossRef))
+            if (hit.transform.gameObject.Equals(gm.bossRef) && gm.boss1.activeState != eB1.dead)
             {
                 Debug.Log("HIT BOSS");
                 gm.bh.DamageBoss(attackDamage + attackDamage * comboMultiplier);
