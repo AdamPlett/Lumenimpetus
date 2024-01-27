@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7249220377899860284}
   - component: {fileID: 8991155779918730214}
   m_Layer: 0
-  m_Name: 'Melee3_Slash '
+  m_Name: Melee3_Slash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1432,7 +1432,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 62a9c6946bdd7ec46bb353c0e86e5036, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ee8c10ee7adfec54fac8fc6dc8b41098, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
