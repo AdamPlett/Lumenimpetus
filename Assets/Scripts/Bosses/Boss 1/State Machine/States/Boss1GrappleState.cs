@@ -49,8 +49,9 @@ public class Boss1GrappleState : Boss1BaseState
 
             Debug.DrawRay(stateMachine.transform.position, stateMachine.transform.up * -1f, Color.white);
 
-            if (Vector3.Distance(stateMachine.transform.position, targetPos) <= 10f)
+            if (Vector3.Distance(stateMachine.transform.position, targetPos) <= 12.5f)
             {
+                gm.boss1.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 stateMachine.SwitchToMoveState();
             }
         }
