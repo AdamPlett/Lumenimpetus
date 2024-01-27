@@ -43,7 +43,11 @@ public class PlayerHealth : MonoBehaviour
     private void KillPlayer()
     {
         gm.pm.freeze = true;
-
+        gm.pm.cam.locked = true;
+        gm.boss1.LookAtPlayer();
+        gm.cameraRef.transform.LookAt(gm.boss1.viewPoint);
+        gm.playerCanvas.enabled = false;
+        gm.ui.sword.SetActive(false);
         // Activate Death UI
     }
 
@@ -66,7 +70,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= damage;
 
         ScreenShake.Shake(damageSSDuration, damageSSStrength);
-        gm.pm.BossHitsPlayerStun();
+        if(gm.pm.state != PlayerMovement.MovementState.dashing) gm.pm.BossHitsPlayerStun();
         gm.pm.ResetCombo();
         gm.pm.attackCount = 0;
         if (currentHealth < 0)

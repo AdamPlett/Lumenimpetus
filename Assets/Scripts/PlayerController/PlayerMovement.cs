@@ -558,7 +558,7 @@ public class PlayerMovement : MonoBehaviour
                 gm.bh.DamageBoss(attackDamage + attackDamage * comboMultiplier);
                 Combo();
                 if(comboCount > 2) gm.ui.cc.UpdateText(comboCount);
-                StartCoroutine(BossHitstop());
+                if (gm.boss1.activeState != eB1.attacking) StartCoroutine(BossHitstop());
                 
             }
             StartCoroutine(SwordHitstop());

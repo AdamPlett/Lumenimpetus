@@ -19521,6 +19521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 100
+  dead: 0
   damageSSDuration: 0.4
   damageSSStrength: 0.6
 --- !u!82 &1778932395

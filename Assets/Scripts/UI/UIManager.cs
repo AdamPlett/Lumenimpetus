@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     public GameObject canDash;
     public ComboCounter cc;
     public GameObject comboText;
+    public GameObject sword;
 
     void Update()
     {
