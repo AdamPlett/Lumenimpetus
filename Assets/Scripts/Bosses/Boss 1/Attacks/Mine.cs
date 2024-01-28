@@ -103,7 +103,15 @@ public class Mine : MonoBehaviour
                 landed = true;
                 if (collision.gameObject.tag.Equals("Player"))
                 {
-                    gm.ph.DamagePlayer(damage);
+                    if (!gm.ph.invincible)
+                    {
+
+                        Vector3 direction = (gm.pm.transform.position - transform.position).normalized;
+                        direction.y = 0;
+                        gm.pm.PlayerKnockback(direction, 100f);
+                        ScreenShake.Shake(0.5f, 1f);
+                        gm.ph.DamagePlayer(damage);
+                    }
                 }
             }
 
@@ -127,7 +135,14 @@ public class Mine : MonoBehaviour
                 if (collision.gameObject.tag.Equals("Player"))
                 {
                     Detonate();
-                    gm.ph.DamagePlayer(damage);
+                    if (!gm.ph.invincible)
+                    {
+                        Vector3 direction = (gm.pm.transform.position - transform.position).normalized;
+                        direction.y = 0;
+                        gm.pm.PlayerKnockback(direction, 200f);
+                        ScreenShake.Shake(1f, 2f);
+                        gm.ph.DamagePlayer(damage);
+                    }
                 }
                 else
                 {
