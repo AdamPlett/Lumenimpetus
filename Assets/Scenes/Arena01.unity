@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 46433879}
   m_Layer: 9
   m_Name: Cube (5)
-  m_TagString: Untagged
+  m_TagString: Parkour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1098,6 +1098,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
         type: 3}
+      propertyPath: grappleReleaseRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992467401588963373, guid: b16ba11d8d0a48749819b0f9899b118e,
+        type: 3}
       propertyPath: topFloorPoints.Array.data[0]
       value: 
       objectReference: {fileID: 1211413968}
@@ -1670,7 +1675,7 @@ GameObject:
   - component: {fileID: 111679542}
   m_Layer: 9
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: Parkour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -6079,7 +6084,7 @@ GameObject:
   - component: {fileID: 441066344}
   m_Layer: 9
   m_Name: Cube (7)
-  m_TagString: Untagged
+  m_TagString: Parkour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -6490,7 +6495,7 @@ GameObject:
   - component: {fileID: 471398147}
   m_Layer: 9
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Parkour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -10824,7 +10829,7 @@ GameObject:
   - component: {fileID: 878457612}
   m_Layer: 9
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: StandStill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14271,7 +14276,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1105102983}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 2.2400002, z: 0}
   m_LocalScale: {x: 2.25, y: 1, z: 0.55}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14583,7 +14588,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1190028303}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 2.2400002, z: 0}
   m_LocalScale: {x: 2.25, y: 1, z: 0.55}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15575,7 +15580,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1281561336}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 2.24, z: 0}
   m_LocalScale: {x: 2.25, y: 1, z: 0.55}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17053,7 +17058,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1465655222}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 2.2400002, z: 0}
   m_LocalScale: {x: 2.25, y: 1, z: 0.55}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17140,7 +17145,7 @@ GameObject:
   - component: {fileID: 1466508004}
   m_Layer: 9
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Parkour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -18887,7 +18892,7 @@ GameObject:
   - component: {fileID: 1579788897}
   m_Layer: 9
   m_Name: Cube (6)
-  m_TagString: Untagged
+  m_TagString: Parkour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -20541,7 +20546,7 @@ GameObject:
   - component: {fileID: 1829771855}
   m_Layer: 9
   m_Name: Cube (4)
-  m_TagString: Untagged
+  m_TagString: Parkour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -21543,7 +21548,7 @@ GameObject:
   - component: {fileID: 1911368064}
   m_Layer: 9
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Parkour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
