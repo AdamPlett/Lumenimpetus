@@ -17,6 +17,5 @@ public class ScreenShake : MonoBehaviour
 
     }
 
-
     public static void Shake(float duration, float strength) => Instance.OnShake(duration, strength);
 }

@@ -88,8 +88,9 @@ MonoBehaviour:
   activeState: 0
   stateTimer: 0
   maxStateTime: 5
+  moveDirection: 0
   moveSpeed: 3
-  rotationSpeed: 100
+  rotationSpeed: 225
   freeze: 0
   health: {fileID: 674785246382871898}
   weapons: {fileID: 4992467401588963373}
@@ -124,6 +125,7 @@ MonoBehaviour:
   currentHealth: 200
   maxHealth: 200
   currentPhase: 1
+  maxPhaseCount: 2
   currentPhaseIncrement: 0
   phaseIncrements: 32000000
 --- !u!114 &4992467401588963373
@@ -187,6 +189,7 @@ MonoBehaviour:
   grappleSpeed: 1
   grappleCooldown: 20
   grappleTimer: 0
+  grappleReleaseRange: 10
   canGrapple: 0
   topFloorPoints:
   - {fileID: 0}

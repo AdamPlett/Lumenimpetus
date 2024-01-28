@@ -24,6 +24,8 @@ public class Boss1ShootState : Boss1BaseState
     {
         stateTimer += Time.deltaTime;
 
+        stateMachine.LookAtPlayer();
+
         if(stateTimer > 3f)
         {
             stateMachine.SwitchToMoveState();
