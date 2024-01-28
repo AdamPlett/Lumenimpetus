@@ -197,10 +197,17 @@ public class Boss1StateMachine : StateMachine
 
         Debug.DrawRay(viewPoint.position, viewDirection, Color.red);
 
-        if (Physics.Raycast(viewPoint.position, viewDirection, rayDistance, environment))
+        if (Physics.Raycast(viewPoint.position, viewDirection, out RaycastHit hitInfo, rayDistance, environment))
         {
             //Debug.Log("Can See Floor");
-            return true;
+            if(hitInfo.collider.transform.tag.Equals("Parkour"))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
         else
         {

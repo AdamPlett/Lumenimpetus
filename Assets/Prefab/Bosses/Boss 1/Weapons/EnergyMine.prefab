@@ -361,7 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea7c0547fde0d245802ed2a603d4124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 3
   mineType: 0
 --- !u!1001 &1622660965754856029
 PrefabInstance:

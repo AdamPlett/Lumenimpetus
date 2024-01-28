@@ -36,8 +36,6 @@ public class Boss1MoveState : Boss1BaseState
                 stateMachine.LookAtPlayer();
                 stateMachine.CheckForPlayer();
 
-                MoveBoss();
-
                 if (!stateMachine.CheckSeePlayer() && stateMachine.CheckAbovePlayer() && moveDir != eDir.backward)
                 {
                     if (Physics.Raycast(stateMachine.transform.position, stateMachine.transform.up * -1f, out RaycastHit hitInfo))
@@ -51,6 +49,15 @@ public class Boss1MoveState : Boss1BaseState
                             else
                             {
                                 stateMachine.freeze = false;
+
+                                if (stateMachine.CheckSeeFloor(eDir.forward))
+                                {
+                                    stateMachine.transform.position += stateMachine.transform.forward * Time.deltaTime * stateMachine.moveSpeed;
+                                }
+                                else
+                                {
+                                    stateMachine.transform.position -= stateMachine.transform.forward * Time.deltaTime * stateMachine.moveSpeed;
+                                }
                             }
                         }
                         else
@@ -66,6 +73,8 @@ public class Boss1MoveState : Boss1BaseState
                         }
                     }
                 }
+
+                MoveBoss();
             }
             else
             {
@@ -101,7 +110,7 @@ public class Boss1MoveState : Boss1BaseState
         if(moveDir != prevDir)
         {
             SetAnimation();
-            stateMachine.moveDirection = moveDir;
+                        stateMachine.moveDirection = moveDir;
         }
         else
         {
@@ -193,9 +202,13 @@ public class Boss1MoveState : Boss1BaseState
                     moveDir = eDir.right;
                 }
             }
-            else
+            else if(moveDir == eDir.forward)
             {
-                SetDirection();
+                moveDir = eDir.backward;
+            }
+            else if (moveDir == eDir.backward)
+            {
+                moveDir = eDir.forward;
             }
         }
     }
