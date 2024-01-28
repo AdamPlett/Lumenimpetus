@@ -369,7 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea7c0547fde0d245802ed2a603d4124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 5
   mineType: 1
 --- !u!198 &5383748218997749070 stripped
 ParticleSystem:
