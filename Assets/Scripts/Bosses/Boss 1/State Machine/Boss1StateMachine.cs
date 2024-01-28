@@ -122,6 +122,10 @@ public class Boss1StateMachine : StateMachine
                         SwitchToGrappleState();
                     }
                 }
+                else if (weapons.CheckCannonRange() && weapons.canShoot)
+                {
+                    SwitchToShootState();
+                }
             }
         }
     }
@@ -173,7 +177,7 @@ public class Boss1StateMachine : StateMachine
         switch(direction)
         {
             case eDir.forward:
-                viewDirection = (viewPoint.forward * 2.5f) - (viewPoint.up);
+                viewDirection = (viewPoint.forward * 2f) - (viewPoint.up);
                 rayDistance = 4f;
                 break;
 
