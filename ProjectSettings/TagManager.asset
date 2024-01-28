@@ -8,6 +8,7 @@ TagManager:
   - Projectile
   - Destructible
   - StandStill
+  - Parkour
   layers:
   - Default
   - TransparentFX
