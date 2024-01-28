@@ -19522,8 +19522,9 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 100
   dead: 0
-  damageSSDuration: 0.4
-  damageSSStrength: 0.6
+  iFrames: 0.25
+  iFrameTimer: 0
+  invincible: 0
 --- !u!82 &1778932395
 AudioSource:
   m_ObjectHideFlags: 0

@@ -50,6 +50,7 @@ public class Boss1SlamState : Boss1BaseState
 
                     if (stateMachine.playerRef.GetComponent<PlayerMovement>().grounded)
                     {
+                        ScreenShake.Shake(1f, 2f);
                         gm.ph.DamagePlayer(stateMachine.weapons.slamDamage);
 
                         Instantiate(stateMachine.weapons.slamFX, gm.playerRef.transform.position, Quaternion.identity);

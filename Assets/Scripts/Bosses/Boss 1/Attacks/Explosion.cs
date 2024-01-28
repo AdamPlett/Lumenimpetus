@@ -24,7 +24,22 @@ public class Explosion : MonoBehaviour
         }
         if (other == gm.playerCollider)
         {
-            gm.ph.DamagePlayer(damage);
+            if (!gm.ph.invincible)
+            {
+                Vector3 direction = (gm.pm.transform.position - transform.position).normalized;
+                direction.y = 0;
+                if (mineType == eMine.explosive) { 
+                    gm.pm.PlayerKnockback(direction, 200f);
+                    ScreenShake.Shake(1f, 2f);
+                    gm.ph.DamagePlayer(damage);
+                }
+                else if (mineType == eMine.energy)
+                {
+                    gm.pm.PlayerKnockback(direction, 100f);
+                    ScreenShake.Shake(0.5f, 1f);
+                    gm.ph.DamagePlayer(damage);
+                }
+            }
         }
 
     }

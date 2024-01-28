@@ -314,6 +314,11 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
+    public void PlayerKnockback(Vector3 knockbackDirection, float knockbackForce)
+    {
+        rb.AddForce(knockbackDirection.normalized *  knockbackForce, ForceMode.Impulse);
+    }
+
     #endregion
 
 
@@ -577,55 +582,6 @@ public class PlayerMovement : MonoBehaviour
         Destroy(GO, 20);
     }
 
-    public IEnumerator SwordHitstop()
-    {
-        float prevSpeed;
-        
-        hitStop = true;
-
-        // Pause
-        prevSpeed = animator.speed;
-        animator.speed = 0;
-
-        
-        yield return new WaitForSeconds(hitstopTime);
-
-        // Continue
-        animator.speed = prevSpeed;
-        hitStop = false;
-        
-    }
-    
-    public IEnumerator BossHitstop() 
-    { 
-        float prevSpeed;
-        Animator anim = gm.boss1.GetComponent<Animator>();
-        prevSpeed = anim.speed;
-        anim.speed = 0;
-
-        yield return new WaitForSeconds(hitstopTime);
-
-        anim.speed = prevSpeed;
-    }
-    
-
-    public void BossHitsPlayerStun()
-    {
-        playerStunned = true;
-        freeze = true;
-        StartCoroutine(PlayerStun());
-
-    }
-    
-    public IEnumerator PlayerStun()
-    {
-        attackCount = 0;
-        ResetCombo();
-        ChangeAnimationState(STUNNED);
-        yield return new WaitForSeconds(hitStunTime);
-        playerStunned = false;
-        freeze = false;
-    }
     public void Combo()
     {
         combo = true;
@@ -692,6 +648,53 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.CrossFadeInFixedTime(currentAnimationState, 0.2f);
         }
+    }
+    public IEnumerator SwordHitstop()
+    {
+        float prevSpeed;
+
+        hitStop = true;
+
+        // Pause
+        prevSpeed = animator.speed;
+        animator.speed = 0;
+
+
+        yield return new WaitForSeconds(hitstopTime);
+
+        // Continue
+        animator.speed = prevSpeed;
+        hitStop = false;
+
+    }
+
+    public IEnumerator BossHitstop()
+    {
+        float prevSpeed;
+        Animator anim = gm.boss1.GetComponent<Animator>();
+        prevSpeed = anim.speed;
+        anim.speed = 0;
+
+        yield return new WaitForSeconds(hitstopTime);
+
+        anim.speed = prevSpeed;
+    }
+
+
+    public void BossHitsPlayerStun()
+    {
+        playerStunned = true;
+        StartCoroutine(PlayerStun());
+
+    }
+
+    public IEnumerator PlayerStun()
+    {
+        attackCount = 0;
+        ResetCombo();
+        ChangeAnimationState(STUNNED);
+        yield return new WaitForSeconds(hitStunTime);
+        playerStunned = false;
     }
     #endregion
 }

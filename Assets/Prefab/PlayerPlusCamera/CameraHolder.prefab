@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 7571306190406188700}
   - component: {fileID: 7571306190406188691}
   - component: {fileID: 232588434}
+  - component: {fileID: 577073744}
   m_Layer: 0
   m_Name: PlayerCam
   m_TagString: MainCamera
@@ -168,6 +169,8 @@ MonoBehaviour:
   sensY: 400
   orientation: {fileID: 0}
   camHolder: {fileID: 7571306191283592230}
+  sensText: {fileID: 0}
+  sensSlider: {fileID: 0}
   locked: 0
 --- !u!114 &232588434
 MonoBehaviour:
@@ -229,6 +232,18 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &577073744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7571306190406188695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d14603fdefc6d1c45819a1bf31e4c189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7571306191283592228
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,7 +254,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7571306191283592230}
   - component: {fileID: 7571306191283592229}
-  - component: {fileID: 1563087497}
   m_Layer: 0
   m_Name: CameraHolder
   m_TagString: Untagged
@@ -276,18 +290,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraPosition: {fileID: 0}
---- !u!114 &1563087497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7571306191283592228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d14603fdefc6d1c45819a1bf31e4c189, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7571306191427547279
 PrefabInstance:
   m_ObjectHideFlags: 0

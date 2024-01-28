@@ -27,6 +27,7 @@ public class EnergySlash : MonoBehaviour
     {
         if(collision.gameObject == gm.playerRef)
         {
+            ScreenShake.Shake(0.4f, 0.5f);
             gm.ph.DamagePlayer(gm.boss1.weapons.slashDamage);
         }
     }

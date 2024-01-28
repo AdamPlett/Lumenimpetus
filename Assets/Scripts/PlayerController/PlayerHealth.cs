@@ -9,8 +9,9 @@ public class PlayerHealth : MonoBehaviour
     public float currentHealth;
     public float maxHealth = 100f;
     public bool dead = false;
-    public float damageSSDuration = 0.4f;
-    public float damageSSStrength = 0.6f;
+    public float iFrames = 3f;
+    public float iFrameTimer = 0f;
+    public bool invincible = false;
     
     // Start is called before the first frame update
     void Start()
@@ -30,12 +31,20 @@ public class PlayerHealth : MonoBehaviour
         {
             dead = false;
         }
+        if (invincible)
+        {
+            iFrameTimer -= Time.deltaTime;
+            if (iFrameTimer < 0)
+            {
+                invincible = false;
+            }
+        }
 
         //test key
-        if (Input.GetKeyDown(KeyCode.K))
+     /*   if (Input.GetKeyDown(KeyCode.K))
         {
             DamagePlayer(10);
-        }
+        }*/
     }
 
     private void KillPlayer()
@@ -65,19 +74,20 @@ public class PlayerHealth : MonoBehaviour
 
     public void DamagePlayer(float damage)
     {
-        currentHealth -= damage;
-
-        ScreenShake.Shake(damageSSDuration, damageSSStrength);
-        if(gm.pm.state != PlayerMovement.MovementState.dashing) gm.pm.BossHitsPlayerStun();
-        gm.pm.ResetCombo();
-        gm.pm.attackCount = 0;
-        if (currentHealth < 0)
+        if (!invincible)
         {
-            currentHealth = 0;
-            dead = true;
+            currentHealth -= damage;
+            if (gm.pm.state != PlayerMovement.MovementState.dashing) gm.pm.BossHitsPlayerStun();
+            gm.pm.ResetCombo();
+            gm.pm.attackCount = 0;
+            if (currentHealth < 0)
+            {
+                currentHealth = 0;
+                dead = true;
+            }
+            invincible = true;
+            iFrameTimer = iFrames;
         }
-        
-        
     }
 
     public float GetHealth()
