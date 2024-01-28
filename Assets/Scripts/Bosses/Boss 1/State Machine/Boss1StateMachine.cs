@@ -177,7 +177,7 @@ public class Boss1StateMachine : StateMachine
         switch(direction)
         {
             case eDir.forward:
-                viewDirection = (viewPoint.forward * 2f) - (viewPoint.up);
+                viewDirection = (viewPoint.forward * 2.5f) - (viewPoint.up);
                 rayDistance = 4f;
                 break;
 
@@ -204,8 +204,9 @@ public class Boss1StateMachine : StateMachine
         if (Physics.Raycast(viewPoint.position, viewDirection, out RaycastHit hitInfo, rayDistance, environment))
         {
             //Debug.Log("Can See Floor");
-            if(hitInfo.collider.transform.tag.Equals("Parkour"))
+            if(hitInfo.collider.gameObject.tag.Equals("Parkour"))
             {
+                Debug.Log("Parkour Object Hit!!!!!!");
                 return false;
             }
             else

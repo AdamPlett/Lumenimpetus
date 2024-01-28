@@ -48,6 +48,11 @@ public class PauseMenuController : MonoBehaviour
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
     }
+    public void ExitGame()
+    {
+        Application.Quit();
+        Debug.Log("Quiting Game");
+    }
     public void PopUpMenu()
     {
         //makes pop up menu visible

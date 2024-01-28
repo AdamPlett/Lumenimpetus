@@ -64,7 +64,7 @@ public class Boss1MoveState : Boss1BaseState
                         {
                             if (stateMachine.CheckSeeFloor(eDir.forward))
                             {
-                                stateMachine.transform.position += stateMachine.transform.forward * Time.deltaTime * stateMachine.moveSpeed;
+                                stateMachine.transform.position += stateMachine.transform.forward * Time.deltaTime * stateMachine.moveSpeed * 2;
                             }
                             else
                             {
@@ -178,7 +178,7 @@ public class Boss1MoveState : Boss1BaseState
         }
         else
         {
-            stateMachine.transform.position -= moveIncrement;
+            stateMachine.transform.position -= moveIncrement*2.5f;
 
             if(moveDir == eDir.right)
             {

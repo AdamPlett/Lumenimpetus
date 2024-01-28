@@ -58,6 +58,7 @@ public class Boss1Health : MonoBehaviour
                 gm.boss1.weapons.enraged = true;
                 gm.boss1.weapons.meleeRange = 20f;
                 gm.boss1.weapons.meleeCooldown = 1f;
+                gm.boss1.weapons.cannonCooldown = 2f;
 
                 gm.boss1.weapons.currentAmmo = eMine.explosive;
             }
