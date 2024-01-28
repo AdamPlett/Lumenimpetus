@@ -11,6 +11,7 @@ public class Boss1Health : MonoBehaviour
 
     [Header("Phases")]
     [SerializeField] int currentPhase = 1;
+    [SerializeField] int maxPhaseCount;
     [SerializeField] int currentPhaseIncrement;
     [Space(5)]
     [SerializeField] List<int> phaseIncrements;
@@ -39,10 +40,16 @@ public class Boss1Health : MonoBehaviour
 
     public void ChangePhase()
     {
-        if (gm.boss1.activeState != eB1.dead && currentPhase < phaseIncrements.Count)
+        if(currentPhase < maxPhaseCount)
         {
-            currentPhaseIncrement = phaseIncrements[currentPhase];
             currentPhase++;
+
+            if (currentPhase < phaseIncrements.Count)
+            {
+                currentPhaseIncrement = phaseIncrements[currentPhase];
+            }
+
+            Debug.Log("Trigger Phase Change!");
 
             if (currentPhase > 1)
             {

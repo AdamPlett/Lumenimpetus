@@ -11,8 +11,9 @@ public class Boss1StateMachine : StateMachine
     [Space(6)]
     public float stateTimer;
     public float maxStateTime;
-    
+
     [Header("Movement Variables")]
+    public eDir moveDirection;
     public float moveSpeed;
     public float rotationSpeed;
     public bool freeze;
@@ -93,16 +94,23 @@ public class Boss1StateMachine : StateMachine
                         SwitchToGrappleState();
                     }
                 }
-                else if (weapons.CheckPullRange() && weapons.canPull)
+                else if (weapons.CheckPullRange())
                 {
-                    if (weapons.grappleTarget.position.y > transform.position.y + 4f && !gm.pm.grounded)
+                    if (weapons.canSlam && weapons.grappleTarget.position.y > transform.position.y + 4f && !gm.pm.grounded)
                     {
                         SwitchToSlamState();
                     }
-                    else
+                    else if(weapons.canPull && !CheckAbovePlayer())
                     {
                         SwitchToPullState();
                     }
+                }
+            }
+            else if(CheckSeePlayer())
+            {
+                if (weapons.CheckCannonRange() && weapons.canShoot)
+                {
+                    SwitchToShootState();
                 }
             }
             else

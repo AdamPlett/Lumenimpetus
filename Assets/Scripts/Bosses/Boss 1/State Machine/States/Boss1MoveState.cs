@@ -44,7 +44,14 @@ public class Boss1MoveState : Boss1BaseState
                     {
                         if (hitInfo.transform.gameObject.tag.Equals("StandStill"))
                         {
-                            stateMachine.freeze = true;
+                            if(stateMachine.CheckSeePlayer())
+                            {
+                                stateMachine.freeze = true;
+                            }
+                            else
+                            {
+                                stateMachine.freeze = false;
+                            }
                         }
                         else
                         {
@@ -74,20 +81,9 @@ public class Boss1MoveState : Boss1BaseState
 
     private void SetDirection()
     {
-        float distance = stateMachine.GetDistanceToPlayer();
-
         eDir prevDir = moveDir;
 
-        int randomInt;
-
-        if(distance < 10f || distance > 40f)
-        {
-            randomInt = Random.Range(0, 3);
-        }
-        else
-        {
-            randomInt = Random.Range(0, 2);
-        }
+        int randomInt = Random.Range(0, 3);
 
         if (randomInt == 0)
         {
@@ -105,6 +101,7 @@ public class Boss1MoveState : Boss1BaseState
         if(moveDir != prevDir)
         {
             SetAnimation();
+            stateMachine.moveDirection = moveDir;
         }
         else
         {
@@ -195,10 +192,6 @@ public class Boss1MoveState : Boss1BaseState
                 {
                     moveDir = eDir.right;
                 }
-            }
-            else if (moveDir == eDir.forward)
-            {
-                moveDir = eDir.backward;
             }
             else
             {

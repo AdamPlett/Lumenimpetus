@@ -10096,6 +10096,8 @@ MonoBehaviour:
   bh: {fileID: 93588691}
   cameraRef: {fileID: 1563087494}
   targetFPS: 60
+  ui: {fileID: 0}
+  playerCanvas: {fileID: 0}
 --- !u!4 &950040662
 Transform:
   m_ObjectHideFlags: 0

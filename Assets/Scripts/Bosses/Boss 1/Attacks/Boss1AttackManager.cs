@@ -62,6 +62,7 @@ public class Boss1AttackManager : MonoBehaviour
     public float grappleSpeed;
     public float grappleCooldown;
     public float grappleTimer;
+    public float grappleReleaseRange;
     public bool canGrapple;
     [Space(8)]
     public List<Transform> topFloorPoints;
