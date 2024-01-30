@@ -4,7 +4,7 @@ using UnityEngine;
 using static GameManager;
 public class DisplayPanelOnTrigger : MonoBehaviour
 {
-    [SerializeField] private GameObject panelToActivate;
+    [SerializeField] private GameObject[] panelsToActivate;
     [SerializeField] private GameObject[] panelsToDeactivate;
 
     //activates UI items when player enters collider and disables other necessary UI elements
@@ -12,7 +12,13 @@ public class DisplayPanelOnTrigger : MonoBehaviour
     {
         if (other == gm.playerCollider)
         {
-            panelToActivate.SetActive(true);
+            if (panelsToActivate.Length > 0)
+            {
+                for (int i = 0; i < panelsToActivate.Length; i++)
+                {
+                    panelsToActivate[i].SetActive(true);
+                }
+            }
             if (panelsToDeactivate.Length > 0)
             {
                 for (int i=0; i<panelsToDeactivate.Length; i++)
