@@ -24,7 +24,10 @@ public class Grappling : MonoBehaviour
     private float grapplingCdTimer;
 
     [Header("Input")]
-    public KeyCode grappleKey = KeyCode.Mouse1;
+    public KeyCode grappleKey = KeyCode.Q;
+    public KeyCode altGrappleKey = KeyCode.E;
+
+
 
     private bool grappling;
 
@@ -38,7 +41,7 @@ public class Grappling : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(grappleKey))
+        if (Input.GetKeyDown(grappleKey) || Input.GetKeyDown(altGrappleKey))
         {
             StartGrapple();
         }
