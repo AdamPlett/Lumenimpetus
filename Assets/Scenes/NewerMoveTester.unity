@@ -18483,6 +18483,21 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 232588429}
+    - target: {fileID: 5659423047294597998, guid: ccf55b084927b344d92becd5edbd68ac,
+        type: 3}
+      propertyPath: range
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5659423047294597998, guid: ccf55b084927b344d92becd5edbd68ac,
+        type: 3}
+      propertyPath: cooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5659423047294597998, guid: ccf55b084927b344d92becd5edbd68ac,
+        type: 3}
+      propertyPath: shotDelay
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccf55b084927b344d92becd5edbd68ac, type: 3}
 --- !u!4 &1778932383 stripped
@@ -18527,6 +18542,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d55bfb2a0d6fbfd41b6b5c137047c244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1778932392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377434100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 270dcbda4e9f05b4e9c2fb3a61f0cd38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attacks: []
+  rangedKey: 324
+  currentWeapon: {fileID: 0}
+  bossLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1829534238
 GameObject:
   m_ObjectHideFlags: 0
