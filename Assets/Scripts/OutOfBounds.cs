@@ -5,7 +5,7 @@ using static GameManager;
 
 public class OutOfBounds : MonoBehaviour
 {
-    [SerializeField] private float freezeDuration=.15f;
+    [SerializeField] private float freezeDuration=.2f;
     // Update is called once per frame
     void Update()
     {
@@ -15,7 +15,7 @@ public class OutOfBounds : MonoBehaviour
     {
         if (other == gm.playerCollider)
         {
-            //gm.playerRef.transform.position = 
+            gm.playerRef.transform.position = gm.pm.lastGroundPos;
             gm.pm.playerVelocity = Vector3.zero;
             gm.pm.freeze = true;
             Invoke("unfreezePlayer", freezeDuration);

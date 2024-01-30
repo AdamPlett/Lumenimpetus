@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     private bool keepMomentum;
     private float desiredMoveSpeed;
     private float lastDesiredMoveSpeed;
+    //for respawning the player
+    public Vector3 lastGroundPos= Vector3.zero;
 
 
     [Header("Jump")]
@@ -130,7 +132,11 @@ public class PlayerMovement : MonoBehaviour
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, ground);
 
         coyoteTimer -= Time.deltaTime;
-        if (grounded) coyoteTimer = coyoteTime;
+        if (grounded)
+        {
+            coyoteTimer = coyoteTime;
+            lastGroundPos = gameObject.transform.position;
+        }
         playerVelocity = rb.velocity;
 
         MyInput();
