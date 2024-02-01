@@ -19342,7 +19342,7 @@ Rigidbody:
   m_AngularDrag: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 2
   m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!114 &2557011060370310436
@@ -19362,6 +19362,7 @@ MonoBehaviour:
   wallRunSpeed: 12
   playerVelocity: {x: 0, y: 0, z: 0}
   groundDrag: 5
+  lastGroundPos: {x: 0, y: 0, z: 0}
   jumpForce: 12
   jumpCooldown: 0.25
   airMultiplayer: 0.4
@@ -19850,6 +19851,7 @@ MonoBehaviour:
   bossLayer:
     serializedVersion: 2
     m_Bits: 128
+  hitTarget: 0
 --- !u!1 &8648898502887697829
 GameObject:
   m_ObjectHideFlags: 0

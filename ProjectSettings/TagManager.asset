@@ -10,6 +10,7 @@ TagManager:
   - StandStill
   - Parkour
   - Portal
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX
