@@ -9,6 +9,7 @@ TagManager:
   - Destructible
   - StandStill
   - Parkour
+  - Portal
   layers:
   - Default
   - TransparentFX
