@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using TMPro;
+using System;
 
 public class PauseMenuController : MonoBehaviour
 {
@@ -97,7 +98,7 @@ public class PauseMenuController : MonoBehaviour
         RefreshSFXSlider(vol);
         PlayerPrefs.SetFloat("SavedSFXVolume", vol);
         masterMixer.SetFloat("SFXVolume", Mathf.Log10(vol/100)*20f);
-        SFXValueText.text = vol.ToString();
+        SFXValueText.text = Math.Round(vol).ToString();
     }
     //takes the value from the slider and set volume corresepondingly
     public void SetSFXVolumeFromSlider()
@@ -120,7 +121,7 @@ public class PauseMenuController : MonoBehaviour
         RefreshMusicSlider(vol);
         PlayerPrefs.SetFloat("SavedMusicVolume", vol);
         masterMixer.SetFloat("MusicVolume", Mathf.Log10(vol / 100) * 20f);
-        musicValueText.text = vol.ToString();
+        musicValueText.text = Math.Round(vol).ToString();
     }
 
     //takes the value from the slider and set volume corresepondingly

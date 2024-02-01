@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using TMPro;
 using UnityEngine.UI;
-
+using System;
 public class PlayerCam : MonoBehaviour
 {
     public float sensX;
@@ -65,7 +65,7 @@ public class PlayerCam : MonoBehaviour
     {
         sensX = newSens * 100;
         sensY = newSens * 100;
-        sensText.text = newSens.ToString();
+        sensText.text = Math.Round(newSens,2).ToString();
         PlayerPrefs.SetFloat(savedSens, newSens);
     }
 
