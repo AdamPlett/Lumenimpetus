@@ -7057,6 +7057,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 463300963, guid: ccf55b084927b344d92becd5edbd68ac, type: 3}
+      propertyPath: grappleable.m_Bits
+      value: 7680
+      objectReference: {fileID: 0}
     - target: {fileID: 1778932395, guid: ccf55b084927b344d92becd5edbd68ac, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
