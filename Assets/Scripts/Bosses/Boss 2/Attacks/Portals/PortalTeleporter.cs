@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static GameManager;
+using static UnityEngine.Rendering.DebugUI;
 
 public class PortalTeleporter : MonoBehaviour
 {
     public Transform player;
     public Transform destination;
 
-    private bool playerOverlapping = false;
+    public bool playerOverlapping = false;
 
     public void Start()
     {
@@ -21,42 +22,37 @@ public class PortalTeleporter : MonoBehaviour
         destination = linkedPortal;
     }
 
-    private void Update()
-    {
-        if(playerOverlapping)
-        {
-            Vector3 portalToPlayer = player.position - transform.position;
-            float dot = Vector3.Dot(transform.up, portalToPlayer);
-
-            // If true, this means player has crossed the portal
-            if(dot < 0f)
-            {
-                float rotationOffset = Quaternion.Angle(transform.rotation, destination.rotation) + 180f;
-                player.Rotate(Vector3.up, rotationOffset);
-
-                Vector3 positionOffset = Quaternion.Euler(0f, rotationOffset, 0f) * portalToPlayer;
-                player.position = destination.position + positionOffset;
-
-                playerOverlapping = false;
-            }
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag.Equals("Player"))
+        if (other.tag.Equals("Player") && !gm.pm.teleporting)
         {
-            playerOverlapping = true;
+            gm.pm.teleporting = true;
+            TeleportPlayer();
+
             Debug.Log("Player has entered the portal");
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void TeleportPlayer()
     {
-        if (other.tag.Equals("Player"))
-        {
-            playerOverlapping = false;
-            Debug.Log("Player has exited the portal");
-        }
+        Vector3 portalToPlayer = player.position - transform.position;
+
+        // Set player velocity to portal face direction
+        float magnitude = Vector3.Magnitude(gm.pm.playerVelocity);
+        gm.pm.playerVelocity = magnitude * transform.up * -1f;
+
+        // adjust rotation
+        gm.pm.cam.xRotation = destination.rotation.x;
+        gm.pm.cam.yRotation = destination.rotation.y;
+
+        // adjust position
+        player.position = destination.position + (transform.up * -2f);
+
+        Invoke("SetTeleportingFalse", 0.5f);
+    }
+
+    private void SetTeleportingFalse()
+    {
+        gm.pm.teleporting = false;
     }
 }
