@@ -91,6 +91,11 @@ public class Grappling : MonoBehaviour
         //creates the grapple rope
         lr.enabled = true;
         lr.SetPosition(1, grapplePoint);
+        //move lineRenderer with moving platform
+        if (hit.collider.CompareTag("MovingPlatform"))
+        {
+
+        }
     }
 
     private void ExecuteGrapple()
