@@ -26,7 +26,7 @@ public class PlayerRangedBasic : RangedAttack
     {
         shootDirection = (targetPosition - startPosition).normalized;
         
-        ShotDelay();
+        StartCoroutine(ShotDelay());
 
 
     }
