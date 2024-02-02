@@ -120,6 +120,7 @@ public class PlayerMovement : MonoBehaviour
     public bool wallrunning;
     public bool freeze;
     public bool activeGrapple;
+    public bool teleporting;
 
     private void Start()
     {
