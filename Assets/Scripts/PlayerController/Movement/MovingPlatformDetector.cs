@@ -17,7 +17,7 @@ public class MovingPlatformDetector : MonoBehaviour
             if (Input.GetAxisRaw("Horizontal") > .25f || Input.GetAxisRaw("Horizontal") <-.25f || Input.GetAxisRaw("Vertical") > .25f || Input.GetAxisRaw("Vertical") < -.25f)
             {
                 transform.SetParent(null);
-            } 
+            }
         }
         if (!check)
         {
