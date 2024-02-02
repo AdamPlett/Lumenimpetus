@@ -10,6 +10,11 @@ public class PortalTeleporter : MonoBehaviour
 
     private bool playerOverlapping = false;
 
+    public void Start()
+    {
+        player = gm.playerRef.transform;
+    }
+
     public void InitPortal(Transform linkedPortal)
     {
         player = gm.playerRef.transform;
@@ -42,6 +47,7 @@ public class PortalTeleporter : MonoBehaviour
         if (other.tag.Equals("Player"))
         {
             playerOverlapping = true;
+            Debug.Log("Player has entered the portal");
         }
     }
 
@@ -50,6 +56,7 @@ public class PortalTeleporter : MonoBehaviour
         if (other.tag.Equals("Player"))
         {
             playerOverlapping = false;
+            Debug.Log("Player has exited the portal");
         }
     }
 }
