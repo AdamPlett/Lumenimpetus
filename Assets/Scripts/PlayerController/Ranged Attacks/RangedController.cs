@@ -23,7 +23,7 @@ public class RangedController : MonoBehaviour
         if(Input.GetKeyDown(rangedKey))
         {
             Vector3 target = GetShotTarget();
-            if (target != null) 
+            if (hitTarget) 
             { 
                 currentWeapon.Shoot(target);
             }
