@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum eLaserType { random, linked }
+
 public class PortalManager : MonoBehaviour
 {
     [Header("Portal Variables")]
