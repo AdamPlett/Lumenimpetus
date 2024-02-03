@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector3 playerVelocity;
     public float groundDrag;//used in speed control
-    private bool keepMomentum;
+    public bool keepMomentum;
     private float desiredMoveSpeed;
     private float lastDesiredMoveSpeed;
     //for respawning the player
@@ -97,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 moveDirection;
 
-    Rigidbody rb;
+    public Rigidbody rb;
 
 
     [Header("Animations")]
@@ -339,7 +339,7 @@ public class PlayerMovement : MonoBehaviour
         exitingSlope = true;
 
         // reset y velocity
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        //rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         coyoteTimer = 0;
