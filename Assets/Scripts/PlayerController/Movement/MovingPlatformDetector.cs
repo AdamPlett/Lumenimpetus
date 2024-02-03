@@ -13,13 +13,13 @@ public class MovingPlatformDetector : MonoBehaviour
         if (!isGrounded)
         {
             check = false;
-            /*if (Input.GetAxisRaw("Horizontal") > .25f || Input.GetAxisRaw("Horizontal") <-.25f || Input.GetAxisRaw("Vertical") > .25f || Input.GetAxisRaw("Vertical") < -.25f)
+            if (Input.GetAxis("Horizontal") > .99f || Input.GetAxis("Horizontal") <-.99f || Input.GetAxis("Vertical") > .99f || Input.GetAxis("Vertical") < -.99f)
             {
                 transform.SetParent(null);
-            }*/
+            }
         }
-        //if (!check)
-        //{
+        if (!check)
+        {
             RaycastHit hit;
             Physics.Raycast(transform.position, Vector3.down, out hit, gm.pm.playerHeight * 0.5f + 0.2f);
 
@@ -27,9 +27,12 @@ public class MovingPlatformDetector : MonoBehaviour
             {
                 if (hit.collider.CompareTag("MovingPlatform"))
                 {
+                    transform.SetParent(hit.transform);
+
                     /*gm.pm.rb.velocity = gm.pm.rb.velocity+hit.collider.GetComponent<Rigidbody>().velocity;
                     Debug.Log(hit.collider.GetComponent<Rigidbody>().velocity);*/
-                    //transform.SetParent(hit.transform);
+                    
+                    /*
                     MovingPlatformLoop mlp = hit.collider.GetComponent<MovingPlatformLoop>();
                     if (mlp == null)
                     {
@@ -42,10 +45,11 @@ public class MovingPlatformDetector : MonoBehaviour
                         gm.pm.rb.velocity =  mlp.GetVelocity();
                         Debug.Log(mlp.GetVelocity());
                     }
+                    */
                 }
                 else
                 {
-                    //transform.SetParent(null);
+                    transform.SetParent(null);
                     //gm.pm.keepMomentum = true;
                     //gm.pm.speedChangeFactor = 50f;
                 }
@@ -57,6 +61,6 @@ public class MovingPlatformDetector : MonoBehaviour
                 //gm.pm.keepMomentum = true;
                 //gm.pm.speedChangeFactor = 50f;
             }
-        //}
+        }
     }
 } 

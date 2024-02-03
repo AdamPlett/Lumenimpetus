@@ -14,9 +14,9 @@ public class MovingPlatformLoop : MonoBehaviour
     public float duration = 0f;
     public Ease ease = Ease.InOutSine;
 
-    [SerializeField] private Vector3 prevPOS;
-    [SerializeField] private Vector3 velocity;
-    [SerializeField] private Vector3 force;
+    //[SerializeField] private Vector3 prevPOS;
+    //[SerializeField] private Vector3 velocity;
+    //[SerializeField] private Vector3 force;
 
     // Start is called before the first frame update
     void Start()
@@ -25,10 +25,10 @@ public class MovingPlatformLoop : MonoBehaviour
         transform.DOMove(direction, duration)
             .SetLoops(-1, LoopType.Yoyo)
             .SetEase(ease).SetUpdate(UpdateType.Fixed);
-        prevPOS = transform.position;
+        //prevPOS = transform.position;
     }
 
-    private void Update()
+    /*private void Update()
     {
         velocity = (transform.position - prevPOS) / Time.deltaTime;
         force = velocity / Time.fixedDeltaTime;
@@ -39,7 +39,7 @@ public class MovingPlatformLoop : MonoBehaviour
     }
 
     //alternate way to detect when player is on platform. Requires an on trigger collider above the platform
-    /*private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other == gm.playerCollider)
         {
@@ -52,7 +52,7 @@ public class MovingPlatformLoop : MonoBehaviour
         {
             gm.playerRef.transform.SetParent(null);
         }
-    } */
+    } 
     public Vector3 GetVelocity()
     {
         return velocity;
@@ -60,6 +60,6 @@ public class MovingPlatformLoop : MonoBehaviour
     public Vector3 GetForce()
     {
         return force;
-    }
-
+    } */
+    
 }
