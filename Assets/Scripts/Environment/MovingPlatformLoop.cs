@@ -28,15 +28,15 @@ public class MovingPlatformLoop : MonoBehaviour
         prevPOS = transform.position;
     }
 
-    private void Update()
+    /*private void Update()
     {
-        /*velocity = (transform.position - prevPOS) / Time.deltaTime;
+        velocity = (transform.position - prevPOS) / Time.deltaTime;
         force = velocity / Time.fixedDeltaTime;
         prevPOS = transform.position;
         Debug.Log(velocity);
-        Debug.Log(force);*/
+        Debug.Log(force);
         
-    }
+    }*/
 
     //alternate way to detect when player is on platform. Requires an on trigger collider above the platform
     /*private void OnTriggerEnter(Collider other)
