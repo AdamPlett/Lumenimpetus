@@ -26,7 +26,7 @@ public class PortalTeleporter : MonoBehaviour
     {
         if (other.tag.Equals("Player") && !gm.pm.teleporting)
         {
-            gm.pm.teleporting = true;
+            SetTeleportingTrue();
             TeleportPlayer();
 
             Debug.Log("Player has entered the portal");
@@ -39,20 +39,32 @@ public class PortalTeleporter : MonoBehaviour
 
         // Set player velocity to portal face direction
         float magnitude = Vector3.Magnitude(gm.pm.playerVelocity);
-        gm.pm.playerVelocity = magnitude * transform.up * -1f;
+        gm.pm.rb.velocity = magnitude * destination.forward;
 
         // adjust rotation
-        gm.pm.cam.xRotation = destination.rotation.x;
-        gm.pm.cam.yRotation = destination.rotation.y;
+        Quaternion lookRotation = Quaternion.LookRotation(destination.forward, destination.up);
+
+        gm.pm.cam.xRotation = lookRotation.x;
+        gm.pm.cam.yRotation = lookRotation.y;
+
+        gm.pm.cam.camHolder.rotation = lookRotation;
+        gm.pm.cam.orientation.rotation = lookRotation;
 
         // adjust position
-        player.position = destination.position + (transform.up * -2f);
+        player.position = destination.position + (destination.forward);
 
-        Invoke("SetTeleportingFalse", 0.5f);
+        Invoke("SetTeleportingFalse", 0.25f);
+    }
+
+    private void SetTeleportingTrue()
+    {
+        gm.pm.teleporting = true;
+        gm.pm.cam.locked = true;
     }
 
     private void SetTeleportingFalse()
     {
         gm.pm.teleporting = false;
+        gm.pm.cam.locked = false;
     }
 }
