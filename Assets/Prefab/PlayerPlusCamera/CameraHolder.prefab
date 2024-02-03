@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1469126436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 1.067, z: 0}
+  m_LocalPosition: {x: -1, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -169,6 +169,8 @@ MonoBehaviour:
   sensY: 400
   orientation: {fileID: 0}
   camHolder: {fileID: 7571306191283592230}
+  xRotation: 0
+  yRotation: 0
   sensText: {fileID: 0}
   sensSlider: {fileID: 0}
   locked: 0
