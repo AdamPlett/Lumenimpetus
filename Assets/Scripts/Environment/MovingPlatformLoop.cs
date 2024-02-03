@@ -28,15 +28,15 @@ public class MovingPlatformLoop : MonoBehaviour
         prevPOS = transform.position;
     }
 
-    /*private void Update()
+    private void Update()
     {
         velocity = (transform.position - prevPOS) / Time.deltaTime;
         force = velocity / Time.fixedDeltaTime;
         prevPOS = transform.position;
-        Debug.Log(velocity);
-        Debug.Log(force);
+        //Debug.Log(velocity);
+        //Debug.Log(force);
         
-    }*/
+    }
 
     //alternate way to detect when player is on platform. Requires an on trigger collider above the platform
     /*private void OnTriggerEnter(Collider other)
@@ -53,11 +53,11 @@ public class MovingPlatformLoop : MonoBehaviour
             gm.playerRef.transform.SetParent(null);
         }
     } */
-    public Vector3 getVelocity()
+    public Vector3 GetVelocity()
     {
         return velocity;
     }
-    public Vector3 getForce()
+    public Vector3 GetForce()
     {
         return force;
     }

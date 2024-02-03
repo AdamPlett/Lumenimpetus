@@ -7,8 +7,7 @@ public class MovingPlatformDetector : MonoBehaviour
 {
     public bool isGrounded;
     public bool check;
-
-    void Update()
+    void FixedUpdate()
     {
         isGrounded = gm.pm.grounded;
         if (!isGrounded)
@@ -19,8 +18,8 @@ public class MovingPlatformDetector : MonoBehaviour
                 transform.SetParent(null);
             }*/
         }
-        if (!check)
-        {
+        //if (!check)
+        //{
             RaycastHit hit;
             Physics.Raycast(transform.position, Vector3.down, out hit, gm.pm.playerHeight * 0.5f + 0.2f);
 
@@ -28,17 +27,25 @@ public class MovingPlatformDetector : MonoBehaviour
             {
                 if (hit.collider.CompareTag("MovingPlatform"))
                 {
-                    //gm.pm.rb.velocity = gm.pm.rb.velocity+hit.rigidbody.velocity;
-                    transform.SetParent(hit.transform);
-                    /*MovingPlatformLoop mlp = hit.collider.GetComponent<MovingPlatformLoop>();
+                    /*gm.pm.rb.velocity = gm.pm.rb.velocity+hit.collider.GetComponent<Rigidbody>().velocity;
+                    Debug.Log(hit.collider.GetComponent<Rigidbody>().velocity);*/
+                    //transform.SetParent(hit.transform);
+                    MovingPlatformLoop mlp = hit.collider.GetComponent<MovingPlatformLoop>();
+                    if (mlp == null)
+                    {
+                        Debug.Log("MovingPlatformLoop Script not found");
+                    }
                     if (mlp!=null)
                     {
-                        gm.pm.rb.AddForce(mlp.getForce(), ForceMode.Force);
-                    } */
+                        //gm.pm.rb.AddForce(mlp.GetForce(), ForceMode.Force);
+                        //Debug.Log(mlp.GetForce());
+                        gm.pm.rb.velocity =  mlp.GetVelocity();
+                        Debug.Log(mlp.GetVelocity());
+                    }
                 }
                 else
                 {
-                    transform.SetParent(null);
+                    //transform.SetParent(null);
                     //gm.pm.keepMomentum = true;
                     //gm.pm.speedChangeFactor = 50f;
                 }
@@ -50,6 +57,6 @@ public class MovingPlatformDetector : MonoBehaviour
                 //gm.pm.keepMomentum = true;
                 //gm.pm.speedChangeFactor = 50f;
             }
-        }
+        //}
     }
 } 
