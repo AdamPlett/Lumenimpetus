@@ -28,13 +28,27 @@ public class MovingPlatformDetector : MonoBehaviour
             {
                 if (hit.collider.CompareTag("MovingPlatform"))
                 {
+                    //gm.pm.rb.velocity = gm.pm.rb.velocity+hit.rigidbody.velocity;
                     transform.SetParent(hit.transform);
+                    /*MovingPlatformLoop mlp = hit.collider.GetComponent<MovingPlatformLoop>();
+                    if (mlp!=null)
+                    {
+                        gm.pm.rb.AddForce(mlp.getForce(), ForceMode.Force);
+                    } */
                 }
                 else
                 {
                     transform.SetParent(null);
+                    //gm.pm.keepMomentum = true;
+                    //gm.pm.speedChangeFactor = 50f;
                 }
                 check = true;
+            }
+            else
+            {
+                //transform.SetParent(null);
+                //gm.pm.keepMomentum = true;
+                //gm.pm.speedChangeFactor = 50f;
             }
         }
     }
