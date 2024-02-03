@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using static GameManager;
 using static UnityEngine.Rendering.DebugUI;
@@ -46,13 +47,13 @@ public class PortalTeleporter : MonoBehaviour
 
         gm.pm.cam.xRotation = lookRotation.x;
         gm.pm.cam.yRotation = lookRotation.y;
-
+        
         gm.pm.cam.camHolder.rotation = lookRotation;
-        gm.pm.cam.orientation.rotation = lookRotation;
+        gm.pm.cam.orientation.rotation = Quaternion.Euler(lookRotation.x, lookRotation.y, 0);
 
         // adjust position
         player.position = destination.position + (destination.forward);
-
+        Debug.Log(lookRotation);
         Invoke("SetTeleportingFalse", 0.25f);
     }
 
