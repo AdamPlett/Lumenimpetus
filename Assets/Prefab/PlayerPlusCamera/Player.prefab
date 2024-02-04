@@ -19362,18 +19362,21 @@ MonoBehaviour:
   wallRunSpeed: 12
   playerVelocity: {x: 0, y: 0, z: 0}
   groundDrag: 5
+  keepMomentum: 0
   lastGroundPos: {x: 0, y: 0, z: 0}
   jumpForce: 12
   jumpCooldown: 0.25
   airMultiplayer: 0.4
   airDrag: 0.005
   coyoteTime: 0.15
+  mpl: {fileID: 0}
   dashSpeed: 20
   dashSpeedChangeFactor: 50
   maxYSpeed: 15
   jumpKey: 32
   sprintKey: 304
   attackKey: 323
+  rangedKey: 324
   playerHeight: 2
   ground:
     serializedVersion: 2
@@ -19411,12 +19414,14 @@ MonoBehaviour:
   hitStop: 0
   horizontalInput: 0
   verticalInput: 0
+  rb: {fileID: 0}
   animator: {fileID: 0}
   state: 0
   dashing: 0
   wallrunning: 0
   freeze: 0
   activeGrapple: 0
+  teleporting: 0
   speedChangeFactor: 0
 --- !u!114 &2557011061226588522
 MonoBehaviour:
@@ -19897,13 +19902,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentWeapon: 1
-  damage: 0
-  speed: 0
-  range: 10
-  cooldown: 0
-  shotDelay: 0
-  canShoot: 0
+  damage: 10
+  speed: 1500
+  duration: 10
+  cooldown: 5
+  shotDelay: 0.05
+  canShoot: 1
   shooting: 0
   firing: 0
-  timer: 0
-  bulletPrefab: {fileID: 0}
+  bulletSpawned: 0
+  cooldownTimer: 0
+  bulletPrefab: {fileID: 1010144619074441756, guid: 32cc944c27f544a4f9850b1c71e43674,
+    type: 3}
+  startPosition: {fileID: 0}
+  shootDirection: {x: 0, y: 0, z: 0}
+  rb: {fileID: 0}
+  shotTimer: 0

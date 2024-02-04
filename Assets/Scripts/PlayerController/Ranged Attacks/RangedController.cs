@@ -20,13 +20,11 @@ public class RangedController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(rangedKey))
+        if(Input.GetKeyDown(rangedKey) && currentWeapon.canShoot)
         {
             Vector3 target = GetShotTarget();
-            if (hitTarget) 
-            { 
-                currentWeapon.Shoot(target);
-            }
+            currentWeapon.Shoot(target);
+            
                
         }
     }

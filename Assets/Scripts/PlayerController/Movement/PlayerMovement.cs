@@ -597,7 +597,7 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("HIT BOSS");
                 gm.bh.DamageBoss(attackDamage + attackDamage * comboMultiplier);
                 Combo();
-                if(comboCount > 2) gm.ui.cc.UpdateText(comboCount);
+                
                 if (gm.boss1.activeState != eB1.attacking) StartCoroutine(BossHitstop());
                 
             }
@@ -626,6 +626,7 @@ public class PlayerMovement : MonoBehaviour
         {
             comboMultiplier += 0.05f;
         }
+        if (comboCount > 2) gm.ui.cc.UpdateText(comboCount);
         Debug.Log(comboCount);
     }
     public void ResetCombo()
