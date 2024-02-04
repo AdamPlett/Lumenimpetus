@@ -44,12 +44,14 @@ public class PortalTeleporter : MonoBehaviour
 
         // adjust rotation
         Quaternion lookRotation = Quaternion.LookRotation(destination.forward, destination.up);
+        Vector3 eulerAngles;
+        eulerAngles = lookRotation.eulerAngles;
 
-        gm.pm.cam.xRotation = lookRotation.x;
-        gm.pm.cam.yRotation = lookRotation.y;
+        gm.pm.cam.xRotation = eulerAngles.x;
+        gm.pm.cam.yRotation = eulerAngles.y;
         
         gm.pm.cam.camHolder.rotation = lookRotation;
-        gm.pm.cam.orientation.rotation = Quaternion.Euler(lookRotation.x, lookRotation.y, 0);
+        gm.pm.cam.orientation.rotation = Quaternion.Euler(0, eulerAngles.y, 0);
 
         // adjust position
         player.position = destination.position + (destination.forward);
