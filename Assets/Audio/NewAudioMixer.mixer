@@ -41,6 +41,7 @@ AudioMixerController:
     - 0d4c4d442aca53a4c89d8a8bd7ecfeed
     - b03cd79601ef80a418787bdf18f3cc89
     - 2870f77edda82af46ae52dd5b8a28d8e
+    - 51efbea944663d14db4233a4f1c34f8c
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -88,8 +89,28 @@ AudioMixerSnapshotController:
   m_Name: Snapshot
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: b089d18248b6f5e42afb5be25ba8d91b
-  m_FloatValues: {}
+  m_FloatValues:
+    d93fd514dfe94c74591877eb1d5b11b8: 9.925883
   m_TransitionOverrides: {}
+--- !u!243 &4864485893923380384
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BeamAtk
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 51efbea944663d14db4233a4f1c34f8c
+  m_Children: []
+  m_Volume: d93fd514dfe94c74591877eb1d5b11b8
+  m_Pitch: 110411c022d5ffb4cb2f4dc8de49b9e0
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 6832131403487315708}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!243 &5937584162333361333
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -109,6 +130,20 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &6832131403487315708
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: a424e64b06c8c9e45804f5067b6f4f96
+  m_EffectName: Attenuation
+  m_MixLevel: d7aac38e4024b5243b19aa191a4535b4
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &8306962833968886429
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -132,7 +167,8 @@ AudioMixerGroupController:
   m_Name: SFX
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: b03cd79601ef80a418787bdf18f3cc89
-  m_Children: []
+  m_Children:
+  - {fileID: 4864485893923380384}
   m_Volume: 2cd618379459e1149921bbcba658a638
   m_Pitch: e24769193e42bdd44894bb130afa4db7
   m_Send: 00000000000000000000000000000000
