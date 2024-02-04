@@ -57,7 +57,7 @@ public class RangedController : MonoBehaviour
     
     public Vector3 GetShotTarget()
     {
-        hitTarget = Physics.Raycast(gm.pm.cam.transform.position, gm.pm.cam.transform.forward, out RaycastHit hit, currentWeapon.range);
+        hitTarget = Physics.Raycast(gm.pm.cam.transform.position, gm.pm.cam.transform.forward, out RaycastHit hit);
         return hit.point;
     }
 }

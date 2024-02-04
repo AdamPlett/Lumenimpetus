@@ -16,15 +16,18 @@ public abstract class RangedAttack : MonoBehaviour
     public EWeapons currentWeapon;
     public float damage;
     public float speed;
-    public float range;
+    public float duration;
     public float cooldown;
     public float shotDelay;
     public bool canShoot;
     public bool shooting;
     public bool firing;
 
+
     [SerializeField] private float timer;
     public GameObject bulletPrefab;
+    public Vector3 startPosition;
+    public Vector3 shootDirection;
 
     public abstract void Shoot(Vector3 targetPosition);
 
@@ -47,6 +50,15 @@ public abstract class RangedAttack : MonoBehaviour
         {
             CooldownTimer();
         }
+        else if (canShoot)
+        {
+            if (Input.GetKeyDown(gm.pm.rangedKey))
+            {
+                Instantiate(bulletPrefab);
+
+            }
+        }
+
     }
 
     public virtual void ResetTimer()
@@ -54,7 +66,7 @@ public abstract class RangedAttack : MonoBehaviour
         if (canShoot)
         {
             timer = 0;
-            canShoot= false;
+            canShoot = false;
         }
     }
 
@@ -62,6 +74,10 @@ public abstract class RangedAttack : MonoBehaviour
     {
         gm.bh.DamageBoss(damage);
     }
-    
+
+    public virtual void MoveBullet(float speed)
+    {
+
+    }
             
 }
