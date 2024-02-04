@@ -7,16 +7,18 @@ public class MovingPlatformDetector : MonoBehaviour
 {
     public bool isGrounded;
     public bool check;
-    void FixedUpdate()
+    void Update()
     {
         isGrounded = gm.pm.grounded;
         if (!isGrounded)
         {
             check = false;
+            /*
             if (Input.GetAxis("Horizontal") > .99f || Input.GetAxis("Horizontal") <-.99f || Input.GetAxis("Vertical") > .99f || Input.GetAxis("Vertical") < -.99f)
             {
-                transform.SetParent(null);
+                //transform.SetParent(null);
             }
+            */
         }
         if (!check)
         {
@@ -27,18 +29,20 @@ public class MovingPlatformDetector : MonoBehaviour
             {
                 if (hit.collider.CompareTag("MovingPlatform"))
                 {
-                    transform.SetParent(hit.transform);
+                    //transform.SetParent(hit.transform);
 
                     /*gm.pm.rb.velocity = gm.pm.rb.velocity+hit.collider.GetComponent<Rigidbody>().velocity;
                     Debug.Log(hit.collider.GetComponent<Rigidbody>().velocity);*/
-                    
-                    /*
+
+
                     MovingPlatformLoop mlp = hit.collider.GetComponent<MovingPlatformLoop>();
+                    gm.pm.mpl = mlp;
+                    /*
                     if (mlp == null)
                     {
                         Debug.Log("MovingPlatformLoop Script not found");
                     }
-                    if (mlp!=null)
+                    else if (mlp!=null)
                     {
                         //gm.pm.rb.AddForce(mlp.GetForce(), ForceMode.Force);
                         //Debug.Log(mlp.GetForce());
@@ -49,7 +53,7 @@ public class MovingPlatformDetector : MonoBehaviour
                 }
                 else
                 {
-                    transform.SetParent(null);
+                    //transform.SetParent(null);
                     //gm.pm.keepMomentum = true;
                     //gm.pm.speedChangeFactor = 50f;
                 }

@@ -30,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
     public float coyoteTime;
     private float coyoteTimer;
     private bool readyToJump = true;
+    public MovingPlatformLoop mpl;
+    bool jump = false;
 
 
     [Header("Dash")]
@@ -182,7 +184,7 @@ public class PlayerMovement : MonoBehaviour
         {
             readyToJump = false;
 
-            Jump();
+            jump = true;
 
             Invoke(nameof(ResetJump), jumpCooldown);
         }
@@ -289,6 +291,12 @@ public class PlayerMovement : MonoBehaviour
         // escape if grappling
         if (activeGrapple || playerStunned) return;
 
+        if (jump)
+        {
+            Jump();
+            jump = false;
+        }
+
         //calculate movement direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
@@ -337,11 +345,21 @@ public class PlayerMovement : MonoBehaviour
     private void Jump()
     {
         exitingSlope = true;
-
         // reset y velocity
         //rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        
+        /*
+        transform.SetParent(null);
+
+        if (mpl != null)
+        {
+            rb.velocity += mpl.GetVelocity();
+            mpl = null;
+        }
+        */
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        
         coyoteTimer = 0;
     }
 
@@ -440,7 +458,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
             // limit y vel
-            if (maxYSpeed != 0 && rb.velocity.y > maxYSpeed)
+            if (maxYSpeed != 0 && rb.velocity.y > maxYSpeed && dashing)
                 rb.velocity = new Vector3(rb.velocity.x, maxYSpeed, rb.velocity.z);
         }
     }

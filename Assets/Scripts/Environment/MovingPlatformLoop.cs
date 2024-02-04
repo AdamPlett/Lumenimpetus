@@ -14,9 +14,13 @@ public class MovingPlatformLoop : MonoBehaviour
     public float duration = 0f;
     public Ease ease = Ease.InOutSine;
 
-    //[SerializeField] private Vector3 prevPOS;
-    //[SerializeField] private Vector3 velocity;
-    //[SerializeField] private Vector3 force;
+    [SerializeField] private Vector3 prevPOS;
+    [SerializeField] private Vector3 velocity;
+    [SerializeField] private Vector3 prevVelocity;
+    [SerializeField] private Vector3 currentVelocity;
+    [SerializeField] private Vector3 calculatedVelocity;
+    [SerializeField] private float lerpFactor=.95f;
+    [SerializeField] private Vector3 force;
 
     // Start is called before the first frame update
     void Start()
@@ -25,20 +29,24 @@ public class MovingPlatformLoop : MonoBehaviour
         transform.DOMove(direction, duration)
             .SetLoops(-1, LoopType.Yoyo)
             .SetEase(ease).SetUpdate(UpdateType.Fixed);
-        //prevPOS = transform.position;
+        prevPOS = transform.position;
+        currentVelocity = Vector3.zero;
+        prevVelocity = Vector3.zero;
     }
 
-    /*private void Update()
+    private void FixedUpdate()
     {
-        velocity = (transform.position - prevPOS) / Time.deltaTime;
-        force = velocity / Time.fixedDeltaTime;
+        calculatedVelocity = (transform.position - prevPOS) / Time.deltaTime;
+        currentVelocity = (lerpFactor * calculatedVelocity) + (1 - lerpFactor) * prevVelocity;
+        prevVelocity = currentVelocity;
+        //force = calculatedVelocity / Time.fixedDeltaTime;
         prevPOS = transform.position;
         //Debug.Log(velocity);
         //Debug.Log(force);
         
     }
-
-    //alternate way to detect when player is on platform. Requires an on trigger collider above the platform
+    
+    //alternate way to detect when player is on platform. Requires an on trigger collider above the platform 
     private void OnTriggerEnter(Collider other)
     {
         if (other == gm.playerCollider)
@@ -51,15 +59,19 @@ public class MovingPlatformLoop : MonoBehaviour
         if (other == gm.playerCollider)
         {
             gm.playerRef.transform.SetParent(null);
+            gm.pm.rb.velocity += GetVelocity();
+            //gm.pm.speedChangeFactor = 50f;
+            //gm.pm.keepMomentum = true;
         }
     } 
+    
     public Vector3 GetVelocity()
     {
-        return velocity;
+        return currentVelocity;
     }
     public Vector3 GetForce()
     {
         return force;
-    } */
+    } 
     
 }
