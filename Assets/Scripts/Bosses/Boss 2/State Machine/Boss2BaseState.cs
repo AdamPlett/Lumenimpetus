@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss2BaseState : MonoBehaviour
+public abstract class Boss2BaseState : State
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    protected readonly Boss2StateMachine stateMachine;
 
-    // Update is called once per frame
-    void Update()
+    protected Boss2BaseState(Boss2StateMachine stateMachine)
     {
-        
+        this.stateMachine = stateMachine;
     }
 }
