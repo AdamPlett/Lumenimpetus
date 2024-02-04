@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PlayerRangedBasic : RangedAttack
 {
-    private Vector3 startPosition;
-    private Vector3 shootDirection;
+
 
     
     private void Start()
@@ -19,7 +18,8 @@ public class PlayerRangedBasic : RangedAttack
         base.Update();
         if (shooting)
         {
-            MoveBullet();
+            MoveBullet(speed);
+
         }
     }
     public override void Shoot(Vector3 targetPosition)
@@ -27,11 +27,8 @@ public class PlayerRangedBasic : RangedAttack
         shootDirection = (targetPosition - startPosition).normalized;
         
         StartCoroutine(ShotDelay());
+        
 
-
-    }
-    private void MoveBullet()
-    {
 
     }
     private IEnumerator ShotDelay()

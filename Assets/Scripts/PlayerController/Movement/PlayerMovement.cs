@@ -42,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode sprintKey = KeyCode.LeftShift;
     public KeyCode attackKey = KeyCode.Mouse0;
+    public KeyCode rangedKey = KeyCode.Mouse1;
 
 
     [Header("Ground Check")]
