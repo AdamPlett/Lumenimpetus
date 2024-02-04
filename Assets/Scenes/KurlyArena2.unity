@@ -25745,6 +25745,10 @@ MonoBehaviour:
   ease: 4
   prevPOS: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
+  prevVelocity: {x: 0, y: 0, z: 0}
+  currentVelocity: {x: 0, y: 0, z: 0}
+  calculatedVelocity: {x: 0, y: 0, z: 0}
+  lerpFactor: 0.95
   force: {x: 0, y: 0, z: 0}
 --- !u!43 &1351208927
 Mesh:
@@ -25952,6 +25956,10 @@ MonoBehaviour:
   ease: 4
   prevPOS: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
+  prevVelocity: {x: 0, y: 0, z: 0}
+  currentVelocity: {x: 0, y: 0, z: 0}
+  calculatedVelocity: {x: 0, y: 0, z: 0}
+  lerpFactor: 0.95
   force: {x: 0, y: 0, z: 0}
 --- !u!64 &1360558531
 MeshCollider:
@@ -28840,6 +28848,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 161.49156
       objectReference: {fileID: 0}
+    - target: {fileID: 2783439413128029149, guid: fd5d682aff340254090ae6c9a97cb898,
+        type: 3}
+      propertyPath: speed
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2783439413128029149, guid: fd5d682aff340254090ae6c9a97cb898,
+        type: 3}
+      propertyPath: startPosition
+      value: 
+      objectReference: {fileID: 1461440119}
     - target: {fileID: 5428764049618263440, guid: fd5d682aff340254090ae6c9a97cb898,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -28855,10 +28873,20 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5428764049618263441, guid: fd5d682aff340254090ae6c9a97cb898,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7505965800420132749, guid: fd5d682aff340254090ae6c9a97cb898,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7505965800420132749, guid: fd5d682aff340254090ae6c9a97cb898,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7505965800455712855, guid: fd5d682aff340254090ae6c9a97cb898,
         type: 3}
@@ -28977,6 +29005,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd5d682aff340254090ae6c9a97cb898, type: 3}
+--- !u!4 &1461440119 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8485505899879313514, guid: fd5d682aff340254090ae6c9a97cb898,
+    type: 3}
+  m_PrefabInstance: {fileID: 1461440118}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1474903192
 GameObject:
   m_ObjectHideFlags: 0

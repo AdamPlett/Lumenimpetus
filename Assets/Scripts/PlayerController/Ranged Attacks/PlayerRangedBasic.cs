@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerRangedBasic : RangedAttack
 {
-
-
+    GameObject bulletInstance;
+    public Rigidbody rb;
+    public float shotTimer = 0f;
     
+
     private void Start()
     {
         
@@ -18,18 +20,29 @@ public class PlayerRangedBasic : RangedAttack
         base.Update();
         if (shooting)
         {
-            MoveBullet(speed);
-
+            MoveBullet();
+            shotTimer += Time.deltaTime;
+            if (shotTimer >= duration)
+            {
+                Destroy(bulletInstance);
+                ResetBullet();
+            }
         }
     }
     public override void Shoot(Vector3 targetPosition)
     {
-        shootDirection = (targetPosition - startPosition).normalized;
-        
+        if (targetPosition != null)
+        {
+            shootDirection = GetDirection(startPosition.position, targetPosition);
+        }
+        else
+        {
+            shootDirection = startPosition.up;
+        }
         StartCoroutine(ShotDelay());
+        SpawnBullet();
+        ResetTimer();
         
-
-
     }
     private IEnumerator ShotDelay()
     {
@@ -39,6 +52,24 @@ public class PlayerRangedBasic : RangedAttack
         shooting = true;
         Debug.Log("Bang");
     }
+
+    public void SpawnBullet()
+    {
+        bulletInstance = Instantiate(bulletPrefab, startPosition.position, Quaternion.Euler(startPosition.up));
+        bulletInstance.transform.parent = null;
+        rb = bulletInstance.GetComponent<Rigidbody>();
+        bulletInstance.GetComponent<Bullet>().InitBullet(this);
+    }
+
+    public void MoveBullet()
+    {
+        if (rb != null) rb.velocity = shootDirection.normalized * speed * Time.deltaTime;
+    }
     
-    
+    public void ResetBullet()
+    {
+        shooting = false;
+        shotTimer = 0;
+    }
+
 }

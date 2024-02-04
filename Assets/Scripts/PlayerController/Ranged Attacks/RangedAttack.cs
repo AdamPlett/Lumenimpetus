@@ -22,25 +22,26 @@ public abstract class RangedAttack : MonoBehaviour
     public bool canShoot;
     public bool shooting;
     public bool firing;
+    public bool bulletSpawned;
 
 
-    [SerializeField] private float timer;
+    [SerializeField] private float cooldownTimer;
     public GameObject bulletPrefab;
-    public Vector3 startPosition;
+    public Transform startPosition;
     public Vector3 shootDirection;
 
     public abstract void Shoot(Vector3 targetPosition);
 
     public virtual void CooldownTimer()
     {
-        if (timer < cooldown)
+        if (cooldownTimer < cooldown)
         {
-            timer += Time.deltaTime;
+            cooldownTimer += Time.deltaTime;
         }
-        if (timer >= cooldown)
+        if (cooldownTimer >= cooldown)
         {
             canShoot = true;
-            timer = cooldown;
+            cooldownTimer = cooldown;
         }
     }
 
@@ -50,34 +51,28 @@ public abstract class RangedAttack : MonoBehaviour
         {
             CooldownTimer();
         }
-        else if (canShoot)
-        {
-            if (Input.GetKeyDown(gm.pm.rangedKey))
-            {
-                Instantiate(bulletPrefab);
-
-            }
-        }
-
     }
 
     public virtual void ResetTimer()
     {
         if (canShoot)
         {
-            timer = 0;
+            cooldownTimer = 0;
             canShoot = false;
         }
     }
 
     public virtual void DamageBoss()
     {
-        gm.bh.DamageBoss(damage);
+        gm.bh.DamageBoss(damage + (damage * gm.pm.comboMultiplier));
+        gm.pm.Combo();
+
     }
 
-    public virtual void MoveBullet(float speed)
-    {
 
+    public virtual Vector3 GetDirection(Vector3 start, Vector3 target)
+    {
+        return (target - start).normalized;
     }
             
 }
