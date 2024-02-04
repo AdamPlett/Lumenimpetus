@@ -31246,6 +31246,11 @@ PrefabInstance:
       propertyPath: m_Interpolate
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5428764049618263447, guid: fd5d682aff340254090ae6c9a97cb898,
+        type: 3}
+      propertyPath: jumpBufferLength
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 7505965800420132749, guid: fd5d682aff340254090ae6c9a97cb898,
         type: 3}
       propertyPath: m_LocalPosition.x
