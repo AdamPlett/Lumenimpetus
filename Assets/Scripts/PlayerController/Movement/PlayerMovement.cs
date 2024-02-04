@@ -33,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
     public MovingPlatformLoop mpl;
     public float timeTillUnparent = .1f;
     bool jump = false;
+    public float jumpBufferLength = .15f;
+    private float jumpBufferTimer;
 
 
     [Header("Dash")]
@@ -134,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         // ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, ground);
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.125f, ground);
 
         coyoteTimer -= Time.deltaTime;
         if (grounded)
@@ -181,8 +183,19 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
         
 
-            // when to jump
-        if (Input.GetKey(jumpKey) && readyToJump && (coyoteTimer > 0))
+        //jump Buffer
+        if (Input.GetKey(jumpKey))
+        {
+            jumpBufferTimer = jumpBufferLength;
+        }
+        else
+        {
+            jumpBufferTimer -= Time.deltaTime;
+        }
+
+        //Debug.Log(jumpBufferTimer +" "+ readyToJump + " " + coyoteTimer);
+        // when to jump
+        if (jumpBufferTimer >= 0 && readyToJump && (coyoteTimer > 0))
         {
             readyToJump = false;
 
@@ -190,6 +203,7 @@ public class PlayerMovement : MonoBehaviour
 
             Invoke(nameof(ResetJump), jumpCooldown);
         }
+
         if (Input.GetKeyDown(attackKey))
         {
             Attack();
@@ -366,10 +380,12 @@ public class PlayerMovement : MonoBehaviour
         coyoteTimer = 0;
     }
 
+    //unparents player gives them the moving platforms velocity
     private void setParentNull()
     {
         transform.SetParent(null);
-        rb.velocity += mpl.GetVelocity();
+        
+        //rb.velocity += mpl.GetVelocity();
         mpl = null;
     }
 

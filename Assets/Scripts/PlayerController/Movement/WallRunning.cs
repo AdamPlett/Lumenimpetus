@@ -17,6 +17,8 @@ public class WallRunning : MonoBehaviour
     public GameObject lastWall;
     public float coyoteTime;
     private float coyoteTimer;
+    public float jumpBufferLength = .15f;
+    private float jumpBufferTimer;
 
     [Header("Input")]
     public KeyCode jumpKey = KeyCode.Space;
@@ -61,6 +63,14 @@ public class WallRunning : MonoBehaviour
         //coyote time logic
         coyoteTimer -= Time.deltaTime;
         if (pm.wallrunning) coyoteTimer = coyoteTime;
+        if (Input.GetKeyDown(jumpKey))
+        {
+            jumpBufferTimer = jumpBufferLength;
+        }
+        else
+        {
+            jumpBufferTimer -= Time.deltaTime;
+        }
     }
 
     private void FixedUpdate()
@@ -117,7 +127,7 @@ public class WallRunning : MonoBehaviour
                 exitWallTimer = exitWallTime;
             }
 
-            if (Input.GetKeyDown(jumpKey) && coyoteTimer > 0) WallJump();
+            if (jumpBufferTimer >= 0 && coyoteTimer > 0) WallJump();
         }
         // State 2 - Exiting Wall
         else if (exitingWall)
@@ -146,7 +156,7 @@ public class WallRunning : MonoBehaviour
                 wallRef = null;
             }
 
-            if (Input.GetKeyDown(jumpKey) && coyoteTimer > 0) WallJump();
+            if (jumpBufferTimer>=0 && coyoteTimer > 0) WallJump();
         }
 
 

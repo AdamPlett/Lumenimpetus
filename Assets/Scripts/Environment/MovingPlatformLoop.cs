@@ -11,16 +11,18 @@ public class MovingPlatformLoop : MonoBehaviour
     public float z = 0;
 
     [Header("Duration & Ease type")]
-    public float duration = 0f;
+    public float duration = 5f;
     public Ease ease = Ease.InOutSine;
 
+    //velocity variables
+    /*
     [SerializeField] private Vector3 prevPOS;
-    [SerializeField] private Vector3 velocity;
     [SerializeField] private Vector3 prevVelocity;
     [SerializeField] private Vector3 currentVelocity;
     [SerializeField] private Vector3 calculatedVelocity;
     [SerializeField] private float lerpFactor=.95f;
     [SerializeField] private Vector3 force;
+    */
 
     // Start is called before the first frame update
     void Start()
@@ -29,11 +31,17 @@ public class MovingPlatformLoop : MonoBehaviour
         transform.DOMove(direction, duration)
             .SetLoops(-1, LoopType.Yoyo)
             .SetEase(ease).SetUpdate(UpdateType.Fixed);
+
+        //starting values for veloctiy variables
+        /*
         prevPOS = transform.position;
         currentVelocity = Vector3.zero;
         prevVelocity = Vector3.zero;
+        */
     }
 
+    //calculate current velocity
+    /*
     private void FixedUpdate()
     {
         calculatedVelocity = (transform.position - prevPOS) / Time.deltaTime;
@@ -41,10 +49,8 @@ public class MovingPlatformLoop : MonoBehaviour
         prevVelocity = currentVelocity;
         //force = calculatedVelocity / Time.fixedDeltaTime;
         prevPOS = transform.position;
-        //Debug.Log(velocity);
-        //Debug.Log(force);
         
-    }
+    } */
     
     //alternate way to detect when player is on platform. Requires an on trigger collider above the platform 
     
@@ -68,6 +74,9 @@ public class MovingPlatformLoop : MonoBehaviour
         }
     } 
     */
+    
+    //velocity and force getters
+    /*
     public Vector3 GetVelocity()
     {
         return currentVelocity;
@@ -76,5 +85,5 @@ public class MovingPlatformLoop : MonoBehaviour
     {
         return force;
     } 
-    
+    */
 }

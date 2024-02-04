@@ -13,15 +13,15 @@ public class MovingPlatformDetector : MonoBehaviour
         if (!isGrounded)
         {
             check = false;
-            /*
-            if (Input.GetAxis("Horizontal") > .99f || Input.GetAxis("Horizontal") <-.99f || Input.GetAxis("Vertical") > .99f || Input.GetAxis("Vertical") < -.99f)
+            
+            if (Input.GetAxis("Horizontal") > .75f || Input.GetAxis("Horizontal") <-.75f || Input.GetAxis("Vertical") > .75f || Input.GetAxis("Vertical") < -.75f)
             {
-                //transform.SetParent(null);
+                transform.SetParent(null);
             }
-            */
+            
         }
-        //if (!check)
-        //{
+        if (!check)
+        {
             RaycastHit hit;
             Physics.Raycast(transform.position, Vector3.down, out hit, gm.pm.playerHeight * 0.5f + 0.0125f);
             Debug.DrawRay(transform.position, Vector3.down * (gm.pm.playerHeight * 0.5f + 0.0125f), new Color (0,255,0));
@@ -32,12 +32,17 @@ public class MovingPlatformDetector : MonoBehaviour
                 {
                     transform.SetParent(hit.transform);
 
+                    //gets moving platform from rigidbody velocity
                     /*gm.pm.rb.velocity = gm.pm.rb.velocity+hit.collider.GetComponent<Rigidbody>().velocity;
                     Debug.Log(hit.collider.GetComponent<Rigidbody>().velocity);*/
 
-
+                    //gives refernce of moving platform and passes it to playermovement so playermovement can get and apply velocity
+                    /*
                     MovingPlatformLoop mlp = hit.collider.GetComponent<MovingPlatformLoop>();
                     gm.pm.mpl = mlp;
+                    */
+                    
+                    //aplies velocity to players rigidbody
                     /*
                     if (mlp == null)
                     {
@@ -60,12 +65,13 @@ public class MovingPlatformDetector : MonoBehaviour
                 }
                 check = true;
             }
+            //unparents player if not grounded
             else
             {
                 //transform.SetParent(null);
                 //gm.pm.keepMomentum = true;
                 //gm.pm.speedChangeFactor = 50f;
             }
-        //}
+        }
     }
 } 
