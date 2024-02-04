@@ -47,6 +47,8 @@ public class MovingPlatformLoop : MonoBehaviour
     }
     
     //alternate way to detect when player is on platform. Requires an on trigger collider above the platform 
+    
+    /*
     private void OnTriggerEnter(Collider other)
     {
         if (other == gm.playerCollider)
@@ -54,6 +56,7 @@ public class MovingPlatformLoop : MonoBehaviour
             gm.playerRef.transform.SetParent(transform);
         }
     }
+    
     private void OnTriggerExit(Collider other)
     {
         if (other == gm.playerCollider)
@@ -64,7 +67,7 @@ public class MovingPlatformLoop : MonoBehaviour
             //gm.pm.keepMomentum = true;
         }
     } 
-    
+    */
     public Vector3 GetVelocity()
     {
         return currentVelocity;

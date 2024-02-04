@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     private float coyoteTimer;
     private bool readyToJump = true;
     public MovingPlatformLoop mpl;
+    public float timeTillUnparent = .1f;
     bool jump = false;
 
 
@@ -349,19 +350,27 @@ public class PlayerMovement : MonoBehaviour
         // reset y velocity
         //rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         
-        /*
-        transform.SetParent(null);
+        
+        //transform.SetParent(null);
 
         if (mpl != null)
         {
-            rb.velocity += mpl.GetVelocity();
-            mpl = null;
+            //rb.velocity += mpl.GetVelocity();
+            //mpl = null;
+            Invoke(nameof(setParentNull), timeTillUnparent);
         }
-        */
+        
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         
         coyoteTimer = 0;
+    }
+
+    private void setParentNull()
+    {
+        transform.SetParent(null);
+        rb.velocity += mpl.GetVelocity();
+        mpl = null;
     }
 
     private void ResetJump()

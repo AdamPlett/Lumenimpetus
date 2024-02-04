@@ -20,16 +20,17 @@ public class MovingPlatformDetector : MonoBehaviour
             }
             */
         }
-        if (!check)
-        {
+        //if (!check)
+        //{
             RaycastHit hit;
-            Physics.Raycast(transform.position, Vector3.down, out hit, gm.pm.playerHeight * 0.5f + 0.2f);
+            Physics.Raycast(transform.position, Vector3.down, out hit, gm.pm.playerHeight * 0.5f + 0.0125f);
+            Debug.DrawRay(transform.position, Vector3.down * (gm.pm.playerHeight * 0.5f + 0.0125f), new Color (0,255,0));
 
             if (hit.collider != null)
             {
                 if (hit.collider.CompareTag("MovingPlatform"))
                 {
-                    //transform.SetParent(hit.transform);
+                    transform.SetParent(hit.transform);
 
                     /*gm.pm.rb.velocity = gm.pm.rb.velocity+hit.collider.GetComponent<Rigidbody>().velocity;
                     Debug.Log(hit.collider.GetComponent<Rigidbody>().velocity);*/
@@ -53,7 +54,7 @@ public class MovingPlatformDetector : MonoBehaviour
                 }
                 else
                 {
-                    //transform.SetParent(null);
+                    transform.SetParent(null);
                     //gm.pm.keepMomentum = true;
                     //gm.pm.speedChangeFactor = 50f;
                 }
@@ -65,6 +66,6 @@ public class MovingPlatformDetector : MonoBehaviour
                 //gm.pm.keepMomentum = true;
                 //gm.pm.speedChangeFactor = 50f;
             }
-        }
+        //}
     }
 } 
