@@ -57209,18 +57209,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeState: 0
   stateTimer: 0
-  maxStateTime: 0
+  maxStateTime: 10
   moveDirection: 0
-  moveSpeed: 0
-  rotationSpeed: 0
+  moveSpeed: 3
+  rotationSpeed: 200
   freeze: 0
-  health: {fileID: 0}
-  anim: {fileID: 0}
-  bossModel: {fileID: 0}
-  portalManager: {fileID: 0}
+  health: {fileID: 1657233946}
+  anim: {fileID: 1657233945}
+  bossModel: {fileID: 1318302642159794}
+  portalManager: {fileID: 472743843}
   environment:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1536
 --- !u!1 &1657862589
 GameObject:
   m_ObjectHideFlags: 0

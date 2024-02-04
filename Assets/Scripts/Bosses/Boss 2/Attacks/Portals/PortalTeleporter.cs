@@ -36,7 +36,12 @@ public class PortalTeleporter : MonoBehaviour
 
     private void TeleportPlayer()
     {
-        Vector3 portalToPlayer = player.position - transform.position;
+        // Get direction of portal to player
+        Vector3 portalToPlayer = (player.position - transform.position).normalized;
+
+        Vector3 faceDirection = destination.forward + portalToPlayer;
+
+        Debug.DrawRay(destination.position, faceDirection, Color.green, 5f);
 
         // Set player velocity to portal face direction
         float magnitude = Vector3.Magnitude(gm.pm.playerVelocity);
@@ -49,9 +54,6 @@ public class PortalTeleporter : MonoBehaviour
 
         gm.pm.cam.xRotation = eulerAngles.x;
         gm.pm.cam.yRotation = eulerAngles.y;
-        
-        gm.pm.cam.camHolder.rotation = lookRotation;
-        gm.pm.cam.orientation.rotation = Quaternion.Euler(0, eulerAngles.y, 0);
 
         // adjust position
         player.position = destination.position + (destination.forward);
@@ -62,12 +64,10 @@ public class PortalTeleporter : MonoBehaviour
     private void SetTeleportingTrue()
     {
         gm.pm.teleporting = true;
-        gm.pm.cam.locked = true;
     }
 
     private void SetTeleportingFalse()
     {
         gm.pm.teleporting = false;
-        gm.pm.cam.locked = false;
     }
 }

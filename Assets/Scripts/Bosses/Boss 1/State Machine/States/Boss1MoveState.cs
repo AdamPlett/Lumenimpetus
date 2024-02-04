@@ -4,7 +4,7 @@ using System.Threading;
 using UnityEngine;
 using static GameManager;
 
-public enum eDir { forward, backward, left, right }
+public enum eDir { idle, forward, backward, left, right }
 
 public class Boss1MoveState : Boss1BaseState
 {

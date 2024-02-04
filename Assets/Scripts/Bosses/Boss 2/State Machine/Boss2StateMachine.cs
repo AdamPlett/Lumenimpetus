@@ -6,7 +6,7 @@ public enum eB2 { none, idle, moving, attacking, teleporting, spawningLaser, sta
 
 public class Boss2StateMachine : StateMachine
 {
-    public eB1 activeState;
+    public eB2 activeState;
     [Space(6)]
     public float stateTimer;
     public float maxStateTime;
