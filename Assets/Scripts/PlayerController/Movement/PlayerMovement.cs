@@ -193,8 +193,8 @@ public class PlayerMovement : MonoBehaviour
             jumpBufferTimer -= Time.deltaTime;
         }
 
+        //Debug.Log(jumpBufferTimer +" "+ readyToJump + " " + coyoteTimer);
         // when to jump
-        Debug.Log(jumpBufferTimer +" "+ readyToJump + " " + coyoteTimer);
         if (jumpBufferTimer >= 0 && readyToJump && (coyoteTimer > 0))
         {
             readyToJump = false;
@@ -380,10 +380,12 @@ public class PlayerMovement : MonoBehaviour
         coyoteTimer = 0;
     }
 
+    //unparents player gives them the moving platforms velocity
     private void setParentNull()
     {
         transform.SetParent(null);
-        rb.velocity += mpl.GetVelocity();
+        
+        //rb.velocity += mpl.GetVelocity();
         mpl = null;
     }
 

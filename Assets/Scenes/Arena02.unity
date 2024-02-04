@@ -8964,13 +8964,6 @@ MonoBehaviour:
   z: 0
   duration: 5
   ease: 4
-  prevPOS: {x: 0, y: 0, z: 0}
-  velocity: {x: 0, y: 0, z: 0}
-  prevVelocity: {x: 0, y: 0, z: 0}
-  currentVelocity: {x: 0, y: 0, z: 0}
-  calculatedVelocity: {x: 0, y: 0, z: 0}
-  lerpFactor: 0.95
-  force: {x: 0, y: 0, z: 0}
 --- !u!43 &436361702
 Mesh:
   m_ObjectHideFlags: 0
@@ -14718,13 +14711,6 @@ MonoBehaviour:
   z: 0
   duration: 5
   ease: 4
-  prevPOS: {x: 0, y: 0, z: 0}
-  velocity: {x: 0, y: 0, z: 0}
-  prevVelocity: {x: 0, y: 0, z: 0}
-  currentVelocity: {x: 0, y: 0, z: 0}
-  calculatedVelocity: {x: 0, y: 0, z: 0}
-  lerpFactor: 0.95
-  force: {x: 0, y: 0, z: 0}
 --- !u!64 &756960687
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -28268,13 +28254,6 @@ MonoBehaviour:
   z: -20
   duration: 5
   ease: 4
-  prevPOS: {x: 0, y: 0, z: 0}
-  velocity: {x: 0, y: 0, z: 0}
-  prevVelocity: {x: 0, y: 0, z: 0}
-  currentVelocity: {x: 0, y: 0, z: 0}
-  calculatedVelocity: {x: 0, y: 0, z: 0}
-  lerpFactor: 0.95
-  force: {x: 0, y: 0, z: 0}
 --- !u!43 &1351208927
 Mesh:
   m_ObjectHideFlags: 0
@@ -28820,13 +28799,6 @@ MonoBehaviour:
   z: 0
   duration: 5
   ease: 4
-  prevPOS: {x: 0, y: 0, z: 0}
-  velocity: {x: 0, y: 0, z: 0}
-  prevVelocity: {x: 0, y: 0, z: 0}
-  currentVelocity: {x: 0, y: 0, z: 0}
-  calculatedVelocity: {x: 0, y: 0, z: 0}
-  lerpFactor: 0.95
-  force: {x: 0, y: 0, z: 0}
 --- !u!65 &1360558539
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31374,6 +31346,11 @@ PrefabInstance:
     - target: {fileID: 7505965802150638032, guid: fd5d682aff340254090ae6c9a97cb898,
         type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7505965802150638032, guid: fd5d682aff340254090ae6c9a97cb898,
+        type: 3}
+      propertyPath: grapplingCd
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

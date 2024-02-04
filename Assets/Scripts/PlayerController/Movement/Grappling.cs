@@ -61,6 +61,10 @@ public class Grappling : MonoBehaviour
     private void StartGrapple()
     {
         if (grapplingCdTimer > 0) return;
+
+        //starts cooldown
+        grapplingCdTimer = grapplingCd;
+
         //switches crosshair to grapple crosshair
         cm.grappleCrosshair(true);
 
@@ -100,6 +104,9 @@ public class Grappling : MonoBehaviour
 
     private void ExecuteGrapple()
     {
+        //makes sure you cant grapple again
+        grapplingCdTimer = grapplingCd;
+
         //pm.freeze = false;
         cm.changeGrappleColor(new Color(0, 255, 255));
         Vector3 lowestPoint = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z);
@@ -119,8 +126,9 @@ public class Grappling : MonoBehaviour
         //allows player movement
         //pm.freeze = false;
 
-        //starts cooldown
+        //re/starts cooldown (applies twice when grapple successful and once if unsucessful)
         grapplingCdTimer = grapplingCd;
+
         //disables line renderer (grapple rope)
         lr.enabled = false;
         //restores default color and disables grappling crosshair
