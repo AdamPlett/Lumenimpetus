@@ -6297,7 +6297,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9618c6b42230db7408b3b734da21470a, type: 2}
+  - {fileID: 2100000, guid: 59dab83f388ccd248baeb916d95e358f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19780,7 +19780,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 68d9464d0cd4fbf48a81abf378167c7f, type: 2}
+  - {fileID: 2100000, guid: 59dab83f388ccd248baeb916d95e358f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -25743,13 +25743,6 @@ MonoBehaviour:
   z: -20
   duration: 5
   ease: 4
-  prevPOS: {x: 0, y: 0, z: 0}
-  velocity: {x: 0, y: 0, z: 0}
-  prevVelocity: {x: 0, y: 0, z: 0}
-  currentVelocity: {x: 0, y: 0, z: 0}
-  calculatedVelocity: {x: 0, y: 0, z: 0}
-  lerpFactor: 0.95
-  force: {x: 0, y: 0, z: 0}
 --- !u!43 &1351208927
 Mesh:
   m_ObjectHideFlags: 0
@@ -25954,13 +25947,6 @@ MonoBehaviour:
   z: 0
   duration: 5
   ease: 4
-  prevPOS: {x: 0, y: 0, z: 0}
-  velocity: {x: 0, y: 0, z: 0}
-  prevVelocity: {x: 0, y: 0, z: 0}
-  currentVelocity: {x: 0, y: 0, z: 0}
-  calculatedVelocity: {x: 0, y: 0, z: 0}
-  lerpFactor: 0.95
-  force: {x: 0, y: 0, z: 0}
 --- !u!64 &1360558531
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -32784,7 +32770,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 68d9464d0cd4fbf48a81abf378167c7f, type: 2}
+  - {fileID: 2100000, guid: 59dab83f388ccd248baeb916d95e358f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
