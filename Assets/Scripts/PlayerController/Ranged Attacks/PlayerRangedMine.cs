@@ -14,7 +14,7 @@ public class PlayerRangedMine : RangedAttack
     void Update()
     {
         base.Update();
-
+        
     }
     public override void Shoot(Vector3 targetPosition)
     {

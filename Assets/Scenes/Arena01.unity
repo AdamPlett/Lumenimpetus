@@ -27357,6 +27357,30 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -373.89526
       objectReference: {fileID: 0}
+    - target: {fileID: 7505965801948819559, guid: fd5d682aff340254090ae6c9a97cb898,
+        type: 3}
+      propertyPath: sprites.Array.data[53]
+      value: 
+      objectReference: {fileID: 416259749, guid: 0ba783bc4876e45408f045454d94938e,
+        type: 3}
+    - target: {fileID: 7505965801948819559, guid: fd5d682aff340254090ae6c9a97cb898,
+        type: 3}
+      propertyPath: sprites.Array.data[54]
+      value: 
+      objectReference: {fileID: -318095994, guid: 0ba783bc4876e45408f045454d94938e,
+        type: 3}
+    - target: {fileID: 7505965801948819559, guid: fd5d682aff340254090ae6c9a97cb898,
+        type: 3}
+      propertyPath: sprites.Array.data[55]
+      value: 
+      objectReference: {fileID: -2003226711, guid: 0ba783bc4876e45408f045454d94938e,
+        type: 3}
+    - target: {fileID: 7505965801948819559, guid: fd5d682aff340254090ae6c9a97cb898,
+        type: 3}
+      propertyPath: sprites.Array.data[56]
+      value: 
+      objectReference: {fileID: 1105862299, guid: 0ba783bc4876e45408f045454d94938e,
+        type: 3}
     - target: {fileID: 7505965802012769326, guid: fd5d682aff340254090ae6c9a97cb898,
         type: 3}
       propertyPath: m_AnchorMax.x

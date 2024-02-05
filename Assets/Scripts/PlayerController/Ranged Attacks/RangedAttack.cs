@@ -57,6 +57,7 @@ public abstract class RangedAttack : MonoBehaviour
         }
         else
         {
+            Debug.Log(canShoot);
             canShootAnim.setActiveTrue();
         }
     }
