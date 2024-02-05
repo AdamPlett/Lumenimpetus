@@ -4863,6 +4863,16 @@ PrefabInstance:
       propertyPath: basicLaserCooldown
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1372386939633838990, guid: 46f7170e332888c4f8ab7ab17ef8914e,
+        type: 3}
+      propertyPath: laserHitMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 1372386939633838990, guid: 46f7170e332888c4f8ab7ab17ef8914e,
+        type: 3}
+      propertyPath: laserStopMask.m_Bits
+      value: 7735
+      objectReference: {fileID: 0}
     - target: {fileID: 4730139581844405977, guid: 46f7170e332888c4f8ab7ab17ef8914e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4993,6 +5003,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4731911106986485196, guid: 46f7170e332888c4f8ab7ab17ef8914e,
+        type: 3}
+      propertyPath: attacks
+      value: 
+      objectReference: {fileID: 1687008853}
     - target: {fileID: 4731911106986485196, guid: 46f7170e332888c4f8ab7ab17ef8914e,
         type: 3}
       propertyPath: rotationSpeed
@@ -5286,7 +5301,12 @@ PrefabInstance:
     - target: {fileID: 4743835106787884725, guid: 46f7170e332888c4f8ab7ab17ef8914e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8525311660620940021, guid: 46f7170e332888c4f8ab7ab17ef8914e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46f7170e332888c4f8ab7ab17ef8914e, type: 3}
@@ -18314,7 +18334,7 @@ PrefabInstance:
     - target: {fileID: 341219009958638564, guid: 9e82316a61ecc7b44b87523ad1084348,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 341219009958638571, guid: 9e82316a61ecc7b44b87523ad1084348,
         type: 3}
@@ -18374,7 +18394,7 @@ PrefabInstance:
     - target: {fileID: 341219010397994664, guid: 9e82316a61ecc7b44b87523ad1084348,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 341219010397994665, guid: 9e82316a61ecc7b44b87523ad1084348,
         type: 3}
@@ -18409,6 +18429,31 @@ PrefabInstance:
     - target: {fileID: 341219010397994671, guid: 9e82316a61ecc7b44b87523ad1084348,
         type: 3}
       propertyPath: m_Parameters.colorGradient.key0.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 341219010397994671, guid: 9e82316a61ecc7b44b87523ad1084348,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 341219010397994671, guid: 9e82316a61ecc7b44b87523ad1084348,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 341219010397994671, guid: 9e82316a61ecc7b44b87523ad1084348,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 341219010397994671, guid: 9e82316a61ecc7b44b87523ad1084348,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 341219010397994671, guid: 9e82316a61ecc7b44b87523ad1084348,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].value
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -35928,6 +35973,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 250903879}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1687008853 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1372386939633838990, guid: 46f7170e332888c4f8ab7ab17ef8914e,
+    type: 3}
+  m_PrefabInstance: {fileID: 250903879}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687008842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0338e294fa8536c4cb20a3141abb2c2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1700547397
 Mesh:
   m_ObjectHideFlags: 0
