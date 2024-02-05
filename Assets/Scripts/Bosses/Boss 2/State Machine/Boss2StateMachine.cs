@@ -21,6 +21,7 @@ public class Boss2StateMachine : StateMachine
     [Header("Boss Components")]
     public Boss2Health health;
     public Boss2Animation anim;
+    public Boss2AttackManager attacks;
     public GameObject bossModel;
     public PortalManager portalManager;
 
@@ -43,7 +44,11 @@ public class Boss2StateMachine : StateMachine
     // Update is called once per frame
     void Update()
     {
-        LookAtPlayer();
+        if(!attacks.shootingLaser)
+        {
+            LookAtPlayer();
+        }
+
         CheckHealth();
     }
 

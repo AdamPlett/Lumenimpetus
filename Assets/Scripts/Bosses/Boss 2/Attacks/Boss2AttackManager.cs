@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using System.Threading;
 using UnityEngine;
 using static GameManager;
@@ -12,6 +13,9 @@ public class Boss2AttackManager : MonoBehaviour
     private Vector3 laserTarget;
     public float basicLaserCooldown;
     private float basicLaserTimer;
+    public LayerMask laserHitMask;
+    public LayerMask laserStopMask;
+    public bool shootingLaser;
 
     [Header("Portals")]
     public GameObject mainPortal;
@@ -44,18 +48,29 @@ public class Boss2AttackManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        ActiveLaser();
+        ActivateLaser();
 
-        laserTarget = gm.playerRef.transform.position;
+        Vector3 directionToPlayer = (gm.playerRef.transform.position - transform.position).normalized;
+
+        Debug.DrawRay(laserSpawnPoint.position, directionToPlayer * 100f, Color.yellow, 1f);
+
+        if (Physics.Raycast(laserSpawnPoint.position, directionToPlayer, out RaycastHit laserHit, 100f, laserStopMask))
+        {
+            laserTarget = laserHit.point;
+        }
+        else
+        {
+            laserTarget = transform.forward * 100f;
+        }
 
         Vector3 laserStart = laserSpawnPoint.position;
-        Vector3 laserEnd = laserTarget - (gm.boss2.transform.forward * 20f);
+        Vector3 laserEnd = laserStart;
 
         float timer = 0f;
 
         while(timer < 1f)
         {
-            timer += Time.deltaTime * 2f;
+            timer += Time.deltaTime;
 
             if(timer > 1f)
             {
@@ -74,13 +89,15 @@ public class Boss2AttackManager : MonoBehaviour
         gm.boss2.anim.SwitchAnimation(gm.boss2.anim.IdleHash);
     }
 
-    private void ActiveLaser()
+    private void ActivateLaser()
     {
+        shootingLaser = true;
         laser.gameObject.SetActive(true);
     }
 
     private void DeactivateLaser()
     {
+        shootingLaser = false;
         laser.gameObject.SetActive(false);
     }
 
