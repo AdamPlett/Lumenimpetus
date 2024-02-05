@@ -8,6 +8,7 @@ public class PlayerRangedBasic : RangedAttack
     GameObject bulletInstance;
     public Rigidbody rb;
     public float shotTimer = 0f;
+    public AudioClip shotSFX;
     
 
     private void Start()
@@ -49,6 +50,10 @@ public class PlayerRangedBasic : RangedAttack
         firing = true;
         yield return new WaitForSeconds(shotDelay);
         SpawnBullet();
+
+        //play shot SFX
+        gm.pm.swordSFX.PlayOneShot(shotSFX);
+
         Invoke(nameof(AnimationBuffer), 1f);
         shooting = true;
         Debug.Log("Bang");

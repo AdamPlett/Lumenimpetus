@@ -5217,6 +5217,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!4 &280951870 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8485505899879313514, guid: fd5d682aff340254090ae6c9a97cb898,
+    type: 3}
+  m_PrefabInstance: {fileID: 1461440118}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &292965939
 Mesh:
   m_ObjectHideFlags: 0
@@ -30808,6 +30814,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -382.8141
       objectReference: {fileID: 0}
+    - target: {fileID: 2783439413128029149, guid: fd5d682aff340254090ae6c9a97cb898,
+        type: 3}
+      propertyPath: speed
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2783439413128029149, guid: fd5d682aff340254090ae6c9a97cb898,
+        type: 3}
+      propertyPath: shotSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 43b8865c55ee81d45ae5b6fbad712e93, type: 3}
+    - target: {fileID: 2783439413128029149, guid: fd5d682aff340254090ae6c9a97cb898,
+        type: 3}
+      propertyPath: shotDelay
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2783439413128029149, guid: fd5d682aff340254090ae6c9a97cb898,
+        type: 3}
+      propertyPath: startPosition
+      value: 
+      objectReference: {fileID: 280951870}
     - target: {fileID: 5428764049618263440, guid: fd5d682aff340254090ae6c9a97cb898,
         type: 3}
       propertyPath: m_LocalPosition.x
