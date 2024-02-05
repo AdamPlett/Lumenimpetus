@@ -46,14 +46,13 @@ public class Boss2AttackManager : MonoBehaviour
             }
             else
             {
-                //basicLaserTimer += Time.deltaTime;
+                basicLaserTimer += Time.deltaTime;
             }
 
             if (specialLaserTimer >= specialLaserCooldown && gm.boss2.onGroundLayer)
             {
                 specialLaserTimer = 0;
-                StartCoroutine(SpecialAttack2());
-                //SelectRandomSpecial();
+                SelectRandomSpecial();
                 return;
             }
             else

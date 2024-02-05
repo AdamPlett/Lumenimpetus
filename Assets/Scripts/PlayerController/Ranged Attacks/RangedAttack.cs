@@ -88,6 +88,4 @@ public abstract class RangedAttack : MonoBehaviour
     {
         return (target - start).normalized;
     }
-    
-
 }
