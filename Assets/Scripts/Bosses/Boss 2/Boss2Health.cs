@@ -24,13 +24,16 @@ public class Boss2Health : MonoBehaviour
 
     public void DamageBoss(float damage)
     {
-        currentHealth -= damage;
-
-        if(currentHealth <= 0)
+        if(!gm.boss2.teleporting && currentHealth > 0)
         {
-            currentHealth = 0;
+            currentHealth -= damage;
 
-            gm.boss2.Die();
+            if (currentHealth <= 0)
+            {
+                currentHealth = 0;
+
+                gm.boss2.Die();
+            }
         }
     }
 }

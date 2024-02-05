@@ -36,6 +36,7 @@ public class Boss2StateMachine : StateMachine
     public Transform prevTarget;
     public float tpDamageThreshold;
     public float damageThresholdIncrement;
+    public bool teleporting;
 
     [Header("Teleport FX")]
     public GameObject vanishPortal;
@@ -46,6 +47,7 @@ public class Boss2StateMachine : StateMachine
     public GameObject purplePortals;
 
     private float tpCounter=1;
+    public bool dancing = false;
 
     // Start is called before the first frame update
     void Start()
@@ -56,12 +58,19 @@ public class Boss2StateMachine : StateMachine
     // Update is called once per frame
     void Update()
     {
-        if(!attacks.shootingLaser)
+        if(!freeze && !dancing)
         {
-            LookAtPlayer();
-        }
+            if (!attacks.shootingLaser)
+            {
+                LookAtPlayer();
+            }
 
-        CheckHealth();
+            CheckHealth();
+        }
+        else
+        {
+            StopAllCoroutines();
+        }
     }
 
     public void LookAtPlayer()
@@ -96,7 +105,7 @@ public class Boss2StateMachine : StateMachine
 
     private void CheckHealth()
     {
-        if(health.currentHealth <= health.maxHealth - tpDamageThreshold && !gm.boss2.attacks.shootingLaser)
+        if(health.currentHealth <= health.maxHealth - tpDamageThreshold && !gm.boss2.attacks.shootingLaser && gm.bh2.currentHealth > 0)
         {
             TeleportBoss();
             tpDamageThreshold += damageThresholdIncrement;
@@ -145,6 +154,7 @@ public class Boss2StateMachine : StateMachine
     IEnumerator Teleport(Transform point)
     {
         tpTarget = point;
+        teleporting = true;
 
         yield return new WaitForSeconds(0.25f);
 
@@ -168,11 +178,17 @@ public class Boss2StateMachine : StateMachine
         anim.SwitchAnimation(anim.IdleHash);
 
         tpCounter++;
+        teleporting = false;
     }
 
     public void Dance()
     {
-        anim.SwitchAnimation(anim.DanceHash);
+        if (!anim.bossAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dance"))
+        {
+            anim.SwitchAnimation(anim.DanceHash);
+            dancing = true;
+            freeze = true;
+        }
     }
 
     public void Die()

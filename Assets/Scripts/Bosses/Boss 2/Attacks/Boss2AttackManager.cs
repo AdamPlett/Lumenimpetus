@@ -36,7 +36,7 @@ public class Boss2AttackManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!shootingLaser)
+        if(!shootingLaser && !gm.boss2.dancing)
         {
             if (basicLaserTimer >= basicLaserCooldown)
             {
@@ -64,6 +64,11 @@ public class Boss2AttackManager : MonoBehaviour
             {
                 DrawLaserMain();
             }
+        }
+
+        if(gm.boss2.teleporting)
+        {
+            StopAllCoroutines();
         }
     }
 

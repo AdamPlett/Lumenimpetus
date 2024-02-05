@@ -7538,28 +7538,6 @@ Transform:
   m_Father: {fileID: 1448081695}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &170723490 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 341219009051454519, guid: 46f7170e332888c4f8ab7ab17ef8914e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1750797962}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &170723492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 170723490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb10f27a296827148822b807dad2101e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lineRenderer: {fileID: 0}
-  playerMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &178105353
 GameObject:
   m_ObjectHideFlags: 0
@@ -68265,10 +68243,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 953868952, guid: 46f7170e332888c4f8ab7ab17ef8914e, type: 3}
-      propertyPath: playerMask.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
     - target: {fileID: 4731911106986485186, guid: 46f7170e332888c4f8ab7ab17ef8914e,
         type: 3}
       propertyPath: m_RootOrder
@@ -68341,11 +68315,6 @@ PrefabInstance:
       objectReference: {fileID: 1161553446}
     - target: {fileID: 4731911106986485196, guid: 46f7170e332888c4f8ab7ab17ef8914e,
         type: 3}
-      propertyPath: tpPoints.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4731911106986485196, guid: 46f7170e332888c4f8ab7ab17ef8914e,
-        type: 3}
       propertyPath: tpPoints.Array.data[0]
       value: 
       objectReference: {fileID: 371686443}
@@ -68364,11 +68333,6 @@ PrefabInstance:
       propertyPath: tpPoints.Array.data[3]
       value: 
       objectReference: {fileID: 2090876425}
-    - target: {fileID: 4731911106986485196, guid: 46f7170e332888c4f8ab7ab17ef8914e,
-        type: 3}
-      propertyPath: groundPoints.Array.size
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4731911106986485196, guid: 46f7170e332888c4f8ab7ab17ef8914e,
         type: 3}
       propertyPath: groundPoints.Array.data[0]
