@@ -41,7 +41,11 @@ public class Boss2StateMachine : StateMachine
     public GameObject vanishPortal;
     public ParticleSystem vanishParticles;
 
-    private float tpCounter;
+    [Header("Portals To Spawn")]
+    public GameObject greenPortals;
+    public GameObject purplePortals;
+
+    private float tpCounter=1;
 
     // Start is called before the first frame update
     void Start()
@@ -101,20 +105,33 @@ public class Boss2StateMachine : StateMachine
 
     private void TeleportBoss()
     {
-        if(tpCounter > 2)
+        if(tpCounter % 2 == 0 )
         {
-            tpCounter = 0;
-
+            if (tpCounter % 4 ==0) 
+            {
+                tpCounter = 0;
+            }
             int randomInt = Random.Range(0, groundPoints.Length);
 
             if (groundPoints[randomInt] != tpTarget)
             {
+                purplePortals.SetActive(false);
+                greenPortals.SetActive(false);
+
                 onGroundLayer = true;
                 StartCoroutine(Teleport(groundPoints[randomInt]));
             }
         }
         else
         {
+            if ( tpCounter % 3 == 0)
+            {
+                greenPortals.SetActive(true);
+            }
+            else
+            {
+                purplePortals.SetActive(true);
+            }
             int randomInt = Random.Range(0, tpPoints.Length);
 
             if (tpPoints[randomInt] != tpTarget)
