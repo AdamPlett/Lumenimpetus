@@ -195,6 +195,9 @@ public class Boss2StateMachine : StateMachine
     {
         freeze = true;
         anim.SwitchAnimation(anim.DeathHash);
+
+        gm.ui.ActivateVictoryScreen();
+
         //GetComponent<Collider>().enabled = false;
     }
 

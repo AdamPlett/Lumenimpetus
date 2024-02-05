@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     public ComboCounter cc;
     public GameObject comboText;
     public GameObject sword;
+    public GameObject victory;
 
     void Update()
     {
@@ -29,5 +30,10 @@ public class UIManager : MonoBehaviour
         {
             comboText.SetActive(false);
         }
+    }
+
+    public void ActivateVictoryScreen()
+    {
+        victory.SetActive(true);
     }
 }
