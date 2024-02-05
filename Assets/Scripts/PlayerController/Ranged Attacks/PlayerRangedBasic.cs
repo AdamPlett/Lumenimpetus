@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameManager;
 
 public class PlayerRangedBasic : RangedAttack
 {
@@ -31,6 +32,7 @@ public class PlayerRangedBasic : RangedAttack
     }
     public override void Shoot(Vector3 targetPosition)
     {
+        
         if (targetPosition != null)
         {
             shootDirection = GetDirection(startPosition.position, targetPosition);
@@ -40,22 +42,27 @@ public class PlayerRangedBasic : RangedAttack
             shootDirection = startPosition.up;
         }
         StartCoroutine(ShotDelay());
-        SpawnBullet();
         ResetTimer();
-        
     }
     private IEnumerator ShotDelay()
     {
         firing = true;
         yield return new WaitForSeconds(shotDelay);
-        firing = false;
+        SpawnBullet();
+        Invoke(nameof(AnimationBuffer), 1f);
         shooting = true;
         Debug.Log("Bang");
     }
 
+    private void AnimationBuffer()
+    {
+
+        firing = false;
+    }
+
     public void SpawnBullet()
     {
-        bulletInstance = Instantiate(bulletPrefab, startPosition.position, Quaternion.Euler(startPosition.up));
+        bulletInstance = Instantiate(bulletPrefab, startPosition.position, Quaternion.Euler(startPosition.right));
         bulletInstance.transform.parent = null;
         rb = bulletInstance.GetComponent<Rigidbody>();
         bulletInstance.GetComponent<Bullet>().InitBullet(this);

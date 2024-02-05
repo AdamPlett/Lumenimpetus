@@ -3923,6 +3923,7 @@ MonoBehaviour:
   ph: {fileID: 7505965802202953544}
   playerCollider: {fileID: 5428764049398963332}
   playerObject: {fileID: 5428764049398963334}
+  playerRangedController: {fileID: 2039605828488214400}
   bossRef: {fileID: 0}
   boss1: {fileID: 0}
   bh: {fileID: 0}
@@ -8509,6 +8510,18 @@ PrefabInstance:
       objectReference: {fileID: 87858663916875323}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccf55b084927b344d92becd5edbd68ac, type: 3}
+--- !u!114 &2039605828488214400 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8387020344773144371, guid: ccf55b084927b344d92becd5edbd68ac,
+    type: 3}
+  m_PrefabInstance: {fileID: 7505965802042316979}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 270dcbda4e9f05b4e9c2fb3a61f0cd38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5428764048720926218 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2557011061838073529, guid: ccf55b084927b344d92becd5edbd68ac,
