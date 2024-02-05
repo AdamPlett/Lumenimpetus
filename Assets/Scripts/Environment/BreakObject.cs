@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BreakObject : MonoBehaviour
@@ -10,8 +11,9 @@ public class BreakObject : MonoBehaviour
     [SerializeField] private string destructKey;
     [SerializeField] private float destoryBrokenObjectTime=1.5f;
 
-    [Header("Destruction SFX object")]
+    [Header("Destruction FX object")]
     public GameObject destructionSFXPlayer;
+    public ParticleSystem particles;
 
     KeyCode thisKeyCode;
     
@@ -25,6 +27,7 @@ public class BreakObject : MonoBehaviour
     [Header("Objects to spawn")]
     public GameObject[] spawnObjects;
     private bool hasSpawns = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +65,10 @@ public class BreakObject : MonoBehaviour
         {
             Instantiate(destructionSFXPlayer);
         }
+        if (particles != null)
+        {
+            particles.Play();
+        }
         GameObject broken = Instantiate(brokenObject, transform.position, transform.rotation);
 
         //adds destruction force to objects
@@ -72,6 +79,7 @@ public class BreakObject : MonoBehaviour
             rb.AddForce(force);
             Destroy(rb.gameObject, destoryBrokenObjectTime);
         }
+
         Invoke("objectSpawner", destoryBrokenObjectTime);
         destroySequence();
     }

@@ -728,7 +728,7 @@ PrefabInstance:
     - target: {fileID: 7398886664229560915, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7398886664229560915, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
@@ -1655,6 +1655,7 @@ MonoBehaviour:
   destructKey: u
   destoryBrokenObjectTime: 1.5
   destructionSFXPlayer: {fileID: 0}
+  particles: {fileID: 0}
   objToDestroy: []
   supportObjects: []
   spawnObjects: []
@@ -2437,6 +2438,7 @@ MonoBehaviour:
   destructKey: p
   destoryBrokenObjectTime: 1.5
   destructionSFXPlayer: {fileID: 0}
+  particles: {fileID: 0}
   objToDestroy: []
   supportObjects: []
   spawnObjects: []
@@ -5236,6 +5238,7 @@ MonoBehaviour:
   destructKey: o
   destoryBrokenObjectTime: 1.5
   destructionSFXPlayer: {fileID: 0}
+  particles: {fileID: 0}
   objToDestroy: []
   supportObjects: []
   spawnObjects: []
@@ -5438,7 +5441,7 @@ PrefabInstance:
     - target: {fileID: 7398886664229560915, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7398886664229560915, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
@@ -5580,7 +5583,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1176071125}
-  m_RootOrder: 14
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &270549031
 BoxCollider:
@@ -7729,6 +7732,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 629424096}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &629424098 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3444454236454372849, guid: 7ceca2c0b40020c459da2070fda419f5,
+    type: 3}
+  m_PrefabInstance: {fileID: 629424096}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &634442469
 GameObject:
   m_ObjectHideFlags: 0
@@ -7834,6 +7843,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1659256230}
     m_Modifications:
+    - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
+        type: 3}
+      propertyPath: particles
+      value: 
+      objectReference: {fileID: 975097678}
     - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
       propertyPath: destructKey
@@ -8314,6 +8328,11 @@ PrefabInstance:
       propertyPath: boomBoom
       value: 
       objectReference: {fileID: 8300000, guid: f57fe9bdfd1e869449b73a25ac293c39, type: 3}
+    - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
+        type: 3}
+      propertyPath: particles
+      value: 
+      objectReference: {fileID: 629424098}
     - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
       propertyPath: destructKey
@@ -9735,6 +9754,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Smoke (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 737502352557660665, guid: 7ceca2c0b40020c459da2070fda419f5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444454236454372849, guid: 7ceca2c0b40020c459da2070fda419f5,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9142143157625546208, guid: 7ceca2c0b40020c459da2070fda419f5,
         type: 3}
       propertyPath: m_RootOrder
@@ -9795,6 +9824,12 @@ PrefabInstance:
 --- !u!4 &767149950 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9142143157625546208, guid: 7ceca2c0b40020c459da2070fda419f5,
+    type: 3}
+  m_PrefabInstance: {fileID: 767149949}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &767149951 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3444454236454372849, guid: 7ceca2c0b40020c459da2070fda419f5,
     type: 3}
   m_PrefabInstance: {fileID: 767149949}
   m_PrefabAsset: {fileID: 0}
@@ -12333,6 +12368,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Smoke (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 737502352557660665, guid: 7ceca2c0b40020c459da2070fda419f5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444454236454372849, guid: 7ceca2c0b40020c459da2070fda419f5,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9142143157625546208, guid: 7ceca2c0b40020c459da2070fda419f5,
         type: 3}
       propertyPath: m_RootOrder
@@ -12393,6 +12438,12 @@ PrefabInstance:
 --- !u!4 &975097677 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9142143157625546208, guid: 7ceca2c0b40020c459da2070fda419f5,
+    type: 3}
+  m_PrefabInstance: {fileID: 975097676}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &975097678 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3444454236454372849, guid: 7ceca2c0b40020c459da2070fda419f5,
     type: 3}
   m_PrefabInstance: {fileID: 975097676}
   m_PrefabAsset: {fileID: 0}
@@ -13031,6 +13082,7 @@ MonoBehaviour:
   destructKey: i
   destoryBrokenObjectTime: 1.5
   destructionSFXPlayer: {fileID: 0}
+  particles: {fileID: 0}
   objToDestroy: []
   supportObjects: []
   spawnObjects: []
@@ -14238,6 +14290,7 @@ MonoBehaviour:
   destructKey: y
   destoryBrokenObjectTime: 1.5
   destructionSFXPlayer: {fileID: 0}
+  particles: {fileID: 0}
   objToDestroy: []
   supportObjects: []
   spawnObjects: []
@@ -14949,10 +15002,10 @@ Transform:
   - {fileID: 61049473}
   - {fileID: 1194940024}
   - {fileID: 260959046}
+  - {fileID: 270549030}
   - {fileID: 1283328550}
   - {fileID: 1800133610}
   - {fileID: 694275215}
-  - {fileID: 270549030}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15089,7 +15142,7 @@ PrefabInstance:
     - target: {fileID: 7398886664229560915, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7398886664229560915, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
@@ -16197,6 +16250,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
+      propertyPath: particles
+      value: 
+      objectReference: {fileID: 767149951}
+    - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
+        type: 3}
       propertyPath: destructKey
       value: p
       objectReference: {fileID: 0}
@@ -16316,6 +16374,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7669429959384819945, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7669429959384819945, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
@@ -21706,6 +21769,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
         type: 3}
+      propertyPath: particles
+      value: 
+      objectReference: {fileID: 2114127955}
+    - target: {fileID: 7398886662859462690, guid: 0afa3c5d910dbab4eb46f533e6f6ba91,
+        type: 3}
       propertyPath: destructKey
       value: p
       objectReference: {fileID: 0}
@@ -23302,6 +23370,7 @@ MonoBehaviour:
   destructKey: p
   destoryBrokenObjectTime: 1.5
   destructionSFXPlayer: {fileID: 0}
+  particles: {fileID: 0}
   objToDestroy: []
   supportObjects: []
   spawnObjects: []
@@ -25624,6 +25693,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Smoke (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 737502352557660665, guid: 7ceca2c0b40020c459da2070fda419f5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444454236454372849, guid: 7ceca2c0b40020c459da2070fda419f5,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9142143157625546208, guid: 7ceca2c0b40020c459da2070fda419f5,
         type: 3}
       propertyPath: m_RootOrder
@@ -25684,6 +25763,12 @@ PrefabInstance:
 --- !u!4 &2114127954 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9142143157625546208, guid: 7ceca2c0b40020c459da2070fda419f5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2114127953}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &2114127955 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3444454236454372849, guid: 7ceca2c0b40020c459da2070fda419f5,
     type: 3}
   m_PrefabInstance: {fileID: 2114127953}
   m_PrefabAsset: {fileID: 0}
