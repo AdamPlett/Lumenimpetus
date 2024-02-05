@@ -115,6 +115,7 @@ public class PlayerMovement : MonoBehaviour
     public const string ATTACK2 = "Attack 2";
     public const string ATTACK3 = "Attack 3";
     public const string STUNNED = "Stunned";
+    
 
     private string currentAnimationState;
 
@@ -545,7 +546,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Attack()
     {
-        if (!readyToAttack || attacking || playerStunned || gm.ph.dead) return;
+        if (!readyToAttack || attacking || playerStunned || gm.ph.dead /*|| gm.playerRef.GetComponent<RangedAttack>().shooting || gm.playerRef.GetComponent<RangedAttack>().firing*/) return;
 
         readyToAttack = false;
         attacking = true;
@@ -680,7 +681,7 @@ public class PlayerMovement : MonoBehaviour
     public void SetAnimations()
     {
         // if player is not attacking;
-        if (!attacking && !playerStunned)
+        if (!attacking && !playerStunned && !gm.playerRef.GetComponentInChildren<RangedAttack>().firing)
         {
             if (horizontalInput == 0 && verticalInput == 0)
             {
@@ -700,11 +701,12 @@ public class PlayerMovement : MonoBehaviour
     public void ChangeAnimationState(string newState)
     {
         // Stop the same animation from interrupting itself
-
+        Debug.Log(newState);
         if (currentAnimationState == newState) return;
-
+        Debug.Log(currentAnimationState);
         // Play the animation
         currentAnimationState = newState;
+       // if (gm.playerRef.GetComponentInChildren<RangedController>())
         if (currentAnimationState == IDLE)
         {
             animator.CrossFadeInFixedTime(currentAnimationState, 0.4f);
