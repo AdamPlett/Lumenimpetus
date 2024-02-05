@@ -18,6 +18,15 @@ public class PlayerRangedMine : RangedAttack
     }
     public override void Shoot(Vector3 targetPosition)
     {
+        StartCoroutine(ShotDelay());
+        ResetTimer();
+    }
+    private IEnumerator ShotDelay()
+    {
+        firing = true;
+        yield return new WaitForSeconds(shotDelay);
+
+        Vector3 targetPosition = GetShotTarget();
         if (targetPosition != null)
         {
             shootDirection = GetDirection(startPosition.position, targetPosition);
@@ -26,13 +35,7 @@ public class PlayerRangedMine : RangedAttack
         {
             shootDirection = startPosition.up;
         }
-        StartCoroutine(ShotDelay());
-        ResetTimer();
-    }
-    private IEnumerator ShotDelay()
-    {
-        firing = true;
-        yield return new WaitForSeconds(shotDelay);
+
         SpawnMine();
 
         //play shot SFX
