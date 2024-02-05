@@ -19370,6 +19370,8 @@ MonoBehaviour:
   airDrag: 0.005
   coyoteTime: 0.15
   mpl: {fileID: 0}
+  timeTillUnparent: 0.1
+  jumpBufferLength: 0.15
   dashSpeed: 20
   dashSpeedChangeFactor: 50
   maxYSpeed: 15
@@ -19448,6 +19450,7 @@ MonoBehaviour:
   wallRef: {fileID: 0}
   lastWall: {fileID: 0}
   coyoteTime: 0.15
+  jumpBufferLength: 0.15
   jumpKey: 32
   wallCheckDistance: 0.7
   minJumpHeight: 1.7
@@ -19490,6 +19493,7 @@ MonoBehaviour:
   dashCd: 1
   canDash: 0
   dashKey: 306
+  altDashKey: 102
 --- !u!114 &463300963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19902,7 +19906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentWeapon: 1
-  damage: 10
+  damage: 5
   speed: 1500
   duration: 10
   cooldown: 5
@@ -19916,5 +19920,7 @@ MonoBehaviour:
     type: 3}
   startPosition: {fileID: 0}
   shootDirection: {x: 0, y: 0, z: 0}
-  rb: {fileID: 0}
+  hitTarget: 0
+  canShootAnim: {fileID: 0}
   shotTimer: 0
+  shotSFX: {fileID: 0}
