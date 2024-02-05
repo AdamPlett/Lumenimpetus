@@ -42,6 +42,8 @@ public class Boss1StateMachine : StateMachine
     public AudioClip attack1SFX;
     public AudioClip attack2SFX;
 
+    [Header("Exchange collider")]
+    public GameObject exchangeCollider;
     void Start()
     {
         SwitchToMoveState();
@@ -281,6 +283,8 @@ public class Boss1StateMachine : StateMachine
         anim.SwitchAnimation(anim.PhaseTransition);
         
         yield return new WaitForSeconds(1f);
+
+        exchangeCollider.SetActive(true);
 
         anim.SwitchAnimation(anim.DeathHash);
 
