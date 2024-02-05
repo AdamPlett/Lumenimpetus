@@ -681,7 +681,7 @@ public class PlayerMovement : MonoBehaviour
     public void SetAnimations()
     {
         // if player is not attacking;
-        if (!attacking && !playerStunned && !gm.playerRef.GetComponentInChildren<RangedAttack>().firing)
+        if (!attacking && !playerStunned && !gm.playerRef.GetComponentInChildren<RangedController>().currentWeapon.firing)
         {
             if (horizontalInput == 0 && verticalInput == 0)
             {

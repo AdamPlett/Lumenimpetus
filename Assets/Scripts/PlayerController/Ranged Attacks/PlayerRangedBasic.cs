@@ -6,15 +6,10 @@ using static GameManager;
 public class PlayerRangedBasic : RangedAttack
 {
     GameObject bulletInstance;
-    public Rigidbody rb;
+    private Rigidbody rb;
     public float shotTimer = 0f;
+    public AudioClip shotSFX;
     
-
-    private void Start()
-    {
-        
-
-    }
     // Update is called once per frame
     private void Update()
     {
@@ -32,7 +27,14 @@ public class PlayerRangedBasic : RangedAttack
     }
     public override void Shoot(Vector3 targetPosition)
     {
-        
+        StartCoroutine(ShotDelay(targetPosition));
+        ResetTimer();
+    }
+    private IEnumerator ShotDelay(Vector3 targetPosition)
+    {
+        firing = true;
+        yield return new WaitForSeconds(shotDelay);
+        //gets position to shoot at
         if (targetPosition != null)
         {
             shootDirection = GetDirection(startPosition.position, targetPosition);
@@ -41,14 +43,11 @@ public class PlayerRangedBasic : RangedAttack
         {
             shootDirection = startPosition.up;
         }
-        StartCoroutine(ShotDelay());
-        ResetTimer();
-    }
-    private IEnumerator ShotDelay()
-    {
-        firing = true;
-        yield return new WaitForSeconds(shotDelay);
         SpawnBullet();
+
+        //play shot SFX
+        gm.pm.swordSFX.PlayOneShot(shotSFX);
+
         Invoke(nameof(AnimationBuffer), 1f);
         shooting = true;
         Debug.Log("Bang");
