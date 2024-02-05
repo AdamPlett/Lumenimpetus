@@ -13,19 +13,19 @@ public class PortalLaser : MonoBehaviour
 
     public void Update()
     {
-        if(laserActive)
+        if(laserActive && target != null)
         {
             laser.DrawLaser(transform.position, target.position);
         }
     }
 
-    private void ActivateLaser()
+    public void ActivateLaser()
     {
         laserActive = true;
         laser.gameObject.SetActive(true);
     }
 
-    private void DeactivateLaser()
+    public void DeactivateLaser()
     {
         laserActive = false;
         laser.gameObject.SetActive(false);

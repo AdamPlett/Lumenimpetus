@@ -133,9 +133,9 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 33.794582, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _InnerColor: {r: 0.2226317, g: 1, b: 0, a: 1}
+    - _InnerColor: {r: 1, g: 1, b: 1, a: 1}
     - _NoiseSpeed: {r: 0.25, g: -0.25, b: 0, a: 0}
-    - _OuterColor: {r: 37.503155, g: 0, b: 1.0904096, a: 1}
+    - _OuterColor: {r: 0, g: 8.9419155, b: 27.747774, a: 1}
     - _ScrollSpeed: {r: -1, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
