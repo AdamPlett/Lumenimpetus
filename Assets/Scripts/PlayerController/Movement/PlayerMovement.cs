@@ -742,7 +742,8 @@ public class PlayerMovement : MonoBehaviour
     public IEnumerator BossHitstop()
     {
         float prevSpeed;
-        Animator anim = gm.boss1.GetComponent<Animator>();
+
+        Animator anim = gm.bossRef.GetComponent<Animator>();
         prevSpeed = anim.speed;
         anim.speed = 0;
 
