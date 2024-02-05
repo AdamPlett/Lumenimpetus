@@ -17,6 +17,7 @@ public class Boss2StateMachine : StateMachine
     public float moveSpeed;
     public float rotationSpeed;
     public bool freeze;
+    public bool onGroundLayer;
 
     [Header("Boss Components")]
     public Boss2Health health;
@@ -29,16 +30,19 @@ public class Boss2StateMachine : StateMachine
     public LayerMask environment;
 
     [Header("Teleportation")]
+    public Transform[] groundPoints;
     public Transform[] tpPoints;
     public Transform tpTarget;
     public Transform prevTarget;
     public float tpDamageThreshold;
     public float damageThresholdIncrement;
 
+    private float tpCounter;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        onGroundLayer = true;
     }
 
     // Update is called once per frame
@@ -93,9 +97,28 @@ public class Boss2StateMachine : StateMachine
 
     private void TeleportBoss()
     {
-        int randomInt = Random.Range(0, tpPoints.Length);
+        if(tpCounter > 2)
+        {
+            tpCounter = 0;
 
-        StartCoroutine(Teleport(tpPoints[randomInt]));
+            int randomInt = Random.Range(0, groundPoints.Length);
+
+            if (groundPoints[randomInt] != tpTarget)
+            {
+                onGroundLayer = true;
+                StartCoroutine(Teleport(groundPoints[randomInt]));
+            }
+        }
+        else
+        {
+            int randomInt = Random.Range(0, tpPoints.Length);
+
+            if (tpPoints[randomInt] != tpTarget)
+            {
+                onGroundLayer = false;
+                StartCoroutine(Teleport(tpPoints[randomInt]));
+            }
+        }
     }
 
     IEnumerator Teleport(Transform point)
@@ -105,6 +128,8 @@ public class Boss2StateMachine : StateMachine
         yield return new WaitForSeconds(1f);
 
         transform.position = point.position;
+
+        tpCounter++;
     }
 
     #region State-Switchers

@@ -326,6 +326,7 @@ MonoBehaviour:
   freeze: 0
   health: {fileID: 4731911106986485197}
   anim: {fileID: 4731911106986485198}
+  attacks: {fileID: 0}
   bossModel: {fileID: 4733158868573587301}
   portalManager: {fileID: 4731911106947037300}
   environment:
@@ -365,8 +366,17 @@ MonoBehaviour:
   laser: {fileID: 0}
   laserSpawnPoint: {fileID: 0}
   basicLaserCooldown: 0
+  laserHitMask:
+    serializedVersion: 2
+    m_Bits: 0
+  laserStopMask:
+    serializedVersion: 2
+    m_Bits: 0
+  shootingLaser: 0
   mainPortal: {fileID: 0}
-  attack1PortalPoints: []
+  attack1Portals: []
+  attack2Portals: []
+  attack3Portals: []
 --- !u!114 &4731911106986485198
 MonoBehaviour:
   m_ObjectHideFlags: 0
