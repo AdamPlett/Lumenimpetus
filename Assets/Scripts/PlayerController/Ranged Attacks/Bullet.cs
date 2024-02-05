@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private float damage;
     private PlayerRangedBasic prb;
     public void OnCollisionEnter(Collision collision)
     {

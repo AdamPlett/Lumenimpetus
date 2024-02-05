@@ -6,16 +6,10 @@ using static GameManager;
 public class PlayerRangedBasic : RangedAttack
 {
     GameObject bulletInstance;
-    public Rigidbody rb;
+    private Rigidbody rb;
     public float shotTimer = 0f;
     public AudioClip shotSFX;
     
-
-    private void Start()
-    {
-        
-
-    }
     // Update is called once per frame
     private void Update()
     {
