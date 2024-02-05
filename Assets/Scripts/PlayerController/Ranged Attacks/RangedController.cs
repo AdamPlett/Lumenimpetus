@@ -24,8 +24,7 @@ public class RangedController : MonoBehaviour
         {
             Vector3 target = GetShotTarget();
             currentWeapon.Shoot(target);
-            
-               
+            gm.pm.ChangeAnimationState("RangedAttack");
         }
     }
 
