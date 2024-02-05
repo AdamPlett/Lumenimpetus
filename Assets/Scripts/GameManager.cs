@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public Boss1Health bh;
 
     public Boss2StateMachine boss2;
-    public Boss1Health bh2;
+    public Boss2Health bh2;
 
 
     [Header("Camera Variables")]

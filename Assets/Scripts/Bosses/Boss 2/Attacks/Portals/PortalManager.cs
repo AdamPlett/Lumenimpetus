@@ -76,7 +76,7 @@ public class PortalManager : MonoBehaviour
         Laser laserScript = laser.GetComponent<Laser>();
         activeLasers.Add(laser);
 
-        laserScript.DrawLaser(start, end);
+        laserScript.DrawLaser(start.position, end.position);
     }
 
     private void RemovePortals()

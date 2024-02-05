@@ -169,7 +169,6 @@ public class PlayerMovement : MonoBehaviour
         {
             ResetCombo();
         }
-
     }
 
     private void FixedUpdate()
@@ -608,16 +607,34 @@ public class PlayerMovement : MonoBehaviour
 
             HitTarget(hit.point);
 
-            if (hit.transform.gameObject.Equals(gm.bossRef) && gm.boss1.activeState != eB1.dead)
+            if(gm.boss1 != null)
             {
-                Debug.Log("HIT BOSS");
-                gm.bh.DamageBoss(attackDamage + attackDamage * comboMultiplier);
-                Combo();
-                
-                if (gm.boss1.activeState != eB1.attacking) StartCoroutine(BossHitstop());
-                
+                if (hit.transform.gameObject.Equals(gm.bossRef) && gm.boss1.activeState != eB1.dead)
+                {
+                    Debug.Log("HIT BOSS #1");
+
+                    gm.bh.DamageBoss(attackDamage + attackDamage * comboMultiplier);
+
+                    Combo();
+
+                    if (gm.boss1.activeState != eB1.attacking) StartCoroutine(BossHitstop());
+                }
             }
-            StartCoroutine(SwordHitstop());
+            else if(gm.boss2 != null)
+            {
+                if (hit.transform.gameObject.Equals(gm.bossRef) && gm.boss2.activeState != eB2.dead)
+                {
+                    Debug.Log("HIT BOSS #2");
+
+                    gm.bh2.DamageBoss(attackDamage + attackDamage * comboMultiplier);
+
+                    Combo();
+
+                    if (gm.boss2.activeState != eB2.attacking) StartCoroutine(BossHitstop());
+                }
+
+                StartCoroutine(SwordHitstop());
+            }
         }
     }
 
