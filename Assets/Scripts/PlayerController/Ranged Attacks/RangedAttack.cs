@@ -29,6 +29,9 @@ public abstract class RangedAttack : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform startPosition;
     public Vector3 shootDirection;
+    public bool hitTarget;
+    [Header("UI")]
+    public ImageAnimation canShootAnim;
 
     public abstract void Shoot(Vector3 targetPosition);
 
@@ -50,6 +53,11 @@ public abstract class RangedAttack : MonoBehaviour
         if (!canShoot)
         {
             CooldownTimer();
+            canShootAnim.setActiveFalse();
+        }
+        else
+        {
+            canShootAnim.setActiveTrue();
         }
     }
 
@@ -69,10 +77,17 @@ public abstract class RangedAttack : MonoBehaviour
 
     }
 
-
+    //gets target to shoot at
+    public Vector3 GetShotTarget()
+    {
+        hitTarget = Physics.Raycast(gm.pm.cam.transform.position, gm.pm.cam.transform.forward, out RaycastHit hit);
+        return hit.point;
+    }
+    //returns direction to shoot at
     public virtual Vector3 GetDirection(Vector3 start, Vector3 target)
     {
         return (target - start).normalized;
     }
-            
+    
+
 }
