@@ -72,7 +72,8 @@ public abstract class RangedAttack : MonoBehaviour
 
     public virtual void DamageBoss()
     {
-        gm.bh.DamageBoss(damage + (damage * gm.pm.comboMultiplier));
+        if(gm.bh != null) gm.bh.DamageBoss(damage + (damage * gm.pm.comboMultiplier));
+        else if (gm.bh2 != null) gm.bh2.DamageBoss(damage + (damage * gm.pm.comboMultiplier));
         gm.pm.Combo();
 
     }
