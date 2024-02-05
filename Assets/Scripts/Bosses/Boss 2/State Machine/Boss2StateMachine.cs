@@ -37,6 +37,10 @@ public class Boss2StateMachine : StateMachine
     public float tpDamageThreshold;
     public float damageThresholdIncrement;
 
+    [Header("Teleport FX")]
+    public GameObject vanishPortal;
+    public ParticleSystem vanishParticles;
+
     private float tpCounter;
 
     // Start is called before the first frame update
@@ -88,7 +92,7 @@ public class Boss2StateMachine : StateMachine
 
     private void CheckHealth()
     {
-        if(health.currentHealth <= health.maxHealth - tpDamageThreshold)
+        if(health.currentHealth <= health.maxHealth - tpDamageThreshold && !gm.boss2.attacks.shootingLaser)
         {
             TeleportBoss();
             tpDamageThreshold += damageThresholdIncrement;
@@ -125,11 +129,39 @@ public class Boss2StateMachine : StateMachine
     {
         tpTarget = point;
 
+        yield return new WaitForSeconds(0.25f);
+
+        vanishPortal.SetActive(true);
+
+        yield return new WaitForSeconds(0.75f);
+
+        vanishParticles.Play();
+
+        yield return new WaitForSeconds(0.5f);
+
+        anim.SwitchAnimation(anim.JumpHash);
+
         yield return new WaitForSeconds(1f);
 
         transform.position = point.position;
 
+        yield return new WaitForSeconds(1f);
+
+        vanishPortal.SetActive(false);
+        anim.SwitchAnimation(anim.IdleHash);
+
         tpCounter++;
+    }
+
+    public void Dance()
+    {
+        anim.SwitchAnimation(anim.DanceHash);
+    }
+
+    public void Die()
+    {
+        freeze = true;
+        anim.SwitchAnimation(anim.DeathHash);
     }
 
     #region State-Switchers

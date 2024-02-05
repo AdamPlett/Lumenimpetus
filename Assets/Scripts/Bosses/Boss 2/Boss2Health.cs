@@ -14,11 +14,23 @@ public class Boss2Health : MonoBehaviour
         currentHealth = maxHealth;
     }
 
+    public void Update()
+    {
+        if (gm.ph.currentHealth <= 0)
+        {
+            gm.boss2.Dance();
+        }
+    }
+
     public void DamageBoss(float damage)
     {
-
         currentHealth -= damage;
 
-        //gm.boss2.CheckDead();
+        if(currentHealth <= 0)
+        {
+            currentHealth = 0;
+
+            gm.boss2.Die();
+        }
     }
 }
