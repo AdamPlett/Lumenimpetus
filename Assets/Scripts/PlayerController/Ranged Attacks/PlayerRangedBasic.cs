@@ -27,14 +27,15 @@ public class PlayerRangedBasic : RangedAttack
     }
     public override void Shoot(Vector3 targetPosition)
     {
-        StartCoroutine(ShotDelay(targetPosition));
+        StartCoroutine(ShotDelay());
         ResetTimer();
     }
-    private IEnumerator ShotDelay(Vector3 targetPosition)
+    private IEnumerator ShotDelay()
     {
         firing = true;
         yield return new WaitForSeconds(shotDelay);
         //gets position to shoot at
+        Vector3 targetPosition = GetShotTarget();
         if (targetPosition != null)
         {
             shootDirection = GetDirection(startPosition.position, targetPosition);
