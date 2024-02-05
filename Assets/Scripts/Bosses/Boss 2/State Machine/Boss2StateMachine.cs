@@ -179,6 +179,7 @@ public class Boss2StateMachine : StateMachine
     {
         freeze = true;
         anim.SwitchAnimation(anim.DeathHash);
+        //GetComponent<Collider>().enabled = false;
     }
 
     #region State-Switchers
