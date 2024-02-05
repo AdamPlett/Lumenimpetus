@@ -18,7 +18,7 @@ public class Boss2Animation : MonoBehaviour
 
     public readonly int PortalHash = Animator.StringToHash("Portal");
 
-    public readonly int LaserHash = Animator.StringToHash("Laser");
+    public readonly int LaserHash = Animator.StringToHash("ShootLaser");
 
     public readonly int AttackHash1 = Animator.StringToHash("Spell_01");
     public readonly int AttackHash2 = Animator.StringToHash("Spell_02");

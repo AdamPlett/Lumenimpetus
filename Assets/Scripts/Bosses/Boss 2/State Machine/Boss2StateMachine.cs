@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameManager;
 
 public enum eB2 { none, idle, moving, attacking, teleporting, spawningLaser, staggered, dead, dancing }
 
@@ -26,16 +27,79 @@ public class Boss2StateMachine : StateMachine
     [Header("Environment Detection")]
     public LayerMask environment;
 
+    [Header("Teleportation")]
+    public Transform[] tpPoints;
+    public Transform tpTarget;
+    public Transform prevTarget;
+    public float tpDamageThreshold;
+    public float damageThresholdIncrement;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        LookAtPlayer();
+        CheckHealth();
+    }
+
+    public void LookAtPlayer()
+    {
+        Quaternion targetRotation = Quaternion.LookRotation(GetDirectionToPlayer());
+
+        RotateBoss(targetRotation);
+    }
+
+    public void RotateBoss(Quaternion targetRotation)
+    {
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+        // Adjust x and z back to zero, thus keeping enemy level with the ground
+        Quaternion tempRot = transform.rotation;
+
+        tempRot.x = 0;
+        tempRot.z = 0;
+
+        transform.rotation = tempRot;
+    }
+
+    private float GetDistanceToPlayer()
+    {
+        return Vector3.Distance(gm.playerRef.transform.position, transform.position);
+    }
+
+    private Vector3 GetDirectionToPlayer()
+    {
+        return (gm.playerRef.transform.position -transform.position).normalized;
+    }
+
+    private void CheckHealth()
+    {
+        if(health.currentHealth <= health.maxHealth - tpDamageThreshold)
+        {
+            TeleportBoss();
+            tpDamageThreshold += damageThresholdIncrement;
+        }
+    }
+
+    private void TeleportBoss()
+    {
+        int randomInt = Random.Range(0, tpPoints.Length);
+
+        StartCoroutine(Teleport(tpPoints[randomInt]));
+    }
+
+    IEnumerator Teleport(Transform point)
+    {
+        tpTarget = point;
+
+        yield return new WaitForSeconds(1f);
+
+        transform.position = point.position;
     }
 
     #region State-Switchers
@@ -47,22 +111,17 @@ public class Boss2StateMachine : StateMachine
 
     public void SwitchToMoveState()
     {
-        //SwitchState(new Boss2MoveState(this));
+        SwitchState(new Boss2MoveState(this));
     }
 
-    public void SwitchToMeleeState()
+    public void SwitchToAttackState()
     {
-        //SwitchState(new Boss2MeleeState(this));
-    }
-
-    public void SwitchToLaserState()
-    {
-        //SwitchState(new Boss2LaserState(this));
+        SwitchState(new Boss2AttackState(this));
     }
 
     public void SwitchToTeleportState()
     {
-        //SwitchState(new Boss1PortalState(this));
+        SwitchState(new Boss2TeleportState(this));
     }
 
     public void SwitchToStaggerState()

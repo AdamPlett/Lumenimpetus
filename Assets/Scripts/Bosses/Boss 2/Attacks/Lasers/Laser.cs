@@ -6,9 +6,9 @@ public class Laser : MonoBehaviour
 {
     public LineRenderer lineRenderer;
 
-    public void DrawLaser(Transform start, Transform end)
+    public void DrawLaser(Vector3 start, Vector3 end)
     {
-        lineRenderer.SetPosition(0, start.position);
-        lineRenderer.SetPosition(1, end.position);
+        lineRenderer.SetPosition(0, start);
+        lineRenderer.SetPosition(1, end);
     }
 }
