@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneChangeUI: {fileID: 741388185}
-  sceneChangePortal: {fileID: 392620261113161454, guid: 51aa6b4e090119d43824cdbc5cab5f36,
+  sceneChangePortal: {fileID: 392620261113161454, guid: 837eabeb738df6b449f5b7c02e2b846b,
     type: 3}
 --- !u!1001 &7511281
 PrefabInstance:
@@ -27137,6 +27137,11 @@ PrefabInstance:
       propertyPath: startPosition
       value: 
       objectReference: {fileID: 7505965800264434222}
+    - target: {fileID: 4975953261740761118, guid: fd5d682aff340254090ae6c9a97cb898,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7505965800371781791, guid: fd5d682aff340254090ae6c9a97cb898,
         type: 3}
       propertyPath: m_AnchorMax.x

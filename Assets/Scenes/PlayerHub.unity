@@ -5031,7 +5031,7 @@ PrefabInstance:
     - target: {fileID: 4975953261740761118, guid: fd5d682aff340254090ae6c9a97cb898,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5428764049428096547, guid: fd5d682aff340254090ae6c9a97cb898,
         type: 3}
@@ -5322,6 +5322,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -67.44397
+      objectReference: {fileID: 0}
+    - target: {fileID: 7530735297904163725, guid: fd5d682aff340254090ae6c9a97cb898,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7505965800721356441, guid: fd5d682aff340254090ae6c9a97cb898, type: 3}
@@ -10019,7 +10024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneChangeUI: {fileID: 335442193}
-  sceneChangePortal: {fileID: 392620261113161454, guid: 2f78b24f25d25a4479ebadb9cff167dc,
+  sceneChangePortal: {fileID: 392620261113161454, guid: 945f711343bbbdb45ae990bd03b67ed3,
     type: 3}
 --- !u!65 &717605660
 BoxCollider:

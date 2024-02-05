@@ -25,7 +25,7 @@ public class Laser : MonoBehaviour
         {
             if(hit.collider.tag.Equals("Player"))
             {
-                gm.ph.DamagePlayer(3f);
+                gm.ph.DamagePlayer(2.5f);
             }
         }
     }
