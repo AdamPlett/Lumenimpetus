@@ -79,7 +79,7 @@ public class PlayerInputManager : MonoBehaviour
         rightSkillAction.canceled += context => rightSkillTriggered = false;
 
         leftSkillAction.performed += context => leftSkillTriggered = true;
-        leftSkillAction.performed += context => leftSkillTriggered = false;
+        leftSkillAction.canceled += context => leftSkillTriggered = false;
     }
     private void OnEnable()
     {
