@@ -1083,6 +1083,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGrounded: 0
   check: 0
+--- !u!114 &20238778 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2707740128048782774, guid: fd5d682aff340254090ae6c9a97cb898,
+    type: 3}
+  m_PrefabInstance: {fileID: 1461440118}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20238764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f003d49666226d145becc43b5d1884ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &26881424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56738,6 +56750,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 161.49156
       objectReference: {fileID: 0}
+    - target: {fileID: 87858663916875323, guid: fd5d682aff340254090ae6c9a97cb898,
+        type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 20238778}
     - target: {fileID: 927848818401301876, guid: fd5d682aff340254090ae6c9a97cb898,
         type: 3}
       propertyPath: m_IsActive

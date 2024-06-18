@@ -129,6 +129,12 @@ public class PlayerMovement : MonoBehaviour
     public bool activeGrapple;
     public bool teleporting;
 
+    private Controller controller;
+
+    private void Awake()
+    {
+        controller = GetComponent<Controller>();
+    }
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -179,12 +185,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void MyInput()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
-        
+        //horizontalInput = Input.GetAxisRaw("Horizontal");
+        //verticalInput = Input.GetAxisRaw("Vertical");
+
+        horizontalInput = controller.input.RetrieveMoveInput().x;
+        verticalInput = controller.input.RetrieveMoveInput().y;
+
 
         //jump Buffer
-        if (Input.GetKey(jumpKey))
+        //Debug.Log(controller.input.RetrieveJumpInput());
+        if (controller.input.RetrieveJumpInput())
         {
             jumpBufferTimer = jumpBufferLength;
         }
@@ -204,7 +214,7 @@ public class PlayerMovement : MonoBehaviour
             Invoke(nameof(ResetJump), jumpCooldown);
         }
 
-        if (Input.GetKeyDown(attackKey))
+        if (controller.input.RetrievePrimaryAttack())
         {
             Attack();
         }
@@ -254,7 +264,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Mode - Sprinting
-        else if (grounded && Input.GetKey(sprintKey))
+        else if (grounded && controller.input.RetrieveSprintInput() > 0 )
         {
             state = MovementState.sprinting;
             desiredMoveSpeed = sprintSpeed;

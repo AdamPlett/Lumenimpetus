@@ -44,6 +44,18 @@ public class PlayerController : InputController
     {
         return inputManager.SprintValue;
     }
+    public override bool RetrieveDashInput()
+    {
+        return inputManager.dashTriggered;
+    }
+    public override bool RetrievePrimaryAttack()
+    {
+        return inputManager.primaryAttackTriggered;
+    }
+    public override bool RetrieveSecondaryAttack()
+    {
+        return inputManager.secondaryAttackTriggered;
+    }
     public override bool RetrieveRightSkill()
     {
         return inputManager.rightSkillTriggered;

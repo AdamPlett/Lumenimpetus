@@ -9,6 +9,8 @@ using Unity.VisualScripting;
 
 public class PlayerCam : MonoBehaviour
 {
+    [SerializeField] private Controller controller;
+
     public float sensX;
     public float sensY;
     public float mouseX, mouseY;
@@ -32,14 +34,16 @@ public class PlayerCam : MonoBehaviour
         adjustSliderValue(PlayerPrefs.GetFloat(savedSens));
 
     }
-
     private void LateUpdate()
     {
         if (!locked)
         {
+
+            //mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
+            //mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
             //get mouse input
-            mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
-            mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
+            mouseX = controller.input.RetrieveLookInput().x * Time.deltaTime * sensX;
+            mouseY = controller.input.RetrieveLookInput().y * Time.deltaTime * sensY;
 
             yRotation += mouseX;
             xRotation -= mouseY;

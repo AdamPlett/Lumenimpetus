@@ -11,11 +11,17 @@ public class RangedController : MonoBehaviour
     public LayerMask bossLayer;
     public bool hitTarget;
 
+    private Controller controller;
 
+    private void Awake()
+    {
+        controller = GetComponentInParent<Controller>();
+    }
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(rangedKey) && currentWeapon.canShoot)
+        Debug.Log(controller.input.RetrieveSecondaryAttack());
+        if(controller.input.RetrieveSecondaryAttack() && currentWeapon.canShoot)
         {
             Vector3 target = GetShotTarget();
             currentWeapon.Shoot(target);

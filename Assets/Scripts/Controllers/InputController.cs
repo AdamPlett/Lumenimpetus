@@ -8,7 +8,9 @@ public abstract class InputController : ScriptableObject
     public abstract Vector2 RetrieveLookInput();
     public abstract bool RetrieveJumpInput();
     public abstract float RetrieveSprintInput();
+    public abstract bool RetrieveDashInput();
+    public abstract bool RetrievePrimaryAttack();
+    public abstract bool RetrieveSecondaryAttack();
     public abstract bool RetrieveRightSkill();
     public abstract bool RetrieveLeftSkill();
-
 }

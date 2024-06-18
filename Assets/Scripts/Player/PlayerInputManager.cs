@@ -11,11 +11,14 @@ public class PlayerInputManager : MonoBehaviour
     [Header("Input Action Map")]
     [SerializeField] private string actionMapName = "PlayerBasic";
 
-    [Header("Action Name Refrences")]
+    [Header("Action Name References")]
     [SerializeField] private string move = "Move";
     [SerializeField] private string jump = "Jump";
     [SerializeField] private string sprint = "Sprint";
+    [SerializeField] private string dash = "Dash";
     [SerializeField] private string look = "Look";
+    [SerializeField] private string primaryAttack = "PrimaryAttack";
+    [SerializeField] private string secondaryAttack = "SecondaryAttack";
     [SerializeField] private string rightSkill = "RightSkill";
     [SerializeField] private string leftSkill = "LeftSkill";
 
@@ -24,13 +27,19 @@ public class PlayerInputManager : MonoBehaviour
     private InputAction jumpAction;
     private InputAction sprintAction;
     private InputAction lookAction;
+    private InputAction dashAction;
+    private InputAction primaryAttackAction;
+    private InputAction secondaryAttackAction;
     private InputAction rightSkillAction;
     private InputAction leftSkillAction;
-    //refrences to actions current values
+    //references to get actions current values from other classes
     public Vector2 MoveInput { get; private set; }
     public bool JumpTriggered { get; private set; }
     public float SprintValue { get; private set; }
     public Vector2 LookInput { get; private set; }
+    public bool dashTriggered { get; private set; }
+    public bool primaryAttackTriggered { get; private set; }
+    public bool secondaryAttackTriggered { get; private set; }
     public bool rightSkillTriggered { get; private set; }
     public bool leftSkillTriggered { get; private set; }
 
@@ -55,6 +64,9 @@ public class PlayerInputManager : MonoBehaviour
         jumpAction = playerControls.FindActionMap(actionMapName).FindAction(jump);
         sprintAction = playerControls.FindActionMap(actionMapName).FindAction(sprint);
         lookAction = playerControls.FindActionMap(actionMapName).FindAction(look);
+        dashAction = playerControls.FindActionMap(actionMapName).FindAction(dash);
+        primaryAttackAction = playerControls.FindActionMap(actionMapName).FindAction(primaryAttack);
+        secondaryAttackAction = playerControls.FindActionMap(actionMapName).FindAction(secondaryAttack);
         rightSkillAction = playerControls.FindActionMap(actionMapName).FindAction(rightSkill);
         leftSkillAction = playerControls.FindActionMap(actionMapName).FindAction(leftSkill);
 
@@ -75,6 +87,15 @@ public class PlayerInputManager : MonoBehaviour
         lookAction.performed += context => LookInput = context.ReadValue<Vector2>();
         lookAction.canceled += context => LookInput = Vector2.zero;
 
+        dashAction.performed += context => dashTriggered = true;
+        dashAction.canceled += context => dashTriggered = false;
+
+        primaryAttackAction.performed += context => primaryAttackTriggered = true;
+        primaryAttackAction.canceled += context => primaryAttackTriggered = false;
+
+        secondaryAttackAction.performed += context => secondaryAttackTriggered = true;
+        secondaryAttackAction.canceled += context => secondaryAttackTriggered = false;
+
         rightSkillAction.performed += context => rightSkillTriggered = true;
         rightSkillAction.canceled += context => rightSkillTriggered = false;
 
@@ -87,6 +108,11 @@ public class PlayerInputManager : MonoBehaviour
         jumpAction.Enable();
         sprintAction.Enable();
         lookAction.Enable();
+        dashAction.Enable();
+        primaryAttackAction.Enable();
+        secondaryAttackAction.Enable();
+        rightSkillAction.Enable();
+        leftSkillAction.Enable();
     }
     private void OnDisable()
     {
@@ -94,5 +120,10 @@ public class PlayerInputManager : MonoBehaviour
         jumpAction.Disable();
         sprintAction.Disable();
         lookAction.Disable();
+        dashAction.Disable();
+        primaryAttackAction.Disable();
+        secondaryAttackAction.Disable();
+        rightSkillAction.Disable();
+        leftSkillAction.Disable();
     }
 }

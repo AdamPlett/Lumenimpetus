@@ -30,8 +30,12 @@ public class Grappling : MonoBehaviour
 
 
     private bool grappling;
+    private Controller controller;
 
-
+    private void Awake()
+    {
+        controller = GetComponent<Controller>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +45,7 @@ public class Grappling : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(grappleKey) || Input.GetKeyDown(altGrappleKey))
+        if ( controller.input.RetrieveLeftSkill() || controller.input.RetrieveRightSkill() )
         {
             StartGrapple();
         }

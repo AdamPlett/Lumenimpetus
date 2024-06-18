@@ -45,7 +45,14 @@ public class Dashing : MonoBehaviour
     [Header("Input")]
     public KeyCode dashKey = KeyCode.LeftControl;
     public KeyCode altDashKey = KeyCode.F;
-    
+
+    private Controller controller;
+
+    private void Awake()
+    {
+        controller = GetComponent<Controller>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,7 +71,7 @@ public class Dashing : MonoBehaviour
         {
             canDash = true;
         }
-        if (Input.GetKeyDown(dashKey) || Input.GetKeyDown(altDashKey))
+        if (controller.input.RetrieveDashInput() || Input.GetKeyDown(altDashKey))
         {
             Dash();
         }

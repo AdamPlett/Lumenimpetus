@@ -50,6 +50,12 @@ public class WallRunning : MonoBehaviour
     private PlayerMovement pm;
     private Rigidbody rb;
 
+    private Controller controller;
+
+    private void Awake()
+    {
+        controller = GetComponent<Controller>();
+    }
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -63,7 +69,7 @@ public class WallRunning : MonoBehaviour
         //coyote time logic
         coyoteTimer -= Time.deltaTime;
         if (pm.wallrunning) coyoteTimer = coyoteTime;
-        if (Input.GetKeyDown(jumpKey))
+        if (controller.input.RetrieveJumpInput())
         {
             jumpBufferTimer = jumpBufferLength;
         }
