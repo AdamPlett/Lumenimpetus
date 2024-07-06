@@ -21,12 +21,6 @@ public class MovementStats : ScriptableObject
 
     [Tooltip("The speed at which the player slows down in the air"), Min(0)]
     public float airDecelertaion;
-    
-    [Tooltip("How much gravity affects you while you are moving upwards"), Min(0)]
-    public float upwardsGravityMultiplier;
-
-    [Tooltip("How much gravity affects you while your falling"), Min(0)]
-    public float downwardsGravityMultiplier;
 
     [Tooltip("Terminal Velocity")]
     public float maxFallSpeed;
