@@ -23,15 +23,15 @@ public class PlayerInputManager : MonoBehaviour
     [SerializeField] private string leftSkill = "LeftSkill";
 
     //Input Actions
-    public InputAction moveAction;
-    public InputAction jumpAction;
-    public InputAction sprintAction;
-    public InputAction lookAction;
-    public InputAction dashAction;
-    public InputAction primaryAttackAction;
-    public InputAction secondaryAttackAction;
-    public InputAction rightSkillAction;
-    public InputAction leftSkillAction;
+    private InputAction moveAction;
+    private InputAction jumpAction;
+    private InputAction sprintAction;
+    private InputAction lookAction;
+    private InputAction dashAction;
+    private InputAction primaryAttackAction;
+    private InputAction secondaryAttackAction;
+    private InputAction rightSkillAction;
+    private InputAction leftSkillAction;
 
     //references to get actions current values from other classes
     public Vector2 MoveInput { get; private set; }
