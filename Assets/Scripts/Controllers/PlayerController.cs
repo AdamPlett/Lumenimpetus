@@ -29,7 +29,9 @@ public class PlayerController : InputController
             Debug.Log("input manager was null");
             inputManager = PlayerInputManager.Instance;
         }
+        jumpPerformed.Invoke();
         return inputManager != null ? inputManager.MoveInput : Vector2.zero;
+
     }
     public override Vector2 RetrieveLookInput()
     {

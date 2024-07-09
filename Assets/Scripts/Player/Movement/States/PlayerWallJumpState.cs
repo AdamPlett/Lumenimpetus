@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMoveState : PlayerMovementState
+public class PlayerWallJumpState : PlayerMovementState
 {
     // Sets the state machine for this state, ensuring it is the same as the base state
-    public PlayerMoveState(PlayerMovementStateMachine stateMachine) : base(stateMachine) { }
+    public PlayerWallJumpState(PlayerMovementStateMachine stateMachine) : base(stateMachine) { }
 
 
     // Called once at the start of the state, after ending the previous state
     public override void Enter()
-    {
-        // Subscribe Listeners
-        input.jumpPerformed += stateMachine.SwitchToJumpState;
+    { 
+
     }
 
     // Called continously throughout the state (update)

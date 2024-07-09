@@ -1,5 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -22,16 +22,17 @@ public class PlayerInputManager : MonoBehaviour
     [SerializeField] private string rightSkill = "RightSkill";
     [SerializeField] private string leftSkill = "LeftSkill";
 
-    //actions
-    private InputAction moveAction;
-    private InputAction jumpAction;
-    private InputAction sprintAction;
-    private InputAction lookAction;
-    private InputAction dashAction;
-    private InputAction primaryAttackAction;
-    private InputAction secondaryAttackAction;
-    private InputAction rightSkillAction;
-    private InputAction leftSkillAction;
+    //Input Actions
+    public InputAction moveAction;
+    public InputAction jumpAction;
+    public InputAction sprintAction;
+    public InputAction lookAction;
+    public InputAction dashAction;
+    public InputAction primaryAttackAction;
+    public InputAction secondaryAttackAction;
+    public InputAction rightSkillAction;
+    public InputAction leftSkillAction;
+
     //references to get actions current values from other classes
     public Vector2 MoveInput { get; private set; }
     public bool JumpTriggered { get; private set; }
@@ -73,6 +74,7 @@ public class PlayerInputManager : MonoBehaviour
         //subscribes the action logic to the actions
         RegisterInputActions();
     }
+
     void RegisterInputActions()
     {
         moveAction.performed += context => MoveInput = context.ReadValue<Vector2>();
@@ -102,6 +104,7 @@ public class PlayerInputManager : MonoBehaviour
         leftSkillAction.performed += context => leftSkillTriggered = true;
         leftSkillAction.canceled += context => leftSkillTriggered = false;
     }
+
     private void OnEnable()
     {
         moveAction.Enable();
@@ -114,6 +117,7 @@ public class PlayerInputManager : MonoBehaviour
         rightSkillAction.Enable();
         leftSkillAction.Enable();
     }
+
     private void OnDisable()
     {
         moveAction.Disable();
@@ -126,4 +130,5 @@ public class PlayerInputManager : MonoBehaviour
         rightSkillAction.Disable();
         leftSkillAction.Disable();
     }
+
 }
