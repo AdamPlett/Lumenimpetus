@@ -6,17 +6,18 @@ public abstract class PlayerMovementState : State
 {
     protected readonly PlayerMovementStateMachine stateMachine;
 
+    // References - Just makes writing code easier
     protected InputController input;
-
     protected PlayerMovement movement;
     protected Jump jump;
 
     protected PlayerMovementState(PlayerMovementStateMachine stateMachine)
     {
+        // Set state machine
         this.stateMachine = stateMachine;
 
+        // Set references to equal state machine
         input = stateMachine.controller.input;
-
         movement = stateMachine.movement;
         jump = stateMachine.jump;
     }

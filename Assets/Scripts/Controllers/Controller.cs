@@ -8,6 +8,6 @@ public class Controller : MonoBehaviour
 
     private void Start()
     {
-        input.Init();
+        input?.Init();
     }
 }

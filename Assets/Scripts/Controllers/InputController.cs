@@ -10,6 +10,7 @@ public abstract class InputController : ScriptableObject
     // Actions
     public Action jumpPerformed;
     public Action dashPerformed;
+    public Action crouchPerformed;
     public Action primaryPerformed;
     public Action secondaryPerformed;
     public Action rightSkillPerformed;
@@ -42,6 +43,14 @@ public abstract class InputController : ScriptableObject
     }
 
     public void CheckDashInput()
+    {
+        if (RetrieveDashInput())
+        {
+            dashPerformed?.Invoke();
+        }
+    }
+
+    public void CheckCrouchInput()
     {
         if (RetrieveDashInput())
         {
@@ -86,6 +95,7 @@ public abstract class InputController : ScriptableObject
     public abstract float RetrieveSprintInput();
     public abstract bool RetrieveJumpInput();
     public abstract bool RetrieveDashInput();
+    public abstract bool RetrieveCrouchInput();
     public abstract bool RetrievePrimaryAttack();
     public abstract bool RetrieveSecondaryAttack();
     public abstract bool RetrieveRightSkill();

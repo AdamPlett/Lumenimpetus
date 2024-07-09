@@ -13,6 +13,7 @@ public class PlayerMoveState : PlayerMovementState
     {
         // Subscribe Listeners
         input.jumpPerformed += stateMachine.SwitchToJumpState;
+
     }
 
     // Called continously throughout the state (update)
