@@ -35,19 +35,19 @@ public class PlayerInputManager : MonoBehaviour
     private InputAction rightSkillAction;
     private InputAction leftSkillAction;
 
-    //references to get actions current values from other classes
-    public Vector2 MoveInput { get; private set; }
-    public Vector2 LookInput { get; private set; }
-    public float SprintValue { get; private set; }
-    public bool JumpTriggered { get; private set; }
-    public bool dashTriggered { get; private set; }
-    public bool crouchTriggered { get; private set; }
-    public bool primaryAttackTriggered { get; private set; }
-    public bool secondaryAttackTriggered { get; private set; }
-    public bool rightSkillTriggered { get; private set; }
-    public bool leftSkillTriggered { get; private set; }
+    [field: Header("Action Values")]
+    [field: SerializeField] public Vector2 MoveInput { get; private set; }
+    [field: SerializeField] public Vector2 LookInput { get; private set; }
+    [field: SerializeField] public float SprintValue { get; private set; }
+    [field: SerializeField] public bool JumpTriggered { get; private set; }
+    [field: SerializeField] public bool dashTriggered { get; private set; }
+    [field: SerializeField] public bool crouchTriggered { get; private set; }
+    [field: SerializeField] public bool primaryAttackTriggered { get; private set; }
+    [field: SerializeField] public bool secondaryAttackTriggered { get; private set; }
+    [field: SerializeField] public bool rightSkillTriggered { get; private set; }
+    [field: SerializeField] public bool leftSkillTriggered { get; private set; }
 
-    public static PlayerInputManager Instance { get; private set; }
+    [SerializeField] public static PlayerInputManager Instance;
 
     private void Awake()
     {

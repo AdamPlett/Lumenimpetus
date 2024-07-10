@@ -17,7 +17,6 @@ public class PhyicsMaterialControl : MonoBehaviour
     {
         if (gm.pm.state == PlayerMovement.MovementState.air)
         {
-            
             col.material = mat;
         }
         else

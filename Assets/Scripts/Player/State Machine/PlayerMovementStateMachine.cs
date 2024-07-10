@@ -7,9 +7,10 @@ public class PlayerMovementStateMachine : StateMachine
     [Header("Player Components")]
     public Controller controller;
     public Rigidbody rb;
+    public Camera playerCam;
 
     [Header("Movement Scripts")]
-    public PlayerMovement movement;
+    public BasicMovement movement;
     public Jump jump;
 
     // Movement States
@@ -23,6 +24,21 @@ public class PlayerMovementStateMachine : StateMachine
     private PlayerGrappleState grappleState;
     private PlayerWallRunState wallRunState;
     private PlayerWallJumpState wallJumpState;
+
+    private void Start()
+    {
+        SwitchToMoveState();
+    }
+
+    private void FixedUpdate()
+    {
+        RotatePlayer();
+    }
+
+    private void RotatePlayer()
+    {
+        transform.forward = playerCam.transform.forward;
+    }
 
     #region State Switchers
 

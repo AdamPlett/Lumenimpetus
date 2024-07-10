@@ -8,7 +8,7 @@ public abstract class PlayerMovementState : State
 
     // References - Just makes writing code easier
     protected InputController input;
-    protected PlayerMovement movement;
+    protected BasicMovement movement;
     protected Jump jump;
 
     protected PlayerMovementState(PlayerMovementStateMachine stateMachine)

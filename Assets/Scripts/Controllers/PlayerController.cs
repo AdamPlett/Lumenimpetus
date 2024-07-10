@@ -5,14 +5,20 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerController", menuName = "ScriptableObjects/InputControllers/Player")]
 public class PlayerController : InputController
 {
+    private PlayerInputManager inputManager = null;
+    
     public override Vector2 RetrieveMoveInput()
     {
-        return inputManager.MoveInput;
+        Debug.Log(PlayerInputManager.Instance);
+
+        return PlayerInputManager.Instance.MoveInput;
     }
 
     public override Vector2 RetrieveLookInput()
     {
-        return inputManager.LookInput;
+        Debug.Log(PlayerInputManager.Instance);
+        
+        return PlayerInputManager.Instance.LookInput;
     }
 
     public override float RetrieveSprintInput()

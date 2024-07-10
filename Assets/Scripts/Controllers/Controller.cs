@@ -6,8 +6,14 @@ public class Controller : MonoBehaviour
 {
     public InputController input = null;
 
-    private void Start()
+    public void Update()
     {
-        input?.Init();
+        input?.CheckJumpInput();
+        input?.CheckDashInput();
+        input?.CheckPrimaryInput();
+        input?.CheckSecondaryInput();
+        input?.CheckRightSkillInput();
+        input?.CheckLeftSkillInput();
     }
+
 }

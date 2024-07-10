@@ -5,8 +5,6 @@ using UnityEngine;
 
 public abstract class InputController : ScriptableObject
 {
-    public PlayerInputManager inputManager = null;
-
     // Actions
     public Action jumpPerformed;
     public Action dashPerformed;
@@ -15,26 +13,9 @@ public abstract class InputController : ScriptableObject
     public Action secondaryPerformed;
     public Action rightSkillPerformed;
     public Action leftSkillPerformed;
-    
-    public void Init()
-    {
-        if(inputManager == null)
-        {
-            inputManager = PlayerInputManager.Instance;
-        }
-    }
 
-    public void Update()
-    {
-        CheckJumpInput();
-        CheckDashInput();
-        CheckPrimaryInput();
-        CheckSecondaryInput();
-        CheckRightSkillInput();
-        CheckLeftSkillInput();
-    }
 
-    public void CheckJumpInput()
+    public virtual void CheckJumpInput()
     {
         if (RetrieveJumpInput())
         {
@@ -42,7 +23,7 @@ public abstract class InputController : ScriptableObject
         }
     }
 
-    public void CheckDashInput()
+    public virtual void CheckDashInput()
     {
         if (RetrieveDashInput())
         {
@@ -50,7 +31,7 @@ public abstract class InputController : ScriptableObject
         }
     }
 
-    public void CheckCrouchInput()
+    public virtual void CheckCrouchInput()
     {
         if (RetrieveDashInput())
         {
@@ -58,7 +39,7 @@ public abstract class InputController : ScriptableObject
         }
     }
 
-    public void CheckPrimaryInput()
+    public virtual void CheckPrimaryInput()
     {
         if(RetrievePrimaryAttack())
         {
@@ -66,7 +47,7 @@ public abstract class InputController : ScriptableObject
         }
     }
 
-    public void CheckSecondaryInput()
+    public virtual void CheckSecondaryInput()
     {
         if (RetrieveSecondaryAttack())
         {
@@ -74,7 +55,7 @@ public abstract class InputController : ScriptableObject
         }
     }
 
-    public void CheckRightSkillInput()
+    public virtual void CheckRightSkillInput()
     {
         if (RetrieveRightSkill())
         {
@@ -82,7 +63,7 @@ public abstract class InputController : ScriptableObject
         }
     }
 
-    public void CheckLeftSkillInput()
+    public virtual void CheckLeftSkillInput()
     {
         if (RetrieveLeftSkill())
         {
