@@ -13,38 +13,41 @@ public class PlayerInputManager : MonoBehaviour
 
     [Header("Action Name References")]
     [SerializeField] private string move = "Move";
-    [SerializeField] private string jump = "Jump";
-    [SerializeField] private string sprint = "Sprint";
-    [SerializeField] private string dash = "Dash";
     [SerializeField] private string look = "Look";
+    [SerializeField] private string sprint = "Sprint";
+    [SerializeField] private string jump = "Jump";
+    [SerializeField] private string dash = "Dash";
+    [SerializeField] private string crouch = "Crouch";
     [SerializeField] private string primaryAttack = "PrimaryAttack";
     [SerializeField] private string secondaryAttack = "SecondaryAttack";
     [SerializeField] private string rightSkill = "RightSkill";
     [SerializeField] private string leftSkill = "LeftSkill";
 
     //Input Actions
-    public InputAction moveAction;
-    public InputAction jumpAction;
-    public InputAction sprintAction;
-    public InputAction lookAction;
-    public InputAction dashAction;
-    public InputAction primaryAttackAction;
-    public InputAction secondaryAttackAction;
-    public InputAction rightSkillAction;
-    public InputAction leftSkillAction;
+    private InputAction moveAction;
+    private InputAction lookAction;
+    private InputAction sprintAction;
+    private InputAction jumpAction;
+    private InputAction dashAction;
+    private InputAction crouchAction;
+    private InputAction primaryAttackAction;
+    private InputAction secondaryAttackAction;
+    private InputAction rightSkillAction;
+    private InputAction leftSkillAction;
 
-    //references to get actions current values from other classes
-    public Vector2 MoveInput { get; private set; }
-    public bool JumpTriggered { get; private set; }
-    public float SprintValue { get; private set; }
-    public Vector2 LookInput { get; private set; }
-    public bool dashTriggered { get; private set; }
-    public bool primaryAttackTriggered { get; private set; }
-    public bool secondaryAttackTriggered { get; private set; }
-    public bool rightSkillTriggered { get; private set; }
-    public bool leftSkillTriggered { get; private set; }
+    [field: Header("Action Values")]
+    [field: SerializeField] public Vector2 MoveInput { get; private set; }
+    [field: SerializeField] public Vector2 LookInput { get; private set; }
+    [field: SerializeField] public float SprintValue { get; private set; }
+    [field: SerializeField] public bool JumpTriggered { get; private set; }
+    [field: SerializeField] public bool dashTriggered { get; private set; }
+    [field: SerializeField] public bool crouchTriggered { get; private set; }
+    [field: SerializeField] public bool primaryAttackTriggered { get; private set; }
+    [field: SerializeField] public bool secondaryAttackTriggered { get; private set; }
+    [field: SerializeField] public bool rightSkillTriggered { get; private set; }
+    [field: SerializeField] public bool leftSkillTriggered { get; private set; }
 
-    public static PlayerInputManager Instance { get; private set; }
+    [SerializeField] public static PlayerInputManager Instance;
 
     private void Awake()
     {
