@@ -65,6 +65,11 @@ public class BasicMovement : MonoBehaviour
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + groundDetectionLength, groundLayer);
     }
 
+    public bool GetGrounded()
+    {
+        return grounded;
+    }
+
     public void MoveOnGround()
     {
         moveDirection = CalculateMoveDirection();

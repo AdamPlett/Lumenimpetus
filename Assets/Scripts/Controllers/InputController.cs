@@ -7,6 +7,7 @@ public abstract class InputController : ScriptableObject
 {
     // Actions
     public Action jumpPerformed;
+    public Action jumpCancelled;
     public Action dashPerformed;
     public Action crouchPerformed;
     public Action primaryPerformed;
@@ -20,6 +21,10 @@ public abstract class InputController : ScriptableObject
         if (RetrieveJumpInput())
         {
             jumpPerformed?.Invoke();
+        }
+        else
+        {
+            jumpCancelled?.Invoke();
         }
     }
 
