@@ -17,7 +17,10 @@ public class PlayerJumpState : PlayerMovementState
     // Called continously throughout the state (update)
     public override void Tick()
     {
-
+       /* if (checkGrounded())
+        {
+            stateMachine.switchToMoveState();
+        }*/
     }
 
     // Called once at the end of the state, before starting the next state
