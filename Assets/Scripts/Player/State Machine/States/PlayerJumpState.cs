@@ -30,12 +30,17 @@ public class PlayerJumpState : PlayerMovementState
         coyoteTimeTimer -= Time.deltaTime;
         timeBetweenJumps -= Time.deltaTime;
     }
-
+        /*
+        Call in update
+        jumpBufferTimer = jumpStats.jumpBuffer;
+        When grounded equals true
+        coyoteTimeTimer = jumpStats.coyoteTime;
+        When you start the jump action
+        timeBetweenJumps = jumpStats.jumpInputDelay;
+        */
     // Called once at the end of the state, before starting the next state
     public override void Exit()
     {
-        jumpBufferTimer = jumpStats.jumpBuffer;
-        coyoteTimeTimer = jumpStats.coyoteTime;
-        timeBetweenJumps = jumpStats.jumpInputDelay;
+        
     }
 }
