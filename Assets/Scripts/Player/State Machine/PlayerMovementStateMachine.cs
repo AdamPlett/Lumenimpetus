@@ -7,7 +7,10 @@ public class PlayerMovementStateMachine : StateMachine
     [Header("Player Components")]
     public Controller controller;
     public Rigidbody rb;
+
+    [Header("Player Camera")]
     public Camera playerCam;
+    public CameraManager cm;
 
     [Header("Movement Scripts")]
     public BasicMovement movement;
@@ -28,16 +31,6 @@ public class PlayerMovementStateMachine : StateMachine
     private void Start()
     {
         SwitchToMoveState();
-    }
-
-    private void FixedUpdate()
-    {
-        RotatePlayer();
-    }
-
-    private void RotatePlayer()
-    {
-        transform.forward = playerCam.transform.forward;
     }
 
     #region State Switchers

@@ -9,15 +9,11 @@ public class PlayerController : InputController
     
     public override Vector2 RetrieveMoveInput()
     {
-        Debug.Log(PlayerInputManager.Instance);
-
         return PlayerInputManager.Instance.MoveInput;
     }
 
     public override Vector2 RetrieveLookInput()
-    {
-        Debug.Log(PlayerInputManager.Instance);
-        
+    {        
         return PlayerInputManager.Instance.LookInput;
     }
 
