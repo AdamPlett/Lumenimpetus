@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "Movement Stats", menuName = "ScriptableObjects/MovementStats/BaseMovement")]
 public class MovementStats : ScriptableObject
 {
-    [Tooltip("Max walking speed"), Min(0)]
-    public float walkSpeed;
+    [Tooltip("Max speed"), Min(0)]
+    public float maxSpeed;
 
     [Tooltip("Determines how much faster sprint speed should be comapred to walking"), Min(0)]
     public float sprintSpeedMultiplier;
