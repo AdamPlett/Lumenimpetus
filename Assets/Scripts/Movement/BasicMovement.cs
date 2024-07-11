@@ -44,6 +44,7 @@ public class BasicMovement : MonoBehaviour
     public void FixedUpdate()
     {        
         CheckGrounded();
+        AdjustSpeed();
     }
 
     public Vector3 CalculateMoveDirection()
@@ -56,7 +57,6 @@ public class BasicMovement : MonoBehaviour
 
     public void RotatePlayer(Quaternion rotation)
     {
-
         stateMachine.rb.MoveRotation(rotation);
     }
 
@@ -76,7 +76,7 @@ public class BasicMovement : MonoBehaviour
 
         if(stateMachine.rb.velocity.magnitude < stateMachine.movement.moveStats.maxSpeed)
         {
-            stateMachine.rb.AddForce(moveDirection.normalized * currentSpeed, ForceMode.VelocityChange);
+            stateMachine.rb.AddForce(moveDirection.normalized * currentSpeed, ForceMode.Force);
         }
     }
 
@@ -84,6 +84,61 @@ public class BasicMovement : MonoBehaviour
     {
         moveDirection = CalculateMoveDirection();
 
-        stateMachine.rb.AddForce(moveDirection.normalized * currentSpeed * airControlMultiplier, ForceMode.VelocityChange);
+        stateMachine.rb.AddForce(moveDirection.normalized * currentSpeed * airControlMultiplier, ForceMode.Force);
+    }
+
+    public void SetDesiredSpeed(float speed)
+    {
+        desiredSpeed = speed;
+    }
+
+    public void AdjustSpeed()
+    {
+        if(currentSpeed > desiredSpeed)
+        {
+            Decelerate();
+        }
+        else if(currentSpeed < desiredSpeed)
+        {
+            Accelerate();
+        }
+    }
+
+    public void Accelerate()
+    {
+        if(GetGrounded())
+        {
+            // Ground Acceleration
+            currentSpeed += moveStats.groundAcceleration * Time.deltaTime;
+        }
+        else
+        {
+            // Air Acceleration
+            currentSpeed += moveStats.airAcceleration * Time.deltaTime;
+        }
+
+        if(currentSpeed > desiredSpeed)
+        {
+            currentSpeed = desiredSpeed;
+        }
+    }
+
+    public void Decelerate()
+    {
+        if (GetGrounded())
+        {
+            // Ground Deceleration
+            currentSpeed -= moveStats.groundDeceleration * Time.deltaTime;
+        }
+        else
+        {
+            // Air Deceleration
+            currentSpeed -= moveStats.airDecelertaion * Time.deltaTime;
+        }
+
+        if (currentSpeed < desiredSpeed)
+        {
+            currentSpeed = desiredSpeed;
+        }
     }
 }

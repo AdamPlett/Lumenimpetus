@@ -20,13 +20,26 @@ public class PlayerMoveState : PlayerMovementState
 
     // Called continously throughout the state (update)
     public override void Tick()
-    {
+    {        
         if(input.RetrieveMoveInput().sqrMagnitude > 0)
         {
+            if (input.RetrieveSprintInput() > 0)
+            {
+                // Set desired speed to sprint speed
+                movement.SetDesiredSpeed(movement.sprintSpeed);
+            }
+            else
+            {
+                // Set desired speed to walk speed
+                movement.SetDesiredSpeed(movement.walkSpeed);
+            }
+
+            // Move player
             stateMachine.movement.MoveOnGround();
         }
         else
         {
+            movement.SetDesiredSpeed(0f);
             // Is idle - no move
         }
     }

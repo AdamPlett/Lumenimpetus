@@ -21,6 +21,11 @@ public class CameraManager : MonoBehaviour
     [Header("Player Reference")]
     public PlayerMovementStateMachine player;
 
+    public void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     public void Update()
     {
         if (!locked)
@@ -35,6 +40,7 @@ public class CameraManager : MonoBehaviour
             cameraForward = new Vector3(mainCam.transform.forward.x, 0, mainCam.transform.forward.z);
             cameraRight = new Vector3(mainCam.transform.right.x, 0, mainCam.transform.right.z);
 
+            // Rotate player to match camera rotation
             player.movement.RotatePlayer(Quaternion.Euler(0f, yRotation, 0f));
         }
     }
