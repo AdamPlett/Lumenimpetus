@@ -23,41 +23,41 @@ public class PlayerController : InputController
 
     public override float RetrieveSprintInput()
     {
-        return inputManager.SprintValue;
+        return PlayerInputManager.Instance.SprintValue;
     }
 
     public override bool RetrieveJumpInput()
     {
-        return inputManager != null ? inputManager.JumpTriggered : false;
+        return PlayerInputManager.Instance != null ? PlayerInputManager.Instance.JumpTriggered : false;
     }
 
     public override bool RetrieveDashInput()
     {
-        return inputManager.dashTriggered;
+        return PlayerInputManager.Instance.dashTriggered;
     }
 
     public override bool RetrieveCrouchInput()
     {
-        return inputManager.crouchTriggered;
+        return PlayerInputManager.Instance.crouchTriggered;
     }
 
     public override bool RetrievePrimaryAttack()
     {
-        return inputManager.primaryAttackTriggered;
+        return PlayerInputManager.Instance.primaryAttackTriggered;
     }
 
     public override bool RetrieveSecondaryAttack()
     {
-        return inputManager.secondaryAttackTriggered;
+        return PlayerInputManager.Instance.secondaryAttackTriggered;
     }
 
     public override bool RetrieveRightSkill()
     {
-        return inputManager.rightSkillTriggered;
+        return PlayerInputManager.Instance.rightSkillTriggered;
     }
 
     public override bool RetrieveLeftSkill()
     {
-        return inputManager.leftSkillTriggered;
+        return PlayerInputManager.Instance.leftSkillTriggered;
     }
 }

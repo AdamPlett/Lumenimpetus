@@ -10,19 +10,22 @@ public class PlayerFallState : PlayerMovementState
 
     // Called once at the start of the state, after ending the previous state
     public override void Enter()
-    { 
-
+    {
+        Debug.Log("Entering fall state");
     }
 
     // Called continously throughout the state (update)
     public override void Tick()
     {
-
+        if (stateMachine.movement.GetGrounded())
+        {
+            stateMachine.SwitchToMoveState();
+        }
     }
 
     // Called once at the end of the state, before starting the next state
     public override void Exit()
     {
-
+        Debug.Log("Entering fall state");
     }
 }

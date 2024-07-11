@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 105002e85ae17e44daeb66c2e59f4705, type: 3}
+  m_Name: PlayerJumpStats
+  m_EditorClassIdentifier: 
+  jumpHeight: 100
+  doubleJumps: 0
+  jumpInputDelay: 0.1
+  jumpBuffer: 0.1
+  coyoteTime: 0.1
+  minimumJumpingTime: 0.1
+  platformDetectorDistance: 0.05
+  jumpingGravityMultiplier: 0
+  downwardsGravityMultiplier: 0
+  maxFallSpeed: -40

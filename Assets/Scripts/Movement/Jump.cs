@@ -6,28 +6,22 @@ public class Jump : MonoBehaviour
 {
     //References
     public JumpStats stats;
-    private Controller controller;
-    private Rigidbody rb;
     //private Ground ground
 
     private Vector3 velocity;
     private float jumpSpeed, defaultGravityScale = 1f;
 
-    private int jumpPhase = 0;
+    public int jumpPhase = 0;
     public bool desiredJump;
     private bool grounded;
 
     public float jumpInputDelayTimer = 0;
     public float jumpBufferTimer = 0;
-    private float coyoteTimeTimer = 0f;
-    private float timeBetweenJumps = -1f;
+    public float coyoteTimeTimer = 0f;
+    public float timeBetweenJumps = -1f;
 
-    private void Awake()
-    {
-        controller = GetComponent<Controller>();
-        rb = GetComponent<Rigidbody>();
-        //ground = GetComponent<Ground>();
-    }
+    public PlayerMovementStateMachine stateMachine;
+
 
     // Update is called once per frame
     private void Update()
@@ -41,7 +35,7 @@ public class Jump : MonoBehaviour
         coyoteTimeTimer -= Time.deltaTime;
         timeBetweenJumps -= Time.deltaTime;
 
-        velocity = rb.velocity;
+        velocity = stateMachine.rb.velocity;
 
         //if the player is grounded than reset double jumps and coyote timer
         if (grounded)
@@ -63,24 +57,25 @@ public class Jump : MonoBehaviour
             velocity.y = stats.maxFallSpeed;
         }
 
-        rb.velocity = velocity;
+        stateMachine.rb.velocity = velocity;
     }
     public void JumpAction()
     {
-        if ((jumpBufferTimer > 0 && coyoteTimeTimer > 0 && timeBetweenJumps < 0) || (jumpPhase < stats.doubleJumps && timeBetweenJumps <0))
-        {
-            timeBetweenJumps = stats.jumpInputDelay;
+        Debug.Log("Jumping");
+        timeBetweenJumps = stats.jumpInputDelay;
 
-            jumpPhase += 1;
+        jumpPhase += 1;
             
-            //calculates jumpSpeed based the JumpStats jumpHeight 
-            jumpSpeed = Mathf.Sqrt(-1f * Physics.gravity.y * stats.jumpHeight);
+        //calculates jumpSpeed based the JumpStats jumpHeight 
+        jumpSpeed = Mathf.Sqrt(-1f * Physics.gravity.y * stats.jumpHeight);
 
-            if (velocity.y > 0) 
-                jumpSpeed = Mathf.Max(jumpSpeed - velocity.y, 0f);
-
-            velocity.y += jumpSpeed;
-            Debug.Log("Jump Applied");
+        if (velocity.y > 0)
+        {
+            jumpSpeed = Mathf.Max(jumpSpeed - velocity.y, 0f);
         }
+        Debug.Log("jumpSpeed:" + jumpSpeed);
+
+        velocity.y += jumpSpeed;
+        Debug.Log("Jump Applied");
     }
 }

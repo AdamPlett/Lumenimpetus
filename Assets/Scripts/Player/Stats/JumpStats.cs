@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "Jump Stats", menuName = "ScriptableObjects/Stats/JumpStats")]
 public class JumpStats : ScriptableObject
 {
     [Tooltip("The est. height the player should get from jumping"), Min(0)]

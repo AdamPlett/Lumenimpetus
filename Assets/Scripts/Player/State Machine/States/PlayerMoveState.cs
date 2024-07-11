@@ -35,5 +35,8 @@ public class PlayerMoveState : PlayerMovementState
     public override void Exit()
     {
         Debug.Log("Exiting 'Move State'");
+        // unsubscribe Listeners
+        input.jumpPerformed -= stateMachine.SwitchToJumpState;
+        input.crouchPerformed -= stateMachine.SwitchToCrouchState;
     }
 }
