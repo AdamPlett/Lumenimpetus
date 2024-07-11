@@ -69,7 +69,23 @@ public class PlayerMovementStateMachine : StateMachine
             jumpState = new PlayerJumpState(this);
         }
 
-        SwitchState(jumpState);
+        if (jump.jumpInputDelayTimer < 0)
+        {
+            jump.desiredJump |= controller.input.RetrieveJumpInput();
+
+            if (jump.desiredJump)
+            {
+                jump.jumpInputDelayTimer = jump.stats.jumpInputDelay;
+                jump.jumpBufferTimer = jump.stats.jumpBuffer;
+            }
+
+            if (jump.jumpBufferTimer > 0)
+            {
+                jump.desiredJump = false;
+                jump.JumpAction();
+                SwitchState(jumpState);
+            }
+        }
     }
 
     public void SwitchToFallState()

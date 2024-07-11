@@ -5,7 +5,7 @@ using UnityEngine;
 public class Jump : MonoBehaviour
 {
     //References
-    [SerializeField] private JumpStats stats;
+    public JumpStats stats;
     private Controller controller;
     private Rigidbody rb;
     //private Ground ground
@@ -14,9 +14,12 @@ public class Jump : MonoBehaviour
     private float jumpSpeed, defaultGravityScale = 1f;
 
     private int jumpPhase = 0;
-    private bool desiredJump, grounded;
+    public bool desiredJump;
+    private bool grounded;
 
-    private float jumpInputDelayTimer = 0f, jumpBufferTimer = 0f, coyoteTimeTimer = 0f;
+    public float jumpInputDelayTimer = 0;
+    public float jumpBufferTimer = 0;
+    private float coyoteTimeTimer = 0f;
     private float timeBetweenJumps = -1f;
 
     private void Awake()
@@ -30,16 +33,6 @@ public class Jump : MonoBehaviour
     private void Update()
     {
         jumpInputDelayTimer -= Time.deltaTime;
-        if(jumpInputDelayTimer<0)
-        {
-            desiredJump |= controller.input.RetrieveJumpInput();
-
-            if (desiredJump)
-            {
-                jumpInputDelayTimer = stats.jumpInputDelay;
-                jumpBufferTimer = stats.jumpBuffer;
-            }
-        }
     }
 
     private void FixedUpdate()
@@ -48,7 +41,6 @@ public class Jump : MonoBehaviour
         coyoteTimeTimer -= Time.deltaTime;
         timeBetweenJumps -= Time.deltaTime;
 
-        //grounded = ground.grounded
         velocity = rb.velocity;
 
         //if the player is grounded than reset double jumps and coyote timer
@@ -58,11 +50,6 @@ public class Jump : MonoBehaviour
             coyoteTimeTimer = stats.coyoteTime;
         }
 
-        if (jumpBufferTimer>0)
-        {
-            desiredJump = false;
-            JumpAction();
-        }
 
         //sets the current gravity scale (lower gravity while jumping upwards)
         /*
@@ -78,7 +65,7 @@ public class Jump : MonoBehaviour
 
         rb.velocity = velocity;
     }
-    private void JumpAction()
+    public void JumpAction()
     {
         if ((jumpBufferTimer > 0 && coyoteTimeTimer > 0 && timeBetweenJumps < 0) || (jumpPhase < stats.doubleJumps && timeBetweenJumps <0))
         {
