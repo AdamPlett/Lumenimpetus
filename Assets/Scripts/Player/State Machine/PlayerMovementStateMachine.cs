@@ -76,6 +76,10 @@ public class PlayerMovementStateMachine : StateMachine
             {
                 jump.desiredJump = false;
 
+                Debug.Log("JumpBufferTimer: "+jump.jumpBufferTimer);
+                Debug.Log("CoyoteTimeTimer: "+jump.coyoteTimeTimer);
+                Debug.Log("TimeBetweenJumps: " + jump.timeBetweenJumps);
+
                 if ((jump.jumpBufferTimer > 0 && jump.coyoteTimeTimer > 0 && jump.timeBetweenJumps < 0) || (jump.jumpPhase < jump.stats.doubleJumps && jump.timeBetweenJumps < 0))
                 {
                     SwitchState(jumpState);
