@@ -997,7 +997,8 @@ MonoBehaviour:
   groundDrag: 0
   airDrag: 0
   airControlMultiplier: 0
-  moveStats: {fileID: 0}
+  yRotation: 0
+  moveStats: {fileID: 11400000, guid: 00352e08a5bc86543ad539accbb850a4, type: 2}
   stateMachine: {fileID: 1822256125}
 --- !u!1001 &61049472
 PrefabInstance:
@@ -25190,6 +25191,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1732403871}
+  - component: {fileID: 1732403872}
   m_Layer: 0
   m_Name: Camera Holder
   m_TagString: Untagged
@@ -25214,6 +25216,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1732403872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732403870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 998bee1fd51a0fc4e848509669e656c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locked: 0
+  mainCam: {fileID: 1819227694}
+  cameraForward: {x: 0, y: 0, z: 0}
+  cameraRight: {x: 0, y: 0, z: 0}
+  sensX: 0
+  sensY: 0
+  mouseX: 0
+  mouseY: 0
+  xRotation: 0
+  yRotation: 0
+  player: {fileID: 1822256125}
 --- !u!1 &1742256307
 GameObject:
   m_ObjectHideFlags: 0
@@ -26376,6 +26401,7 @@ MonoBehaviour:
   controller: {fileID: 5600612530559197083}
   rb: {fileID: 1822256127}
   playerCam: {fileID: 1563087508}
+  cm: {fileID: 1732403872}
   movement: {fileID: 57475737}
   jump: {fileID: 35970825}
 --- !u!114 &1822256126

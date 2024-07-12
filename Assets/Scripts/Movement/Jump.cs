@@ -76,6 +76,7 @@ public class Jump : MonoBehaviour
         Debug.Log("jumpSpeed:" + jumpSpeed);
 
         velocity.y += jumpSpeed;
+        stateMachine.rb.AddForce(new Vector3(0, jumpSpeed, 0), ForceMode.VelocityChange);
         Debug.Log("Jump Applied");
     }
 }

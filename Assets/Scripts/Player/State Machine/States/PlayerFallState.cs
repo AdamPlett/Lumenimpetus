@@ -26,6 +26,6 @@ public class PlayerFallState : PlayerMovementState
     // Called once at the end of the state, before starting the next state
     public override void Exit()
     {
-        Debug.Log("Entering fall state");
+        Debug.Log("Exiting fall state");
     }
 }

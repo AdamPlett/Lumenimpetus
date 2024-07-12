@@ -63,6 +63,9 @@ public class BasicMovement : MonoBehaviour
     public void CheckGrounded()
     {
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + groundDetectionLength, groundLayer);
+
+        if (grounded)
+            stateMachine.jump.coyoteTimeTimer = stateMachine.jump.stats.coyoteTime;
     }
 
     public bool GetGrounded()
