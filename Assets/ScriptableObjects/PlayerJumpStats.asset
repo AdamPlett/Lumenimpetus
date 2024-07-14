@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 105002e85ae17e44daeb66c2e59f4705, type: 3}
   m_Name: PlayerJumpStats
   m_EditorClassIdentifier: 
-  jumpHeight: 5000
+  jumpHeight: 10
   doubleJumps: 0
   jumpInputDelay: 0.1
   jumpBuffer: 0.1
@@ -21,4 +21,4 @@ MonoBehaviour:
   platformDetectorDistance: 0.05
   jumpingGravityMultiplier: 0
   downwardsGravityMultiplier: 0
-  maxFallSpeed: -40
+  maxFallSpeed: -100
