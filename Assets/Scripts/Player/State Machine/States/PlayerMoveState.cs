@@ -50,7 +50,7 @@ public class PlayerMoveState : PlayerMovementState
     {
         Debug.Log("Exiting 'Move State'");
 
-        // unsubscribe Listeners
+        // Unsubscribe Listeners
         input.jumpPerformed -= stateMachine.SwitchToJumpState;
         input.dashPerformed -= stateMachine.SwitchToDashState;
         input.crouchPerformed -= stateMachine.SwitchToCrouchState;

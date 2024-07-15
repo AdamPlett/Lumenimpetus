@@ -21,13 +21,11 @@ public class Dash : MonoBehaviour
     private float cooldownTimer;
 
     [Header("Settings")]
-    public bool useCameraForward;
     public bool allowAllDirections;
     public bool disableGravity;
     public bool resetVelocity;
 
     [Header("Misc")]
-    public MovementStats moveStats;
     public PlayerMovementStateMachine stateMachine;
 
     public void DashAction()

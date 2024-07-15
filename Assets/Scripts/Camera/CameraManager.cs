@@ -14,10 +14,14 @@ public class CameraManager : MonoBehaviour
     public Vector3 cameraRight;
 
     [Header("Camera Variables")]
+    public float FOV;
+    [Space(5)]
     public float sensX;
     public float sensY;
+    [Space(5)]
     public float mouseX;
     public float mouseY;
+    [Space(5)]
     public float xRotation;
     public float yRotation;
 

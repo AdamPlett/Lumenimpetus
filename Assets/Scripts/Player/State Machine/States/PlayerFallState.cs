@@ -24,16 +24,8 @@ public class PlayerFallState : PlayerMovementState
 
         if (input.RetrieveMoveInput().sqrMagnitude > 0)
         {
-            // Set desired speed to sprint speed
-            movement.SetDesiredSpeed(movement.sprintSpeed);
-            
-            /* for slow air movement while not holding sprint
-            if (input.RetrieveSprintInput() == 0)
-            {
-                // Set desired speed to walk speed
-                movement.SetDesiredSpeed(movement.walkSpeed);
-            }
-            */
+            // Set desired speed
+            movement.SetDesiredSpeed(movement.airSpeed);
 
             // Move player
             stateMachine.movement.MoveInAir();

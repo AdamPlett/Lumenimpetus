@@ -12,8 +12,12 @@ public class PlayerJumpState : PlayerMovementState
     public override void Enter()
     {
         Debug.Log("Entering jump state");
-        input.jumpCancelled += stateMachine.SwitchToFallState;
+
         jump.JumpAction();
+
+        // Subscribe Listeners
+        input.jumpCancelled += stateMachine.SwitchToFallState;
+        input.dashPerformed += stateMachine.SwitchToDashState;
     }
 
     // Called continously throughout the state (update)
@@ -21,31 +25,26 @@ public class PlayerJumpState : PlayerMovementState
     {
         if (input.RetrieveMoveInput().sqrMagnitude > 0)
         {
-            // Set desired speed to sprint speed
-            movement.SetDesiredSpeed(movement.sprintSpeed);
-
-            /* for slow air movement while not holding sprint
-            if (input.RetrieveSprintInput() == 0)
-            {
-                // Set desired speed to walk speed
-                movement.SetDesiredSpeed(movement.walkSpeed);
-            }
-            */
+            // Set desired speed
+            movement.SetDesiredSpeed(movement.airSpeed);
 
             // Move player
             stateMachine.movement.MoveInAir();
         }
         else
         {
+            // Player is idle - Don't move!
             movement.SetDesiredSpeed(0f);
-            // Is idle - no move
         }
     }
    
     // Called once at the end of the state, before starting the next state
     public override void Exit()
     {
-        input.jumpCancelled -= stateMachine.SwitchToFallState;
         Debug.Log("Exiting jump state");
+
+        // Unsubscribe Listeners
+        input.jumpCancelled -= stateMachine.SwitchToFallState;
+        input.dashPerformed -= stateMachine.SwitchToDashState;
     }
 }

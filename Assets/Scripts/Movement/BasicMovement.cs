@@ -21,7 +21,6 @@ public class BasicMovement : MonoBehaviour
     public float currentSpeed;
     public float desiredSpeed;
     [Space(5)]
-    public Vector3 lookDirection;
     public Vector3 moveDirection;
     public Vector3 velocity;
     [Space(5)]
@@ -29,13 +28,11 @@ public class BasicMovement : MonoBehaviour
     public float sprintSpeed;
     public float crouchSpeed;
     public float wallRunSpeed;
+    public float airSpeed;
     [Space(5)]
     public float groundDrag;
     public float airDrag;
     public float airControlMultiplier;
-
-    [Header("Player Rotation")]
-    public float yRotation;
 
     [Header("Misc")]
     public MovementStats moveStats;
@@ -45,6 +42,8 @@ public class BasicMovement : MonoBehaviour
     {        
         CheckGrounded();
         AdjustSpeed();
+
+        velocity = stateMachine.rb.velocity;
     }
 
     public Vector3 CalculateMoveDirection()
