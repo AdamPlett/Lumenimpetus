@@ -10,6 +10,7 @@ public abstract class PlayerMovementState : State
     protected InputController input;
     protected BasicMovement movement;
     protected Jump jump;
+    protected Dash dash;
 
     protected PlayerMovementState(PlayerMovementStateMachine stateMachine)
     {
@@ -20,5 +21,6 @@ public abstract class PlayerMovementState : State
         input = stateMachine.controller.input;
         movement = stateMachine.movement;
         jump = stateMachine.jump;
+        dash = stateMachine.dash;
     }
 }

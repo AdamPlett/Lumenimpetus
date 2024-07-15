@@ -92,6 +92,8 @@ public class BasicMovement : MonoBehaviour
         stateMachine.rb.AddForce(moveDirection.normalized * currentSpeed * airControlMultiplier, ForceMode.Force);
     }
 
+    #region Speed Control
+
     public void SetDesiredSpeed(float speed)
     {
         desiredSpeed = speed;
@@ -146,4 +148,6 @@ public class BasicMovement : MonoBehaviour
             currentSpeed = desiredSpeed;
         }
     }
+
+    #endregion
 }

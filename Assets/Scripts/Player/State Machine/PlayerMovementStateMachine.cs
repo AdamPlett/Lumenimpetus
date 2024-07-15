@@ -15,6 +15,7 @@ public class PlayerMovementStateMachine : StateMachine
     [Header("Movement Scripts")]
     public BasicMovement movement;
     public Jump jump;
+    public Dash dash;
 
     // Movement States
     private PlayerIdleState idleState;
@@ -125,7 +126,7 @@ public class PlayerMovementStateMachine : StateMachine
             dashState = new PlayerDashState(this);
         }
 
-        SwitchState(slideState);
+        SwitchState(dashState);
     }
 
     public void SwitchToGrappleState()

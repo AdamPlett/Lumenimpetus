@@ -15,6 +15,7 @@ public class PlayerMoveState : PlayerMovementState
         
         // Subscribe Listeners
         input.jumpPerformed += stateMachine.SwitchToJumpState;
+        input.dashPerformed += stateMachine.SwitchToDashState;
         input.crouchPerformed += stateMachine.SwitchToCrouchState;
     }
 
@@ -39,8 +40,8 @@ public class PlayerMoveState : PlayerMovementState
         }
         else
         {
+            // Player is idle - Don't move!
             movement.SetDesiredSpeed(0f);
-            // Is idle - no move
         }
     }
 
@@ -48,8 +49,10 @@ public class PlayerMoveState : PlayerMovementState
     public override void Exit()
     {
         Debug.Log("Exiting 'Move State'");
+
         // unsubscribe Listeners
         input.jumpPerformed -= stateMachine.SwitchToJumpState;
+        input.dashPerformed -= stateMachine.SwitchToDashState;
         input.crouchPerformed -= stateMachine.SwitchToCrouchState;
     }
 }

@@ -14,9 +14,12 @@ public class CameraManager : MonoBehaviour
     public Vector3 cameraRight;
 
     [Header("Camera Variables")]
-    public float sensX, sensY;
-    public float mouseX, mouseY;
-    public float xRotation, yRotation;
+    public float sensX;
+    public float sensY;
+    public float mouseX;
+    public float mouseY;
+    public float xRotation;
+    public float yRotation;
 
     [Header("Player Reference")]
     public PlayerMovementStateMachine player;
