@@ -21,6 +21,28 @@ public class PlayerFallState : PlayerMovementState
         {
             stateMachine.SwitchToMoveState();
         }
+
+        if (input.RetrieveMoveInput().sqrMagnitude > 0)
+        {
+            // Set desired speed to sprint speed
+            movement.SetDesiredSpeed(movement.sprintSpeed);
+            
+            /* for slow air movement while not holding sprint
+            if (input.RetrieveSprintInput() == 0)
+            {
+                // Set desired speed to walk speed
+                movement.SetDesiredSpeed(movement.walkSpeed);
+            }
+            */
+
+            // Move player
+            stateMachine.movement.MoveInAir();
+        }
+        else
+        {
+            movement.SetDesiredSpeed(0f);
+            // Is idle - no move
+        }
     }
 
     // Called once at the end of the state, before starting the next state

@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a616bb12f7c8ee94696113d5e69f6bab, type: 3}
   m_Name: BaseMovementStats
   m_EditorClassIdentifier: 
+  maxWalkSpeed: 0
   maxSpeed: 10
+  airControlMult: 0.5
   sprintSpeedMultiplier: 2
   groundAcceleration: 5
   airAcceleration: 5

@@ -5,8 +5,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Movement Stats", menuName = "ScriptableObjects/MovementStats/BaseMovement")]
 public class MovementStats : ScriptableObject
 {
+    [Tooltip("Max walk speed"), Min(0)]
+    public float maxWalkSpeed;
+
     [Tooltip("Max speed"), Min(0)]
     public float maxSpeed;
+
+    [Tooltip("Air Control Multiplier"), Min(0)]
+    public float airControlMult = 0.5f;
 
     [Tooltip("Determines how much faster sprint speed should be comapred to walking"), Min(0)]
     public float sprintSpeedMultiplier;

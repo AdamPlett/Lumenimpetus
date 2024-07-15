@@ -6,11 +6,14 @@ public class Jump : MonoBehaviour
 {
     //References
     public JumpStats stats;
+    public PlayerMovementStateMachine stateMachine;
     //private Ground ground
 
     private Vector3 velocity;
     private float jumpSpeed, defaultGravityScale = 1f;
 
+    [Space(5)]
+    [Header("READ ONLY! (use stats to change jump)")]
     public int jumpPhase = 0;
     public bool desiredJump;
     private bool grounded;
@@ -19,8 +22,6 @@ public class Jump : MonoBehaviour
     public float jumpBufferTimer = 0;
     public float coyoteTimeTimer = 0f;
     public float timeBetweenJumps = -1f;
-
-    public PlayerMovementStateMachine stateMachine;
 
 
     // Update is called once per frame

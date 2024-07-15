@@ -19,16 +19,29 @@ public class PlayerJumpState : PlayerMovementState
     // Called continously throughout the state (update)
     public override void Tick()
     {
+        if (input.RetrieveMoveInput().sqrMagnitude > 0)
+        {
+            // Set desired speed to sprint speed
+            movement.SetDesiredSpeed(movement.sprintSpeed);
 
+            /* for slow air movement while not holding sprint
+            if (input.RetrieveSprintInput() == 0)
+            {
+                // Set desired speed to walk speed
+                movement.SetDesiredSpeed(movement.walkSpeed);
+            }
+            */
+
+            // Move player
+            stateMachine.movement.MoveInAir();
+        }
+        else
+        {
+            movement.SetDesiredSpeed(0f);
+            // Is idle - no move
+        }
     }
-        /*
-        Call in update
-        jumpBufferTimer = jumpStats.jumpBuffer;
-        When grounded equals true
-        coyoteTimeTimer = jumpStats.coyoteTime;
-        When you start the jump action
-        timeBetweenJumps = jumpStats.jumpInputDelay;
-        */
+   
     // Called once at the end of the state, before starting the next state
     public override void Exit()
     {

@@ -49,6 +49,8 @@ public class BasicMovement : MonoBehaviour
 
     public Vector3 CalculateMoveDirection()
     {
+        airControlMultiplier = moveStats.airControlMult;
+
         float horizontalInput = stateMachine.controller.input.RetrieveMoveInput().x;
         float verticalInput = stateMachine.controller.input.RetrieveMoveInput().y;
 
