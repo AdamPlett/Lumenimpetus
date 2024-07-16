@@ -173,10 +173,10 @@ MonoBehaviour:
   sprintSpeed: 10
   crouchSpeed: 3
   wallRunSpeed: 0
-  airSpeed: 0
+  airSpeed: 5
   groundDrag: 0
   airDrag: 0
-  airControlMultiplier: 0
+  airControlMultiplier: 1
   moveStats: {fileID: 11400000, guid: 00352e08a5bc86543ad539accbb850a4, type: 2}
   stateMachine: {fileID: 7068737765741061809}
 --- !u!114 &4509926543919969420
@@ -191,8 +191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3556a42d9f4e107458b49cf502b7d4d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 0}
-  stateMachine: {fileID: 0}
+  stats: {fileID: 11400000, guid: 784c0de9b8150cc46a50efdc241b6117, type: 2}
+  stateMachine: {fileID: 7068737765741061809}
   jumpPhase: 0
   desiredJump: 0
   jumpInputDelayTimer: 0

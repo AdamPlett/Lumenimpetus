@@ -61,10 +61,10 @@ MonoBehaviour:
   sprintSpeed: 10
   crouchSpeed: 3
   wallRunSpeed: 0
-  airSpeed: 0
+  airSpeed: 5
   groundDrag: 0
   airDrag: 0
-  airControlMultiplier: 0
+  airControlMultiplier: 1
   moveStats: {fileID: 11400000, guid: 00352e08a5bc86543ad539accbb850a4, type: 2}
   stateMachine: {fileID: 5681120810403071220}
 --- !u!114 &5681120808496939723
