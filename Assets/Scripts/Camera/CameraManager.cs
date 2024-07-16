@@ -12,6 +12,7 @@ public class CameraManager : MonoBehaviour
     [Header("Camera Vectors")]
     public Vector3 cameraForward;
     public Vector3 cameraRight;
+    public Vector3 cameraUp;
 
     [Header("Camera Variables")]
     public float FOV;
@@ -44,8 +45,9 @@ public class CameraManager : MonoBehaviour
             xRotation -= mouseY;
             xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-            cameraForward = new Vector3(mainCam.transform.forward.x, 0, mainCam.transform.forward.z);
-            cameraRight = new Vector3(mainCam.transform.right.x, 0, mainCam.transform.right.z);
+            cameraForward = mainCam.transform.forward;
+            cameraRight = mainCam.transform.right;
+            cameraUp = mainCam.transform.up;
 
             // Rotate player to match camera rotation
             player.movement.RotatePlayer(Quaternion.Euler(0f, yRotation, 0f));

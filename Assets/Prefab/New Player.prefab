@@ -1,57 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7068737764406627078
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7068737764406627079}
-  - component: {fileID: 7068737764406627072}
-  m_Layer: 0
-  m_Name: Jump
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7068737764406627079
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7068737764406627078}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7068737765741061808}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7068737764406627072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7068737764406627078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3556a42d9f4e107458b49cf502b7d4d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 784c0de9b8150cc46a50efdc241b6117, type: 2}
-  stateMachine: {fileID: 7068737765741061809}
-  jumpPhase: 0
-  desiredJump: 0
-  jumpInputDelayTimer: 0
-  jumpBufferTimer: 0
-  coyoteTimeTimer: 0
-  timeBetweenJumps: -1
 --- !u!1 &7068737764831809902
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7068737765741061808}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7068737764831809899
 MeshFilter:
@@ -174,6 +122,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7068737765425418196}
   - component: {fileID: 7068737765425418197}
+  - component: {fileID: 4509926543919969420}
+  - component: {fileID: 3641437869225919336}
   m_Layer: 0
   m_Name: Movement
   m_TagString: Untagged
@@ -217,18 +167,60 @@ MonoBehaviour:
   groundDetectionLength: 0.125
   currentSpeed: 0
   desiredSpeed: 0
-  lookDirection: {x: 0, y: 0, z: 0}
   moveDirection: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   walkSpeed: 6
   sprintSpeed: 10
   crouchSpeed: 3
   wallRunSpeed: 0
+  airSpeed: 0
   groundDrag: 0
   airDrag: 0
   airControlMultiplier: 0
-  yRotation: 0
   moveStats: {fileID: 11400000, guid: 00352e08a5bc86543ad539accbb850a4, type: 2}
+  stateMachine: {fileID: 7068737765741061809}
+--- !u!114 &4509926543919969420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7068737765425418202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3556a42d9f4e107458b49cf502b7d4d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 0}
+  stateMachine: {fileID: 0}
+  jumpPhase: 0
+  desiredJump: 0
+  jumpInputDelayTimer: 0
+  jumpBufferTimer: 0
+  coyoteTimeTimer: 0
+  timeBetweenJumps: -1
+--- !u!114 &3641437869225919336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7068737765425418202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29f382fd01ca13746a991a9c7d4dc198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashForce: 20
+  dashUpwardForce: 0
+  dashing: 0
+  dashDuration: 0.5
+  dashTimer: 0
+  canDash: 0
+  cooldown: 1
+  allowAllDirections: 1
+  disableGravity: 1
+  resetVelocity: 1
   stateMachine: {fileID: 7068737765741061809}
 --- !u!1 &7068737765741061815
 GameObject:
@@ -262,9 +254,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7068737765425418196}
-  - {fileID: 7068737764831809903}
   - {fileID: 7068737766264198610}
-  - {fileID: 7068737764406627079}
+  - {fileID: 7068737764831809903}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -314,7 +305,8 @@ MonoBehaviour:
   playerCam: {fileID: 0}
   cm: {fileID: 0}
   movement: {fileID: 7068737765425418197}
-  jump: {fileID: 7068737764406627072}
+  jump: {fileID: 4509926543919969420}
+  dash: {fileID: 3641437869225919336}
 --- !u!1 &7068737766264198609
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,7 +337,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7068737765741061808}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7068737766264198611
 MonoBehaviour:

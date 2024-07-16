@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.XR;
+using static GameManager;
 
 public class BasicMovement : MonoBehaviour
 {
@@ -53,7 +51,10 @@ public class BasicMovement : MonoBehaviour
         float horizontalInput = stateMachine.controller.input.RetrieveMoveInput().x;
         float verticalInput = stateMachine.controller.input.RetrieveMoveInput().y;
 
-        return stateMachine.cm.cameraForward.normalized * verticalInput + stateMachine.cm.cameraRight.normalized * horizontalInput;
+        Vector3 camForward = new Vector3(stateMachine.cm.cameraForward.x, 0, stateMachine.cm.cameraForward.z);
+        Vector3 camRight = new Vector3(stateMachine.cm.cameraRight.x, 0, stateMachine.cm.cameraRight.z);
+
+        return camForward.normalized * verticalInput + camRight.normalized * horizontalInput;
     }
 
     public void RotatePlayer(Quaternion rotation)
