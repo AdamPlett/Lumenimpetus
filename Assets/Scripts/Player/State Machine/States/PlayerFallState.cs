@@ -12,6 +12,9 @@ public class PlayerFallState : PlayerMovementState
     public override void Enter()
     {
         Debug.Log("Entering fall state");
+
+        // Subscribe listeners
+        input.dashPerformed += stateMachine.SwitchToDashState;
     }
 
     // Called continously throughout the state (update)
@@ -27,20 +30,23 @@ public class PlayerFallState : PlayerMovementState
         {
             // Set desired speed
             movement.SetDesiredSpeed(movement.airSpeed);
-
-            // Move player
-            stateMachine.movement.MoveInAir();
         }
         else
         {
+            // Player is idle - Don't move!
             movement.SetDesiredSpeed(0f);
-            // Is idle - no move
         }
+
+        // Move player
+        stateMachine.airMovement.Move();
     }
 
     // Called once at the end of the state, before starting the next state
     public override void Exit()
     {
         Debug.Log("Exiting fall state");
+
+        // Unsubscribe listeners
+        input.dashPerformed -= stateMachine.SwitchToDashState;
     }
 }
