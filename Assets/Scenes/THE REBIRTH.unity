@@ -24389,41 +24389,6 @@ Transform:
   m_Father: {fileID: 486278717}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1693428689 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5681120808496939718, guid: 96dde8d7554b40641858225f7efaf5b5,
-    type: 3}
-  m_PrefabInstance: {fileID: 5681120809737552739}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1693428694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1693428689}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c77e0a8404d9a944a48d594b9cb5eac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxAirSpeed: 10
-  airStrafeForce: 4
-  airDrag: 0
-  stateMachine: {fileID: 1882937265}
---- !u!114 &1693428695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1693428689}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 713b96ee13d97f449ba009f5126fb73a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateMachine: {fileID: 0}
 --- !u!1 &1705819316
 GameObject:
   m_ObjectHideFlags: 0
@@ -27090,18 +27055,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!114 &1882937265 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5681120810403071220, guid: 96dde8d7554b40641858225f7efaf5b5,
-    type: 3}
-  m_PrefabInstance: {fileID: 5681120809737552739}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4980477285ee3c340b699cb6c43807d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1890605466
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34143,16 +34096,6 @@ PrefabInstance:
       propertyPath: playerCam
       value: 
       objectReference: {fileID: 1563087508}
-    - target: {fileID: 5681120810403071220, guid: 96dde8d7554b40641858225f7efaf5b5,
-        type: 3}
-      propertyPath: airMovement
-      value: 
-      objectReference: {fileID: 1693428694}
-    - target: {fileID: 5681120810403071220, guid: 96dde8d7554b40641858225f7efaf5b5,
-        type: 3}
-      propertyPath: groundMovement
-      value: 
-      objectReference: {fileID: 1693428695}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96dde8d7554b40641858225f7efaf5b5, type: 3}
 --- !u!224 &5693630871612962016
