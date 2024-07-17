@@ -27,15 +27,15 @@ public class PlayerJumpState : PlayerMovementState
         {
             // Set desired speed
             movement.SetDesiredSpeed(movement.airSpeed);
-
-            // Move player
-            stateMachine.movement.MoveInAir();
         }
         else
         {
             // Player is idle - Don't move!
             movement.SetDesiredSpeed(0f);
         }
+
+        // Move player
+        stateMachine.airMovement.Move();
     }
    
     // Called once at the end of the state, before starting the next state

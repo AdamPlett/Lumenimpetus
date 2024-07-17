@@ -14,6 +14,8 @@ public class PlayerMovementStateMachine : StateMachine
 
     [Header("Movement Scripts")]
     public BasicMovement movement;
+    public GroundMovement groundMovement;
+    public AirMovement airMovement;
     public Jump jump;
     public Dash dash;
 
