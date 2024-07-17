@@ -22,6 +22,7 @@ public class PlayerFallState : PlayerMovementState
     {
         if (stateMachine.movement.GetGrounded())
         {
+            
             stateMachine.SwitchToMoveState();
         }
 

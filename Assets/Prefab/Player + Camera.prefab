@@ -743,7 +743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 5681120810403071227}
   rb: {fileID: 5681120810403071226}
-  playerCam: {fileID: 0}
+  playerCam: {fileID: 5681120808992486733}
   cm: {fileID: 5681120809112756675}
   movement: {fileID: 5681120808496939717}
   jump: {fileID: 5681120808496939723}
