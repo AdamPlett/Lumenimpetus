@@ -28,7 +28,6 @@ public class BasicMovement : MonoBehaviour
 
     [Header("Ground Detection")]
     [SerializeField] private bool grounded;
-    [Space(5)]
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float groundDetectionLength;
 
@@ -37,7 +36,6 @@ public class BasicMovement : MonoBehaviour
     [Header("Slope Detection")]
     [SerializeField] private bool onSlope;
     [SerializeField] private float slopeAngle;
-    [Space(5)]
     [SerializeField] private float minSlopeAngle;
     [SerializeField] private float maxSlopeAngle;
 
@@ -47,7 +45,8 @@ public class BasicMovement : MonoBehaviour
     [SerializeField] private bool facingWall;
     [SerializeField] private bool wallToRight, wallToLeft;
     [Space(5)]
-    private LayerMask wallLayer;
+    [SerializeField] private LayerMask wallLayer;
+    [SerializeField] private float wallDetectionLength;
     [Space(5)]
     
     private RaycastHit wallHit;
@@ -160,9 +159,14 @@ public class BasicMovement : MonoBehaviour
         return grounded;
     }
 
+    public RaycastHit GetGroundHit()
+    {
+        return groundHit;
+    }
+
     private void CheckGrounded()
     {
-        grounded = Physics.Raycast(transform.position, Vector3.down, out groundHit, playerHeight * 0.5f + groundDetectionLength, groundLayer);
+        grounded = Physics.Raycast(transform.position, Vector3.down, out groundHit, stateMachine.GetHeight() * 0.5f + groundDetectionLength, groundLayer);
 
         if (grounded)
         {
@@ -180,20 +184,38 @@ public class BasicMovement : MonoBehaviour
         return onSlope;
     }
 
+    public RaycastHit GetSlopeHit()
+    {
+        return slopeHit;
+    }
+
     private void CheckOnSlope()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + groundDetectionLength, groundLayer))
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, stateMachine.GetHeight() * 0.5f + groundDetectionLength, groundLayer))
         {
             slopeAngle = Vector3.Angle(Vector3.up, slopeHit.normal);
 
-            onSlope = slopeAngle < maxSlopeAngle && slopeAngle != 0;
+            onSlope = slopeAngle < maxSlopeAngle && slopeAngle > minSlopeAngle;
         }
+        else
+        {
 
-        onSlope = false;
+        }
     }
 
     #endregion
 
     #region Wall Detection
+
+    public RaycastHit GetWallHit()
+    {
+        return wallHit;
+    }
+
+    private void CheckForWall()
+    {
+        
+    }
+
     #endregion
 }

@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GroundMovement : MonoBehaviour
 {
     public PlayerMovementStateMachine stateMachine;
+    public BasicMovement playerMovement;
 
     public void Move()
     {
@@ -13,7 +15,16 @@ public class GroundMovement : MonoBehaviour
 
     public void MoveOnGround(Vector3 moveDirection)
     {
-        stateMachine.movement.MovePlayer(moveDirection);
+        if (playerMovement.GetOnSlope())
+        {
+            stateMachine.movement.MovePlayer(CalculateSlopeDirection(moveDirection));
+
+            stateMachine.rb.AddForce(stateMachine.movement.GetSlopeHit().normal.normalized * -1f, ForceMode.Force);
+        }
+        else
+        {
+            stateMachine.movement.MovePlayer(moveDirection);
+        }
     }
 
     public Vector3 CalculateMoveDirection()
@@ -25,5 +36,10 @@ public class GroundMovement : MonoBehaviour
         Vector3 camRight = new Vector3(stateMachine.cm.cameraRight.x, 0, stateMachine.cm.cameraRight.z);
 
         return camForward.normalized * verticalInput + camRight.normalized * horizontalInput;
+    }
+
+    private Vector3 CalculateSlopeDirection(Vector3 moveDirection)
+    {
+        return Vector3.ProjectOnPlane(moveDirection, stateMachine.movement.GetSlopeHit().normal).normalized;
     }
 }

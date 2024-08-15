@@ -14,6 +14,11 @@ public class PlayerMovementStateMachine : StateMachine
     public Camera playerCam;
     public CameraManager cm;
 
+    [Header("Collider Variables")]
+    [SerializeField] private float playerHeight;
+    [SerializeField] private float playerWidth;
+    [SerializeField] private Vector3 playerCenter;
+
     [Header("Movement Scripts")]
     public BasicMovement movement;
     public GroundMovement groundMovement;
@@ -40,6 +45,30 @@ public class PlayerMovementStateMachine : StateMachine
     {
         SwitchToMoveState();
     }
+
+    #region Collider Adjusters
+
+    public void SetHeight(float height)
+    {
+        playerHeight = height;
+    }
+
+    public float GetHeight()
+    {
+        return playerHeight;
+    }
+
+    public void SetWidth(float width)
+    {
+        playerWidth = width;
+    }
+
+    public float GetWidth()
+    {
+        return playerWidth;
+    }
+
+    #endregion
 
     #region State Switchers
 
