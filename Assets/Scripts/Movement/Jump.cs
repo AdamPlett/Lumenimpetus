@@ -12,6 +12,10 @@ public class Jump : MonoBehaviour
     private Vector3 velocity;
     private float jumpSpeed, defaultGravityScale = 1f;
 
+    public Controller controller;
+
+    public Gravity gravity;
+
     [Space(5)]
     [Header("READ ONLY! (use stats to change jump)")]
     public int jumpPhase = 0;
@@ -23,6 +27,10 @@ public class Jump : MonoBehaviour
     public float coyoteTimeTimer = 0f;
     public float timeBetweenJumps = -1f;
 
+    private void Start()
+    {
+        gravity = GetComponentInParent<Gravity>();
+    }
 
     // Update is called once per frame
     private void Update()
@@ -45,14 +53,14 @@ public class Jump : MonoBehaviour
             coyoteTimeTimer = stats.coyoteTime;
         }
 
-
-        //sets the current gravity scale (lower gravity while jumping upwards)
-        /*
-        if (rb.velocity.y < 0) rb.gravityScale = stats.downwardsGravityMultiplier;
-        else if (rb.velocity.y == 0) rb.gravityScale = defaultGravityScale;
-        else if (rb.velocity.y > 0 && controller.input.RetrieveJumpInput()) rb.gravityScale = stats.jumpingGravityMultiplier;
-        else rb.gravityScale = stats.downwardsGravityMultiplier; */
-
+        //else
+        //{
+            //sets the current gravity scale (lower gravity while jumping upwards)
+            if (stateMachine.rb.velocity.y < 0) gravity.SetGravityForce(new Vector3(0, -stats.downwardsGravityMultiplier, 0));
+            else if (stateMachine.rb.velocity.y == 0) gravity.SetGravityForce(new Vector3(0, -stats.downwardsGravityMultiplier, 0));
+            else if (stateMachine.rb.velocity.y > 0 && controller.input.RetrieveJumpInput()) gravity.SetGravityForce(new Vector3(0, -stats.jumpingGravity,0));
+            else gravity.SetGravityForce(new Vector3(0, -stats.downwardsGravityMultiplier, 0));
+        //}
         if (velocity.y < stats.maxFallSpeed)
         {
             velocity.y = stats.maxFallSpeed;

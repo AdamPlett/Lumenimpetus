@@ -27,11 +27,11 @@ public class JumpStats : ScriptableObject
     [Tooltip("Raycast distance to detect ground and ceiling"), Min(0)]
     public float platformDetectorDistance = .05f;
 
-    [Tooltip("How much gravity affects you while you currently jumping"), Min(0)]
-    public float jumpingGravityMultiplier;
+    [Tooltip("The gravity you have while holding jump and ascending"), Min(0)]
+    public float jumpingGravity=4.87f;
 
     [Tooltip("How much gravity affects you while your falling"), Min(0)]
-    public float downwardsGravityMultiplier;
+    public float downwardsGravityMultiplier=9.81f;
 
     [Tooltip("Terminal velocity")]
     public float maxFallSpeed;
