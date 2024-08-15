@@ -6,21 +6,15 @@ using static GameManager;
 
 public class BasicMovement : MonoBehaviour
 {
-    [SerializeField] private bool idle;
+    #region Variables
 
-    [Header("Ground Detection")]
-    [SerializeField] private bool grounded;
-    [SerializeField] private LayerMask groundLayer;
-    [Space(5)]
-    [SerializeField] private float playerHeight;
-    [SerializeField] private float groundDetectionLength;
+    [SerializeField] private bool idle;
     
     [Header("Movement Variables")]
-    public float currentSpeed;
-    public float desiredSpeed;
+    [SerializeField] private float currentSpeed;
+    [SerializeField] private float desiredSpeed;
     [Space(5)]
-    public Vector3 moveDirection;
-    public Vector3 velocity;
+    [SerializeField] private Vector3 velocity;
     [Space(5)]
     public float walkSpeed;
     public float sprintSpeed;
@@ -32,67 +26,58 @@ public class BasicMovement : MonoBehaviour
     public float airDrag;
     public float airControlMultiplier;
 
+    [Header("Ground Detection")]
+    [SerializeField] private bool grounded;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private float groundDetectionLength;
+
+    private RaycastHit groundHit;
+
+    [Header("Slope Detection")]
+    [SerializeField] private bool onSlope;
+    [SerializeField] private float slopeAngle;
+    [SerializeField] private float minSlopeAngle;
+    [SerializeField] private float maxSlopeAngle;
+
+    private RaycastHit slopeHit;
+
+    [Header("Wall Detection")]
+    [SerializeField] private bool facingWall;
+    [SerializeField] private bool wallToRight, wallToLeft;
+    [Space(5)]
+    [SerializeField] private LayerMask wallLayer;
+    [SerializeField] private float wallDetectionLength;
+    [Space(5)]
+    
+    private RaycastHit wallHit;
+
     [Header("Misc")]
     public MovementStats moveStats;
     public PlayerMovementStateMachine stateMachine;
 
+    #endregion
+
     public void FixedUpdate()
     {        
         CheckGrounded();
+        CheckOnSlope();
         AdjustSpeed();
-
-        velocity = stateMachine.rb.velocity;
+        UpdateVelocity();
     }
 
-    public Vector3 CalculateMoveDirection()
+    public void MovePlayer(Vector3 moveDirection)
     {
-        airControlMultiplier = moveStats.airControlMult;
-
-        float horizontalInput = stateMachine.controller.input.RetrieveMoveInput().x;
-        float verticalInput = stateMachine.controller.input.RetrieveMoveInput().y;
-
-        Vector3 camForward = new Vector3(stateMachine.cm.cameraForward.x, 0, stateMachine.cm.cameraForward.z);
-        Vector3 camRight = new Vector3(stateMachine.cm.cameraRight.x, 0, stateMachine.cm.cameraRight.z);
-
-        return camForward.normalized * verticalInput + camRight.normalized * horizontalInput;
-    }
-
-    public void RotatePlayer(Quaternion rotation)
-    {
-        stateMachine.rb.MoveRotation(rotation);
-    }
-
-    public void CheckGrounded()
-    {
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + groundDetectionLength, groundLayer);
-
-        if (grounded)
-        {
-            stateMachine.jump.coyoteTimeTimer = stateMachine.jump.stats.coyoteTime;
-            stateMachine.jump.jumpPhase = 0;
-        }
-    }
-
-    public bool GetGrounded()
-    {
-        return grounded;
-    }
-
-    public void MoveOnGround()
-    {
-        moveDirection = CalculateMoveDirection();
-
-        if(stateMachine.rb.velocity.magnitude < stateMachine.movement.moveStats.maxSpeed)
+        
+        
+        if (stateMachine.rb.velocity.magnitude < moveStats.maxSpeed)
         {
             stateMachine.rb.AddForce(moveDirection.normalized * currentSpeed, ForceMode.Force);
         }
     }
 
-    public void MoveInAir()
+    public void RotatePlayer(Quaternion rotation)
     {
-        moveDirection = CalculateMoveDirection();
-
-        stateMachine.rb.AddForce(moveDirection.normalized * currentSpeed * airControlMultiplier, ForceMode.Force);
+        stateMachine.rb.MoveRotation(rotation);
     }
 
     #region Speed Control
@@ -102,7 +87,7 @@ public class BasicMovement : MonoBehaviour
         desiredSpeed = speed;
     }
 
-    public void AdjustSpeed()
+    private void AdjustSpeed()
     {
         if(currentSpeed > desiredSpeed)
         {
@@ -114,7 +99,7 @@ public class BasicMovement : MonoBehaviour
         }
     }
 
-    public void Accelerate()
+    private void Accelerate()
     {
         if(GetGrounded())
         {
@@ -133,7 +118,7 @@ public class BasicMovement : MonoBehaviour
         }
     }
 
-    public void Decelerate()
+    private void Decelerate()
     {
         if (GetGrounded())
         {
@@ -150,6 +135,86 @@ public class BasicMovement : MonoBehaviour
         {
             currentSpeed = desiredSpeed;
         }
+    }
+    #endregion
+
+    #region Velocity
+
+    public Vector3 GetVelocity()
+    {
+        return velocity;
+    }
+
+    private void UpdateVelocity()
+    {
+        velocity = stateMachine.rb.velocity;
+    }
+
+    #endregion
+
+    #region Ground Detection
+
+    public bool GetGrounded()
+    {
+        return grounded;
+    }
+
+    public RaycastHit GetGroundHit()
+    {
+        return groundHit;
+    }
+
+    private void CheckGrounded()
+    {
+        grounded = Physics.Raycast(transform.position, Vector3.down, out groundHit, stateMachine.GetHeight() * 0.5f + groundDetectionLength, groundLayer);
+
+        if (grounded)
+        {
+            stateMachine.jump.coyoteTimeTimer = stateMachine.jump.stats.coyoteTime;
+            stateMachine.jump.jumpPhase = 0;
+        }
+    }
+
+    #endregion
+
+    #region Slope Detection
+
+    public bool GetOnSlope()
+    {
+        return onSlope;
+    }
+
+    public RaycastHit GetSlopeHit()
+    {
+        return slopeHit;
+    }
+
+    private void CheckOnSlope()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, stateMachine.GetHeight() * 0.5f + groundDetectionLength, groundLayer))
+        {
+            slopeAngle = Vector3.Angle(Vector3.up, slopeHit.normal);
+
+            onSlope = slopeAngle < maxSlopeAngle && slopeAngle > minSlopeAngle;
+        }
+        else
+        {
+
+        }
+    }
+
+    #endregion
+
+    #region Wall Detection
+
+    public RaycastHit GetWallHit()
+    {
+        return wallHit;
+    }
+
+    private void CheckForWall()
+    {
+        
     }
 
     #endregion

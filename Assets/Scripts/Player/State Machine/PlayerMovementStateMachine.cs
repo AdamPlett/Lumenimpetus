@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum movementState { idle, walking, sprinting, crouching, sliding, jumping, falling, dashing, wallRunning, wallJumping, grappling };
+
 public class PlayerMovementStateMachine : StateMachine
-{
+{   
     [Header("Player Components")]
     public Controller controller;
     public Rigidbody rb;
@@ -12,6 +14,11 @@ public class PlayerMovementStateMachine : StateMachine
     public Camera playerCam;
     public CameraManager cm;
 
+    [Header("Collider Variables")]
+    [SerializeField] private float playerHeight;
+    [SerializeField] private float playerWidth;
+    [SerializeField] private Vector3 playerCenter;
+
     [Header("Movement Scripts")]
     public BasicMovement movement;
     public GroundMovement groundMovement;
@@ -19,7 +26,10 @@ public class PlayerMovementStateMachine : StateMachine
     public Jump jump;
     public Dash dash;
 
-    // Movement States
+    [Header("Movement States")]
+    public movementState activeState;
+    public movementState prevState;
+
     private PlayerIdleState idleState;
     private PlayerMoveState moveState;
     private PlayerCrouchState crouchState;
@@ -35,6 +45,30 @@ public class PlayerMovementStateMachine : StateMachine
     {
         SwitchToMoveState();
     }
+
+    #region Collider Adjusters
+
+    public void SetHeight(float height)
+    {
+        playerHeight = height;
+    }
+
+    public float GetHeight()
+    {
+        return playerHeight;
+    }
+
+    public void SetWidth(float width)
+    {
+        playerWidth = width;
+    }
+
+    public float GetWidth()
+    {
+        return playerWidth;
+    }
+
+    #endregion
 
     #region State Switchers
 
@@ -79,8 +113,8 @@ public class PlayerMovementStateMachine : StateMachine
             {
                 jump.desiredJump = false;
 
-                Debug.Log("JumpBufferTimer: "+jump.jumpBufferTimer);
-                Debug.Log("CoyoteTimeTimer: "+jump.coyoteTimeTimer);
+                Debug.Log("JumpBufferTimer: " + jump.jumpBufferTimer);
+                Debug.Log("CoyoteTimeTimer: " + jump.coyoteTimeTimer);
                 Debug.Log("TimeBetweenJumps: " + jump.timeBetweenJumps);
 
                 if ((jump.jumpBufferTimer > 0 && jump.coyoteTimeTimer > 0 && jump.timeBetweenJumps < 0) || (jump.jumpPhase < jump.stats.doubleJumps && jump.timeBetweenJumps < 0))

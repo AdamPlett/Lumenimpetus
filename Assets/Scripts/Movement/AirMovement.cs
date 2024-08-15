@@ -5,19 +5,18 @@ using UnityEngine.Windows;
 
 public class AirMovement : MonoBehaviour
 {
-    public float maxAirSpeed;
-    public float airStrafeForce;
-
     public PlayerMovementStateMachine stateMachine;
 
     public void Move()
     {
-        Vector3 moveDirection = CalculateMoveDirection();
-        MoveInAir(moveDirection, stateMachine.rb);
+        MoveInAir(CalculateMoveDirection());
     }
 
-    public void MoveInAir(Vector3 moveDirection, Rigidbody rb)
+    public void MoveInAir(Vector3 moveDirection)
     {
+        stateMachine.movement.MovePlayer(moveDirection);
+
+        /*
         Vector3 projVel = Vector3.Project(rb.velocity, moveDirection);
 
         bool facingAway = Vector3.Dot(moveDirection, projVel) <= 0f;
@@ -37,6 +36,7 @@ public class AirMovement : MonoBehaviour
 
             rb.AddForce(airVel.normalized, ForceMode.VelocityChange);
         }
+        */
     }
 
     public Vector3 CalculateMoveDirection()

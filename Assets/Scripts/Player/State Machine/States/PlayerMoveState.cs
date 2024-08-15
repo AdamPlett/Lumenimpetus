@@ -34,15 +34,15 @@ public class PlayerMoveState : PlayerMovementState
                 // Set desired speed to walk speed
                 movement.SetDesiredSpeed(movement.walkSpeed);
             }
-
-            // Move player
-            stateMachine.movement.MoveOnGround();
         }
         else
         {
             // Player is idle - Don't move!
             movement.SetDesiredSpeed(0f);
         }
+
+        // Move player
+        stateMachine.groundMovement.Move();
     }
 
     // Called once at the end of the state, before starting the next state
