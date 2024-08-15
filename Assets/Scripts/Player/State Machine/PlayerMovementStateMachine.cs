@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum movementState { idle, walking, sprinting, crouching, sliding, jumping, falling, dashing, wallRunning, wallJumping, grappling };
+
 public class PlayerMovementStateMachine : StateMachine
-{
+{   
     [Header("Player Components")]
     public Controller controller;
     public Rigidbody rb;
@@ -19,7 +21,10 @@ public class PlayerMovementStateMachine : StateMachine
     public Jump jump;
     public Dash dash;
 
-    // Movement States
+    [Header("Movement States")]
+    public movementState activeState;
+    public movementState prevState;
+
     private PlayerIdleState idleState;
     private PlayerMoveState moveState;
     private PlayerCrouchState crouchState;
@@ -79,8 +84,8 @@ public class PlayerMovementStateMachine : StateMachine
             {
                 jump.desiredJump = false;
 
-                Debug.Log("JumpBufferTimer: "+jump.jumpBufferTimer);
-                Debug.Log("CoyoteTimeTimer: "+jump.coyoteTimeTimer);
+                Debug.Log("JumpBufferTimer: " + jump.jumpBufferTimer);
+                Debug.Log("CoyoteTimeTimer: " + jump.coyoteTimeTimer);
                 Debug.Log("TimeBetweenJumps: " + jump.timeBetweenJumps);
 
                 if ((jump.jumpBufferTimer > 0 && jump.coyoteTimeTimer > 0 && jump.timeBetweenJumps < 0) || (jump.jumpPhase < jump.stats.doubleJumps && jump.timeBetweenJumps < 0))

@@ -36,7 +36,7 @@ public class PlayerMoveState : PlayerMovementState
             }
 
             // Move player
-            stateMachine.movement.MoveOnGround();
+            stateMachine.groundMovement.Move();
         }
         else
         {

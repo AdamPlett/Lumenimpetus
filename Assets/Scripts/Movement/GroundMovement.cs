@@ -8,13 +8,12 @@ public class GroundMovement : MonoBehaviour
 
     public void Move()
     {
-        Vector3 moveDirection = CalculateMoveDirection();
-        MoveOnGround(moveDirection);
+        MoveOnGround(CalculateMoveDirection());
     }
 
     public void MoveOnGround(Vector3 moveDirection)
     {
-
+        stateMachine.movement.MovePlayer(moveDirection);
     }
 
     public Vector3 CalculateMoveDirection()
