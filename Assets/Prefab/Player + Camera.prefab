@@ -49,15 +49,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idle: 0
-  grounded: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  playerHeight: 2
-  groundDetectionLength: 0.125
   currentSpeed: 0
   desiredSpeed: 0
-  moveDirection: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   walkSpeed: 6
   sprintSpeed: 10
@@ -67,6 +60,22 @@ MonoBehaviour:
   groundDrag: 0
   airDrag: 0
   airControlMultiplier: 1
+  grounded: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  groundDetectionLength: 0.125
+  onSlope: 0
+  slopeAngle: 0
+  minSlopeAngle: 0
+  maxSlopeAngle: 0
+  facingWall: 0
+  wallToRight: 0
+  wallToLeft: 0
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  wallDetectionLength: 0
   moveStats: {fileID: 11400000, guid: 00352e08a5bc86543ad539accbb850a4, type: 2}
   stateMachine: {fileID: 5681120810403071220}
 --- !u!114 &5681120808496939723
@@ -83,6 +92,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 784c0de9b8150cc46a50efdc241b6117, type: 2}
   stateMachine: {fileID: 5681120810403071220}
+  controller: {fileID: 5681120810403071227}
+  gravity: {fileID: 233558828}
   jumpPhase: 0
   desiredJump: 0
   jumpInputDelayTimer: 0
@@ -124,8 +135,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c77e0a8404d9a944a48d594b9cb5eac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAirSpeed: 10
-  airStrafeForce: 4
   stateMachine: {fileID: 5681120810403071220}
 --- !u!114 &1693428695
 MonoBehaviour:
@@ -139,7 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 713b96ee13d97f449ba009f5126fb73a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateMachine: {fileID: 0}
+  stateMachine: {fileID: 5681120810403071220}
+  playerMovement: {fileID: 5681120808496939717}
 --- !u!1 &5681120808679891513
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,8 +558,8 @@ MonoBehaviour:
   cameraRight: {x: 0, y: 0, z: 0}
   cameraUp: {x: 0, y: 0, z: 0}
   FOV: 0
-  sensX: 100
-  sensY: 100
+  sensX: 250
+  sensY: 250
   mouseX: 0
   mouseY: 0
   xRotation: 0
@@ -706,6 +716,7 @@ GameObject:
   - component: {fileID: 5681120810403071227}
   - component: {fileID: 5681120810403071220}
   - component: {fileID: 1771583283}
+  - component: {fileID: 233558828}
   m_Layer: 0
   m_Name: New Player
   m_TagString: Untagged
@@ -776,11 +787,16 @@ MonoBehaviour:
   rb: {fileID: 5681120810403071226}
   playerCam: {fileID: 0}
   cm: {fileID: 5681120809112756675}
+  playerHeight: 2
+  playerWidth: 0.5
+  playerCenter: {x: 0, y: 0, z: 0}
   movement: {fileID: 5681120808496939717}
   groundMovement: {fileID: 1693428695}
   airMovement: {fileID: 1693428694}
   jump: {fileID: 5681120808496939723}
   dash: {fileID: 5681120808496939716}
+  activeState: 0
+  prevState: 0
 --- !u!75 &1771583283
 ConstantForce:
   m_ObjectHideFlags: 0
@@ -793,3 +809,17 @@ ConstantForce:
   m_RelativeForce: {x: 0, y: 0, z: 0}
   m_Torque: {x: 0, y: 0, z: 0}
   m_RelativeTorque: {x: 0, y: 0, z: 0}
+--- !u!114 &233558828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5681120810403071221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e6b8a829b2ec5748b37797e9079f4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultGravityForce: 9.81
+  currentGravityForce: 0
