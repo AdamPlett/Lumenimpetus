@@ -7,7 +7,6 @@ public class PlayerJumpState : PlayerMovementState
     // Sets the state machine for this state, ensuring it is the same as the base state
     public PlayerJumpState(PlayerMovementStateMachine stateMachine) : base(stateMachine) { }
 
-    public JumpStats jumpStats;
     // Called once at the start of the state, after ending the previous state
     public override void Enter()
     {

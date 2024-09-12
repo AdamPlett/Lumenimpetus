@@ -20,9 +20,8 @@ public class PlayerFallState : PlayerMovementState
     // Called continously throughout the state (update)
     public override void Tick()
     {
-        if (stateMachine.movement.GetGrounded())
+        if (stateMachine.groundCheck.GetGrounded())
         {
-            
             stateMachine.SwitchToMoveState();
         }
 

@@ -12,7 +12,7 @@ public class PlayerMoveState : PlayerMovementState
     public override void Enter()
     {
         Debug.Log("Entering 'Move State'");
-        
+
         // Subscribe Listeners
         input.jumpPerformed += stateMachine.SwitchToJumpState;
         input.dashPerformed += stateMachine.SwitchToDashState;

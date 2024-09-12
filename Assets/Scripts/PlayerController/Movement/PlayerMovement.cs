@@ -21,7 +21,6 @@ public class PlayerMovement : MonoBehaviour
     //for respawning the player
     public Vector3 lastGroundPos= Vector3.zero;
 
-
     [Header("Jump")]
     public float jumpForce; //used in jump
     public float jumpCooldown;//used in jump

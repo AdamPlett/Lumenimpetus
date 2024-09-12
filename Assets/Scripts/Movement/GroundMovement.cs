@@ -15,11 +15,11 @@ public class GroundMovement : MonoBehaviour
 
     public void MoveOnGround(Vector3 moveDirection)
     {
-        if (playerMovement.GetOnSlope())
+        if (stateMachine.slopeCheck.GetOnSlope())
         {
             stateMachine.movement.MovePlayer(CalculateSlopeDirection(moveDirection));
 
-            stateMachine.rb.AddForce(stateMachine.movement.GetSlopeHit().normal.normalized * -1f, ForceMode.Force);
+            stateMachine.rb.AddForce(stateMachine.slopeCheck.GetSlopeHit().normal.normalized * -1f, ForceMode.Force);
         }
         else
         {
@@ -40,6 +40,6 @@ public class GroundMovement : MonoBehaviour
 
     private Vector3 CalculateSlopeDirection(Vector3 moveDirection)
     {
-        return Vector3.ProjectOnPlane(moveDirection, stateMachine.movement.GetSlopeHit().normal).normalized;
+        return Vector3.ProjectOnPlane(moveDirection, stateMachine.slopeCheck.GetSlopeHit().normal).normalized;
     }
 }

@@ -26,31 +26,6 @@ public class BasicMovement : MonoBehaviour
     public float airDrag;
     public float airControlMultiplier;
 
-    [Header("Ground Detection")]
-    [SerializeField] private bool grounded;
-    [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private float groundDetectionLength;
-
-    private RaycastHit groundHit;
-
-    [Header("Slope Detection")]
-    [SerializeField] private bool onSlope;
-    [SerializeField] private float slopeAngle;
-    [SerializeField] private float minSlopeAngle;
-    [SerializeField] private float maxSlopeAngle;
-
-    private RaycastHit slopeHit;
-
-    [Header("Wall Detection")]
-    [SerializeField] private bool facingWall;
-    [SerializeField] private bool wallToRight, wallToLeft;
-    [Space(5)]
-    [SerializeField] private LayerMask wallLayer;
-    [SerializeField] private float wallDetectionLength;
-    [Space(5)]
-    
-    private RaycastHit wallHit;
-
     [Header("Misc")]
     public MovementStats moveStats;
     public PlayerMovementStateMachine stateMachine;
@@ -59,16 +34,12 @@ public class BasicMovement : MonoBehaviour
 
     public void FixedUpdate()
     {        
-        CheckGrounded();
-        CheckOnSlope();
         AdjustSpeed();
         UpdateVelocity();
     }
 
     public void MovePlayer(Vector3 moveDirection)
-    {
-        
-        
+    {  
         if (stateMachine.rb.velocity.magnitude < moveStats.maxSpeed)
         {
             stateMachine.rb.AddForce(moveDirection.normalized * currentSpeed, ForceMode.Force);
@@ -101,7 +72,7 @@ public class BasicMovement : MonoBehaviour
 
     private void Accelerate()
     {
-        if(GetGrounded())
+        if(stateMachine.groundCheck.GetGrounded())
         {
             // Ground Acceleration
             currentSpeed += moveStats.groundAcceleration * Time.deltaTime;
@@ -120,7 +91,7 @@ public class BasicMovement : MonoBehaviour
 
     private void Decelerate()
     {
-        if (GetGrounded())
+        if (stateMachine.groundCheck.GetGrounded())
         {
             // Ground Deceleration
             currentSpeed -= moveStats.groundDeceleration * Time.deltaTime;
@@ -148,73 +119,6 @@ public class BasicMovement : MonoBehaviour
     private void UpdateVelocity()
     {
         velocity = stateMachine.rb.velocity;
-    }
-
-    #endregion
-
-    #region Ground Detection
-
-    public bool GetGrounded()
-    {
-        return grounded;
-    }
-
-    public RaycastHit GetGroundHit()
-    {
-        return groundHit;
-    }
-
-    private void CheckGrounded()
-    {
-        grounded = Physics.Raycast(transform.position, Vector3.down, out groundHit, stateMachine.GetHeight() * 0.5f + groundDetectionLength, groundLayer);
-
-        if (grounded)
-        {
-            stateMachine.jump.coyoteTimeTimer = stateMachine.jump.stats.coyoteTime;
-            stateMachine.jump.jumpPhase = 0;
-        }
-    }
-
-    #endregion
-
-    #region Slope Detection
-
-    public bool GetOnSlope()
-    {
-        return onSlope;
-    }
-
-    public RaycastHit GetSlopeHit()
-    {
-        return slopeHit;
-    }
-
-    private void CheckOnSlope()
-    {
-        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, stateMachine.GetHeight() * 0.5f + groundDetectionLength, groundLayer))
-        {
-            slopeAngle = Vector3.Angle(Vector3.up, slopeHit.normal);
-
-            onSlope = slopeAngle < maxSlopeAngle && slopeAngle > minSlopeAngle;
-        }
-        else
-        {
-
-        }
-    }
-
-    #endregion
-
-    #region Wall Detection
-
-    public RaycastHit GetWallHit()
-    {
-        return wallHit;
-    }
-
-    private void CheckForWall()
-    {
-        
     }
 
     #endregion
