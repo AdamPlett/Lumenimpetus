@@ -5,28 +5,47 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     int currentSceneIndex;
+
+    [SerializeField] private bool lvlLoaded = false;
     public void SaveCurrentSceneIndex()
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         //set value to some singleton
-    }
-    public void LoadTransitionScene()
-    {
 
     }
-    public void LoadLevel()
-    {
 
+    public void AsyncLoadLevel(string lvlName)
+    {
+        //async load lvlName scene
+
+        //wait until load is complete
+
+        lvlLoaded = true;
     }
-    public void LoadNextLevel()
+
+    public void AsyncLoadNextLevel()
     {
         //retrieve current index from singleton
 
-        //play FX
+        //async load next scene
 
-        //load next level
+        //wait until load is complete
 
+        lvlLoaded = true;
+    }
+
+    public bool LoadCheck()
+    {
+        return lvlLoaded;
+    }
+
+    public void LoadLevel()
+    {
+        
         //switch scenes
         SceneManager.LoadScene(currentSceneIndex + 1);
+
+        //reset bools
+        lvlLoaded = false;
     }
 }
