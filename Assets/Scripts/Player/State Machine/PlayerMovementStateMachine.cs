@@ -19,6 +19,11 @@ public class PlayerMovementStateMachine : StateMachine
     [SerializeField] private float playerWidth;
     [SerializeField] private Vector3 playerCenter;
 
+    [Header("Detection Scripts")]
+    public WallDetector wallCheck;
+    public GroundDetector groundCheck;
+    public SlopeDetector slopeCheck;
+
     [Header("Movement Scripts")]
     public BasicMovement movement;
     public GroundMovement groundMovement;

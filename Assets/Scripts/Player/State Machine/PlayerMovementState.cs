@@ -12,6 +12,10 @@ public abstract class PlayerMovementState : State
     protected Jump jump;
     protected Dash dash;
 
+    protected WallDetector wallCheck;
+    protected GroundDetector groundCheck;
+    protected SlopeDetector slopeCheck;
+
     protected PlayerMovementState(PlayerMovementStateMachine stateMachine)
     {
         // Set state machine
@@ -22,5 +26,9 @@ public abstract class PlayerMovementState : State
         movement = stateMachine.movement;
         jump = stateMachine.jump;
         dash = stateMachine.dash;
+
+        wallCheck = stateMachine.wallCheck;
+        groundCheck = stateMachine.groundCheck;
+        slopeCheck = stateMachine.slopeCheck;
     }
 }
