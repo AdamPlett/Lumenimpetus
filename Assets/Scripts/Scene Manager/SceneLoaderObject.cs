@@ -11,6 +11,13 @@ public class SceneLoaderObject : MonoBehaviour
     public float fxWaitTime = 0;
     private bool fxDone=false;
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            LoadNextLevel();
+        }
+    }
     private void LoadNextLevel()
     {
         //play FX

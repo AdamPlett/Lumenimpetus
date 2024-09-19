@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     int currentSceneIndex;
-
+    private string sceneName;
     [SerializeField] private bool lvlLoaded = false;
+    private AsyncOperation asyncLoad;
     public void SaveCurrentSceneIndex()
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -16,21 +17,37 @@ public class SceneLoader : MonoBehaviour
 
     public void AsyncLoadLevel(string lvlName)
     {
+        sceneName = lvlName;
         //async load lvlName scene
-
+        StartCoroutine(LoadAsyncScene());
         //wait until load is complete
 
         lvlLoaded = true;
     }
 
+    IEnumerator LoadAsyncScene()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+        while (asyncLoad.progress <= .9)
+        {
+            yield return null;
+        }
+        lvlLoaded = true;
+    }
+
     public void AsyncLoadNextLevel()
     {
-        //retrieve current index from singleton
-
         //async load next scene
+        StartCoroutine(LoadAsyncNextScene());
+    }
 
-        //wait until load is complete
-
+    IEnumerator LoadAsyncNextScene()
+    {
+        asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex+1);
+        while (asyncLoad.progress <= .9)
+        {
+            yield return null;
+        }
         lvlLoaded = true;
     }
 
@@ -41,10 +58,12 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadLevel()
     {
-        
-        //switch scenes
-        SceneManager.LoadScene(currentSceneIndex + 1);
+        while (!lvlLoaded)
+        {
 
+        }
+        //load Scene
+        asyncLoad.allowSceneActivation = true;
         //reset bools
         lvlLoaded = false;
     }
