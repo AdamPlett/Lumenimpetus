@@ -14,7 +14,6 @@ public abstract class PlayerMovementState : State
 
     protected WallDetector wallCheck;
     protected GroundDetector groundCheck;
-    protected SlopeDetector slopeCheck;
 
     protected PlayerMovementState(PlayerMovementStateMachine stateMachine)
     {
@@ -29,6 +28,5 @@ public abstract class PlayerMovementState : State
 
         wallCheck = stateMachine.wallCheck;
         groundCheck = stateMachine.groundCheck;
-        slopeCheck = stateMachine.slopeCheck;
     }
 }

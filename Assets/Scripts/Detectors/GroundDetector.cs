@@ -11,16 +11,36 @@ public class GroundDetector : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float detectionLength;
 
+    [Header("Slope Detection")]
+    [SerializeField] private bool onSlope;
+    [Space(5)]
+    [SerializeField] private float slopeAngle;
+    [SerializeField] private float minSlopeAngle;
+    [SerializeField] private float maxSlopeAngle;
+
     private RaycastHit groundHit;
 
     void Update()
     {
-        CheckGrounded();
+        DetectGround();
     }
 
-    public bool GetGrounded()
+    public void DetectGround()
     {
-        return grounded;
+        grounded = Physics.Raycast(transform.position, Vector3.down, out groundHit, gm.player.GetHeight() * 0.5f + detectionLength, groundLayer);
+
+        Debug.Log(grounded);
+
+        if (grounded)
+        {
+            // Reset Coyote Timer
+            gm.player.jump.coyoteTimeTimer = gm.player.jump.stats.coyoteTime;
+            gm.player.jump.jumpPhase = 0;
+
+            // Determine if on slope
+            slopeAngle = Vector3.Angle(Vector3.up, groundHit.normal);
+            onSlope = slopeAngle < maxSlopeAngle && slopeAngle > minSlopeAngle;
+        }
     }
 
     public RaycastHit GetGroundHit()
@@ -28,14 +48,23 @@ public class GroundDetector : MonoBehaviour
         return groundHit;
     }
 
-    private void CheckGrounded()
+    public Vector3 GetGroundNormal()
     {
-        grounded = Physics.Raycast(transform.position, Vector3.down, out groundHit, gm.player.GetHeight() * 0.5f + detectionLength, groundLayer);
+        return groundHit.normal;
+    }
 
-        if (grounded)
-        {
-            gm.player.jump.coyoteTimeTimer = gm.player.jump.stats.coyoteTime;
-            gm.player.jump.jumpPhase = 0;
-        }
+    public float GetSlopeAngle()
+    {
+        return slopeAngle;
+    }
+
+    public bool GetGrounded()
+    {
+        return grounded;
+    }
+
+    public bool GetOnSlope()
+    {
+        return onSlope;
     }
 }

@@ -22,7 +22,6 @@ public class PlayerMovementStateMachine : StateMachine
     [Header("Detection Scripts")]
     public WallDetector wallCheck;
     public GroundDetector groundCheck;
-    public SlopeDetector slopeCheck;
 
     [Header("Movement Scripts")]
     public BasicMovement movement;

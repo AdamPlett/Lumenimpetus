@@ -6,13 +6,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager gm;
 
-    [Header("Player Variables - Should delete eventually")]
-    public GameObject playerRef;
-    public PlayerMovement pm;
-    public PlayerHealth ph;
-    public Collider playerCollider;
-    public GameObject playerObject;
-
     [Header("NEW Player Variables")]
     public GameObject playerPrefab;
     public GameObject playerInstance;
@@ -23,6 +16,16 @@ public class GameManager : MonoBehaviour
     public GameObject cameraRef;
     public int targetFPS = 60;
 
+    [Header("UI")]
+    public UIManager ui;
+    public Canvas playerCanvas;
+
+    [Header("Player Variables - Should delete eventually")]
+    public GameObject playerRef;
+    public PlayerMovement pm;
+    public PlayerHealth ph;
+    public Collider playerCollider;
+    public GameObject playerObject;
 
     [Header("Boss Variables - Should delete eventually")]
     public GameObject bossRef;
@@ -32,10 +35,6 @@ public class GameManager : MonoBehaviour
 
     public Boss2StateMachine boss2;
     public Boss2Health bh2;
-
-    [Header("UI")]
-    public UIManager ui;
-    public Canvas playerCanvas;
 
     void Awake()
     {
@@ -47,8 +46,9 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this);
         }
-        QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = targetFPS;
+
+        SetVSync(0);
+        SetFPS(targetFPS);
     }
 
     private void InitPlayer()
@@ -60,5 +60,15 @@ public class GameManager : MonoBehaviour
     public void InitCamera()
     {
 
+    }
+
+    public void SetVSync(int value)
+    {
+        QualitySettings.vSyncCount = value;
+    }
+
+    public void SetFPS(int value)
+    {
+        Application.targetFrameRate = value;
     }
 }
