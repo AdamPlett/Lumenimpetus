@@ -6,6 +6,7 @@ public class SceneLoader : MonoBehaviour
 {
     int currentSceneIndex;
     private string sceneName;
+    [Header("READ ONLY")]
     [SerializeField] private bool lvlLoaded = false;
     private AsyncOperation asyncLoad;
     public void SaveCurrentSceneIndex()
@@ -20,18 +21,20 @@ public class SceneLoader : MonoBehaviour
         sceneName = lvlName;
         //async load lvlName scene
         StartCoroutine(LoadAsyncScene());
-        //wait until load is complete
-
-        lvlLoaded = true;
     }
 
     IEnumerator LoadAsyncScene()
     {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
-        while (asyncLoad.progress <= .9)
+        yield return null;
+        asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+        asyncLoad.allowSceneActivation = false;
+        Debug.Log("Progress: " +asyncLoad.progress + "%");
+        while (asyncLoad.progress < .9f)
         {
+            Debug.Log("Progress: " + asyncLoad.progress + "%");
             yield return null;
         }
+        Debug.Log("Scene Loaded ready to switch");
         lvlLoaded = true;
     }
 
@@ -43,8 +46,10 @@ public class SceneLoader : MonoBehaviour
 
     IEnumerator LoadAsyncNextScene()
     {
+        yield return null;
         asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex+1);
-        while (asyncLoad.progress <= .9)
+        asyncLoad.allowSceneActivation = false;
+        while (asyncLoad.progress < .9f)
         {
             yield return null;
         }
@@ -63,6 +68,7 @@ public class SceneLoader : MonoBehaviour
 
         }
         //load Scene
+        Debug.Log("Loading scene the proper way!");
         asyncLoad.allowSceneActivation = true;
         //reset bools
         lvlLoaded = false;

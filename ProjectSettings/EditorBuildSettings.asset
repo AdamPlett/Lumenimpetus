@@ -23,4 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Arena02.unity
     guid: 71a4274591b158145835cac4317b4b6d
+  - enabled: 1
+    path: Assets/Scenes/Jump.unity
+    guid: d04eef1ad08bcd74ebd1558e3c0a9b1f
+  - enabled: 1
+    path: Assets/Scenes/TransitionScene.unity
+    guid: 827352c5fe7932d42a70e27913c4f73d
   m_configObjects: {}
