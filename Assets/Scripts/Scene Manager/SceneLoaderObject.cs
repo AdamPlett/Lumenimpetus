@@ -11,8 +11,6 @@ public class SceneLoaderObject : MonoBehaviour
     [Header("READ ONLY")]
     [SerializeField] private bool nextSceneLoaded = false;
 
-    private bool fxDone=false;
-
     private void Awake()
     {
         loader.AsyncLoadLevel(nextLevel);
@@ -34,20 +32,12 @@ public class SceneLoaderObject : MonoBehaviour
     }
     private void LoadNextLevel()
     {
-        //play FX
 
-        //Invoke("FXTimer", fxWaitTime);
-        FXTimer();
-
-        while (!nextSceneLoaded || !fxDone)
+        while (!nextSceneLoaded)
         {
             nextSceneLoaded = loader.LoadCheck();
-            Debug.Log("SceneLoaded: "+nextSceneLoaded+" fxDone: "+fxDone+" ");
+            Debug.Log("SceneLoaded: "+nextSceneLoaded);
         }
-        loader.LoadLevel();
-    }
-    private void FXTimer()
-    {
-        fxDone = true;
+        loader.StartLoadLevel();
     }
 }

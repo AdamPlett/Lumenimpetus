@@ -6,6 +6,9 @@ public class SceneLoader : MonoBehaviour
 {
     int currentSceneIndex;
     private string sceneName;
+    [SerializeField] private float fxDuration = .5f;
+    public Animator transition;
+
     [Header("READ ONLY")]
     [SerializeField] private bool lvlLoaded = false;
     private AsyncOperation asyncLoad;
@@ -61,16 +64,32 @@ public class SceneLoader : MonoBehaviour
         return lvlLoaded;
     }
 
+    public void StartLoadLevel()
+    {
+
+        StartCoroutine(FXWaitTime());
+    }
     public void LoadLevel()
     {
         while (!lvlLoaded)
         {
 
         }
+
         //load Scene
         Debug.Log("Loading scene the proper way!");
         asyncLoad.allowSceneActivation = true;
         //reset bools
         lvlLoaded = false;
+
     }
+    IEnumerator FXWaitTime()
+    {
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(fxDuration);
+
+        LoadLevel();
+    }
+
 }
