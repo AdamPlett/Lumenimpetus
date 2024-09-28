@@ -8268,6 +8268,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player + Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 5681120808696265108, guid: 96dde8d7554b40641858225f7efaf5b5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5681120808696265115, guid: 96dde8d7554b40641858225f7efaf5b5,
         type: 3}
       propertyPath: m_RootOrder

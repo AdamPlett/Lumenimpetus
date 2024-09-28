@@ -5275,6 +5275,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1743026778615545949, guid: 692f0a9997d7b9c44a546f49787bc22a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4614056604913189664, guid: 692f0a9997d7b9c44a546f49787bc22a,
+        type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 195635012}
     - target: {fileID: 4614056604913189665, guid: 692f0a9997d7b9c44a546f49787bc22a,
         type: 3}
       propertyPath: m_RootOrder
@@ -5335,8 +5345,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneLoader
       objectReference: {fileID: 0}
+    - target: {fileID: 4614056605500882665, guid: 692f0a9997d7b9c44a546f49787bc22a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 692f0a9997d7b9c44a546f49787bc22a, type: 3}
+--- !u!95 &195635012 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 375325189, guid: 692f0a9997d7b9c44a546f49787bc22a,
+    type: 3}
+  m_PrefabInstance: {fileID: 195635011}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &214697997
 Mesh:
   m_ObjectHideFlags: 0
