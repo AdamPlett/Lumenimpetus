@@ -7,10 +7,10 @@ public class SceneLoaderObject : MonoBehaviour
     [SerializeField] private SceneLoader loader;
     [SerializeField] private string nextLevel;
 
+    public float fxWaitTime = 0f;
     [Header("READ ONLY")]
     [SerializeField] private bool nextSceneLoaded = false;
 
-    public float fxWaitTime = 0;
     private bool fxDone=false;
 
     private void Awake()
@@ -29,18 +29,20 @@ public class SceneLoaderObject : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            //LoadNextLevel();
+            LoadNextLevel();
         }
     }
     private void LoadNextLevel()
     {
         //play FX
 
-        Invoke("FXTimer", fxWaitTime);
+        //Invoke("FXTimer", fxWaitTime);
+        FXTimer();
 
         while (!nextSceneLoaded || !fxDone)
         {
             nextSceneLoaded = loader.LoadCheck();
+            Debug.Log("SceneLoaded: "+nextSceneLoaded+" fxDone: "+fxDone+" ");
         }
         loader.LoadLevel();
     }
