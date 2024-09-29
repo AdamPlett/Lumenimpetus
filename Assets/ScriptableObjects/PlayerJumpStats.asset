@@ -19,6 +19,6 @@ MonoBehaviour:
   coyoteTime: 0.1
   minimumJumpingTime: 0.1
   platformDetectorDistance: 0.05
-  jumpingGravity: 4.87
-  downwardsGravityMultiplier: 9.81
+  jumpingGravity: 10
+  downwardsGravityMultiplier: 15
   maxFallSpeed: -100

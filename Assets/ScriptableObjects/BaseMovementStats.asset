@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: BaseMovementStats
   m_EditorClassIdentifier: 
   maxWalkSpeed: 0
-  maxSpeed: 10
+  maxSpeed: 20
   airControlMult: 0.5
   sprintSpeedMultiplier: 2
-  groundAcceleration: 5
-  airAcceleration: 5
-  groundDeceleration: 25
+  groundAcceleration: 50
+  airAcceleration: 50
+  groundDeceleration: 50
   airDecelertaion: 25
   maxFallSpeed: -20
   groundedGravity: 0

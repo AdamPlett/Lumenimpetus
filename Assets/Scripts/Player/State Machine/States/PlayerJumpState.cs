@@ -35,6 +35,11 @@ public class PlayerJumpState : PlayerMovementState
 
         // Move player
         stateMachine.airMovement.Move();
+
+        if (stateMachine.rb.velocity.y <= 0)
+        {
+            stateMachine.SwitchToFallState();
+        }
     }
    
     // Called once at the end of the state, before starting the next state
