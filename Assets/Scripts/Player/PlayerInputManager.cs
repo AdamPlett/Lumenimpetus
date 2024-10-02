@@ -66,6 +66,7 @@ public class PlayerInputManager : MonoBehaviour
         moveAction = playerControls.FindActionMap(actionMapName).FindAction(move);
         jumpAction = playerControls.FindActionMap(actionMapName).FindAction(jump);
         sprintAction = playerControls.FindActionMap(actionMapName).FindAction(sprint);
+        crouchAction = playerControls.FindActionMap(actionMapName).FindAction(crouch);
         lookAction = playerControls.FindActionMap(actionMapName).FindAction(look);
         dashAction = playerControls.FindActionMap(actionMapName).FindAction(dash);
         primaryAttackAction = playerControls.FindActionMap(actionMapName).FindAction(primaryAttack);
@@ -84,6 +85,10 @@ public class PlayerInputManager : MonoBehaviour
 
         jumpAction.started += context => JumpTriggered = true;
         jumpAction.canceled += context => JumpTriggered = false;
+
+        crouchAction.started += context => crouchTriggered = true;
+        //crouchAction.performed += context => CrouchPerformed?.Invoke();
+        crouchAction.canceled += context => crouchTriggered = false;
 
         sprintAction.performed += context => SprintValue = context.ReadValue<float>();
         sprintAction.canceled += context => SprintValue = 0f;
@@ -112,6 +117,7 @@ public class PlayerInputManager : MonoBehaviour
         moveAction.Enable();
         jumpAction.Enable();
         sprintAction.Enable();
+        crouchAction.Enable();
         lookAction.Enable();
         dashAction.Enable();
         primaryAttackAction.Enable();
@@ -126,6 +132,7 @@ public class PlayerInputManager : MonoBehaviour
         jumpAction.Disable();
         sprintAction.Disable();
         lookAction.Disable();
+        crouchAction.Disable();
         dashAction.Disable();
         primaryAttackAction.Disable();
         secondaryAttackAction.Disable();

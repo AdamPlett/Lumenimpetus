@@ -15,28 +15,6 @@ public class AirMovement : MonoBehaviour
     public void MoveInAir(Vector3 moveDirection)
     {
         stateMachine.movement.MovePlayer(moveDirection);
-
-        /*
-        Vector3 projVel = Vector3.Project(rb.velocity, moveDirection);
-
-        bool facingAway = Vector3.Dot(moveDirection, projVel) <= 0f;
-
-        if (projVel.magnitude < maxAirSpeed || facingAway)
-        {
-            Vector3 airVel = moveDirection * stateMachine.movement.currentSpeed;
-
-            if (!facingAway)
-            {
-                airVel = Vector3.ClampMagnitude(airVel, maxAirSpeed - projVel.magnitude);
-            }
-            else
-            {
-                airVel = Vector3.ClampMagnitude(airVel, maxAirSpeed + projVel.magnitude);
-            }
-
-            rb.AddForce(airVel.normalized, ForceMode.VelocityChange);
-        }
-        */
     }
 
     public Vector3 CalculateMoveDirection()
@@ -48,16 +26,5 @@ public class AirMovement : MonoBehaviour
         Vector3 camRight = new Vector3(stateMachine.cm.cameraRight.x, 0, stateMachine.cm.cameraRight.z);
 
         return camForward.normalized * verticalInput + camRight.normalized * horizontalInput;
-
-        /*
-        if(stateMachine.controller.input.RetrieveLookInput().magnitude > 0.5f && horizontalInput == 0 && verticalInput == 0)
-        {
-            return camForward.normalized;
-        }
-        else
-        {
-            return camForward.normalized * verticalInput + camRight.normalized * horizontalInput;
-        }
-        */
     }
 }

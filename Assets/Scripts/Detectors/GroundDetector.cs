@@ -13,6 +13,8 @@ public class GroundDetector : MonoBehaviour
 
     [Header("Slope Detection")]
     [SerializeField] private bool onSlope;
+    [SerializeField] private bool exitingSlope;
+
     [Space(5)]
     [SerializeField] private float slopeAngle;
     [SerializeField] private float minSlopeAngle;
@@ -66,5 +68,10 @@ public class GroundDetector : MonoBehaviour
     public bool GetOnSlope()
     {
         return onSlope;
+    }
+
+    public bool GetExitingSlope()
+    {
+        return exitingSlope;
     }
 }

@@ -7,10 +7,10 @@ using static GameManager;
 public class BasicMovement : MonoBehaviour
 {
     #region Variables
-
-    [SerializeField] private bool idle;
     
     [Header("Movement Variables")]
+    [SerializeField] private bool idle;
+    [Space(5)]
     [SerializeField] private float currentSpeed;
     [SerializeField] private float desiredSpeed;
     [Space(5)]

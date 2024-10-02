@@ -15,12 +15,28 @@ public class GroundMovement : MonoBehaviour
 
     public void MoveOnGround(Vector3 moveDirection)
     {
+        // Movement on slope
         if (stateMachine.groundCheck.GetOnSlope())
         {
             stateMachine.movement.MovePlayer(CalculateSlopeDirection(moveDirection));
 
-            stateMachine.rb.AddForce(stateMachine.groundCheck.GetGroundNormal().normalized * -1f, ForceMode.Force);
+            if(stateMachine.rb.velocity.y < 0)
+            {
+                stateMachine.rb.AddForce(stateMachine.groundCheck.GetGroundNormal().normalized * -10f, ForceMode.Force);
+                //stateMachine.rb.AddForce(Vector3.down * 20f, ForceMode.Force);
+            }
+            else if(stateMachine.rb.velocity.y > 0)
+            {
+                stateMachine.rb.AddForce(stateMachine.groundCheck.GetGroundNormal().normalized * -30f, ForceMode.Force);
+                //stateMachine.rb.AddForce(Vector3.down * 80f, ForceMode.Force);
+            }
+            else
+            {
+                stateMachine.rb.AddForce(stateMachine.groundCheck.GetGroundNormal().normalized * -20f, ForceMode.Force);
+                //stateMachine.rb.AddForce(Vector3.down * 20f, ForceMode.Force);
+            }
         }
+        // Movement on flat ground
         else
         {
             stateMachine.movement.MovePlayer(moveDirection);

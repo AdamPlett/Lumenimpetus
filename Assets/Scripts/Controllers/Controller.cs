@@ -10,6 +10,7 @@ public class Controller : MonoBehaviour
     {
         input?.CheckJumpInput();
         input?.CheckDashInput();
+        input?.CheckCrouchInput();
         input?.CheckPrimaryInput();
         input?.CheckSecondaryInput();
         input?.CheckRightSkillInput();

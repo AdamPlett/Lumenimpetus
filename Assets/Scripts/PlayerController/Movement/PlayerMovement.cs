@@ -372,8 +372,7 @@ public class PlayerMovement : MonoBehaviour
         exitingSlope = true;
         // reset y velocity
         //rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        
-        
+                
         //transform.SetParent(null);
 
         if (mpl != null)
