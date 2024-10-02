@@ -10,8 +10,14 @@ public class PlayerCrouchState : PlayerMovementState
 
     // Called once at the start of the state, after ending the previous state
     public override void Enter()
-    { 
+    {
+        Debug.Log("Entering 'Crouch State'");
 
+        stateMachine.crouch.Crouch();
+
+        // Subscribe Listeners
+        input.crouchPerformed += stateMachine.SwitchToMoveState;
+        input.jumpPerformed += stateMachine.SwitchToJumpState;
     }
 
     // Called continously throughout the state (update)
@@ -23,6 +29,12 @@ public class PlayerCrouchState : PlayerMovementState
     // Called once at the end of the state, before starting the next state
     public override void Exit()
     {
+        Debug.Log("Exiting 'Crouch State'");
 
+        stateMachine.crouch.Uncrouch();
+
+        // Unsubscribe Listeners
+        input.crouchPerformed -= stateMachine.SwitchToMoveState;
+        input.jumpPerformed -= stateMachine.SwitchToJumpState;
     }
 }

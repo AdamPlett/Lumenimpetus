@@ -29,6 +29,8 @@ public class PlayerMovementStateMachine : StateMachine
     public AirMovement airMovement;
     public Jump jump;
     public Dash dash;
+    public Crouching crouch;
+    public Gravity gravity;
 
     [Header("Movement States")]
     public movementState activeState;

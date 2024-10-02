@@ -38,9 +38,9 @@ public abstract class InputController : ScriptableObject
 
     public virtual void CheckCrouchInput()
     {
-        if (RetrieveDashInput())
+        if (RetrieveCrouchInput())
         {
-            dashPerformed?.Invoke();
+            crouchPerformed?.Invoke();
         }
     }
 
