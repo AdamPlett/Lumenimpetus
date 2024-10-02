@@ -12279,7 +12279,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1330422807}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12288,8 +12288,8 @@ Transform:
   - {fileID: 1685220006}
   - {fileID: 849637428}
   - {fileID: 2012545011}
-  m_Father: {fileID: 1711778852}
-  m_RootOrder: 4
+  m_Father: {fileID: 2018907521}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1535949427
 GameObject:
@@ -18070,6 +18070,51 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5681120808496939716, guid: 96dde8d7554b40641858225f7efaf5b5,
+        type: 3}
+      propertyPath: DashBackVFX
+      value: 
+      objectReference: {fileID: 1685220008}
+    - target: {fileID: 5681120808496939716, guid: 96dde8d7554b40641858225f7efaf5b5,
+        type: 3}
+      propertyPath: DashLeftVFX
+      value: 
+      objectReference: {fileID: 2012545013}
+    - target: {fileID: 5681120808496939716, guid: 96dde8d7554b40641858225f7efaf5b5,
+        type: 3}
+      propertyPath: dashBackVFX
+      value: 
+      objectReference: {fileID: 1685220008}
+    - target: {fileID: 5681120808496939716, guid: 96dde8d7554b40641858225f7efaf5b5,
+        type: 3}
+      propertyPath: dashLeftVFX
+      value: 
+      objectReference: {fileID: 2012545013}
+    - target: {fileID: 5681120808496939716, guid: 96dde8d7554b40641858225f7efaf5b5,
+        type: 3}
+      propertyPath: DashRightVFX
+      value: 
+      objectReference: {fileID: 849637430}
+    - target: {fileID: 5681120808496939716, guid: 96dde8d7554b40641858225f7efaf5b5,
+        type: 3}
+      propertyPath: dashRightVFX
+      value: 
+      objectReference: {fileID: 849637430}
+    - target: {fileID: 5681120808496939716, guid: 96dde8d7554b40641858225f7efaf5b5,
+        type: 3}
+      propertyPath: DashFowardVFX
+      value: 
+      objectReference: {fileID: 530043771}
+    - target: {fileID: 5681120808496939716, guid: 96dde8d7554b40641858225f7efaf5b5,
+        type: 3}
+      propertyPath: dashFowardVFX
+      value: 
+      objectReference: {fileID: 530043771}
+    - target: {fileID: 5681120808496939716, guid: 96dde8d7554b40641858225f7efaf5b5,
+        type: 3}
+      propertyPath: dashForwardVFX
+      value: 
+      objectReference: {fileID: 530043771}
     - target: {fileID: 5681120808696265108, guid: 96dde8d7554b40641858225f7efaf5b5,
         type: 3}
       propertyPath: m_Name
@@ -18185,12 +18230,6 @@ MonoBehaviour:
 --- !u!1 &1711778851 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5681120810403071221, guid: 96dde8d7554b40641858225f7efaf5b5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1711778847}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1711778852 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5681120810403071225, guid: 96dde8d7554b40641858225f7efaf5b5,
     type: 3}
   m_PrefabInstance: {fileID: 1711778847}
   m_PrefabAsset: {fileID: 0}
@@ -24171,6 +24210,12 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!4 &2018907521 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5681120808496939722, guid: 96dde8d7554b40641858225f7efaf5b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1711778847}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &2145434740
 Mesh:
   m_ObjectHideFlags: 0
@@ -24342,19 +24387,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 259617056, guid: 692f0a9997d7b9c44a546f49787bc22a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 356973906, guid: 692f0a9997d7b9c44a546f49787bc22a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4614056604913189664, guid: 692f0a9997d7b9c44a546f49787bc22a,
-        type: 3}
-      propertyPath: transition
-      value: 
-      objectReference: {fileID: 4614056605223779257}
     - target: {fileID: 4614056604913189665, guid: 692f0a9997d7b9c44a546f49787bc22a,
         type: 3}
       propertyPath: m_RootOrder
@@ -24417,12 +24449,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 692f0a9997d7b9c44a546f49787bc22a, type: 3}
---- !u!95 &4614056605223779257 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 259617058, guid: 692f0a9997d7b9c44a546f49787bc22a,
-    type: 3}
-  m_PrefabInstance: {fileID: 4614056605223779256}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7043959962735665420
 PrefabInstance:
   m_ObjectHideFlags: 0

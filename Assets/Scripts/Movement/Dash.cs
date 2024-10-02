@@ -21,6 +21,13 @@ public class Dash : MonoBehaviour
     public float cooldown;
     private float cooldownTimer;
 
+    [Header("Dash FX")]
+    AudioSource dashSFX;
+    public ParticleSystem dashForwardVFX;
+    public ParticleSystem dashLeftVFX;
+    public ParticleSystem dashRightVFX;
+    public ParticleSystem dashBackVFX;
+
     [Header("Settings")]
     public bool allowAllDirections;
     public bool disableGravity;
@@ -29,17 +36,23 @@ public class Dash : MonoBehaviour
     [Header("Misc")]
     public PlayerMovementStateMachine stateMachine;
 
+    private Vector3 force;
+
     public void DashAction()
     {
         Vector3 dashDirection = CalculateDashDirection(stateMachine.transform);
 
-        Vector3 force = dashDirection * dashForce + stateMachine.transform.up * dashUpwardForce;
+        force = dashDirection * dashForce + stateMachine.transform.up * dashUpwardForce;
 
-        ApplyDashForce(force);
+        DelayDash();
     }
-
-    private void ApplyDashForce(Vector3 force)
+    private void DelayDash()
     {
+        Invoke(nameof(ApplyDashForce), .025f);
+    }
+    private void ApplyDashForce()
+    {
+        PlayDashFX();
         if(resetVelocity)
         {
             stateMachine.rb.velocity = Vector3.zero;
@@ -123,4 +136,33 @@ public class Dash : MonoBehaviour
     }
 
     #endregion
+
+    private void PlayDashFX()
+    {
+        //forward dash particles
+        if (stateMachine.controller.input.RetrieveMoveInput().y > 0 && Mathf.Abs(stateMachine.controller.input.RetrieveMoveInput().x) <= stateMachine.controller.input.RetrieveMoveInput().y)
+        {
+            dashForwardVFX.Play();
+        }
+
+        //backwards dash particles
+        else if (stateMachine.controller.input.RetrieveMoveInput().y < 0 && Mathf.Abs(stateMachine.controller.input.RetrieveMoveInput().x) <= Mathf.Abs(stateMachine.controller.input.RetrieveMoveInput().y))
+        {
+            dashBackVFX.Play();
+        }
+        //Right dash particles
+        else if (stateMachine.controller.input.RetrieveMoveInput().x > 0)
+        {
+            dashRightVFX.Play();
+        }
+        //Left dash particles
+        else if (stateMachine.controller.input.RetrieveMoveInput().x < 0)
+        {
+            dashLeftVFX.Play();
+        }
+        else
+        {
+            dashForwardVFX.Play();
+        }
+    }
 }
