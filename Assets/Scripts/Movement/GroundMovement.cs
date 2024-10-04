@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static GameManager;
 
 public class GroundMovement : MonoBehaviour
 {
@@ -18,27 +19,37 @@ public class GroundMovement : MonoBehaviour
         // Movement on slope
         if (stateMachine.groundCheck.GetOnSlope())
         {
+            if(gm.player.gravity.gravityEnabled)
+            {
+                gm.player.gravity.DisableGravity();
+            }
+
             stateMachine.movement.MovePlayer(CalculateSlopeDirection(moveDirection));
 
             if(stateMachine.rb.velocity.y < 0)
             {
-                stateMachine.rb.AddForce(stateMachine.groundCheck.GetGroundNormal().normalized * -10f, ForceMode.Force);
-                //stateMachine.rb.AddForce(Vector3.down * 20f, ForceMode.Force);
+                //stateMachine.rb.AddForce(stateMachine.groundCheck.GetGroundNormal().normalized * -20f, ForceMode.Force);
+                stateMachine.rb.AddForce(Vector3.down * 20f, ForceMode.Force);
             }
             else if(stateMachine.rb.velocity.y > 0)
             {
-                stateMachine.rb.AddForce(stateMachine.groundCheck.GetGroundNormal().normalized * -30f, ForceMode.Force);
-                //stateMachine.rb.AddForce(Vector3.down * 80f, ForceMode.Force);
+                //stateMachine.rb.AddForce(stateMachine.groundCheck.GetGroundNormal().normalized * -60f, ForceMode.Force);
+                stateMachine.rb.AddForce(Vector3.down * 80f, ForceMode.Force);
             }
             else
             {
-                stateMachine.rb.AddForce(stateMachine.groundCheck.GetGroundNormal().normalized * -20f, ForceMode.Force);
-                //stateMachine.rb.AddForce(Vector3.down * 20f, ForceMode.Force);
+                //stateMachine.rb.AddForce(stateMachine.groundCheck.GetGroundNormal().normalized * -40f, ForceMode.Force);
+                stateMachine.rb.AddForce(Vector3.down * 20f, ForceMode.Force);
             }
         }
         // Movement on flat ground
         else
         {
+            if (!gm.player.gravity.gravityEnabled)
+            {
+                gm.player.gravity.EnableGravity();
+            }
+
             stateMachine.movement.MovePlayer(moveDirection);
         }
     }

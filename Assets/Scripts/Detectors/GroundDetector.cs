@@ -39,7 +39,8 @@ public class GroundDetector : MonoBehaviour
             gm.player.jump.coyoteTimeTimer = gm.player.jump.stats.coyoteTime;
             gm.player.jump.jumpPhase = 0;
 
-            // Determine if on slope
+            // Determine if on
+            // 
             slopeAngle = Vector3.Angle(Vector3.up, groundHit.normal);
             onSlope = slopeAngle < maxSlopeAngle && slopeAngle > minSlopeAngle;
         }
