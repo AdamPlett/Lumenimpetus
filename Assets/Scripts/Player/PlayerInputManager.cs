@@ -87,7 +87,6 @@ public class PlayerInputManager : MonoBehaviour
         jumpAction.canceled += context => JumpTriggered = false;
 
         crouchAction.started += context => crouchTriggered = true;
-        //crouchAction.performed += context => CrouchPerformed?.Invoke();
         crouchAction.canceled += context => crouchTriggered = false;
 
         sprintAction.performed += context => SprintValue = context.ReadValue<float>();
