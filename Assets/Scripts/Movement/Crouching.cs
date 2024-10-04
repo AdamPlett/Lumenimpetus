@@ -10,12 +10,6 @@ public class Crouching : MonoBehaviour
     [Space(5)]
     public float crouchScale;
 
-    [Header("Cooldown")]
-    public bool canCrouch;
-    [Space(5)]
-    public float cooldown;
-    public float cdTimer;
-
     private float playerScaleX, playerScaleY, playerScaleZ;
 
     private void Start()
@@ -24,6 +18,8 @@ public class Crouching : MonoBehaviour
         playerScaleY = gm.player.transform.localScale.y;
         playerScaleZ = gm.player.transform.localScale.z;
     }
+
+    // FIX LATER: When crouching, camera moves down gradually, but when uncrouching the camera snaps back to the default position
 
     public void Crouch()
     {
