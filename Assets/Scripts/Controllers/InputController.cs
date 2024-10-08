@@ -15,6 +15,11 @@ public abstract class InputController : ScriptableObject
     public Action rightSkillPerformed;
     public Action leftSkillPerformed;
 
+    // Booleans
+    public bool jumping;
+    public bool dashing;
+    public bool crouching;
+
 
     public virtual void CheckJumpInput()
     {
@@ -32,7 +37,15 @@ public abstract class InputController : ScriptableObject
     {
         if (RetrieveDashInput())
         {
-            dashPerformed?.Invoke();
+            if(!dashing)
+            {
+                dashPerformed?.Invoke();
+                dashing = true;
+            }
+        }
+        else
+        {
+            dashing = false;
         }
     }
 
@@ -40,7 +53,15 @@ public abstract class InputController : ScriptableObject
     {
         if (RetrieveCrouchInput())
         {
-            crouchPerformed?.Invoke();
+            if(!crouching)
+            {
+                crouchPerformed?.Invoke();
+                crouching = true;
+            }
+        }
+        else
+        {
+            crouching = false;
         }
     }
 

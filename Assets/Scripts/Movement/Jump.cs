@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameManager;
 
 public class Jump : MonoBehaviour
 {
@@ -52,15 +53,17 @@ public class Jump : MonoBehaviour
             jumpPhase = 0;
             coyoteTimeTimer = stats.coyoteTime;
         }
-
-        //else
-        //{
+        else
+        {
+            gm.player.gravity.EnableGravity();
+            
             //sets the current gravity scale (lower gravity while jumping upwards)
             if (stateMachine.rb.velocity.y < 0) gravity.SetGravityForce(new Vector3(0, -stats.downwardsGravityMultiplier, 0));
             else if (stateMachine.rb.velocity.y == 0) gravity.SetGravityForce(new Vector3(0, -stats.downwardsGravityMultiplier, 0));
             else if (stateMachine.rb.velocity.y > 0 && controller.input.RetrieveJumpInput()) gravity.SetGravityForce(new Vector3(0, -stats.jumpingGravity,0));
             else gravity.SetGravityForce(new Vector3(0, -stats.downwardsGravityMultiplier, 0));
-        //}
+        }
+
         if (velocity.y < stats.maxFallSpeed)
         {
             velocity.y = stats.maxFallSpeed;
