@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -77,6 +76,8 @@ namespace Octrees
             Gizmos.color = Color.green;
             Gizmos.DrawWireCube(bounds.center, bounds.size);
 
+            //draws red cubes around each octreeObject (shows where each object of signfigance is in the scene)
+            /*
             foreach (OctreeObject obj in objects)
             {
                 if (obj.Intersects(bounds))
@@ -85,7 +86,9 @@ namespace Octrees
                     Gizmos.DrawCube(bounds.center, bounds.size);
                 }
             }
-            
+            */
+
+            //recursive calls children nodes until there are none left
             if (children != null)
             {
                 foreach (OctreeNode child in children)

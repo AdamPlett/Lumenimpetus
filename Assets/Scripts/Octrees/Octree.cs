@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,12 +7,20 @@ namespace Octrees
     {
         public OctreeNode root;
         public Bounds bounds;
+        public Graph graph;
+
+        List<OctreeNode> emptyLeaves = new List<OctreeNode>();
 
         //constructor
-        public Octree(GameObject[] worldObjects, float minNodeSize)
+        public Octree(GameObject[] worldObjects, float minNodeSize, Graph graph)
         {
+            this.graph = graph;
             CalculateBounds(worldObjects);
             CreateTree(worldObjects, minNodeSize);
+
+            GetEmptyLeaves(root);
+            GetEdges();
+            Debug.Log(graph.edges.Count);
         }
         //creates the tree by initailizing the root and then calling the recursive divide function
        void CreateTree(GameObject[] worldObjects, float minNodeSize)
@@ -25,6 +32,47 @@ namespace Octrees
                 root.Divide(obj);
             }
         }
+
+        void GetEdges()
+        {
+            foreach (OctreeNode leaf in emptyLeaves)
+            {
+                foreach(OctreeNode otherLeaf in emptyLeaves)
+                {
+                    if (leaf.bounds.Intersects(otherLeaf.bounds))
+                    {
+                        graph.AddEdge(leaf, otherLeaf);
+                    }
+                }
+            }
+        }
+
+        void GetEmptyLeaves(OctreeNode node)
+        {
+            if (node.IsLeaf && node.objects.Count == 0)
+            {
+                emptyLeaves.Add(node);
+                graph.AddNode(node);
+                return;
+            }
+
+            if (node.children == null) return;
+
+            //recurisve call
+            foreach (OctreeNode child in node.children)
+            {
+                GetEmptyLeaves(child);
+            }
+
+            //add all edges when coming out of the recurision
+            for (int i = 0; i < node.children.Length; i++)
+            {
+                for (int j = i+1; j < node.children.Length; j++)
+                {
+                    graph.AddEdge(node.children[i], node.children[j]);
+                }
+            }
+        }
         
         // calculates the bounds of the octree based off an array of game objects
         void CalculateBounds(GameObject[] worldObjects)
@@ -34,7 +82,7 @@ namespace Octrees
                 bounds.Encapsulate(obj.GetComponent<Collider>().bounds);
             }
             //makes the bounds a perfect square
-            Vector3 size = Vector3.one * Mathf.Max(bounds.size.x, bounds.size.y, bounds.size.z) * 0.5f;
+            Vector3 size = Vector3.one * Mathf.Max(bounds.size.x, bounds.size.y, bounds.size.z) * 0.6f;
             bounds.SetMinMax(bounds.center - size, bounds.center + size);
         }
     }
