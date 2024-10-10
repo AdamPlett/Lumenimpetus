@@ -8,7 +8,7 @@ namespace Octrees
     {
         public GameObject[] objects;
         public float minNodeSize = 1f;
-        Octree ot;
+        public Octree ot;
 
         public readonly Graph waypoints = new Graph();
 

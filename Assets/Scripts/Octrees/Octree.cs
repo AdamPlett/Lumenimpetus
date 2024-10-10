@@ -33,6 +33,26 @@ namespace Octrees
             }
         }
 
+        public OctreeNode FindClosestNode(Vector3 pos) => FindClosestNode(root, pos);
+
+        public OctreeNode FindClosestNode(OctreeNode node, Vector3 pos)
+        {
+            OctreeNode found = null;
+            for (int i = 0; i < node.children.Length; i++)
+            {
+                if (node.children[i].bounds.Contains(pos))
+                {
+                    if (node.children[i].IsLeaf)
+                    {
+                        found = node.children[i];
+                        break;
+                    }
+                    found = FindClosestNode(node.children[i], pos);
+                }
+            }
+            return found;
+        }
+
         void GetEdges()
         {
             foreach (OctreeNode leaf in emptyLeaves)

@@ -11,7 +11,7 @@ namespace Octrees
 
         List<Node> pathList = new List<Node>();
 
-        public int GetPathLength => pathList.Count;
+        public int GetPathLength() => pathList.Count;
 
         public OctreeNode GetPathNode(int index)
         {
