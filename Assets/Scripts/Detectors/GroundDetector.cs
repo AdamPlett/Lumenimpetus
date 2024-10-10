@@ -21,6 +21,7 @@ public class GroundDetector : MonoBehaviour
     [SerializeField] private float maxSlopeAngle;
 
     private RaycastHit groundHit;
+    private float prevGroundAngle;
 
     void Update()
     {
@@ -39,8 +40,7 @@ public class GroundDetector : MonoBehaviour
             gm.player.jump.coyoteTimeTimer = gm.player.jump.stats.coyoteTime;
             gm.player.jump.jumpPhase = 0;
 
-            // Determine if on
-            // 
+            // Determine if on slope
             slopeAngle = Vector3.Angle(Vector3.up, groundHit.normal);
             onSlope = slopeAngle < maxSlopeAngle && slopeAngle > minSlopeAngle;
         }
