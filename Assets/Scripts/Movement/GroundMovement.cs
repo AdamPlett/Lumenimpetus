@@ -28,18 +28,18 @@ public class GroundMovement : MonoBehaviour
 
             if(stateMachine.rb.velocity.y < 0)
             {
-                //stateMachine.rb.AddForce(stateMachine.groundCheck.GetGroundNormal().normalized * -20f, ForceMode.Force);
-                stateMachine.rb.AddForce(Vector3.down * 20f, ForceMode.Force);
+                stateMachine.rb.AddForce(stateMachine.groundCheck.GetGroundNormal().normalized * -2f, ForceMode.Force);
+                //stateMachine.rb.AddForce(Vector3.down * 2f, ForceMode.Force);
             }
             else if(stateMachine.rb.velocity.y > 0)
             {
-                //stateMachine.rb.AddForce(stateMachine.groundCheck.GetGroundNormal().normalized * -60f, ForceMode.Force);
-                stateMachine.rb.AddForce(Vector3.down * 80f, ForceMode.Force);
+                stateMachine.rb.AddForce(stateMachine.groundCheck.GetGroundNormal().normalized * -8f, ForceMode.Force);
+                //stateMachine.rb.AddForce(Vector3.down * 8f, ForceMode.Force);
             }
             else
             {
-                //stateMachine.rb.AddForce(stateMachine.groundCheck.GetGroundNormal().normalized * -40f, ForceMode.Force);
-                stateMachine.rb.AddForce(Vector3.down * 20f, ForceMode.Force);
+                stateMachine.rb.AddForce(stateMachine.groundCheck.GetGroundNormal().normalized * -5f, ForceMode.Force);
+                //stateMachine.rb.AddForce(Vector3.down * 5f, ForceMode.Force);
             }
         }
         // Movement on flat ground
