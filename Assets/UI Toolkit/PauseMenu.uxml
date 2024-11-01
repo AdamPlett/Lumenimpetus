@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=76ffcfda458d4d9429b94bb2b7b066f0&amp;type=3#MainMenuStyle" />
+    <ui:VisualElement name="VisualElement" style="width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/UI/Shift%20-%20Complete%20Sci-Fi%20UI/Textures/Border/Square/Outline%20Glow%20-%20Stroke%2010x.png?fileID=21300000&amp;guid=95faad00ef78b3c42a8d002ec70888e6&amp;type=3#Outline Glow - Stroke 10x&apos;); background-color: rgba(77, 8, 8, 0); -unity-background-image-tint-color: rgba(153, 255, 233, 0.27); -unity-background-scale-mode: stretch-to-fill;">
+        <ui:VisualElement name="Container" class="header" style="align-items: center; justify-content: center; height: 1080px; opacity: 1;">
+            <ui:Button text="RESUME" display-tooltip-when-elided="true" name="Button" class="button" />
+            <ui:Button text="SETTINGS" display-tooltip-when-elided="true" class="button" style="color: rgb(153, 255, 233);" />
+            <ui:Button text="LEVEL SELECT" display-tooltip-when-elided="true" name="Button" class="button" />
+            <ui:Button text="QUIT" display-tooltip-when-elided="true" class="button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
