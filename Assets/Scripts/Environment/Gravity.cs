@@ -66,7 +66,6 @@ public class Gravity : MonoBehaviour
     {
         gravityEnabled = false;
         
-
         if(currentGravityForce != 0f)
         {
             previousGravity = currentGravityForce;

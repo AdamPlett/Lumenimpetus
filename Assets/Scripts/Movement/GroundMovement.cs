@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Windows;
 using static GameManager;
 
 public class GroundMovement : MonoBehaviour
@@ -15,11 +16,11 @@ public class GroundMovement : MonoBehaviour
     }
 
     public void MoveOnGround(Vector3 moveDirection)
-    {
+    {        
         // Movement on slope
         if (stateMachine.groundCheck.GetOnSlope())
         {
-            if(gm.player.gravity.gravityEnabled)
+            if(gm.player.gravity.gravityEnabled && !stateMachine.groundCheck.GetExitingSlope())
             {
                 gm.player.gravity.DisableGravity();
             }
@@ -29,17 +30,14 @@ public class GroundMovement : MonoBehaviour
             if(stateMachine.rb.velocity.y < 0)
             {
                 stateMachine.rb.AddForce(stateMachine.groundCheck.GetGroundNormal().normalized * -2f, ForceMode.Force);
-                //stateMachine.rb.AddForce(Vector3.down * 2f, ForceMode.Force);
             }
             else if(stateMachine.rb.velocity.y > 0)
             {
                 stateMachine.rb.AddForce(stateMachine.groundCheck.GetGroundNormal().normalized * -8f, ForceMode.Force);
-                //stateMachine.rb.AddForce(Vector3.down * 8f, ForceMode.Force);
             }
             else
             {
                 stateMachine.rb.AddForce(stateMachine.groundCheck.GetGroundNormal().normalized * -5f, ForceMode.Force);
-                //stateMachine.rb.AddForce(Vector3.down * 5f, ForceMode.Force);
             }
         }
         // Movement on flat ground

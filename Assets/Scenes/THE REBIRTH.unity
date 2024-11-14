@@ -5108,10 +5108,27 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1318089368, guid: 96dde8d7554b40641858225f7efaf5b5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1318089371, guid: 96dde8d7554b40641858225f7efaf5b5, type: 3}
+      propertyPath: exitTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1318089371, guid: 96dde8d7554b40641858225f7efaf5b5, type: 3}
+      propertyPath: detectionLength
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 5681120808496939717, guid: 96dde8d7554b40641858225f7efaf5b5,
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5681120808496939717, guid: 96dde8d7554b40641858225f7efaf5b5,
+        type: 3}
+      propertyPath: walkSpeed
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5681120808496939717, guid: 96dde8d7554b40641858225f7efaf5b5,
         type: 3}
@@ -5120,8 +5137,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5681120808496939717, guid: 96dde8d7554b40641858225f7efaf5b5,
         type: 3}
+      propertyPath: crouchSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5681120808496939717, guid: 96dde8d7554b40641858225f7efaf5b5,
+        type: 3}
+      propertyPath: sprintSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5681120808496939717, guid: 96dde8d7554b40641858225f7efaf5b5,
+        type: 3}
       propertyPath: defaultScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5681120808496939718, guid: 96dde8d7554b40641858225f7efaf5b5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5681120808696265108, guid: 96dde8d7554b40641858225f7efaf5b5,
         type: 3}
@@ -5188,6 +5220,11 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5681120809320991289, guid: 96dde8d7554b40641858225f7efaf5b5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5681120810403071220, guid: 96dde8d7554b40641858225f7efaf5b5,
         type: 3}
       propertyPath: crouch
@@ -5198,6 +5235,11 @@ PrefabInstance:
       propertyPath: gravity
       value: 
       objectReference: {fileID: 5681120809737552742}
+    - target: {fileID: 5681120810403071221, guid: 96dde8d7554b40641858225f7efaf5b5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96dde8d7554b40641858225f7efaf5b5, type: 3}
 --- !u!114 &5681120809737552741 stripped

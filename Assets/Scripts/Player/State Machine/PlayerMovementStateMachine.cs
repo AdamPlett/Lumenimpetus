@@ -125,6 +125,8 @@ public class PlayerMovementStateMachine : StateMachine
 
                 if ((jump.jumpBufferTimer > 0 && jump.coyoteTimeTimer > 0 && jump.timeBetweenJumps < 0) || (jump.jumpPhase < jump.stats.doubleJumps && jump.timeBetweenJumps < 0))
                 {
+                    groundCheck.ExitSlope();
+                    
                     SwitchState(jumpState);
                 }
             }
