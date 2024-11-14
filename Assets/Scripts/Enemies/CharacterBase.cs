@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CharacterBase : MonoBehaviour
 {
-    private [SerializeField] float maxHP;
-    private [SerializeField] float maxHPLimit;
-    private [SerializeField] float currentHP;
+    [SerializeField] private float maxHP;
+    [SerializeField] private float maxHPLimit;
+    [SerializeField] private float currentHP;
 
-    private [SerializeField] float deathFXTime;
+    [SerializeField] private float deathFXTime;
 
     public void AddHP(float healAmount)
     {
