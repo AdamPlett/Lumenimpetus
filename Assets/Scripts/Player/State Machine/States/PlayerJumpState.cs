@@ -12,6 +12,11 @@ public class PlayerJumpState : PlayerMovementState
     {
         Debug.Log("Entering jump state");
 
+        if (!stateMachine.gravity.gravityEnabled)
+        {
+            stateMachine.gravity.EnableGravity();
+        }
+
         jump.JumpAction();
 
         // Subscribe Listeners

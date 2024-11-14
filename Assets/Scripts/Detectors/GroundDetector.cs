@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using static GameManager;
 
+public enum eSlopeDirection { none, uphill, downhill }
+
 public class GroundDetector : MonoBehaviour
 {
     [Header("Ground Detection")]
@@ -13,19 +15,28 @@ public class GroundDetector : MonoBehaviour
 
     [Header("Slope Detection")]
     [SerializeField] private bool onSlope;
+    [Space(5)]
     [SerializeField] private bool exitingSlope;
-
+    [SerializeField] private float exitTime;
+    [SerializeField] private float exitTimer;
     [Space(5)]
     [SerializeField] private float slopeAngle;
     [SerializeField] private float minSlopeAngle;
     [SerializeField] private float maxSlopeAngle;
+    [Space(5)]
+    [SerializeField] private eSlopeDirection slopeDirection; 
 
     private RaycastHit groundHit;
     private float prevGroundAngle;
 
-    void Update()
+    private void Update()
     {
         DetectGround();
+
+        if(exitingSlope)
+        {
+            SlopeExitTimer();
+        }
     }
 
     public void DetectGround()
@@ -44,7 +55,37 @@ public class GroundDetector : MonoBehaviour
             slopeAngle = Vector3.Angle(Vector3.up, groundHit.normal);
             onSlope = slopeAngle < maxSlopeAngle && slopeAngle > minSlopeAngle;
         }
+        else
+        {
+            slopeAngle = 0f;
+            onSlope = false;
+        }
     }
+
+    public void ExitSlope()
+    {
+        if(onSlope && !exitingSlope)
+        {
+            exitingSlope = true;
+
+            gm.player.gravity.EnableGravity();
+        }
+    }
+
+    private void SlopeExitTimer()
+    {
+        if(exitTimer < exitTime)
+        {
+            exitTimer += Time.deltaTime;
+        }
+        else if(exitTimer >= exitTime)
+        {
+            exitingSlope = false;
+            exitTimer = 0f;
+        }
+    }
+
+    #region Getters
 
     public RaycastHit GetGroundHit()
     {
@@ -75,4 +116,6 @@ public class GroundDetector : MonoBehaviour
     {
         return exitingSlope;
     }
+
+    #endregion
 }
